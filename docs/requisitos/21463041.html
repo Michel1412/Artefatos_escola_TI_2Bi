@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 1: Notificar Erros Encontrados (RF-04).</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 1: Notificar Erros Encontrados (RF-04).
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified on abr. 16, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="280ea25c2382"><strong>Itens associados:</strong> Requisitos Funcionais:</p><ul local-id="d60fbe38-9752-41fd-8833-7abadf9a0299"><li local-id="c782aa18-fd9b-4950-ac19-16f1e0ad02c1"><p local-id="f8ce52a98ac8">RF-04: O Sistema deve notificar os erros encontrados em múltiplos canais.</p></li><li local-id="dbd908f1-29c1-4b7b-8021-c0c5e83f1dab"><p local-id="72b45e11fca1">RF-05: O Sistema deve alertar possíveis situações críticas descobertas pelo SDK.</p></li></ul><p local-id="f4fa8d9c5bb3"><strong>Nome:</strong> Notificar Erros Encontrados <strong>Atores:</strong></p><ul local-id="1d57c69a-500a-4cbe-a6ee-6c02fe9b68cd"><li local-id="073028fc-4e98-45e9-b2c8-2e24dd11b7b1"><p local-id="1c8063b9ed86">Sistema (Worker de Processamento de Logs).</p></li><li local-id="b581fdb2-3a51-4f1b-bca5-371a973c96e1"><p local-id="052614c59a30">Provedores de Email (ex: SendGrid).</p></li><li local-id="e5a2ebe8-b007-4d6c-a85d-9ca3775a6d1b"><p local-id="ac3def5bc4d2">Provedores de Push Notification (ex: Firebase/FCM).</p></li><li local-id="eab4fa8a-3d75-4d69-93e8-723b69c65037"><p local-id="b599bd0d0de8">Servidor de WebSockets.</p></li></ul><p local-id="c93b8a78b7e8"><strong>Descrição:</strong> Gerencia o roteamento multicanal da notificação de erros e alerta sobre possíveis situações críticas descobertas pelo SDK. É acionado imediatamente após um log de erro ou alerta crítico ser capturado, contextualizado pela IA, ofuscado (prevenção de dados sensíveis) e persistido no banco de dados.</p><p local-id="65d5e203dbc5"><strong>Pré-condições:</strong></p><ul local-id="c5de2039-d133-45b5-9578-bd440da34825"><li local-id="1d626c59-125b-43a3-92cb-3c81605f59f8"><p local-id="4615abb6a8cb">O log de erro ou alerta do SDK deve estar persistido no banco de dados (MongoDB) contendo Timestamp, Tipo_do_Erro, Conteudo_do_Log e Contexto_Aplicado.</p></li></ul><p local-id="ae55b0d0de02"><strong>Pós-condições:</strong></p><ul local-id="ef26fef0-aeac-4d43-874e-1d6fea9fd5a4"><li local-id="754e33de-fb90-48bc-8023-55e16eede4e6"><p local-id="5926eb96a0e3">Notificações e alertas críticos enviados aos usuários (Dashboard, Push, E-mail) ou agrupados para envio posterior em caso de detecção de spam/fadiga.</p></li></ul><p local-id="c3a42d22791d"><strong>Fluxo Principal:</strong></p><ol start="1" local-id="b184c7c5-05a2-42c2-95a6-b344e3002784"><li local-id="870fff1d-e6a8-49b1-b995-c3bdb06789ef"><p local-id="aa47b7160108">Sistema recebe a entidade do Erro ou alerta crítico recém-persistido vindo do SDK.</p></li><li local-id="71378ffc-0cea-47de-ba7d-22b91ec6382d"><p local-id="65ad5d9026b0">Sistema despacha um evento síncrono via WebSocket contendo o payload do erro para exibição de Toasts/Modais no Dashboard Web em tempo real, destacando se for uma situação crítica.</p></li><li local-id="7440d702-6a32-46c4-b577-da2a3f25ada2"><p local-id="596cb161d3a7">Sistema despacha um evento assíncrono de Push Notification para os dispositivos móveis atrelados aos usuários do sistema.</p></li><li local-id="5e632680-4aeb-45c3-ad54-f471df70bd94"><p local-id="701448f75ce2">Sistema despacha um evento assíncrono de E-mail, detalhando a criticidade do erro ou da situação descoberta pelo SDK e sugerindo o acesso ao Agente IA.</p></li></ol><p local-id="c46a36e41c63"><strong>Fluxo Alternativo:</strong> A1: Prevenção de Fadiga de Alertas</p><ol start="1" local-id="cfa590ed-c232-44b8-8c1b-cf047b8beb3b"><li local-id="208eaf45-58ec-451c-819f-c895b494f444"><p local-id="c95ec1c64d85">Sistema silencia os canais assíncronos (aborta o envio imediato de E-mail e Push Notification para evitar spam).</p></li><li local-id="80693550-29b7-4356-a1ea-711166776c71"><p local-id="c808ddaa310c">Sistema adiciona o erro a uma fila de &quot;Resumo de Agrupamento&quot;.</p></li><li local-id="ff16153d-be69-4486-9c30-a344f834d156"><p local-id="d437e0202a2c">Sistema atualiza o Dashboard Web via WebSocket silenciosamente (apenas incrementando o badge de contagem na UI, sem disparar um novo Toast).</p></li></ol><p local-id="b9fe764edef9"><strong>Regras de Negócio:</strong></p><ul local-id="38b1a286-85e4-4c26-94a1-3a4c384830d6"><li local-id="a8689c13-3220-4f54-89bd-d2b9c775b300"><p local-id="7e3f402f9ef7">RN-08</p></li><li local-id="7c0a03f49b9f"><p local-id="dc1254ed51db">RN-09</p></li></ul><p local-id="612488990e1c"><strong>Requisitos:</strong></p><ul local-id="161f826a-6297-4344-b093-5ed70f128f03"><li local-id="67ae2ee6-211c-4f4e-b1cd-48247a1cb5fa"><p local-id="c9b2fb039df8">RF-04.</p></li><li local-id="f6cee366-84db-4dc2-b9cf-de7eda6ee600"><p local-id="3218c2b94269">RF-05.</p></li></ul><p local-id="c8d2af43d3f7"><strong>Observações:</strong></p><ul local-id="7356df0c-cebe-415d-970b-c3b63318d0a4"><li local-id="8d68c9e7-7dfe-4c13-ada8-daa0a46be0ae"><p local-id="90ef7894c4c9">A fila de &quot;Resumo de Agrupamento&quot; mencionada no fluxo alternativo será disparada por e-mail posteriormente, caso configurável/aplicável.</p></li><li local-id="b37d8870-8ee0-46ac-905a-445037915170"><p local-id="8be897edfbf3">&quot;&quot; (vazio) se não houverem novas observações adicionais no momento.</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="diagrama.png" width="760" loading="lazy" src="../attachments/21463041/34013185.png?width=760" data-image-src="../attachments/21463041/34013185.png" data-height="442" data-width="917" data-unresolved-comment-count="0" data-linked-resource-id="34013185" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="diagrama.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="21463041" data-linked-resource-container-version="6" data-media-id="58e34480-bee5-4288-8b0f-2b4f58b09dd9" data-media-type="file"></span><p local-id="d4b3017764a7" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21463041/34013185.png">diagrama.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -47,10 +47,10 @@ O desenvolvimento do código-fonte do sistema está dividido nos seguintes repos
 
 ## 🗂️ Estrutura deste Repositório
 
-*(Dica: Caso você organize os arquivos em pastas dentro deste repositório, você pode listá-los aqui de forma organizada)*
-
 ```text
-├── /requisitos        # Histórias de usuário exportadas, BDDs ou PDFs do Jira
-├── /diagramas          # Arquitetura do sistema, diagramas de sequência do SDK
-├── /relatorios         # Cópias ou complementos do Relatório de Atividades
+├── docs/
+│   ├── requisitos/     # Histórias de usuário, casos de uso, regras de negócio
+│   ├── diagramas/      # Arquitetura, diagramas de sequência e classes
+│   └── relatorios/     # Relatórios de atividades e sprints
 └── README.md           # Este arquivo de guia
+```

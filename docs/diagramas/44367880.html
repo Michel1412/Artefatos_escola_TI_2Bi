@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 3 -&gt; Caso de uso - 3: Captura e Identificação de Logs Não Estruturados via SDK</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 3 -&gt; Caso de uso - 3: Captura e Identificação de Logs Não Estruturados via SDK
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified on mai. 07, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="96406886f9d5"><a data-card-appearance="inline" href="https://groupfromthesouth.atlassian.net/wiki/x/QQBDAQ" local-id="cbd3244b2796" rel="nofollow">https://groupfromthesouth.atlassian.net/wiki/x/QQBDAQ</a> </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="diagramaSequencia3.png" width="760" loading="lazy" src="../attachments/44367880/43515953.png?width=760" data-image-src="../attachments/44367880/43515953.png" data-height="1703" data-width="1494" data-unresolved-comment-count="0" data-linked-resource-id="43515953" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="diagramaSequencia3.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="44367880" data-linked-resource-container-version="3" data-media-id="b28e83e1-a706-445b-87dc-39b2d26171e9" data-media-type="file"></span><p local-id="60a7521680c2" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">title Fluxo de Captura e Processamento de Logs - LogViewer
+
+actor &quot;Sistema Cliente&quot; as Client
+participant &quot;SDK LogViewer&quot; as SDK
+participant &quot;Backend LogViewer&quot; as Backend
+database &quot;MongoDB&quot; as DB
+participant &quot;LLM/IA&quot; as LLM
+participant &quot;Serviço de Notificação&quot; as Notif
+
+Client -&gt; SDK: Gera Erro de Aplicação (Exception/Log)
+activate SDK
+
+note over SDK: Início do processamento local
+SDK -&gt; SDK: Capturar Erro Bruto Agnosticamente
+SDK -&gt; SDK: Mascarar Dados Sensíveis e Credenciais
+SDK -&gt; SDK: Anexar Token e Carimbo de Data/Hora
+
+opt Se log &gt; limite de tamanho
+    SDK -&gt; SDK: Gerenciar Logs Longos (Truncar/Chunking)
+end
+
+SDK -&gt; Backend: Estabelecer Conexão Segura (Túnel Criptografado)
+activate Backend
+
+alt Se backend inalcançável (Falha de Conexão)
+    Backend --x SDK: Timeout / Erro de Rede
+    note over SDK: Ativação do «extend»\nGerenciar Falhas
+    SDK -&gt; SDK: Gerenciar Falhas de Conexão (Buffer Local)
+else Conexão Bem Sucedida
+    SDK -&gt; Backend: Enviar Log Não Estruturado
+    
+    note over Backend: Validação e Persistência Inicial
+    Backend -&gt; Backend: Validar Token e Payload
+    
+    Backend -&gt; DB: Persistir Log no Banco de Dados
+    activate DB
+    DB --&gt; Backend: Confirmação de Persistência
+    deactivate DB
+
+    note over Backend: Processamento Avançado
+    Backend -&gt; Backend: Encaminhar para Processamento Avançado
+    
+    Backend -&gt; LLM: Enviar payload para Análise
+    activate LLM
+    LLM --&gt; Backend: Retornar Classificação e Contexto
+    deactivate LLM
+    
+    Backend -&gt; DB: Atualizar Log com insights da IA
+    activate DB
+    DB --&gt; Backend: Confirmação de Atualização
+    deactivate DB
+    
+    Backend -&gt; Notif: Despachar Alertas Multicanal
+    activate Notif
+    Notif --&gt; Backend: Confirmação de Envio
+    deactivate Notif
+
+    Backend --&gt; SDK: Resposta de Sucesso (Ex: HTTP 202/200)
+end
+
+deactivate Backend
+deactivate SDK</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/44367880/44236818.png">diagramaSequencia3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/44367880/43515953.png">diagramaSequencia3.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

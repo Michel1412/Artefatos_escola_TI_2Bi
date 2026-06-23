@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Classe 3</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Classe 3
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> pedroalvaro193</span>, last modified on mai. 25, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="682573d1a3c2" /><p local-id="c0667a0b99f1">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-75" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-75" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-75</a>
+                    -
+            <span class="summary">Criar o diagrama de classe - 3</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+ </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Diagrama sem nome.drawio(1).png" width="703" loading="lazy" src="../attachments/53411890/54165505.png?width=703" data-image-src="../attachments/53411890/54165505.png" data-height="1268" data-width="703" data-unresolved-comment-count="0" data-linked-resource-id="54165505" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Diagrama sem nome.drawio(1).png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="53411890" data-linked-resource-container-version="2" data-media-id="057198db-dd8c-4a84-81b4-a73791348453" data-media-type="file"></span><p local-id="eb9494377659" /><p local-id="b0994345015b">@startuml DiagramaRelacionamento</p><p local-id="92158a35d9d8">skinparam backgroundColor #FFFFFF<br/>skinparam classBackgroundColor #FFFFFF<br/>skinparam classBorderColor #333333<br/>skinparam classAttributeFontColor #000000<br/>skinparam classFontColor #000000<br/>skinparam classFontSize 10<br/>skinparam classAttributeFontSize 10<br/>skinparam padding 5<br/>skinparam roundcorner 5<br/>skinparam arrowColor #333333<br/>skinparam arrowThickness 1.5</p><p local-id="57ba29599278">class Usuario {<br/>  .. Atributos ..<br/>  &lt;b&gt;- id&lt;/b&gt; : String (UUID)<br/>  &lt;b&gt;- cnpj&lt;/b&gt; : String<br/>  &lt;b&gt;- sistemasCadastrados&lt;/b&gt; : List&lt;String&gt;<br/>  &lt;b&gt;- 2faAtivado&lt;/b&gt; : Boolean<br/>  &lt;b&gt;- contextoEmpresa&lt;/b&gt; : ContextoEmpresa<br/>  .. Métodos ..</p><ul local-id="7d650ad45e4a"><li local-id="c22f07e9335f"><p local-id="1946788d56dc">ativar2FA() : void</p></li><li local-id="73eb28d7266c"><p local-id="4134c22b3d97">atualizarContexto() : void<br/>}</p></li></ul><p local-id="b1b574582c94">class ServicoTratamentoLog {<br/>  .. Atributos ..<br/>  &lt;b&gt;- logBruto&lt;/b&gt; : String<br/>  &lt;b&gt;- logSanitizado&lt;/b&gt; : String<br/>  &lt;b&gt;- contextoAplicado&lt;/b&gt; : ContextoEmpresa<br/>  &lt;b&gt;- criticidade&lt;/b&gt; : Enum<br/>  .. Métodos ..</p><ul local-id="f547c554f882"><li local-id="44b730576a5e"><p local-id="71dca97061bc">processarLog() : LogTratado</p></li><li local-id="4bc8be6a057d"><p local-id="c4e6a4add877">sanitizarDadosSensiveis() : String</p></li><li local-id="b89ad0c6587f"><p local-id="26e35d2ec8a2">aplicarContexto() : LogEnriquecido<br/>}</p></li></ul><p local-id="87ad3c19b610">class ServicoFiltragemLog {<br/>  .. Atributos ..<br/>  &lt;b&gt;- usuarioId&lt;/b&gt; : String<br/>  &lt;b&gt;- filtrosSelecionados&lt;/b&gt; : FiltroLog<br/>  &lt;b&gt;- totalResultados&lt;/b&gt; : Long<br/>  .. Métodos ..</p><ul local-id="e3bbc3868eac"><li local-id="36f6b3413fbe"><p local-id="129f15a5d490">filtrarLogs() : Page&lt;LogTratado&gt;</p></li><li local-id="6e79cf89769c"><p local-id="785bad333c03">buscarPorTexto() : List&lt;LogTratado&gt;</p></li><li local-id="6c9a8c8fbd1c"><p local-id="4e08867b517d">filtrarPorCriticidade() : List&lt;LogTratado&gt;<br/>}</p></li></ul><p local-id="cb1819044582">class ServicoSugestao {<br/>  .. Atributos ..<br/>  &lt;b&gt;- erroId&lt;/b&gt; : String<br/>  &lt;b&gt;- statusConsentimento&lt;/b&gt; : Enum<br/>  &lt;b&gt;- statusSolucao&lt;/b&gt; : Enum<br/>  &lt;b&gt;- linkAgente&lt;/b&gt; : String<br/>  .. Métodos ..</p><ul local-id="5dd6f352526a"><li local-id="61e14d8113d3"><p local-id="1e5a08213d57">solicitarConsentimento() : void</p></li><li local-id="4495d7e21713"><p local-id="6c92307306e8">gerarSugestao() : Sugestao</p></li><li local-id="c405241677c0"><p local-id="ea45b8ea44f1">aceitarSugestao() : void<br/>}</p></li></ul><p local-id="39ae7cafd9a3">class ServicoNotificacao {<br/>  .. Atributos ..<br/>  &lt;b&gt;- usuarioId&lt;/b&gt; : String<br/>  &lt;b&gt;- tipoCanal&lt;/b&gt; : Enum<br/>  &lt;b&gt;- statusEnvio&lt;/b&gt; : Enum<br/>  &lt;b&gt;- contadorAgrupamento&lt;/b&gt; : Integer<br/>  .. Métodos ..</p><ul local-id="62f96ddf60a1"><li local-id="8a18ac0235dc"><p local-id="1ef1abe0a481">notificarErro() : void</p></li><li local-id="d7b4be55e705"><p local-id="36bea7104dcd">enviarEmail() : void</p></li><li local-id="d6025d32afd6"><p local-id="190455f85db1">enviarPushMobile() : void</p></li><li local-id="0bf975da5945"><p local-id="6dfbf931c940">emitirWebSocket() : void<br/>}</p></li></ul><p local-id="c7d3e1765fa2">Usuario &quot;1&quot; --&gt; &quot;N&quot; ServicoTratamentoLog : aciona processamento \npelo contexto configurado</p><p local-id="c2f37a3d724c">ServicoTratamentoLog &quot;1&quot; --&gt; &quot;N&quot; ServicoFiltragemLog : fornece logs \ntratados para consulta</p><p local-id="1c655327f86a">ServicoTratamentoLog &quot;1&quot; --&gt; &quot;1&quot; ServicoNotificacao : dispara alerta \napós processar erro</p><p local-id="3f5d28032fdf">ServicoSugestao &quot;1&quot; --&gt; &quot;1&quot; ServicoNotificacao : dispara notificação \nao gerar sugestão</p><p local-id="3b19412afbd1">ServicoFiltragemLog &quot;N&quot; --&gt; &quot;1&quot; Usuario : filtra logs \npor usuário</p><p local-id="b0708aaf8e58">ServicoSugestao &quot;N&quot; --&gt; &quot;1&quot; Usuario : apresenta sugestão \npara consentimento</p><p local-id="ca45c5445e61">@enduml</p><p local-id="59cd04eb326d" /><h3 local-id="4fa16025b67d" id="DiagramadeClasse3-LinksparaClasses">Links para Classes</h3><p local-id="2e83a6784796"><a href="53510145.html" data-linked-resource-id="53510145" data-linked-resource-version="2" data-linked-resource-type="page">Classe Principal -&gt; Usuário</a> </p><p local-id="df2f1863c968"><a href="53837846.html" data-linked-resource-id="53837846" data-linked-resource-version="2" data-linked-resource-type="page">Classe de Caso de Uso -&gt; Serviço de Filtragem do Log</a> </p><p local-id="8b86b08a275c"><a href="52887591.html" data-linked-resource-id="52887591" data-linked-resource-version="2" data-linked-resource-type="page">Classe de Caso de Uso -&gt; Serviço de Tratamento do Log</a> </p><p local-id="0bf63350b510"><a href="53805061.html" data-linked-resource-id="53805061" data-linked-resource-version="3" data-linked-resource-type="page">Classe de Caso de Uso -&gt; Serviço de Notificação</a> </p><p local-id="9bfc64a8a156"><a href="53739529.html" data-linked-resource-id="53739529" data-linked-resource-version="5" data-linked-resource-type="page">Classe de Caso de Uso -&gt; Serviço de Sugestão</a> </p><p local-id="381898d646f3" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/53411890/54165505.png">Diagrama sem nome.drawio(1).png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

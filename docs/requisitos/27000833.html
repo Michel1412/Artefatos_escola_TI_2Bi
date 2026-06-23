@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 21: Visualizar Dashboard Interativo</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 21: Visualizar Dashboard Interativo
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peng</span>, last modified on abr. 02, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="12691d3580ba"><strong>Nome:</strong> Visualizar Dashboard Interativo</p><p local-id="9f105eae7d02"><strong>Atores:</strong></p><p local-id="03c231fed66c">Usuário (CNPJ autenticado)<br/>Backend LogViewer</p><p local-id="c8ce28be273e"><strong>Descrição:</strong><br/>Permite ao usuário visualizar um painel interativo com dados consolidados de erros, métricas, tendências, alertas em tempo real e sugestões inteligentes baseadas nos logs capturados.</p><p local-id="9ea801f1349a"><strong>Pré-condições:</strong></p><p local-id="e6a9278058e1">Usuário autenticado (RF-01)<br/>Usuário possui pelo menos um sistema cadastrado (RN-01)<br/>Logs já processados e armazenados no MongoDB (RN-04)</p><p local-id="b3ff07034694"><strong>Pós-condições:</strong></p><p local-id="fb0e7aea2b3e">Dashboard renderizado com dados atualizados<br/>Eventos de erro exibidos com filtros aplicados<br/>Alertas em tempo real apresentados via WebSocket</p><hr local-id="2d7ec847-66ce-4ddb-abe2-19a727bfb1ea"/><p local-id="5464ad48e926"><strong>Fluxo Principal:</strong></p><p local-id="76e0eea6127c">Usuário acessa o painel Dashboard via aplicação Web ou Mobile</p><p local-id="18eb3166485e">Sistema valida autenticação e permissões do usuário</p><p local-id="eff541690977">Sistema consulta os sistemas vinculados ao CNPJ</p><p local-id="817c6b9a46a8">Sistema aplica filtro padrão (multi-sistemas ou sistema específico) (RN-10)</p><p local-id="f45ac8d96866">Sistema busca dados consolidados no MongoDB:</p><ul local-id="484d7039-a077-4619-a764-bcf5350a6b1b"><li local-id="73533625-fb93-4935-a8c5-6d024cdf46f6"><p local-id="44f0c8fc4d74">Quantidade de erros</p></li><li local-id="9ac2887b-4e05-483f-9cce-38bf962ccf38"><p local-id="318b0cf0339f">Tipos de erro</p></li><li local-id="7c9bcac0-b833-4547-842d-a1c16beea0c3"><p local-id="e8e9e629bbda">Frequência (logs repetidos) (RF-22)</p></li><li local-id="ccb2dbb4-9dd4-4621-a643-ec66a23a4392"><p local-id="9eaf97aea59a">Status (solucionado/não solucionado) (RF-23)</p></li></ul><p local-id="ee71fe453557">Sistema processa agregações para métricas e gráficos</p><p local-id="db6226c82c84">Sistema identifica padrões e problemas recorrentes (RF-19)</p><p local-id="1ba87430e727">Sistema exibe sugestões inteligentes baseadas em recorrência</p><p local-id="e960583b0c33">Sistema inicia conexão WebSocket para eventos em tempo real (RN-08)</p><p local-id="4589dba55145">Sistema renderiza dashboard com:</p><ul local-id="4b296b1b-3daf-4f2c-af7b-95b5c33fc7ae"><li local-id="4d3c121c-93c2-4afc-ad0e-b809e50c763e"><p local-id="d868e786a47e">Gráficos (tempo, tipo de erro, criticidade)</p></li><li local-id="86406d5f-a505-4d9b-abe3-f5872fedd0f6"><p local-id="6b5fa2e9442e">Lista de erros recentes</p></li><li local-id="33f50f56-fda7-4e68-990d-6a33d06cdc20"><p local-id="c6b02ec38191">Indicadores de criticidade</p></li><li local-id="11fb7b06-f637-4af0-a0f4-1505684ebffc"><p local-id="7d551150080d">Filtros dinâmicos</p></li></ul><p local-id="91deb343ccf6">Sistema permite interação do usuário:</p><ul local-id="302dfbd7-a9f2-4823-a9b5-8ab47c50c8a1"><li local-id="5e0f1e3e-ef09-4c72-af99-f3be198be6a4"><p local-id="61ca01ecea07">Aplicar filtros (RF-14)</p></li><li local-id="38fa3ecf-b99e-4ed1-a65b-15d5aa1e1042"><p local-id="ad71a1ac6e0e">Pesquisar logs (RF-21)</p></li><li local-id="1852593c-d065-41b1-a835-1476ed3caaaa"><p local-id="0b3e2cb4c9ff">Navegar para detalhes do erro</p></li><li local-id="2693885d-534b-492f-9193-adfe56b40c96"><p local-id="058b1a6d6f5c">Solicitar solução via LLM (RN-06)</p></li></ul><hr local-id="ed59ceba-057a-442d-9b70-6c3292b37251"/><p local-id="2e2ada730289"><strong>Fluxos Alternativos:</strong></p><p local-id="c7ea1be3d41f">A1: Usuário sem sistemas cadastrados</p><p local-id="8f7b0261225c">Sistema exibe estado vazio com orientação para cadastro de sistema</p><p local-id="52eea9afd98f">A2: Falha na consulta ao banco</p><p local-id="016f729d95a1">Sistema exibe mensagem de erro<br/>Sistema permite tentativa de recarregamento</p><p local-id="b8880cc10246">A3: Falha na conexão WebSocket</p><p local-id="eb816fc7e677">Dashboard carrega sem dados em tempo real<br/>Sistema tenta reconexão automática</p><p local-id="3e1b45f20c8e">A4: Alto volume de dados</p><p local-id="d101d52ead41">Sistema aplica paginação e lazy loading<br/>Sistema prioriza dados mais recentes</p><hr local-id="620010d8-1973-447a-a424-7882ada50b75"/><p local-id="864252865dc4"><strong>Regras de Negócio:</strong></p><p local-id="7c3a347195bc">RN-01: Usuário pode visualizar múltiplos sistemas no mesmo dashboard</p><p local-id="f7528ff968da">RN-04: Todos os logs exibidos devem estar classificados e com contexto aplicado</p><p local-id="f53251440f91">RN-08: Dashboard deve receber atualizações em tempo real via WebSocket</p><p local-id="df3220130289">RN-09: Logs repetidos devem ser agrupados para evitar poluição visual</p><p local-id="7e180510a9d7">RN-10: Dashboard deve permitir visualização por sistema ou multi-sistemas</p><p local-id="a5ede44c973a">RN-06: Sistema apenas sugere soluções, nunca executa automaticamente</p><p local-id="ecdac75fd809" /><p local-id="4e43a9f24a37"><strong>Diagrama:</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260403-003202.png" width="760" loading="lazy" src="../attachments/27000833/27099139.png?width=760" data-image-src="../attachments/27000833/27099139.png" data-height="1636" data-width="4228" data-unresolved-comment-count="0" data-linked-resource-id="27099139" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260403-003202.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="27000833" data-linked-resource-container-version="3" data-media-id="d4d1cc50-98d3-47b8-b1ea-213c153c2e62" data-media-type="file"></span><p local-id="e535eb962f61" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/27000833/27099139.png">image-20260403-003202.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

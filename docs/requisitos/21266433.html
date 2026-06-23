@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 7: O Sistema deve autenticar o Usuário.</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 7: O Sistema deve autenticar o Usuário.
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peng</span>, last modified on mar. 26, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 local-id="a7f1c1323ed6" id="Casodeuso-7:OSistemadeveautenticaroUsuário.-CasodeUso:AutenticarUsuário">Caso de Uso: Autenticar Usuário</h3><p local-id="173d345d5c8a"><strong>Nome:</strong> Autenticar Usuário <strong>Atores:</strong></p><ul local-id="51947bb4-8417-4315-9786-48f1c0f5f43e"><li local-id="7774126f-c11a-43c9-9eae-3d5e2a0b06f1"><p local-id="c2c0446b0274">Usuário (Gestor/Desenvolvedor do cliente)</p></li><li local-id="d1f0fc2c-6ca8-4693-b532-fb168b975af9"><p local-id="487120798d72">Sistema de Autenticação (Clerk)</p></li><li local-id="23c07fd6-6db6-4694-a1bc-117301d0e009"><p local-id="2ddbc490c302">Aplicativo Mobile LogViewer (Aprovador 2FA)</p></li><li local-id="32cc11b2-b3b8-48a6-9d7e-e4ddddbb5b84"><p local-id="6ee82ff9e5a1">Backend LogViewer</p></li></ul><p local-id="ce71ec60217b"><strong>Descrição:</strong> Realiza a identificação e validação do usuário no sistema, garantindo acesso seguro ao dashboard web ou mobile, aplicando o segundo fator de autenticação quando configurado.</p><p local-id="99e4c89c2228"><strong>Pré-condições:</strong></p><ul local-id="93264e56-b490-418e-914b-5a1b30cd4cd6"><li local-id="1d018426-a2c2-491c-b1b5-f2eb62203877"><p local-id="7548ad7c995e">Usuário previamente cadastrado no sistema (Vinculado a um CNPJ - RN-01).</p></li><li local-id="f1322723-8f54-4f5b-b0b0-935ae64cf938"><p local-id="9595fb7b8dea">Conexão estável com a internet.</p></li></ul><p local-id="284eaf0974ac"><strong>Pós-condições:</strong></p><ul local-id="dbec78a9-3ef7-4709-a266-f99e59c41436"><li local-id="4c2b0341-38a7-494f-a399-d2cddd2528ff"><p local-id="8e6ecff72fa4">Token de sessão JWT (JSON Web Token) gerado e armazenado com segurança.</p></li><li local-id="45cafe29-a1e0-4c8b-8702-b57b3ae60905"><p local-id="3098a61417c6">Acesso liberado às funcionalidades baseadas no plano de assinatura.</p></li></ul><p local-id="5ea75f2ef0a4"><strong>Fluxo Principal:</strong></p><ol start="1" local-id="83771e65-9858-4dec-a0ad-c3eb7686fd5d"><li local-id="bbb7d6d4-fdf8-4ad9-a084-083734185f1d"><p local-id="4664222ec720">O Usuário insere suas credenciais (E-mail/Senha ou Social Login) no Portal Web ou App Mobile.</p></li><li local-id="cd216088-6892-4862-9611-bbad011c2319"><p local-id="3e33f4cbc09a">O sistema valida as credenciais via <strong>Clerk Adapter</strong>.</p></li><li local-id="853b1449-b747-4d85-9761-231e71400ef9"><p local-id="2f5008da44cb">O sistema verifica se o perfil do usuário exige <strong>MFA/2FA</strong> (RN-03).</p></li><li local-id="6a842e6d-b16e-426b-ad5f-7b8bc72d4527"><p local-id="816fa1b75d81"><strong>Se 2FA Ativo:</strong> O sistema envia uma notificação push para o dispositivo mobile vinculado.</p></li><li local-id="2384848c-a1eb-4594-89de-8b42d4d06a0c"><p local-id="8f12c7be194a">O Usuário aprova o acesso no Aplicativo Mobile (usando FaceID/TouchID - RF-34).</p></li><li local-id="01fca69a-9835-40ff-8cb8-4a579fe4ac88"><p local-id="5f2f8cea493c">O sistema confirma a validade da assinatura do CNPJ (RN-01/RF-18).</p></li><li local-id="f7d472fc-68dc-40d8-b15c-fae5e842f977"><p local-id="26060172b812">O sistema libera o acesso ao Dashboard com o contexto do cliente.</p></li></ol><p local-id="2d4eb514a1bf"><strong>Fluxos Alternativos:</strong></p><ul local-id="c264c654-3390-4970-a747-4fe86bca27b5"><li local-id="9d08886c-7c07-4ee1-ad99-44229c0a31e9"><p local-id="24707a71dbb6"><strong>A1: Credenciais Inválidas</strong></p><ol start="1" local-id="5aad7aa6-56bd-4f5a-85d7-a1b398a7d7b4"><li local-id="5f413c5d-f475-46ae-bcb6-92faa08854cd"><p local-id="9fd15f780f20">O sistema exibe mensagem de erro genérica (&quot;E-mail ou senha incorretos&quot;).</p></li><li local-id="9fff6497-3f2b-4fa1-9c52-7d267ab8f82f"><p local-id="9f9ade369abb">O acesso é bloqueado.</p></li></ol></li><li local-id="913a1b58-ba93-4c70-a925-1108caf17aac"><p local-id="f28c665b3002"><strong>A2: 2FA Ativo mas App Mobile não instalado</strong></p><ol start="1" local-id="460eab88-34f9-4a40-9012-728aad96d292"><li local-id="b94349dc-4826-4c61-a065-d24da0e6abdb"><p local-id="342618b9d536">O sistema bloqueia o login e instrui o usuário a instalar o app para validar o acesso (Conforme RN-03).</p></li></ol></li><li local-id="927b44c6-0502-490f-a595-25c8838acd4b"><p local-id="88b03369bea5"><strong>A3: Assinatura Inativa/Inadimplente</strong></p><ol start="1" local-id="f7b61a9f-cecb-48c6-a9ee-04aa2bcfa0a2"><li local-id="a72c5c77-e19b-420e-bb2a-02d60469389b"><p local-id="9f704cf8c01b">O sistema autentica o usuário, mas redireciona para a página de gestão de assinatura (RF-18).</p></li></ol></li></ul><p local-id="424f451b9dbf"><strong>Regras de Negócio Aplicadas:</strong></p><ul local-id="7f95f035-1724-4ad7-b29b-30d5e14e0716"><li local-id="115d4880-8ddb-4180-b4d0-5a93c44dc80f"><p local-id="ffcee6533044"><strong>RN-01:</strong> O login deve identificar o CNPJ vinculado para carregar os sistemas corretos.</p></li><li local-id="b69080c9-b5f5-43f9-93e7-7143be562bdf"><p local-id="82cac62534de"><strong>RN-03:</strong> Exigência estrita de aprovação via App Mobile se o 2FA estiver habilitado no perfil.</p></li></ul><h3 local-id="6d65cf2415b1" id="Casodeuso-7:OSistemadeveautenticaroUsuário.-Diagrama:(FeitonoDraw.io)">Diagrama: (Feito no Draw.io)</h3><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="CasoDeUso07.drawio.png" width="647" loading="lazy" src="../attachments/21266433/21921805.png?width=647" data-image-src="../attachments/21266433/21921805.png" data-height="503" data-width="647" data-unresolved-comment-count="0" data-linked-resource-id="21921805" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="CasoDeUso07.drawio.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="21266433" data-linked-resource-container-version="7" data-media-id="e210ac07-0121-4535-b068-6e648c4e2ee2" data-media-type="file"></span><p local-id="b0d77d8dbb00" /><p local-id="5ceb24c2ab88" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21266433/20906003.jpg">f54f5326a939266f8bf4091ee1ed1957.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21266433/21823491.png">Diagrama07.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21266433/21528597.png">CasoDeUso07.drawio-20260327-011228.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21266433/21921805.png">CasoDeUso07.drawio.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 14 - Gerar e Exportar Relatórios Multi-sistemas</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 14 - Gerar e Exportar Relatórios Multi-sistemas
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span>, last modified by <span class='editor'> João Pedro Souza Peixoto Saraiva</span> on mai. 23, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-225242.png" width="760" loading="lazy" src="../attachments/49315855/49053703.png?width=760" data-image-src="../attachments/49315855/49053703.png" data-height="647" data-width="856" data-unresolved-comment-count="0" data-linked-resource-id="49053703" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-225242.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49315855" data-linked-resource-container-version="2" data-media-id="901cc26d-7e42-4e84-97ed-ceea83b1adac" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-14: Gerar e Exportar Relatórios Multi-sistemas
+
+actor &quot;Usuário\n(Gestor/Admin)&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+== 1. Visualização do Relatório Consolidado ==
+User -&gt; UI: Acessa aba &quot;Relatórios Consolidados&quot;
+activate UI
+
+UI -&gt; API: GET /reports/consolidated
+activate API
+
+API -&gt; API: Valida sessão\n e Tenant (CNPJ)
+
+API -&gt; DB: Executa Aggregation Pipeline
+activate DB
+
+DB --&gt; API: Dados consolidados\npor sistema/status
+
+deactivate DB
+
+API -&gt; API: Calcula métricas,\n KPIs e totalizadores
+
+API --&gt; UI: JSON analítico
+
+UI --&gt; User: Exibe gráficos e tabelas
+
+@enduml</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-225313.png" width="760" loading="lazy" src="../attachments/49315855/50069515.png?width=760" data-image-src="../attachments/49315855/50069515.png" data-height="893" data-width="762" data-unresolved-comment-count="0" data-linked-resource-id="50069515" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-225313.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49315855" data-linked-resource-container-version="2" data-media-id="f56e6ca7-d026-4f8c-ab59-a0fe0fddf463" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-14: Gerar e Exportar Relatórios Multi-sistemas
+
+actor &quot;Usuário\n(Gestor/Admin)&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+participant &quot;Export Strategy\n(PDF/Excel)&quot; as Exporter
+
+== 2. Exportação do Relatório ==
+User -&gt; UI: Aplica filtros e clica &quot;Exportar&quot;
+
+UI --&gt; User: Exibe opções PDF/Excel
+
+User -&gt; UI: Seleciona formato desejado
+
+UI -&gt; API: POST /reports/export
+activate API
+
+API -&gt; API: Valida parâmetros\n e intervalo
+
+API -&gt; DB: Busca dados brutos filtrados
+activate DB
+
+alt Cenário Principal: Dados disponíveis
+    DB --&gt; API: Dataset completo
+
+    deactivate DB
+
+    API -&gt; Exporter: Seleciona Adapter\n(PDF ou Excel)
+    activate Exporter
+
+    Exporter --&gt; API: Buffer do arquivo gerado
+
+    deactivate Exporter
+
+    API --&gt; UI: Stream/download seguro
+
+    UI --&gt; User: Download automático do relatório
+
+else Alternativa A1: Sem dados
+    DB --&gt; API: Nenhum registro encontrado
+
+    deactivate DB
+
+    API --&gt; UI: &quot;Não há dados suficientes&quot;
+
+    UI --&gt; User: Exibe mensagem amigável
+
+else Alternativa A2: Volume excessivo
+    DB --&gt; API: Dataset muito grande
+
+    deactivate DB
+
+    API -&gt; Exporter: Inicia geração
+    activate Exporter
+
+    Exporter --&gt; API: Falha de memória/timeout
+
+    deactivate Exporter
+
+    API --&gt; UI: 500 Export Error
+
+    UI --&gt; User: Sugere reduzir período
+end
+
+deactivate API
+deactivate UI
+
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49315855/49053703.png">image-20260518-225242.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49315855/50069515.png">image-20260518-225313.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

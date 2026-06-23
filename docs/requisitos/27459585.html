@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 17: Gerenciamento de Assinaturas e Planos (Billing)</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 17: Gerenciamento de Assinaturas e Planos (Billing)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified by <span class='editor'> Peng</span> on mai. 04, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="ded94e5b69a3"><strong>Regras de Negócio:</strong></p><ul local-id="6386d4cc-47f8-4026-91db-de9189bcac9d"><li local-id="2536fe93-8b5b-4fb6-be41-3631dfa9d06b"><p local-id="eb5790d36aaa"><strong>RN-01 (Identidade e Precificação):</strong> Todo usuário base é um CNPJ. O valor da assinatura é composto por uma base fixa ou negociável, acrescida proporcionalmente a cada novo sistema cadastrado no painel.</p></li><li local-id="b20d64eb-c413-45ff-9e2a-4e3d37f28024"><p local-id="96a517815a15"><strong>RN-02 (Tokens e Isolamento):</strong> A ativação de funcionalidades avançadas ou novos tokens de sistema depende do status ativo da assinatura.</p></li></ul><p local-id="eb560bf18db9"><strong>Requisitos Funcionais:</strong></p><ul local-id="4a3fc289-80d8-4dbf-8fc2-7917e5691b83"><li local-id="12a9fb8f-67d3-45b0-a1b8-fa7e90c437c6"><p local-id="0aa3be18d022"><strong>RF-18:</strong> O Sistema deve conter um gerenciamento de assinatura e planos do usuário.</p></li><li local-id="c3903241-5854-41a2-a85c-9ea4f2ee41c5"><p local-id="7d4c5ec0dd20"><strong>RF-28:</strong> O Sistema deve ter uma integração com uma API de pagamento (ex: Mercado Pago, Abacate Pay).</p></li><li local-id="e19bfbb9-7538-4047-a020-dcbe26814c2e"><p local-id="4bf8e24bbdf0"><strong>RF-15:</strong> O Sistema deve gerir o Usuário (atrelado ao fluxo de conta/plano).</p></li></ul><p local-id="3dd1ebf27ca0"><strong>Requisitos Não Funcionais:</strong></p><ul local-id="0d3a852c-dde3-43a6-8e27-93c1b68591c8"><li local-id="291b896d-af40-443d-bec1-a05fb319f848"><p local-id="264fb1d87ed3"><strong>RNF-04:</strong> O banco de dados principal será o MongoDB (armazenamento de histórico de faturas e status do plano).</p></li><li local-id="d8a232ee-6584-4c2a-9126-edb0cac253cd"><p local-id="2613cb8317a7"><strong>RNF-09:</strong> Desenvolvimento orientado a Padrões de Projeto (Uso de <strong>Adapter Pattern</strong> para isolar a API de pagamento).</p></li></ul><hr local-id="ef5081bd-ac94-42fc-ae6e-32fcfb226e80"/><p local-id="abde74eb82f1"><strong>Nome:</strong> Gerenciamento de Assinaturas e Planos (Billing)</p><p local-id="40c45dbdabbb"><strong>Atores:</strong></p><ul local-id="fbe90d30-bcb3-4963-bd77-aa1615e3e199"><li local-id="999d7cd1-262f-4052-9200-eb7ab790d4e5"><p local-id="b5b0a0763cb2">Usuário Gestor (Dono do CNPJ)</p></li><li local-id="316fb1f1-a522-48ff-9319-167afb183634"><p local-id="ca9d7f85f09e">Sistema LogViewer (Backend)</p></li><li local-id="63dabf06-05e6-4318-897b-988d6ecfdab4"><p local-id="f5471bbd2fea">Provedor de Pagamento (Gateway Externo - ex: Mercado Pago)</p></li><li local-id="63480323-3291-4e59-aad6-7f04bb6de9ca"><p local-id="b72e5aff12dc">Banco de Dados (MongoDB)</p></li></ul><p local-id="49713f359f8e"><strong>Descrição:</strong> Permite ao gestor da conta visualizar seu plano atual, realizar o upgrade/downgrade de assinaturas, adicionar novos sistemas (o que impacta o valor final) e realizar o pagamento através de gateways externos. O sistema controla o ciclo de vida da assinatura (Ativa, Pendente, Cancelada) para liberar ou bloquear recursos da plataforma.</p><p local-id="7b9d112932b7"><strong>Pré-condições:</strong></p><ul local-id="074652f9-6ab4-4ee3-823a-c7be3f81deaf"><li local-id="a7d2f514-8ff2-4a42-aff1-caf9d98a29d7"><p local-id="c604d36bfe2a">Usuário autenticado e com permissão de administrador do CNPJ.</p></li><li local-id="25d92f8d-c8fa-4fa0-ad8c-afb2069756ae"><p local-id="fcd9ddbc786a">Conexão estável com o gateway de pagamento externo.</p></li></ul><p local-id="2e87c1fd879e"><strong>Pós-condições:</strong></p><ul local-id="aac90270-7f9f-448d-a6c0-cee85a723ec2"><li local-id="62f79687-df1c-4cb3-9a34-3be6ab68ff1f"><p local-id="d3c5ff8722ce">Status da assinatura atualizado no MongoDB.</p></li><li local-id="c5042e50-69d9-4a7c-b60e-c5136e829acf"><p local-id="1d48b5403b63">Limites de cadastro de novos sistemas ajustados conforme o plano contratado.</p></li><li local-id="a35995cb-9640-4176-bb55-f9c22cd298a0"><p local-id="9691179b5956">Recibo/Confirmação gerado para o usuário.</p></li></ul><hr local-id="adac94dc-d13b-4f70-a435-fd57cb2187d3"/><p local-id="5a27eb3bd627"><strong>FLUXO PRINCIPAL 1: CONTRATAÇÃO OU UPGRADE DE PLANO:</strong></p><ol start="1" local-id="cb02995e-8071-4944-a5d8-29c5d06e5bab"><li local-id="e88bf9fb-5df8-43ca-b397-7ba5b9db6dd6"><p local-id="816da52c3aec">O Usuário acessa a aba &quot;Assinatura e Planos&quot;.</p></li><li local-id="57ce1093-6158-4075-9ee1-13d21094c392"><p local-id="6bb7889550bd">O Sistema exibe o plano atual e as opções de escala (preço por sistema adicional - RN-01).</p></li><li local-id="deaee149-1a85-4ef8-89e8-89676ae42c86"><p local-id="746604ecbb5d">O Usuário seleciona o plano desejado ou adiciona a quantidade de novos sistemas que deseja monitorar.</p></li><li local-id="c0e97f21-4407-4925-8f0c-f96a0c1e0df3"><p local-id="0de46f968a1a">O Sistema calcula o valor total e solicita o método de pagamento.</p></li><li local-id="36ff0249-a3c4-4968-9dad-86836b817d6a"><p local-id="25a15cc67354">O Usuário confirma o pagamento.</p></li><li local-id="9277e4c8-df13-4652-9a01-53017c38347a"><p local-id="56706d20c8a1">O Backend aciona o <strong>Adapter de Pagamento</strong> enviando os dados da transação para o Gateway Externo.</p></li><li local-id="35cd1cc3-be67-4795-88b4-1bc192147f7b"><p local-id="5faab60f098d">O Gateway processa o pagamento e retorna o status (Aprovado).</p></li><li local-id="ac7cf0c5-e8c5-424f-a052-43ee6631c625"><p local-id="c0c7abb45d1e">O Backend atualiza a validade da assinatura e os limites de sistemas no MongoDB.</p></li><li local-id="9eb60d88-a729-44a4-b130-e42827a482d1"><p local-id="19a0ed699353">O Sistema exibe mensagem de sucesso e libera o acesso aos recursos.</p></li></ol><p local-id="1e9f3ee5151c"><strong>FLUXO PRINCIPAL 2: RENOVAÇÃO AUTOMÁTICA E WEBHOOKS:</strong></p><ol start="1" local-id="28b29330-e161-4096-b846-1884aa3f3e5a"><li local-id="32f0e74c-4d6a-49d7-a2d6-340ecd9ff608"><p local-id="0f66f07c35d5">O Gateway de Pagamento processa a recorrência mensal.</p></li><li local-id="d0a54103-8a34-46a9-982b-66c7ce6033b7"><p local-id="a52af21e9f2f">O Gateway envia uma notificação assíncrona (<strong>Webhook</strong>) para o Backend do LogViewer.</p></li><li local-id="04eb0a5f-7359-47ad-90e8-bc674db8a728"><p local-id="396deec67d30">O Backend valida a autenticidade da notificação.</p></li><li local-id="b3366861-61ce-43ca-8fb1-64b834d5da19"><p local-id="435376244fb2">O Backend estende a data de expiração do plano no banco de dados.</p></li></ol><p local-id="ee01df48f3ab"><strong>FLUXOS ALTERNATIVOS:</strong></p><ul local-id="7a2d62f2-34f7-4282-b578-b8c3cb9c8d64"><li local-id="1a4004ad-2346-4844-bbd0-6b45e2bfac9b"><p local-id="410f258937df"><strong>A1: Pagamento Recusado/Falho:</strong></p><ul local-id="bb584902-bcfd-46a6-83cc-ae5a243e9e6a"><li local-id="6cfe6327-d37f-49ca-8184-e9ee14c7d78d"><p local-id="9ba3e789ee69">No Passo 7 do Fluxo 1, o Gateway retorna erro (cartão recusado, saldo insuficiente).</p></li><li local-id="c0fd4ebf-f209-485e-b762-014b05af61bd"><p local-id="9d7440b63d80">O Backend registra a tentativa falha e notifica o usuário na interface.</p></li><li local-id="b0cc47b5-9e02-418e-9118-535e44c1d152"><p local-id="39ef92014d14">O plano anterior é mantido e nenhum limite novo é liberado.</p></li></ul></li><li local-id="8f6e5317-3478-45c4-a1b9-c27ede528220"><p local-id="ac5e76e4a489"><strong>A2: Tentativa de Adicionar Sistema acima do Limite do Plano:</strong></p><ul local-id="4ec25aa3-4607-4896-8d95-9fa2d49e89e4"><li local-id="33a18dff-042d-41e7-9b29-19f400830969"><p local-id="945d055ccfdd">O Usuário tenta cadastrar um sistema sem ter &quot;slots&quot; disponíveis na assinatura atual.</p></li><li local-id="5c93c6d3-52dc-44bb-a8df-52a73b07d617"><p local-id="b09449e0f748">O Sistema bloqueia a ação e redireciona automaticamente para o Fluxo de Upgrade.</p></li></ul></li></ul><hr local-id="3ebf7517-a745-4ccd-8c1a-7d7bff0d3287"/><p local-id="bf203e0a6b75"><strong>OBSERVAÇÕES ARQUITETURAIS:</strong></p><ul local-id="fdc45abd-bca5-4771-9686-286e2250b576"><li local-id="f22dd5e4-0fcf-4925-a8e3-41363b724ce9"><p local-id="0ac25e2a1361"><strong>Adapter Pattern (RNF-09):</strong> A lógica de &quot;cobrar&quot; é uma porta (<code>BillingPort</code>). Se decidirmos trocar o Mercado Pago pelo Abacate Pay, o Core Domain de assinaturas não é alterado. Apenas criamos um novo <code>AbacatePayAdapter</code> que implementa a mesma interface.</p></li><li local-id="14e33ab3-127d-402c-bc78-2a9ed413ef4e"><p local-id="e193dd8cdf97"><strong>Segurança e Idempotência:</strong> O sistema deve garantir que o mesmo Webhook de pagamento não seja processado duas vezes (idempotência), evitando que o usuário receba créditos em dobro por engano.</p></li><li local-id="6a19a20f-2c97-4979-b6f3-3563333e484e"><p local-id="e7053ec57e77"><strong>Consistência de Dados:</strong> O status da assinatura é o &quot;disjuntor&quot; do sistema. Se a assinatura estiver <code>Inativa</code>, os UseCases de &quot;Gerar Tokens&quot; e &quot;Varredura de Logs&quot; devem validar esse estado antes de executar, garantindo a monetização do SaaS.</p></li></ul><hr local-id="407fc082804d"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260403-004249.png" width="760" loading="lazy" src="../attachments/27459585/27099145.png?width=760" data-image-src="../attachments/27459585/27099145.png" data-height="280" data-width="880" data-unresolved-comment-count="0" data-linked-resource-id="27099145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260403-004249.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="27459585" data-linked-resource-container-version="5" data-media-id="3f25ad2a-eb1d-4ca7-8097-8feaae5b79bd" data-media-type="file"></span><p local-id="44bbe9bfed86" /><hr local-id="6fdca602f4a0"/><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+&#39; Layout verticalizado para formato quadrado
+skinparam packageStyle rectangle
+skinparam usecase {
+    BackgroundColor LightCyan
+    BorderColor DarkCyan
+    ArrowColor DimGray
+}
+
+actor &quot;Gestor\n(CNPJ)&quot; as User
+actor &quot;Gateway\n&lt;&lt;Mercado Pago&gt;&gt;&quot; as Pay
+actor &quot;MongoDB\n&lt;&lt;Database&gt;&gt;&quot; as DB
+
+rectangle &quot;LogViewer - Módulo de Billing&quot; {
+    
+    usecase &quot;Consultar Plano\ne Consumo&quot; as UC1
+    usecase &quot;Solicitar Upgrade\nde Plano&quot; as UC2
+    usecase &quot;Processar Pagamento\n(Adapter)&quot; as UC3
+    usecase &quot;Gerenciar Limites\nde Sistemas&quot; as UC4
+    usecase &quot;Processar Retorno\n(Webhook)&quot; as UC5
+}
+
+&#39; Interações do Usuário
+User -down-&gt; UC1
+User -down-&gt; UC2
+
+&#39; Relações Internas
+UC2 .&gt; UC3 : &lt;&lt;include&gt;&gt;
+UC3 .&gt; UC4 : &lt;&lt;include&gt;&gt;
+UC5 .&gt; UC4 : &lt;&lt;include&gt;&gt;
+
+&#39; Interações com Infraestrutura Lateral
+UC1 -left-&gt; DB : Busca status
+UC3 -right-&gt; Pay : Inicia Transação
+Pay -right-&gt; UC5 : Notifica status
+UC4 -left-&gt; DB : Atualiza limites\ne expiração
+
+note bottom of UC2
+  RN-01: Preço escala 
+  por sistema adicionado.
+end note
+
+note bottom of UC3
+  RNF-09: Isolado via
+  Adapter Pattern.
+end note
+
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/27459585/27459594.png">image-20260403-003642.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/27459585/27459597.png">image-20260403-003635.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/27459585/27459600.png">image-20260330-225431.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/27459585/27459603.png">image-20260330-225434.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/27459585/27099145.png">image-20260403-004249.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

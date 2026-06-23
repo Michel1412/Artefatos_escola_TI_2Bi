@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Vinicius Completo - 2</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Vinicius Completo - 2
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified on mai. 25, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260525-233809.png" width="760" loading="lazy" src="../attachments/54525957/54263831.png?width=760" data-image-src="../attachments/54525957/54263831.png" data-height="3728" data-width="4416" data-unresolved-comment-count="0" data-linked-resource-id="54263831" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260525-233809.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="54525957" data-linked-resource-container-version="3" data-media-id="c70e76cf-79b5-4bab-9717-98e14914aef3" data-media-type="file"></span><p local-id="29860821f02c" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml DiagramaRelacionamentoMaster
+skinparam classAttributeIconSize 0
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #005A9C
+skinparam arrowColor #333333
+skinparam arrowThickness 1.5
+skinparam linetype ortho
+skinparam padding 6
+skinparam roundcorner 5
+
+class GerenciadorAssinatura {
+  - id : String (UUID)
+  - tenantId : String
+  - valorAtualCalculado : Decimal
+  - statusAssinatura : Enum {ATIVA, PENDENTE, INADIMPLENTE, CANCELADA}
+  - totalSistemasContratados : Integer
+  + calcularValorProporcional(tenantId : String) : Decimal
+  + contratarPlano(tenantId : String, plano : PlanoBase) : Assinatura
+  + verificarInadimplencia(tenantId : String) : Boolean
+  - validarPermissaoAdmin(adminId : String) : Boolean
+}
+
+class ServicoProcessamentoPagamento {
+  - id : String (UUID)
+  - assinaturaId : String
+  - transacaoGatewayId : String
+  - statusPagamento : Enum {PENDENTE, PAGO, RECUSADO, ESTORNADO}
+  + processarPagamento(assinaturaId : String, valor : Decimal) : TransacaoGateway
+  + processarNotificacaoWebhook(payload : Object) : void
+  - validarAutenticidadeWebhook(payload : Object, sig : String) : Boolean
+}
+
+class ApiDePagamento &lt;&lt;Secondary Adapter&gt;&gt; {
+  - baseUrl : String
+  - apiKey : String
+  - webhookSecret : String
+  + criarCobranca(dados : DadosCobranca) : TransacaoExterna
+  + consultarTransacao(gatewayId : String) : DetalhesTransacao
+  + validarAssinaturaWebhook(payload : String, sig : String) : Boolean
+}
+
+class ServicoPersistenciaLog {
+  - id : String (UUID)
+  - sistemaId : String
+  - hashIdentificacao : String
+  - statusPersistencia : Enum {SUCESSO, FALHA, AGRUPADO}
+  + persistir(log : LogTratado, sistemaId : String) : DocumentoLog
+  - gerarHashIdentificacao(log : LogTratado) : String
+  - buscarOcorrenciaRecente(hash : String) : DocumentoLog
+}
+
+&#39; Relacionamentos e Fluxos de Dependência
+GerenciadorAssinatura &quot;1&quot; --&gt; &quot;1&quot; ServicoProcessamentoPagamento : solicita geração de\ncobrança e checkout
+ServicoProcessamentoPagamento &quot;1&quot; --&gt; &quot;1&quot; GerenciadorAssinatura : atualiza status da\nconta após aprovação
+ServicoProcessamentoPagamento &quot;1&quot; --&gt; &quot;1&quot; ApiDePagamento : consome serviços REST\ndo gateway externo
+ApiDePagamento &quot;1&quot; --&gt; &quot;1&quot; ServicoProcessamentoPagamento : dispara eventos assíncronos\nvia chamada de Webhook
+GerenciadorAssinatura &quot;1&quot; --&gt; &quot;N&quot; ServicoPersistenciaLog : dita regras de bloqueio/\nliberação de escrita por inadimplência
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/54525957/54919188.png">image-20260525-233723.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/54525957/54296602.png">image-20260525-233809.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/54525957/54263831.png">image-20260525-233809.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

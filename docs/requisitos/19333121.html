@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 5: Gerenciar Assinatura e Processamento de Pagamento</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 5: Gerenciar Assinatura e Processamento de Pagamento
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span>, last modified on mar. 30, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="3fd753bf0491">Descrição formal do caso de uso - 5</p><h3 local-id="8fe2995fcce7" id="Casodeuso-5:GerenciarAssinaturaeProcessamentodePagamento-Itensassociados:">Itens associados:</h3><h4 local-id="6d74e649471c" id="Casodeuso-5:GerenciarAssinaturaeProcessamentodePagamento-RegrasdeNegócio:">Regras de Negócio:</h4><ul local-id="5b7deb1b3ffa"><li local-id="b13894444fd0"><p local-id="bf546f3abb3e">RN-01: O valor da assinatura deve ser proporcional à quantidade de sistemas cadastrados</p></li><li local-id="e5084a0fd1d8"><p local-id="ddb53a86dbb2">RN-03: A autenticação do usuário deve ser gerida via Clerk</p></li><li local-id="9c5dd8b18fc7"><p local-id="9302e4de52b1">RN-13: Apenas usuários administradores podem gerenciar assinaturas</p></li></ul><h4 local-id="43b4fe43804c" id="Casodeuso-5:GerenciarAssinaturaeProcessamentodePagamento-RequisitosFuncionais:">Requisitos Funcionais:</h4><ul local-id="1444316c230c"><li local-id="ebb6ce71c4bd"><p local-id="47da053259df">RF-28: Integração com API de pagamento</p></li></ul><h4 local-id="51e12e031834" id="Casodeuso-5:GerenciarAssinaturaeProcessamentodePagamento-RequisitosNãoFuncionais:">Requisitos Não Funcionais:</h4><ul local-id="d8d09abb0833"><li local-id="4ca196f6c36a"><p local-id="2405923af73d">RNF-03: Uso do Clerk para autenticação e segurança</p></li></ul><h3 local-id="5f89eeb84509" id="Casodeuso-5:GerenciarAssinaturaeProcessamentodePagamento-Linkdatarefa:">Link da tarefa:</h3><p local-id="087163486221">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-22" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-22" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-22</a>
+                    -
+            <span class="summary">Criação de caso de uso - 5: Gerenciar Assinatura e Processamento de Pagamento</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+ </p><hr local-id="ca4071fe39f8"/><p local-id="ddfd6a9e7ec8">Nome: Gerenciar Assinatura e Processamento de Pagamento</p><p local-id="48e85ca45399">Atores:</p><ul local-id="37cbfc576dd2"><li local-id="ac293de204d2"><p local-id="4896ac294085">Usuário Administrador</p></li><li local-id="9167886b5f2e"><p local-id="8237f52ba5bc">Sistema LogViewer</p></li><li local-id="c34e44d8c930"><p local-id="24f30cd74552">Provedor de Autenticação (Clerk)</p></li><li local-id="849c2d2a891c"><p local-id="5658621c97dd">Gateway de Pagamento (externo)</p></li></ul><p local-id="663f371a967a">Descrição:<br/>Permite ao usuário administrador contratar, atualizar ou cancelar planos de assinatura, com processamento de pagamento via um gateway externo, mantendo a conta ativa e consistente com os serviços contratados.</p><p local-id="9b1209b37a79">Pré-condições:</p><ul local-id="4eca478b964f"><li local-id="2c99e472492a"><p local-id="a442b3211698">Usuário autenticado via Clerk</p></li><li local-id="f288f776b19e"><p local-id="7d4fab6339c4">Conta vinculada a um CNPJ válido</p></li><li local-id="753fc798d717"><p local-id="0308caefe0bc">Usuário possui permissão de administrador</p></li></ul><p local-id="90bbabceaa52">Pós-condições:</p><ul local-id="699cddac2723"><li local-id="28927e0eea38"><p local-id="a4e3707363de">Assinatura criada, atualizada ou cancelada</p></li><li local-id="91bd75d4b32d"><p local-id="2627119035cb">Status da conta atualizado (ativo, pendente, inadimplente)</p></li><li local-id="6338cf0722fd"><p local-id="0d40b768f091">Registro de transação armazenado</p></li></ul><p local-id="4619ea267c9f">Fluxo Principal (Contratação ou Atualização de Plano):</p><ol start="1" local-id="15f404633013"><li local-id="c7e5c187bcbc"><p local-id="b7df620efcfa">Usuário acessa a área de planos e assinatura</p></li><li local-id="ab2d0de9263e"><p local-id="25d7b3eeb67b">Sistema apresenta opções de planos com base na quantidade de sistemas cadastrados</p></li><li local-id="c9212fa88559"><p local-id="68ac8626daa5">Usuário seleciona um plano ou altera o plano atual</p></li><li local-id="09f23aba0727"><p local-id="e6dde8cc0f09">Sistema calcula o valor da assinatura (baseado em quantidade de sistemas)</p></li><li local-id="5ec802d409c1"><p local-id="61f80a8608cb">Sistema solicita confirmação da operação</p></li><li local-id="cf33526b5599"><p local-id="3f51410d5088">Sistema envia requisição ao Gateway de Pagamento</p></li><li local-id="9abf055375ea"><p local-id="b8fb832bb00f">Gateway processa o pagamento</p></li><li local-id="5c0afe8be0ea"><p local-id="3d618b51f073">Gateway retorna status da transação</p></li><li local-id="901a3d1f2a92"><p local-id="4bb57cb7ce4d">Sistema valida o retorno do gateway</p></li><li local-id="589e2de3b697"><p local-id="5b654f51cc72">Sistema atualiza o status da assinatura:</p><ul local-id="98eacbf4cd1a"><li local-id="154d7dc8dc99"><p local-id="5b295abb7f25">Ativo (pagamento aprovado)</p></li><li local-id="fb7e0f451337"><p local-id="3876ec533146">Pendente (aguardando confirmação)</p></li></ul></li><li local-id="7e81fe39ef56"><p local-id="b0fd2ab2707c">Sistema registra a transação</p></li><li local-id="b00cdbd981d9"><p local-id="1dbbb7232229">Sistema libera ou atualiza o acesso aos recursos do plano</p></li></ol><p local-id="5e557d3ef47a">Fluxos Alternativos:</p><p local-id="67ec715b621c">A1: Pagamento recusado</p><ul local-id="0557a5292449"><li local-id="0221600066b7"><p local-id="adcfb9561b9f">Sistema informa falha ao usuário</p></li><li local-id="919d1663530b"><p local-id="c2e828a536ee">Mantém plano anterior ou bloqueia ativação</p></li></ul><p local-id="70ba32541ab5">A2: Pagamento pendente (ex: boleto, PIX)</p><ul local-id="6f711cced758"><li local-id="2ce7b6c9b922"><p local-id="4a67bb13d4b1">Sistema mantém status &quot;pendente&quot;</p></li><li local-id="6c871ca19167"><p local-id="8371d2e5690d">Aguarda confirmação via webhook do gateway</p></li></ul><p local-id="545e102c732d">A3: Falha de comunicação com gateway</p><ul local-id="9378c55f7346"><li local-id="947d28530bd1"><p local-id="9f056f318566">Sistema registra erro</p></li><li local-id="e38fc9c59b0b"><p local-id="59ed2670c7b9">Permite nova tentativa de pagamento</p></li></ul><p local-id="882378c70004">A4: Cancelamento de assinatura</p><ul local-id="6aa73daa7eb9"><li local-id="e6d3ae30588d"><p local-id="1ec4ffea09d5">Usuário solicita cancelamento</p></li><li local-id="90f1f76a4e28"><p local-id="b22ef6bccbf8">Sistema atualiza status para &quot;cancelado&quot;</p></li><li local-id="782ca011c3c1"><p local-id="62045362083c">Acesso permanece até o fim do ciclo vigente</p></li></ul><p local-id="ef539d9f0b3b">Fluxo Assíncrono (Webhook de Confirmação):</p><ol start="1" local-id="420239ddd455"><li local-id="2e65bddf98da"><p local-id="32ba711a8e9b">Gateway envia notificação de pagamento (webhook)</p></li><li local-id="b9653a043307"><p local-id="90531c5be86a">Sistema valida autenticidade do webhook</p></li><li local-id="08d085f19e02"><p local-id="3da85efa7fca">Sistema atualiza status da assinatura</p></li><li local-id="4f490676ecf3"><p local-id="5b6089ee6543">Sistema registra evento de pagamento confirmado</p></li></ol><p local-id="3dc2fcb8d913">Regras de Negócio:</p><ul local-id="9b0048cf6444"><li local-id="a9f79a3e6e8d"><p local-id="8d0fe8b255c2">RN-01: O valor da assinatura deve ser proporcional à quantidade de sistemas cadastrados</p></li><li local-id="29b54f8092d0"><p local-id="2e125e166afa">RN-03: A autenticação do usuário deve ser gerida via Clerk</p></li><li local-id="af72bb996bde"><p local-id="250a16abe6f9">Apenas usuários administradores podem gerenciar assinaturas</p></li><li local-id="816aa478df94"><p local-id="b4edf5c6d1cc">O sistema deve manter histórico de transações financeiras</p></li></ul><p local-id="cefd6c38fcee">Requisitos Funcionais:</p><ul local-id="405490b5995d"><li local-id="e2337b896b5c"><p local-id="e8f8fac6fede">RF-28: Integração com API de pagamento</p></li></ul><p local-id="46d6dedcba95">Requisitos Não Funcionais:</p><ul local-id="63b4b328c47f"><li local-id="b1a58b59452d"><p local-id="3f0b57ba6936">RNF-03: Uso do Clerk para autenticação e segurança</p></li></ul><p local-id="635c34668105">Observações:</p><ul local-id="048f547f87f1"><li local-id="f3772da182c3"><p local-id="67cb3ae70bee">O sistema deve ser desacoplado do gateway de pagamento, utilizando uma interface (ex: PaymentGatewayPort)</p></li><li local-id="501cdaed8269"><p local-id="60e31c21df77">A comunicação com o gateway deve suportar múltiplos provedores (ex: estratégia plugável)</p></li><li local-id="a10acb0d95d1"><p local-id="55e89cf5a3bb">O processamento de confirmação deve suportar eventos assíncronos (webhooks)</p></li><li local-id="911def350d4e"><p local-id="5ba40b81638b">Informações sensíveis de pagamento não devem ser armazenadas diretamente no sistema (delegadas ao gateway)</p></li><li local-id="b00fea6b4e2f"><p local-id="6d9cd40ce426">O sistema deve estar preparado para múltiplas moedas e modelos de cobrança (mensal, anual)</p></li></ul><hr local-id="d8801e35c4f8"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260330-232639.png" width="760" loading="lazy" src="../attachments/19333121/25362436.png?width=760" data-image-src="../attachments/19333121/25362436.png" data-height="1404" data-width="5496" data-unresolved-comment-count="0" data-linked-resource-id="25362436" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260330-232639.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="19333121" data-linked-resource-container-version="6" data-media-id="5cf39c52-28c7-4320-a457-74e1e8a54871" data-media-type="file"></span><p local-id="cc78f42100b8" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/19333121/25362436.png">image-20260330-232639.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

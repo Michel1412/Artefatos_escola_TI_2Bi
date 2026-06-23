@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 5-&gt; Caso de uso 5: Gerenciar Assinatura e Processamento de Pagamento</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 5-&gt; Caso de uso 5: Gerenciar Assinatura e Processamento de Pagamento
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified on mai. 07, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="1a240c9c95a3" /><p local-id="1480b153657c"><a href="../requisitos/19333121.html" data-linked-resource-id="19333121" data-linked-resource-version="6" data-linked-resource-type="page">Caso de uso - 5: Gerenciar Assinatura e Processamento de Pagamento</a> </p><h3 local-id="0fb75c8c8275" id="DiagramadeSequência5-&gt;Casodeuso5:GerenciarAssinaturaeProcessamentodePagamento-ExplicaçãoSimplificadadoFluxo">Explicação Simplificada do Fluxo</h3><p local-id="b443ff97f6db">Este diagrama ilustra a jornada de assinatura e pagamento dividida em três etapas lógicas:</p><ul local-id="557e1a43-2d11-4df6-a9e7-7bcfa936c703"><li local-id="ae98236b-0d30-44cb-95e7-f196d47c8672"><p local-id="5e4190d1512c"><strong>1. Consulta e Seleção de Planos:</strong> O Administrador acessa a tela de assinatura. O sistema primeiro verifica com o Clerk se ele realmente tem permissão. Em seguida, a API olha no Banco de Dados quantos sistemas aquele CNPJ possui para calcular e mostrar o preço correto do plano na tela.</p></li><li local-id="81499aea-51a8-4dcc-9cb8-fb696e8102b9"><p local-id="83adbeb9d551"><strong>2. Processamento do Pagamento (Checkout):</strong> O usuário escolhe o plano e confirma a compra. O LogViewer envia essa cobrança para o Gateway de Pagamento (Mercado Pago, por exemplo). O Gateway tenta cobrar e devolve um status (pode aprovar na hora no cartão, ou ficar &quot;Pendente&quot; se for boleto/PIX). O sistema salva esse status e avisa o usuário.</p></li><li local-id="2b2db298-8473-494f-ab30-133dbab578d4"><p local-id="50e36a8ff906"><strong>3. Confirmação Assíncrona (Webhook):</strong> Esta é uma ação que acontece &quot;nos bastidores&quot;. Quando o dinheiro do cliente finalmente cai na conta (horas ou dias depois no caso de um boleto), o Gateway de Pagamento avisa o LogViewer automaticamente. A API verifica se a mensagem é segura e, por fim, muda o status da conta do cliente no banco de dados para &quot;Ativo&quot;, liberando os acessos.</p></li></ul><hr local-id="412338cd0f86"/><p local-id="eb2fff5cedf6"><strong>Parte 1: Consulta e Seleção de Planos</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="5_teste.png" width="760" loading="lazy" src="../attachments/43581441/44007438.png?width=760" data-image-src="../attachments/43581441/44007438.png" data-height="344" data-width="770" data-unresolved-comment-count="0" data-linked-resource-id="44007438" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="5_teste.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="43581441" data-linked-resource-container-version="4" data-media-id="5ab252b6-6002-4bfe-b5fc-696ddc221f9f" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title 2. Processamento do Pagamento (Checkout)
+
+actor &quot;Usuário Admin&quot; as Admin
+participant &quot;Frontend (LogViewer)&quot; as Front
+participant &quot;Backend API&quot; as API
+participant &quot;Gateway de Pagamento&quot; as Gateway
+database &quot;Banco de Dados&quot; as DB
+
+Admin -&gt; Front: Selecionar plano e confirmar
+activate Front
+
+Front -&gt; API: Enviar intenção de pagamento
+activate API
+
+API -&gt; Gateway: Processar pagamento (API Externa)
+activate Gateway
+Gateway --&gt; API: Retorna status (Ex: Aprovado ou Pendente)
+deactivate Gateway
+
+API -&gt; DB: Registrar transação e status da conta
+activate DB
+DB --&gt; API: Confirmação de registro
+deactivate DB
+
+API --&gt; Front: Retorna resultado da operação
+deactivate API
+
+Front --&gt; Admin: Mostrar status na tela (Ex: &quot;Aguardando PIX&quot;)
+deactivate Front
+@enduml</pre>
+</div></div><hr local-id="05043684e255"/><p local-id="21394004ffef"><strong>Parte 2: Processamento do Pagamento (Checkout)</strong></p><p local-id="b49b98640424" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="5_2.png" width="760" loading="lazy" src="../attachments/43581441/43548705.png?width=760" data-image-src="../attachments/43581441/43548705.png" data-height="344" data-width="808" data-unresolved-comment-count="0" data-linked-resource-id="43548705" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="5_2.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="43581441" data-linked-resource-container-version="4" data-media-id="b43e49aa-b5e7-4258-ba6a-3f19cfbd0659" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title 2. Processamento do Pagamento (Checkout)
+
+actor &quot;Usuário Admin&quot; as Admin
+participant &quot;Frontend (LogViewer)&quot; as Front
+participant &quot;Backend API&quot; as API
+participant &quot;Gateway de Pagamento&quot; as Gateway
+database &quot;Banco de Dados&quot; as DB
+
+Admin -&gt; Front: Selecionar plano e confirmar
+activate Front
+
+Front -&gt; API: Enviar intenção de pagamento
+activate API
+
+API -&gt; Gateway: Processar pagamento (API Externa)
+activate Gateway
+Gateway --&gt; API: Retorna status (Ex: Aprovado ou Pendente)
+deactivate Gateway
+
+API -&gt; DB: Registrar transação e status da conta
+activate DB
+DB --&gt; API: Confirmação de registro
+deactivate DB
+
+API --&gt; Front: Retorna resultado da operação
+deactivate API
+
+Front --&gt; Admin: Mostrar status na tela (Ex: &quot;Aguardando PIX&quot;)
+deactivate Front
+@enduml</pre>
+</div></div><hr local-id="ada71e25899a"/><h3 local-id="89ece5cdbc44" id="DiagramadeSequência5-&gt;Casodeuso5:GerenciarAssinaturaeProcessamentodePagamento-Parte3:ConfirmaçãoAssíncrona(Webhook)">Parte 3: Confirmação Assíncrona (Webhook)</h3><p local-id="e5309fa3b108" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="5_3.png" width="576" loading="lazy" src="../attachments/43581441/43548711.png?width=576" data-image-src="../attachments/43581441/43548711.png" data-height="245" data-width="576" data-unresolved-comment-count="0" data-linked-resource-id="43548711" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="5_3.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="43581441" data-linked-resource-container-version="4" data-media-id="ecadadb3-9fd1-40d7-b5ea-790bfc470277" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title 3. Confirmação Assíncrona (Webhook)
+
+participant &quot;Gateway de Pagamento&quot; as Gateway
+participant &quot;Backend API&quot; as API
+database &quot;Banco de Dados&quot; as DB
+
+Gateway -&gt; API: Enviar notificação de pagamento pago (Webhook)
+activate API
+
+API -&gt; API: Validar autenticidade do webhook
+
+API -&gt; DB: Atualizar status da assinatura para &quot;Ativo&quot;
+activate DB
+deactivate DB
+
+API -&gt; DB: Registrar evento de pagamento confirmado
+activate DB
+deactivate DB
+
+deactivate API
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/43581455.png">Untitled 21.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/43122694.png">diagrama_sequencia_5.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/43712518.png">diagrama_sequencia_5-20260508-003238.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/43515915.png">5.1-20260508-004107.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/44007438.png">5_teste.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/43548705.png">5_2.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/43548711.png">5_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43581441/44236811.png">5_3.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

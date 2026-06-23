@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Construção de ideias- Atividade 3</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../requisitos/Requisitos-de-Produto_950274.html">Requisitos de Produto</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Construção de ideias- Atividade 3
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span>, last modified by <span class='editor'> Peng</span> on mar. 02, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 local-id="06ff371d1c6c" id="Construçãodeideias-Atividade3-Enquadramentodoproblema">Enquadramento do problema</h2><ul local-id="717afb2a-0906-4e42-a58e-91348c03e822"><li local-id="15378ae6-490c-42bb-ba54-2b6b58d9503b"><p local-id="a6a8b448bf98"><strong>Problema:</strong> </p><ul local-id="82ea6c970433"><li local-id="c4a6a7bc3003"><p local-id="4b3af08902b1">A sobrecarga de logs que existem nos terminais dos servidores, além da dificuldade no mapeamento de problemas expostos pelos logs.</p></li></ul></li><li local-id="f46dddc4-89a4-4cc0-859e-9238a2c03413"><p local-id="51dd181e3e2a"><strong>Usuários/personas:</strong> </p><ul local-id="8ed08c71c23e"><li local-id="7f2189292799"><p local-id="9798b1cf67fe">Desenvolvedores, Gestores.</p></li><li local-id="6988346f3a29"><p local-id="66f85f356ded">Para facilitar a descoberta de erros, manter um bom acompanhemento dos erros sistema. </p></li></ul></li><li local-id="8bb9df0f-dd4e-49c3-94a9-a596997c928c"><p local-id="e03d60923e28"><strong>Objetivo mensurável (1–3 métricas):</strong> </p><ul local-id="e8cbdd4fb4e2"><li local-id="f2ee40c60483"><p local-id="9db09b7c8c24">Facilitar a descoberta de problemas</p></li><li local-id="623027d9e134"><p local-id="70ad487f3162">Reduzir o tempo de analise de problemas </p></li><li local-id="ad8d27fb68e1"><p local-id="b37d4a0022b3">Alertar sobre sobrecargas e erros críticos</p></li></ul></li><li local-id="05932a34-35bb-4d9d-98cf-ea4aa42f8c89"><p local-id="0a3bdf2fbffc"><strong>Escopo do MVP</strong> (o mínimo que entrega valor)</p><ul local-id="83f19ed6f931"><li local-id="9956e4e8d86a"><p local-id="4f0eadba614a">Uma solução de auxilio de tomada de decisão, que olha para terminais sobrecarregados de logs tato </p></li></ul></li><li local-id="a3701cbb-d1cc-4233-b3b6-d10b02af2335"><p local-id="508da09aeec3"><strong>Fora do escopo</strong> (para proteger o aprendiz de “feature creep”)</p><ul local-id="20707f5f20cb"><li local-id="7e357324854d"><p local-id="96e307794ae5">Não haverá personalização avançada de layout pelo usuário.</p></li></ul></li><li local-id="34838681-6a60-4d8e-9837-1f0c12a68553"><p local-id="ebe9d05ba8c1"><strong>Restrições:</strong> </p><ul local-id="0245f58464e8"><li local-id="72bd14a0db1f"><p local-id="763ea63d057c">O sistema deverá rodar tanto em Web quanto Mobile.</p></li></ul></li></ul><h2 local-id="fcedf708442e" id="Construçãodeideias-Atividade3-Personasenecessidades">Personas e necessidades</h2><h3 local-id="2241282505e2" id="Construçãodeideias-Atividade3-Persona01–DesenvolvedorBack-end">Persona 01 – Desenvolvedor Back-end</h3><ul local-id="457ea4b38a6f"><li local-id="a8e2e56064ab"><p local-id="fd4dfce1861a"><strong>Quem é:</strong><br/>Carlos, 28 anos, desenvolvedor back-end responsável pela manutenção e estabilidade dos sistemas da empresa.</p></li><li local-id="3b4788e9bbdc"><p local-id="004be7f577dd"><strong>Objetivo:</strong><br/>Identificar e corrigir erros rapidamente para manter o sistema estável.</p></li><li local-id="ddc61d9c8344"><p local-id="f3fe5531260c"><strong>Contexto:</strong><br/>Trabalha com múltiplos servidores e aplicações. Precisa analisar logs diariamente para investigar falhas relatadas por usuários ou detectadas em produção.</p></li><li local-id="43c16f4a5ac4"><p local-id="4376150b0d30"><strong>Dor principal:</strong><br/>Grande volume de logs desorganizados no terminal, dificultando encontrar a causa raiz do problema rapidamente.</p></li></ul><h2 local-id="314923d9b7f2" id="Construçãodeideias-Atividade3-Persona02–GestordeTI">Persona 02 – Gestor de TI</h2><ul local-id="269c1b34148f"><li local-id="d1c90fd1db45"><p local-id="0c5cef0e74ab"><strong>Quem é:</strong><br/>Mariana, 40 anos, gerente de tecnologia responsável pela estabilidade dos sistemas e pela equipe técnica.</p></li><li local-id="ce6847aa3a18"><p local-id="793ddb55ec01"><strong>Objetivo:</strong><br/>Garantir alta disponibilidade dos serviços e reduzir o tempo de resposta a incidentes.</p></li><li local-id="f2f69a29f4f4"><p local-id="43a505b53739"><strong>Contexto:</strong><br/>Não analisa logs técnicos diretamente, mas precisa de visão estratégica sobre falhas, sobrecargas e desempenho.</p></li><li local-id="e9d139931734"><p local-id="b0216b11525d"><strong>Dor principal:</strong><br/>Falta de visibilidade clara sobre a saúde do sistema e demora na identificação de incidentes críticos.</p></li></ul><h2 local-id="b23e45a8c5a3" id="Construçãodeideias-Atividade3-MapasdeModelagem">Mapas de Modelagem</h2><h3 local-id="97b7c29c1a08" id="Construçãodeideias-Atividade3-Mapa01:MapadeUsuárioseObjetivos">Mapa 01: Mapa de Usuários e Objetivos</h3><ul local-id="722cbd1617b0"><li local-id="5dcd98e90ac1"><p local-id="095a328027a2">Desenvolvedor → Identificar erros rapidamente, filtrar logs, reduzir tempo de análise, receber alertas críticos</p></li><li local-id="bd9ec208ba5f"><p local-id="886103ef9e7a">Gestor → Monitorar estabilidade, acompanhar relatórios, visualizar sobrecargas, avaliar tempo de resolução</p></li></ul><p local-id="b5ec6cf0cad9" />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

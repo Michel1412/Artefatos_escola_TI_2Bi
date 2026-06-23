@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe de Caso de Uso → Gerar Relatório</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="53346309.html">Diagrama de Classe 5  — UC-14 e UC-16 (Sistema LogViewer)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe de Caso de Uso → Gerar Relatório
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andre Felipe</span>, last modified on jun. 01, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="e1d7499ee575">Classe responsável por executar o processo de geração de relatórios no sistema LogViewer. Ela utiliza os filtros definidos pelo usuário, busca logs tratados e erros classificados, monta o relatório consolidado e salva o resultado para posterior visualização ou exportação.</p><p local-id="27d3815cf283" /><h2 local-id="3cb9989912cc" id="ClassedeCasodeUso→GerarRelatório-Atributos">Atributos</h2><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="edee1792-fcfe-4aaf-93fe-23f959957eb2" class="confluenceTable"><tbody><tr data-local-id="2c6405c7-8157-44b7-902a-3ee2cdddd71a"><th data-local-id="07befb9c-6a0b-4488-8cb5-1d53571927ea" class="confluenceTh"><p local-id="48d23bd768a6">Atributo</p></th><th data-local-id="1bff5f44-ea41-4567-8eea-6c715812f9c0" class="confluenceTh"><p local-id="60fdc79ba59b">Tipo</p></th><th data-local-id="53c78d0a-b13e-48f0-9ff6-40b88ab015a4" class="confluenceTh"><p local-id="559b1dbfd6eb">Visibilidade</p></th><th data-local-id="98006e03-5bd3-49e9-83fe-a303d6d5ed8b" class="confluenceTh"><p local-id="efa1ef413a21">Descrição</p></th></tr><tr data-local-id="5c7f3a90-024f-4fe0-a21c-3f3515db03c6"><td data-local-id="fd872f1f-0932-448f-8d74-2604ff37d036" class="confluenceTd"><p local-id="8b1b1bd3c6ba">usuarioId</p></td><td data-local-id="2ebdcd01-f49e-4bf9-ac6b-8a64673d144c" class="confluenceTd"><p local-id="bd03ec84f860">String</p></td><td data-local-id="989109cc-2447-411e-9486-dceb293f554c" class="confluenceTd"><p local-id="bca17a8ae2b3">privado</p></td><td data-local-id="d21e9d2a-d932-46bf-a3ec-a847010fefd3" class="confluenceTd"><p local-id="7419c000e3dc">Identifica o usuário que solicitou a geração do relatório</p></td></tr><tr data-local-id="1b1e1351-54ef-46da-bf5f-24424a93242d"><td data-local-id="64568475-e144-4760-a696-3c69eec07dfd" class="confluenceTd"><p local-id="74bf5ff2e062">filtroAplicado</p></td><td data-local-id="ae0b5167-27dd-4ca0-a869-cf2088084839" class="confluenceTd"><p local-id="acf2eb52a6f7">FiltroRelatorio</p></td><td data-local-id="1a3b39a0-07da-4031-a5e2-a94ebbde903b" class="confluenceTd"><p local-id="93e54b97979b">privado</p></td><td data-local-id="77b4624a-b881-445a-9c66-992db91428ef" class="confluenceTd"><p local-id="db91f1c3d77a">Armazena os critérios utilizados para buscar os dados do relatório</p></td></tr><tr data-local-id="ef88e07b-50a0-4b08-85d8-337405c1f9c1"><td data-local-id="9e277bc5-9f51-4b47-b364-e1d62d346315" class="confluenceTd"><p local-id="eacf2f48c8e0">logsSelecionados</p></td><td data-local-id="9973e751-54bf-496b-8b61-df2746adfcb3" class="confluenceTd"><p local-id="9eb7fe98e4fa">List&lt;LogTratado&gt;</p></td><td data-local-id="683cc731-369f-4937-bdd0-f301af5e2885" class="confluenceTd"><p local-id="eede51b7853d">privado</p></td><td data-local-id="ebc0b0b5-bb86-404a-bbc3-7edea0ceff3e" class="confluenceTd"><p local-id="86593e4fcd2f">Lista de logs tratados encontrados com base nos filtros aplicados</p></td></tr><tr data-local-id="16799d0d-43d6-43a5-8512-05c7dffcbe07"><td data-local-id="2b020624-476d-4173-aa31-8c8493cb8d1f" class="confluenceTd"><p local-id="d59f5c8ebbb2">errosSelecionados</p></td><td data-local-id="1873ba8c-0ede-4a31-9a5c-e78b2d23c790" class="confluenceTd"><p local-id="cb0826e07f1c">List&lt;Erro&gt;</p></td><td data-local-id="e41a5893-f83d-44ed-9306-5dc432387080" class="confluenceTd"><p local-id="39b2f622623c">privado</p></td><td data-local-id="ebd44335-5da4-417f-bcec-60fbfe25f6bc" class="confluenceTd"><p local-id="23b158e7d4ef">Lista de erros classificados incluídos no relatório</p></td></tr><tr data-local-id="4e241360-cb27-43d2-8e3a-bfbd0260996a"><td data-local-id="7ab76d8b-ccd1-4637-a219-2b455f07f9c3" class="confluenceTd"><p local-id="1a80c250d464">statusGeracao</p></td><td data-local-id="122319b8-8779-4301-9150-2f186651931d" class="confluenceTd"><p local-id="5d643e3f8d28">Enum</p></td><td data-local-id="b60ecc7c-9cf2-4e76-9aef-e65f0b7e0717" class="confluenceTd"><p local-id="27f0361e7202">privado</p></td><td data-local-id="769e9eb9-cf87-4d60-ad5a-c57760b3ae78" class="confluenceTd"><p local-id="b47e4f4ae6d4">Status do processo de geração, como pendente, em processamento ou concluído</p></td></tr></tbody></table></div><hr local-id="d50d14b7-489e-4f70-90f7-d2fead93d670"/><h2 local-id="c176eae52784" id="ClassedeCasodeUso→GerarRelatório-Métodos">Métodos</h2><div class="table-wrap"><table data-table-width="760" data-layout="center" data-local-id="de6784c5-f6a1-4832-ba8e-487e746e79bd" class="confluenceTable"><tbody><tr data-local-id="aec8af81-8d8e-4151-88c6-d5c3d26852e8"><th data-local-id="a8f505af-1c5c-4b37-ab34-0d8151c727e2" class="confluenceTh"><p local-id="639af922e0d2">Método</p></th><th data-local-id="6df9e746-10e4-4f35-ae7d-8e9b074d5709" class="confluenceTh"><p local-id="ae883a64a67c">Retorno</p></th><th data-local-id="f49619a1-5a72-4372-b967-f63b4b5a38e1" class="confluenceTh"><p local-id="c0b6287fe677">Visibilidade</p></th><th data-local-id="d4167829-03ac-4e9a-85e9-aa159b4a9143" class="confluenceTh"><p local-id="5813e2d2a0b5">Descrição</p></th></tr><tr data-local-id="66890642-a2f5-4b3b-83c9-78b9412a21db"><td data-local-id="5582f61d-5ce1-4205-87bf-c2c3450e3e22" class="confluenceTd"><p local-id="257cbcaad752">gerarRelatorio()</p></td><td data-local-id="ed478dab-0b75-49c5-be22-80e2e387528a" class="confluenceTd"><p local-id="a8aa7043c644">Relatorio</p></td><td data-local-id="482cb67c-96c0-4a4d-adfc-c08ae3a12dfd" class="confluenceTd"><p local-id="bedca0b518f5">público</p></td><td data-local-id="ef134c88-2e14-4508-b480-6e863fe58cdb" class="confluenceTd"><p local-id="aa30b43c6208">Inicia o processo de geração do relatório com base nos filtros informados</p></td></tr><tr data-local-id="0bebf7ea-fe61-4810-98a2-5c2171ef4806"><td data-local-id="bae216d3-1f6f-4bd1-ae59-0ef7641a326c" class="confluenceTd"><p local-id="9862e72c364f">buscarDadosFiltrados()</p></td><td data-local-id="4a59a1e5-64f6-4656-8150-a09ba4984fbf" class="confluenceTd"><p local-id="646da4879024">List&lt;LogTratado&gt;</p></td><td data-local-id="8cf69172-2e29-4071-8efc-f636b3455979" class="confluenceTd"><p local-id="1864c5318165">público</p></td><td data-local-id="8f68e2be-0dc9-4de0-aa64-ccee3c274d21" class="confluenceTd"><p local-id="25bc14ff18c2">Busca logs tratados e erros classificados de acordo com os critérios definidos</p></td></tr><tr data-local-id="12e55f9a-35ee-4847-9312-9151f56c37d2"><td data-local-id="cd8b8dfc-402d-4287-a73a-3e8b539239f4" class="confluenceTd"><p local-id="10a6ba8347a1">montarRelatorio()</p></td><td data-local-id="a5f519c9-7e57-4d1b-8215-c2d0d2ec35dd" class="confluenceTd"><p local-id="91da45c6baea">Relatorio</p></td><td data-local-id="bf26dc7a-4482-4c90-9e24-7f27a06f1359" class="confluenceTd"><p local-id="17a5a439774e">público</p></td><td data-local-id="5aafa4fc-078d-4f6d-a89c-06393123344a" class="confluenceTd"><p local-id="98830b765065">Organiza os dados filtrados e cria o objeto de relatório consolidado</p></td></tr><tr data-local-id="1fb78327-bcd9-4cd9-a92b-f7718fa6ea5c"><td data-local-id="11509257-7cd8-4a62-a840-ce5bf712ecd3" class="confluenceTd"><p local-id="8dea1ae534b7">salvarRelatorio()</p></td><td data-local-id="abc7554e-15a2-4c29-92cb-d5495bfc63d0" class="confluenceTd"><p local-id="04a639c3aec3">void</p></td><td data-local-id="755e4630-bb33-4139-816d-26c7ba5acb13" class="confluenceTd"><p local-id="f1285e77c7c4">público</p></td><td data-local-id="0898abfc-5a4f-4215-9fc5-a1244055e0d2" class="confluenceTd"><p local-id="18430ba6c647">Salva o relatório gerado para consulta ou exportação posterior</p></td></tr></tbody></table></div><p local-id="b18d5236444b" /><p local-id="ac3dd6c3efc1">Diagrama UML : </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260601-225358.png" width="254" loading="lazy" src="../attachments/59244545/60653569.png?width=254" data-image-src="../attachments/59244545/60653569.png" data-height="406" data-width="254" data-unresolved-comment-count="0" data-linked-resource-id="60653569" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260601-225358.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59244545" data-linked-resource-container-version="4" data-media-id="9dca39bf-1012-4787-a363-d4a214630515" data-media-type="file"></span><p local-id="09f609910429" /><p local-id="92cd9f61c0f8" /><p local-id="2c6a961267c0">@startuml GerarRelatorio</p><p local-id="15a57dcfc397">skinparam backgroundColor #FFFFFF<br/>skinparam classBackgroundColor #FFFFFF<br/>skinparam classBorderColor #333333<br/>skinparam classAttributeFontColor #000000<br/>skinparam classFontColor #000000<br/>skinparam classFontSize 10<br/>skinparam classAttributeFontSize 10<br/>skinparam padding 5<br/>skinparam roundcorner 5<br/>skinparam arrowColor #333333<br/>skinparam arrowThickness 1.5</p><p local-id="d031593e93a9">class GerarRelatorio {<br/>  .. Atributos ..<br/>  &lt;b&gt;- usuarioId&lt;/b&gt; : String<br/>  &lt;b&gt;- filtroAplicado&lt;/b&gt; : FiltroRelatorio<br/>  &lt;b&gt;- logsSelecionados&lt;/b&gt; : List&lt;LogTratado&gt;<br/>  &lt;b&gt;- errosSelecionados&lt;/b&gt; : List&lt;Erro&gt;<br/>  &lt;b&gt;- statusGeracao&lt;/b&gt; : Enum</p><p local-id="a7345aaf28ee">  .. Métodos ..</p><p local-id="04195983b340">  gerarRelatorio() : Relatorio</p><p local-id="a54be137ca07">  buscarDadosFiltrados() : List&lt;LogTratado&gt;</p><p local-id="77ae517b4b55">  montarRelatorio() : Relatorio</p><p local-id="af71e0af0f30">  salvarRelatorio() : void<br/>}</p><p local-id="a0a6bb6401b9">@enduml</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59244545/59342849.png">image-20260601-192720.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59244545/60653569.png">image-20260601-225358.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

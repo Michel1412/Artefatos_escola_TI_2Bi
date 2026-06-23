@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe: AuthenticationManager</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Diagrama-de-Classes-4_54755329.html">Diagrama de Classes 4</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe: AuthenticationManager
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span> on jun. 04, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 local-id="1caf488cf1ee" id="Classe:AuthenticationManager-Descrição">Descrição</h2><p local-id="2b9de1948531">Representa o componente central de gerenciamento de autenticação do sistema LogViewer.</p><p local-id="96a24f808957">É responsável por receber, validar, armazenar e distribuir tokens emitidos pelo Clerk, garantindo que os módulos internos utilizem informações autenticadas sem depender diretamente do provedor de identidade.</p><p local-id="52c426b1bcc2">Centraliza a gestão de Access Tokens, Session Tokens, Claims JWT, Roles, Permissões e Metadados Customizados, funcionando como uma camada de abstração de segurança entre o Clerk, Backend API e demais componentes da aplicação.</p><p local-id="488652349550">Também é responsável por controlar renovação de sessões, validação de expiração e propagação de contexto autenticado para os serviços internos.</p><hr local-id="b48b3254-04fe-4191-8795-4e9b5c42193f"/><h1 local-id="4331693f5be1" id="Classe:AuthenticationManager-Atributos">Atributos</h1><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="521e1572-bd75-465e-8c24-b77b7757e5d5" class="confluenceTable"><tbody><tr data-local-id="b654c63f-adb0-40fb-a15a-764afcec0d75"><th data-local-id="e455d894-1677-4bdd-90cc-37af3cd7d360" class="confluenceTh"><p local-id="3cb9b910bc1e">#</p></th><th data-local-id="afb3c7f8-1617-4491-86c2-aa8c347a22d9" class="confluenceTh"><p local-id="8ed85c14562b">Atributo</p></th><th data-local-id="650abe46-e1f6-42c1-8481-fe55b1792aa4" class="confluenceTh"><p local-id="5823bb1ce62f">Tipo</p></th><th data-local-id="636291ec-daa9-452e-8b41-e41dc89839f1" class="confluenceTh"><p local-id="b9986f089b5f">Visibilidade</p></th><th data-local-id="9ca01b6f-ddee-4e45-850e-fcf502de1ef7" class="confluenceTh"><p local-id="3953906cab6d">Descrição</p></th></tr><tr data-local-id="62cbd5b7-e35f-484b-9e7f-f2d2933d491b"><td data-local-id="31a2f346-bce9-46a9-baf5-0b40b38e8bf0" class="confluenceTd"><p local-id="17c2899972e7">1</p></td><td data-local-id="6492a6b6-1484-456a-9557-a52d6a549196" class="confluenceTd"><p local-id="c3f206dc1feb">sessionId</p></td><td data-local-id="12c567b1-4e24-4197-9e2c-c0e1a5434b24" class="confluenceTd"><p local-id="12c6e0791c4e">String</p></td><td data-local-id="b0f3c788-6c47-4733-b83f-3cf1f20a694a" class="confluenceTd"><p local-id="3a60ca7a60df">privado</p></td><td data-local-id="35ebac5a-c24b-4a11-bb39-303e2499fd89" class="confluenceTd"><p local-id="0cac0c3dfdc6">Identificador da sessão autenticada</p></td></tr><tr data-local-id="34d4c663-3b71-4a2e-bf62-9bef46ddf7fb"><td data-local-id="f1420587-5cbf-4f4a-8530-3363a4b84343" class="confluenceTd"><p local-id="678483336b27">2</p></td><td data-local-id="2aacc9b3-22f3-4ba9-ae56-137c155acb97" class="confluenceTd"><p local-id="032e4e5e1ba9">accessToken</p></td><td data-local-id="9c7c3a31-4b5a-4cdb-a2cc-3d33f0ff1e41" class="confluenceTd"><p local-id="7791f606d876">String</p></td><td data-local-id="dcef6312-b5d3-4b75-9bbf-099672dfd63d" class="confluenceTd"><p local-id="a92aba32f643">privado</p></td><td data-local-id="3922f32a-eefd-44ac-aef3-0cd24e0ec206" class="confluenceTd"><p local-id="56e31ac693e3">JWT principal recebido do Clerk</p></td></tr><tr data-local-id="e6ca8087-5d53-4732-9357-289531afbd20"><td data-local-id="61f8929b-cd6b-4c3e-8b48-01d57cd179e2" class="confluenceTd"><p local-id="9a4595e48179">3</p></td><td data-local-id="06078d8d-88c6-4b90-bb1e-5ce5043fcaa5" class="confluenceTd"><p local-id="79a4e6ce06d1">backendToken</p></td><td data-local-id="ab1b03ee-c681-4553-b1fb-187bc955d73b" class="confluenceTd"><p local-id="f0c034e20771">String</p></td><td data-local-id="46c842a5-cbfc-4028-b148-a7dc3feea939" class="confluenceTd"><p local-id="ca16fd53701d">privado</p></td><td data-local-id="fa0637c8-95c8-4749-b8d9-38da1beabb9a" class="confluenceTd"><p local-id="05c83c75cfc1">Token interno utilizado pela API</p></td></tr><tr data-local-id="647f2e88-0c0b-443d-9541-7896cb8d575a"><td data-local-id="24b44e08-8506-4b29-abab-a4af222ff9fb" class="confluenceTd"><p local-id="13d7d2c4a28f">4</p></td><td data-local-id="25da690d-80e2-4b3e-b069-d718dfe1fe47" class="confluenceTd"><p local-id="47703acd7c17">refreshToken</p></td><td data-local-id="0bebaad7-db05-4f76-97cb-8c5768bca791" class="confluenceTd"><p local-id="4023bd0a5c50">String</p></td><td data-local-id="e77bca66-f733-4f1c-ad3e-76ba87a3e666" class="confluenceTd"><p local-id="6babd2a83594">privado</p></td><td data-local-id="696f916d-b605-434d-87e0-301280461134" class="confluenceTd"><p local-id="af50b4d95399">Token utilizado para renovação</p></td></tr><tr data-local-id="1eb2b420-5300-4c12-8752-4f03582a4fa3"><td data-local-id="5279cf28-522a-4520-87e5-c7ad686f4abd" class="confluenceTd"><p local-id="4065b50d6dd6">5</p></td><td data-local-id="db845319-3731-4106-b9a9-b3256ff46399" class="confluenceTd"><p local-id="ad6f6c9177fa">claims</p></td><td data-local-id="6f644ba4-a100-4885-95f4-fed82698ae0e" class="confluenceTd"><p local-id="5f32cdc73b27">Map&lt;String,Object&gt;</p></td><td data-local-id="e0e76d99-2e1d-44e7-90a4-21de73fbd86b" class="confluenceTd"><p local-id="49c492c7f516">privado</p></td><td data-local-id="70f1dc3f-5b92-4bef-a5f5-effe3d105a46" class="confluenceTd"><p local-id="6f821869d9f2">Claims extraídos do JWT</p></td></tr><tr data-local-id="9f96b6d0-ab33-4019-a18d-afdb6a9810c9"><td data-local-id="bd3a48b6-0ad0-424a-b45c-1d4c382b3fce" class="confluenceTd"><p local-id="df00b29d22b9">6</p></td><td data-local-id="4de8f024-8692-44bb-bea8-1ded4c757f90" class="confluenceTd"><p local-id="9bbe32b93e72">metadata</p></td><td data-local-id="a383a9e3-1d95-4f7c-b6c4-21c4d4792948" class="confluenceTd"><p local-id="ec22bdef7300">Map&lt;String,Object&gt;</p></td><td data-local-id="884ee8d5-ae1e-4342-99a9-e80e68a9282b" class="confluenceTd"><p local-id="d8bf6e842115">privado</p></td><td data-local-id="f7fe22b5-d885-4048-a7af-61ba522689aa" class="confluenceTd"><p local-id="2979d2b80478">Metadados customizados do usuário</p></td></tr><tr data-local-id="85be711b-039c-48df-8d58-ba912abdbc58"><td data-local-id="54fdce4c-7170-44a1-bae2-992d8200230f" class="confluenceTd"><p local-id="2ba21efe5e81">7</p></td><td data-local-id="05aa017a-873a-4b67-9f69-7409e55252c1" class="confluenceTd"><p local-id="ed01024bc9cd">role</p></td><td data-local-id="f0c3503a-254b-482e-958f-085bf4735be7" class="confluenceTd"><p local-id="2904ac72b11b">String</p></td><td data-local-id="0eb0854e-7f13-4420-97f6-4da8fedf2554" class="confluenceTd"><p local-id="e24e69eae2a0">privado</p></td><td data-local-id="c9daa791-6a9f-4981-8456-9770e3fc7c1e" class="confluenceTd"><p local-id="cfa6f0f84384">Perfil do usuário</p></td></tr><tr data-local-id="4ec817d3-70de-4729-96c6-00471d4bbc25"><td data-local-id="b812136d-b14a-4360-acff-148accacbe8f" class="confluenceTd"><p local-id="385fecea805c">8</p></td><td data-local-id="8b6ee6c9-75db-4038-a341-531deadacda6" class="confluenceTd"><p local-id="718875a54457">permissoes</p></td><td data-local-id="a19bbf82-9872-48c8-9c20-785371bfa982" class="confluenceTd"><p local-id="ada94b93fde3">List&lt;String&gt;</p></td><td data-local-id="4c6973cd-0f58-4164-9725-405a02704b0e" class="confluenceTd"><p local-id="da5eddf8872e">privado</p></td><td data-local-id="41b0b15b-248f-4f58-b678-1ca2915d997e" class="confluenceTd"><p local-id="35116e21815d">Permissões derivadas da role</p></td></tr><tr data-local-id="a3246fe2-20d7-417b-b40a-87bf99cd58cb"><td data-local-id="febfe5b9-3dc7-40bd-a180-53680fe6b9e5" class="confluenceTd"><p local-id="b79279b83c20">9</p></td><td data-local-id="f6cfe5ab-e585-41ce-a1fb-1e6e65e08c62" class="confluenceTd"><p local-id="9f80ff29770a">tenantId</p></td><td data-local-id="caefca28-7b79-4874-85e2-7183941d9a50" class="confluenceTd"><p local-id="c7c13dc1a742">String</p></td><td data-local-id="31ee6016-806e-4d14-8979-db12312cd5b0" class="confluenceTd"><p local-id="88d368f1553f">privado</p></td><td data-local-id="8bd9fe04-d9e0-4348-8b4f-2406cafc339b" class="confluenceTd"><p local-id="ecb8cf0a666a">CNPJ utilizado para isolamento dos dados</p></td></tr><tr data-local-id="6a47bcfc-9865-4fcf-8dc1-76b47595283e"><td data-local-id="9e89327c-c077-4ccc-a90b-b034ab6910b6" class="confluenceTd"><p local-id="2778fe67aa95">10</p></td><td data-local-id="079550a8-534c-47bb-8227-c768ba320190" class="confluenceTd"><p local-id="07397c9ccdc2">planoAssinatura</p></td><td data-local-id="1cc47094-cc81-40e4-872b-0ddc85b97340" class="confluenceTd"><p local-id="3570a7d49509">String</p></td><td data-local-id="d437d5ca-91cb-499f-a3cc-fcbdb2d4b119" class="confluenceTd"><p local-id="eb3197701f6a">privado</p></td><td data-local-id="5db0248b-b4bc-45f8-9098-15b884b656c8" class="confluenceTd"><p local-id="92ecf4e1178d">Plano contratado da empresa</p></td></tr><tr data-local-id="180e7862-1cf5-48e8-a304-65ed858dad98"><td data-local-id="dd34154c-8288-4d86-9111-369836b2dfc4" class="confluenceTd"><p local-id="c946e5954357">11</p></td><td data-local-id="393b6c65-3cbc-4cd6-b698-90cfc6dbbfac" class="confluenceTd"><p local-id="ff438621f30b">issuedAt</p></td><td data-local-id="fadb6ea7-da96-4614-80f6-252012cbe132" class="confluenceTd"><p local-id="857caa3d7568">DateTime</p></td><td data-local-id="d3f6ad39-8cb9-4db1-af5f-6f05bd73192c" class="confluenceTd"><p local-id="adfc2bd67e68">privado</p></td><td data-local-id="355add3f-e1da-4541-ac06-d547075a6712" class="confluenceTd"><p local-id="a8d6e3debcf7">Data de emissão do token</p></td></tr><tr data-local-id="d76d33cb-6e8c-47a0-b8f8-f4f1b5c6563f"><td data-local-id="3e6d0ad6-5a24-48ad-9787-29239fd39e45" class="confluenceTd"><p local-id="9dd056fddda5">12</p></td><td data-local-id="baf2ebb4-5b47-4595-a379-007f56f191ea" class="confluenceTd"><p local-id="b82ab43b3c7f">expiresAt</p></td><td data-local-id="9df057b5-080e-4a4e-a091-f28232bbc2c5" class="confluenceTd"><p local-id="f558ac34ba61">DateTime</p></td><td data-local-id="d1f56aee-8277-4134-8f40-f91c3e3c43f9" class="confluenceTd"><p local-id="1d41f0cef5c6">privado</p></td><td data-local-id="3c968462-e79a-46d0-a8dd-e69f33971b0b" class="confluenceTd"><p local-id="14ff43585d9d">Data de expiração</p></td></tr><tr data-local-id="b2db168c-2f3d-4c21-8c74-198bd8b750ab"><td data-local-id="b1bf59a9-6365-4a25-87de-5c779f31f8c5" class="confluenceTd"><p local-id="14aa1d5f3f98">13</p></td><td data-local-id="eceb2f52-b35e-4613-b6a3-d2e7f34b35b5" class="confluenceTd"><p local-id="f4e28e46f0b9">autenticado</p></td><td data-local-id="a8698178-49f9-4105-9b0f-b62ad612b353" class="confluenceTd"><p local-id="ac24a984b2c0">Boolean</p></td><td data-local-id="3ffabd4a-6637-4240-8569-6873b311b7be" class="confluenceTd"><p local-id="9b554a16514c">privado</p></td><td data-local-id="b83a20e6-0004-4f4b-93f8-0b27f985793a" class="confluenceTd"><p local-id="b04693947e11">Estado atual da autenticação</p></td></tr><tr data-local-id="1d52f45d-0ca5-46b2-b46e-ef849f1d6949"><td data-local-id="6b358314-d0bc-408f-bde9-4aaf8d977ab9" class="confluenceTd"><p local-id="68a51470c0bb">14</p></td><td data-local-id="30b4e3df-b2c0-43c6-a4f1-cfc57f818fef" class="confluenceTd"><p local-id="158fabe8766d">ultimoRefresh</p></td><td data-local-id="878a47e4-f23e-490d-8e68-92964d6fc8b9" class="confluenceTd"><p local-id="14b8f160c53e">DateTime</p></td><td data-local-id="fa5ca9fb-ee44-43c1-8d4a-af650272b87e" class="confluenceTd"><p local-id="d5102a089f32">privado</p></td><td data-local-id="929a2796-687c-4a58-9e05-37177e7be8b9" class="confluenceTd"><p local-id="524672abfd69">Última renovação realizada</p></td></tr></tbody></table></div><hr local-id="01cfbdac-9501-4370-a0d8-21d1ea8f7836"/><h1 local-id="e491c5cd9f83" id="Classe:AuthenticationManager-Métodos">Métodos</h1><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="c8d1cae7-828d-438e-a92a-295f75004c17" class="confluenceTable"><tbody><tr data-local-id="a025a117-e163-469c-8d3f-a476aadf674e"><th data-local-id="b9a57cea-2c53-4a3b-968e-4e01947d8ae4" class="confluenceTh"><p local-id="28c48771fee8">#</p></th><th data-local-id="ed89f58f-15c1-4bc3-93f5-4e5cee217917" class="confluenceTh"><p local-id="616a50984606">Método</p></th><th data-local-id="90b0c8e9-a180-469f-b675-ca0674b232bf" class="confluenceTh"><p local-id="8e6ad8342788">Retorno</p></th><th data-local-id="5d2ac909-c063-475b-8e30-5fe9f5292a56" class="confluenceTh"><p local-id="fcfd1f0c4d5c">Visibilidade</p></th><th data-local-id="69f1bdf0-5212-4322-aff4-1e8e0e825ecc" class="confluenceTh"><p local-id="a81e93025378">Descrição</p></th></tr><tr data-local-id="588997d8-dd57-496b-a04d-328b74208d83"><td data-local-id="460ea00b-8b2d-4708-924d-679c00c03ba0" class="confluenceTd"><p local-id="7e1acae51dec">1</p></td><td data-local-id="aea81545-4683-4a7e-b6a6-7319dc911426" class="confluenceTd"><p local-id="5ffbb36037cd">carregarToken(jwt: String)</p></td><td data-local-id="041023f3-6182-48bc-b6ab-32b1aeffa503" class="confluenceTd"><p local-id="bd99d78af9fe">void</p></td><td data-local-id="c8c71c4f-ca86-4fdf-9589-8529514bdb7b" class="confluenceTd"><p local-id="8d7dfd3c7bbf">público</p></td><td data-local-id="9d8fa47f-b9d2-4d74-a88f-5f413f35daeb" class="confluenceTd"><p local-id="548a2148ea76">Carrega e processa um token recebido do Clerk</p></td></tr><tr data-local-id="fa7534c5-0fac-43dc-aa3b-a290fd3c48a9"><td data-local-id="59c0c93b-1c31-4a88-a796-d015f5343a5b" class="confluenceTd"><p local-id="becb15fc8e13">2</p></td><td data-local-id="27fb65e6-cebd-4709-813c-ed91b0676562" class="confluenceTd"><p local-id="78d718af071d">extrairClaims()</p></td><td data-local-id="4e98ea93-bfd3-42f7-bdd0-bc1f91bd16fb" class="confluenceTd"><p local-id="7078d42fb109">Map&lt;String,Object&gt;</p></td><td data-local-id="cdfaf573-32a0-4a06-80cb-e7b65c7e417e" class="confluenceTd"><p local-id="97bf9d1897b8">público</p></td><td data-local-id="c1ae07a4-06b2-4fe0-9853-9e1e83e22759" class="confluenceTd"><p local-id="80acff7a1970">Extrai claims do JWT</p></td></tr><tr data-local-id="56a2e90e-7677-4ccb-af87-8fd0033045a3"><td data-local-id="17b0f632-0ab9-4e00-82ae-8862d2c7f8ce" class="confluenceTd"><p local-id="80de610209d8">3</p></td><td data-local-id="f9a84c51-6eb0-4337-a743-d98457fc47d2" class="confluenceTd"><p local-id="3bf40cfa4572">obterRole()</p></td><td data-local-id="c1ea238a-5594-4673-b3f7-cb2e50b16c20" class="confluenceTd"><p local-id="82e097c32014">String</p></td><td data-local-id="6c1e696c-78c1-4ff2-9b61-de695cfa9305" class="confluenceTd"><p local-id="5b68caa3d747">público</p></td><td data-local-id="bc1ea414-67bc-453a-b18d-65fc4b72da51" class="confluenceTd"><p local-id="62e2c1bd4e2e">Retorna o perfil autenticado</p></td></tr><tr data-local-id="1cb8a1c7-e672-4f09-9c4f-89c3c3a9d431"><td data-local-id="1414e86f-f632-45b2-8be5-9b685a56fbf2" class="confluenceTd"><p local-id="7ce5aa15c23e">4</p></td><td data-local-id="69587b47-ef4c-4da5-a401-24a503ca5b1e" class="confluenceTd"><p local-id="2929628b5cbe">obterPermissoes()</p></td><td data-local-id="8385a43a-d4f4-47e8-b347-b0c340bad6a4" class="confluenceTd"><p local-id="de5557746cff">List&lt;String&gt;</p></td><td data-local-id="9929a0d9-e99e-428c-bca6-362cf6a49be3" class="confluenceTd"><p local-id="937fa956bc6a">público</p></td><td data-local-id="3e7f5b1c-c9bf-4750-8d7b-3edc1003245c" class="confluenceTd"><p local-id="6da11ded9662">Retorna permissões derivadas</p></td></tr><tr data-local-id="0ecf9bcb-f099-4c71-bb92-5cc4c63795f6"><td data-local-id="f471a2d3-23da-4c72-a9d6-d033107ff676" class="confluenceTd"><p local-id="c9318fabaf09">5</p></td><td data-local-id="91d5035f-a3d3-4a97-b752-b657a30af7dc" class="confluenceTd"><p local-id="d21c11e63ce6">obterTenantId()</p></td><td data-local-id="c894ffc1-ff22-414e-a9c6-e0939d1fbd9f" class="confluenceTd"><p local-id="0424b45af625">String</p></td><td data-local-id="fa5f5712-7041-440e-8b02-59c40adc2d48" class="confluenceTd"><p local-id="a0931f998a93">público</p></td><td data-local-id="ff4fc39e-da13-4fa5-a089-3bc20366afdd" class="confluenceTd"><p local-id="6c4ff5091732">Retorna o identificador do tenant</p></td></tr><tr data-local-id="52055fe8-1d00-45c9-a827-385e955c2885"><td data-local-id="33207a09-ea3d-49f4-b828-c243ca895344" class="confluenceTd"><p local-id="ee766155bf1e">6</p></td><td data-local-id="454fc89a-a727-4ef2-8719-88269119f5a1" class="confluenceTd"><p local-id="96420634dda0">obterPlanoAssinatura()</p></td><td data-local-id="ab19e50b-e83b-4103-ac97-d791398f7115" class="confluenceTd"><p local-id="6999b7619eaf">String</p></td><td data-local-id="639a3c59-7701-49ed-94a9-820aab31ac99" class="confluenceTd"><p local-id="95a5181605bc">público</p></td><td data-local-id="8ee2e36b-92a6-4b7e-837f-db6f37d8fdff" class="confluenceTd"><p local-id="019ce4015b1c">Retorna o plano associado</p></td></tr><tr data-local-id="362c1326-aa35-4b99-a59b-3ae99ddb57ce"><td data-local-id="c40e1e9a-a184-42b5-8481-c7dee134d77c" class="confluenceTd"><p local-id="dd42f3f528c2">7</p></td><td data-local-id="83c66795-b827-4229-9e68-6e07c2ad1577" class="confluenceTd"><p local-id="42d7d6f79253">validarToken()</p></td><td data-local-id="464423f3-c557-4169-94f7-5807eece6ed0" class="confluenceTd"><p local-id="c22f23c9ad37">Boolean</p></td><td data-local-id="8390620b-42c3-4d9d-96ec-fb73a678c191" class="confluenceTd"><p local-id="9c48ae21c569">público</p></td><td data-local-id="db744ed8-2d7c-46cb-bc3e-f6e0f11636df" class="confluenceTd"><p local-id="b942ff4b26c0">Verifica assinatura e expiração</p></td></tr><tr data-local-id="dde0625f-9492-4e79-be00-5e14d5d04693"><td data-local-id="86a29b79-4a9f-472d-9a87-4f47518a6e89" class="confluenceTd"><p local-id="b064fc8826a6">8</p></td><td data-local-id="bc1b7935-b633-42cb-a6c0-82d68fddd414" class="confluenceTd"><p local-id="e0aeee56eff6">validarPermissao(permissao: String)</p></td><td data-local-id="a64565af-1d7c-4422-a876-906006668535" class="confluenceTd"><p local-id="d5c656be84f2">Boolean</p></td><td data-local-id="b78faef3-39fb-4bf2-920c-a14ccab0153f" class="confluenceTd"><p local-id="1c86cc6f972f">público</p></td><td data-local-id="e3435e5c-a109-4886-ae74-5f2fb4465664" class="confluenceTd"><p local-id="274637279282">Verifica autorização</p></td></tr><tr data-local-id="7befc5c2-cf65-454e-9a8d-90d3d5cb49b2"><td data-local-id="4bdb8555-9f54-48cd-919d-c22fa74e1954" class="confluenceTd"><p local-id="bee226b03e97">9</p></td><td data-local-id="4bacd4e3-689c-4fbf-abea-85e52e91d0f3" class="confluenceTd"><p local-id="34301cd45aee">renovarToken()</p></td><td data-local-id="e3e8f410-47a8-4eb7-b56d-3e1e207dd449" class="confluenceTd"><p local-id="9ced5e2725d7">void</p></td><td data-local-id="f68b26f1-7fe0-40c7-895f-4ccf9e2fca9d" class="confluenceTd"><p local-id="ccd5bf4c06f6">público</p></td><td data-local-id="6edbbae6-cd0d-44df-855f-5891f5e77588" class="confluenceTd"><p local-id="8c696229b67d">Executa renovação da sessão</p></td></tr><tr data-local-id="3d9e2dd3-31c4-4f92-8df7-fd9ad7245b71"><td data-local-id="71784fa6-2736-466e-a381-f62d9f3a2d88" class="confluenceTd"><p local-id="b9480c9d4278">10</p></td><td data-local-id="cd7801fe-7829-42db-8a52-f5897b899de8" class="confluenceTd"><p local-id="e2a84142035c">invalidarSessao()</p></td><td data-local-id="c82c8cb2-4125-42b6-979e-cfa897e0a511" class="confluenceTd"><p local-id="bd08be038605">void</p></td><td data-local-id="523cc96f-34e8-43ba-86a3-ddcf11afa5b7" class="confluenceTd"><p local-id="60697cb903fc">público</p></td><td data-local-id="8fb09899-3bef-4399-9531-42da43bfa2e6" class="confluenceTd"><p local-id="3ba675df9446">Remove sessão autenticada</p></td></tr><tr data-local-id="7edda579-67de-4cbd-8742-668076f12587"><td data-local-id="100a893f-e991-4ef9-80d3-36a72051bf84" class="confluenceTd"><p local-id="df60109b60bf">11</p></td><td data-local-id="efdc2aed-b40f-483b-8d20-a9d8f0ffb203" class="confluenceTd"><p local-id="7daa37be3b87">compartilharContexto()</p></td><td data-local-id="4b236c9e-b034-4f55-8ae1-5dd2c2465263" class="confluenceTd"><p local-id="7639e5e4c14b">ContextoAutenticacao</p></td><td data-local-id="4ae1e56f-7bee-41fc-8f20-34776f4677cb" class="confluenceTd"><p local-id="e3ab44a09447">público</p></td><td data-local-id="ffad9b66-84ea-482e-a71a-c529070e6a2e" class="confluenceTd"><p local-id="cb41141cd93d">Disponibiliza contexto autenticado para outros módulos</p></td></tr><tr data-local-id="4d693ead-216d-400b-b465-d027b141ede8"><td data-local-id="56e29010-9759-4e99-9ef8-440f2113739b" class="confluenceTd"><p local-id="912b4e6c0817">12</p></td><td data-local-id="e34126be-cf55-4d1a-90ab-68bd7bad5202" class="confluenceTd"><p local-id="4c69acd0851c">atualizarMetadata(metadata: Map&lt;String,Object&gt;)</p></td><td data-local-id="825f8d4e-9685-4e29-9be1-37472ca367d7" class="confluenceTd"><p local-id="b2e009bc5875">void</p></td><td data-local-id="81208feb-2ab3-486a-942e-47d0c26f2d1d" class="confluenceTd"><p local-id="7c3042257b9c">público</p></td><td data-local-id="15dbf0b5-f447-44ff-90dd-9de08de5a5b2" class="confluenceTd"><p local-id="9d2877ea50f0">Atualiza metadados recebidos</p></td></tr><tr data-local-id="cfc46b37-72b8-4553-977a-374cfa0558a7"><td data-local-id="05a0c231-d550-4852-85e9-824496dc6544" class="confluenceTd"><p local-id="736615a1b9ad">13</p></td><td data-local-id="eb2e09c5-a06c-49ac-b125-6f1cc7829f99" class="confluenceTd"><p local-id="b14915bc12d8">obterClaimsCustomizadas()</p></td><td data-local-id="c36e8f2e-2bfb-4b8f-8630-b6b8c6e1a9dc" class="confluenceTd"><p local-id="66dc3dc3d6ab">Map&lt;String,Object&gt;</p></td><td data-local-id="fe4f84db-c315-488d-a029-799d076bdcbd" class="confluenceTd"><p local-id="d269d11f3d9c">público</p></td><td data-local-id="dec48708-6ec6-4a60-8b7f-b5956b57eea6" class="confluenceTd"><p local-id="9a1e17452687">Retorna claims personalizadas</p></td></tr><tr data-local-id="a940f0b4-3ba0-410c-a32c-51b1d43844c1"><td data-local-id="5b7129e8-b877-42e3-845a-3155252c171e" class="confluenceTd"><p local-id="b85958f61fdb">14</p></td><td data-local-id="14ef8482-4144-4ba6-a782-f724f184a62e" class="confluenceTd"><p local-id="68f58d2507bf">estaAutenticado()</p></td><td data-local-id="c69d4c50-3dee-4183-98d4-fbc82f21bf13" class="confluenceTd"><p local-id="f79e4eacd5d7">Boolean</p></td><td data-local-id="0e3c64ae-e09a-4092-a9eb-79c46b33eedf" class="confluenceTd"><p local-id="cdc4d473f051">público</p></td><td data-local-id="764c58a0-77d6-49c8-ab8b-b142a94b92c9" class="confluenceTd"><p local-id="d2e5ad9eee85">Verifica estado atual da autenticação</p></td></tr></tbody></table></div><hr local-id="179cfd38-6bed-4b03-9493-253520bdde4a"/><h1 local-id="15b442c71ea2" id="Classe:AuthenticationManager-ClasseAuthenticationManager.puml">Classe AuthenticationManager.puml</h1><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml AuthenticationManager
+
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #333333
+skinparam classAttributeFontColor #000000
+skinparam classFontColor #000000
+skinparam classFontSize 13
+skinparam classAttributeFontSize 13
+skinparam linetype ortho
+skinparam padding 8
+skinparam roundcorner 8
+
+class AuthenticationManager {
+
+  .. Atributos ..
+
+  &lt;b&gt;- sessionId&lt;/b&gt; : String
+
+  &lt;b&gt;- accessToken&lt;/b&gt; : String
+
+  &lt;b&gt;- backendToken&lt;/b&gt; : String
+
+  &lt;b&gt;- refreshToken&lt;/b&gt; : String
+
+  &lt;b&gt;- claims&lt;/b&gt; : Map&lt;String,Object&gt;
+
+  &lt;b&gt;- metadata&lt;/b&gt; : Map&lt;String,Object&gt;
+
+  &lt;b&gt;- role&lt;/b&gt; : String
+
+  &lt;b&gt;- permissoes&lt;/b&gt; : List&lt;String&gt;
+
+  &lt;b&gt;- tenantId&lt;/b&gt; : String
+
+  &lt;b&gt;- planoAssinatura&lt;/b&gt; : String
+
+  &lt;b&gt;- issuedAt&lt;/b&gt; : DateTime
+
+  &lt;b&gt;- expiresAt&lt;/b&gt; : DateTime
+
+  &lt;b&gt;- autenticado&lt;/b&gt; : Boolean
+
+  &lt;b&gt;- ultimoRefresh&lt;/b&gt; : DateTime
+
+  .. Métodos ..
+
+  carregarToken(jwt : String) : void
+
+  extrairClaims() : Map&lt;String,Object&gt;
+
+  obterRole() : String
+
+  obterPermissoes() : List&lt;String&gt;
+
+  obterTenantId() : String
+
+  obterPlanoAssinatura() : String
+
+  validarToken() : Boolean
+
+  validarPermissao(permissao : String) : Boolean
+
+  renovarToken() : void
+
+  invalidarSessao() : void
+
+  compartilharContexto() : ContextoAutenticacao
+
+  atualizarMetadata(metadata : Map&lt;String,Object&gt;) : void
+
+  obterClaimsCustomizadas() : Map&lt;String,Object&gt;
+
+  estaAutenticado() : Boolean
+
+}
+
+@enduml</pre>
+</div></div><h3 local-id="f3528fc403b6" id="Classe:AuthenticationManager-Comoelaseencaixanoseudomínio">Como ela se encaixa no seu domínio</h3><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Frontend
+    │
+    ▼
+AuthenticationManager
+    │
+    ├── ClerkService
+    │      │
+    │      ▼
+    │  ClerkHTTPHandler
+    │
+    ├── NotifyAuth2Factor
+    │
+    ├── UserService
+    │
+    └── LLMService</pre>
+</div></div><p local-id="7553cbc4fa30">Na prática, o <code>AuthenticationManager</code> vira o <strong>guardião da sessão autenticada</strong> do LogViewer. Nenhum módulo precisaria conhecer JWT, Clerk, Claims ou Metadata diretamente; todos consumiriam apenas o contexto autenticado fornecido por ele. Isso normalmente é o desenho utilizado em plataformas SaaS multi-tenant com RBAC, exatamente o cenário que seu LogViewer está seguindo.</p>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

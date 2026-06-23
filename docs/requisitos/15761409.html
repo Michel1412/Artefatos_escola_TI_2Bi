@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Regras de Negócios - Final</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="12091393.html">Regras de Negócios</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Regras de Negócios - Final
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified by <span class='editor'> Michel Bocchi Junior</span> on mar. 25, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h3 local-id="e9ba74cdbc66" id="RegrasdeNegócios-Final-RegrasdeNegócio(RN)">Regras de Negócio (RN)</h3><p local-id="9b3758567956"><em>Lógicas, fluxos obrigatórios e restrições comerciais do sistema.</em></p><p local-id="66931895c305"><strong>Gestão de Usuários, Planos e Sistemas</strong></p><ul local-id="2bde927c-2ab0-47ed-9dae-f6297446de80"><li local-id="0d26bc87-3814-4b30-8f71-14c9487b444c"><p local-id="eebe468647dc"><strong>RN-01 (Identidade e Precificação):</strong> Todo usuário base é um CNPJ. Ele pode cadastrar múltiplos sistemas. O preço da assinatura (fixo ou negociável via API de pagamento) aumenta proporcionalmente a cada novo sistema adicionado.</p></li><li local-id="b218021a-3216-402e-86ec-0cd477566c86"><p local-id="f44c421b6504"><strong>RN-02 (Tokens e Isolamento):</strong> Os tokens de integração da SDK devem ser únicos por sistema cadastrado.</p></li><li local-id="bc509602-9f8f-442a-b638-0383b99b6899"><p local-id="8f083b4ccf81"><strong>RN-03 (Exigência de 2FA):</strong> Usuários que ativarem a Autenticação de Dois Fatores (2FA) pelo painel Web são obrigados a ter o aplicativo mobile instalado para aprovação.</p></li><li local-id="6036a92eac84"><p local-id="728992c75f0d"><strong>RN-13 (Gestão de assinatura): </strong>Apenas usuários administradores podem gerenciar assinaturas.</p></li><li local-id="da9d656f-dfbe-4138-8f02-dc647cd60e4c"><p local-id="c1c541881247"><strong>RN-14 (Login 2FA Web): </strong>Para acesso com 2FA via Web, é obrigatória uma validação adicional via aplicativo mobile.</p></li><li local-id="1f3ee76f-165b-4052-a2ef-7894e8cb7b95"><p local-id="57b64256981d"><strong>RN-15 (Confirmação obrigatória): </strong>O login Web só é concluído após aprovação explícita no aplicativo.</p></li><li local-id="3f2bf198-76ea-4ec1-b4ec-adaa7530e77e"><p local-id="baa4fbf925a1"><strong>RN-16 (Registro de atividade suspeita): </strong>O sistema deve registrar tentativas rejeitadas como possíveis eventos de segurança, em caso de 5  tentativas dentro de 30 min.</p></li><li local-id="de9562e4-1be9-4896-b718-c31346b6c8fa"><p local-id="c02815b7616c"><strong>RN-17 (Tempo de aprovação): </strong>Solicitações de aprovação devem possuir tempo de expiração de 5 minutos.</p></li><li local-id="0a0ed033d542"><p local-id="56e86f216c9f"><strong>RN-18 (Gestão exclusiva):</strong> Apenas usuários administradores podem gerenciar assinaturas</p></li></ul><p local-id="65a75d5b19c4"><strong>Processamento e Inteligência Contextual</strong></p><ul local-id="3620ff33-6692-4cac-9b1d-f46777effa91"><li local-id="f8421888-9ed9-4af5-8bee-fb7806f87541"><p local-id="7f7b76787d97"><strong>RN-04 (Inteligência Contextual e Tipificação):</strong> Quando um log é capturado, a IA cruza o erro com o Contexto configurado (ramo, stack, criticidade). O erro é classificado e salvo com as seguintes informações obrigatórias: <em>Timestamp, Tipo_do_Erro, Conteúdo_do_Log e Contexto_Aplicado</em>.</p></li><li local-id="2365f98c-a683-478d-b6e3-a75445d842f9"><p local-id="b37672f436f3"><strong>RN-05 (Prevenção de Dados Sensíveis):</strong> O sistema deve validar ativamente e ofuscar credenciais ou senhas vazadas nos logs antes da persistência.</p></li></ul><p local-id="deeafbda481c"><strong>Interação com IA e Fluxo de Solução</strong></p><ul local-id="9f026463-b852-4339-828b-e20f7488d107"><li local-id="a2fdb52d-76b6-434a-ad94-55771540b814"><p local-id="143ccca0c12e"><strong>RN-06 (Sugestão Passiva por Consentimento):</strong> O sistema NÃO aplica correções automaticamente. Ele deve apenas apresentar uma solução sugerida (ex: <em>&quot;Deseja receber uma possível solução para o erro X?&quot;</em>) e disponibilizar o link para o ambiente do Agente.</p></li><li local-id="e3ff1149-122f-4175-a308-34da5772da42"><p local-id="abb2815afda0"><strong>RN-07 (Mudança de Status via IA):</strong> Ao solicitar/aceitar uma solução através do LLM, o status do erro muda automaticamente de &quot;Não Solucionado&quot; para &quot;Solucionado&quot;.</p></li></ul><p local-id="41a0c28f7011"><strong>Notificações e Alertas</strong></p><ul local-id="c5aba9db-a253-4f6f-a092-e8a70514aed7"><li local-id="dd036403-1767-4f9f-9e51-c090e227f7ed"><p local-id="43a862417c16"><strong>RN-08 (Notificação Multicanal Obrigatória):</strong> Todo erro processado segue o fluxo: <em>Identificação → Persistência → Alerta</em>. Alertas assíncronos vão para E-mail e Push Mobile (especialmente situações emergenciais). Alertas síncronos aparecem em tempo real via WebSockets no Dashboard Web (Toasts/Modais).</p></li><li local-id="815792dd-c101-4fb7-aa59-afcb4db3d030"><p local-id="f7a6bf2a65b6"><strong>RN-09 (Silenciamento/Fadiga de Alerta):</strong> Se um mesmo erro ocorrer repetidamente num intervalo de 5 minutos, as notificações de e-mail devem ser agrupadas num único resumo.</p></li></ul><p local-id="eaa97df354e7"><strong>Dashboards, Filtros e Relatórios</strong></p><ul local-id="fade8f4b-3204-4592-a536-d31415d4b68a"><li local-id="4bb306e7-f200-4e7d-b6e6-3305015037fa"><p local-id="6c179aaca875"><strong>RN-10 (Visões do Dashboard):</strong> O Dashboard deve exibir dados consolidados, sugestões de problemas recorrentes e possuir um filtro mestre para visualizar dados de um sistema específico ou &quot;multi-sistemas&quot;.</p></li><li local-id="0b15ee79-5d44-4ed2-8c6d-5dc387a863fa"><p local-id="b3efae03e3bb"><strong>RN-11 (Busca e Exportação):</strong> A barra de pesquisa deve buscar em todo o histórico armazenado. Os relatórios gerados a partir dessas buscas ou dashboards podem ser exportados para PDF e Excel.</p></li><li local-id="9573c0b8-f542-439c-9427-3103855743ed"><p local-id="2f5f74381ad6"><strong>RN-12 (Gestão de Marcadores):</strong> O usuário pode usar marcadores padrão do sistema (Solucionado, Pendente, Arquivado, Ignorado) ou criar marcadores personalizados (estilo labels de e-mail) para organizar a caixa de erros.</p></li></ul>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

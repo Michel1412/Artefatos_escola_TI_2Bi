@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 14: Gerar e Exportar Relatórios Multi-sistemas</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 14: Gerar e Exportar Relatórios Multi-sistemas
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified on mar. 30, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="a0f3539a590b">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-31" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-31" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-31</a>
+                    -
+            <span class="summary">Caso de Uso - 14: Gerar e Exportar Relatórios Multi-sistemas</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+ </p><p local-id="362dfbf02cdb"><strong>Itens associados:</strong></p><p local-id="2e1c24e51eaa"><strong>Regras de Negócio:</strong></p><ul local-id="a761d2e7ac4b"><li local-id="552eb48aebfc"><p local-id="245370a71e78"><strong>RN-01:</strong> Identidade e Precificação. Todo usuário base é um CNPJ, podendo ele ter múltiplos sistemas cadastrados debaixo deste identificador.     </p></li><li local-id="a740602dd7bc"><p local-id="f5b69733510b"><strong>RN-10: </strong>Visões do Dashboard. O Dashboard deve exibir dados consolidados de todos os sistemas, possuindo um filtro mestre para visualizar o agregado de &quot;multi-sistemas&quot;.     </p></li><li local-id="f2c777d4a52d"><p local-id="0fde253c2af7"><strong>RN-11:</strong> Busca e Exportação. Os relatórios gerados a partir do histórico consolidado devem poder ser exportados nativamente para PDF e Excel.</p></li></ul><p local-id="abbf231fa736"><strong>Requisitos Funcionais:</strong></p><ul local-id="30f9ed177542"><li local-id="4cd93b2a9d52"><p local-id="e6c816fd5f54"><strong>RF-20:</strong> O Sistema deve conter uma página de relatório unificada para multi-sistemas.     </p></li><li local-id="1c5e617a6f7c"><p local-id="6dcd7c7e31b9"><strong>RF-24:</strong> O Sistema deve exportar relatórios para PDF e Excel.</p></li></ul><p local-id="3929156d61c8"><strong>Requisitos Não Funcionais:</strong></p><ul local-id="2ac7dd6f3a66"><li local-id="24498615976f"><p local-id="def2b86c5721"><strong>RNF-04:</strong> O banco de dados principal será o MongoDB (utilização de Aggregation Pipelines para consolidar os dados dos múltiplos sistemas).     </p></li><li local-id="91a02d76ffe4"><p local-id="cd38a92d03d6"><strong>RNF-09:</strong> O desenvolvimento deve ser estritamente orientado a Padrões de Projeto (Arquitetura Hexagonal com Strategy Pattern para exportação).</p></li></ul><p local-id="3a8ac008d2f9"><strong>Nome:</strong> Gerar e Exportar Relatórios Multi-sistemas</p><p local-id="e81d5369f450"><strong>Atores:</strong></p><ul local-id="d3ecb7f83d84"><li local-id="bc65c24d3e52"><p local-id="997992ec8b50">Usuário (Gestor / Administrador)</p></li><li local-id="fcb619d3108f"><p local-id="0e38687895ee">Aplicação Web / Aplicativo Mobile</p></li><li local-id="4468f267fa41"><p local-id="30543ed414f2">Sistema LogViewer (Backend)</p></li><li local-id="51f6235d138a"><p local-id="e93bc5002e57">Banco de Dados (MongoDB)</p></li></ul><p local-id="ce50be6eec73"><strong>Descrição:</strong></p><p local-id="642c83cb4bd2">Permite ao usuário acessar uma visão consolidada de todos os erros de diferentes sistemas atrelados ao seu CNPJ em uma única interface. O usuário pode analisar os dados agregados e solicitar a exportação desse relatório estruturado nos formatos PDF ou Excel para análises externas ou apresentações.</p><p local-id="c6c5a5172aaa"><strong>Pré-condições:</strong></p><ul local-id="8fbab8b01e54"><li local-id="6a4e2a48ea80"><p local-id="7547acf4fa21">Usuário autenticado no sistema (Web ou Mobile).</p></li><li local-id="60d4f273a6b1"><p local-id="db83d9eb2ea5">O CNPJ do usuário possui pelo menos um (idealmente múltiplos) sistemas cadastrados.</p></li><li local-id="c4e0decd5b9d"><p local-id="c617eddc2786">Existem logs armazenados no MongoDB vinculados aos sistemas do CNPJ do usuário.</p></li></ul><p local-id="4ac0a7d37795"><strong>Pós-condições:</strong></p><ul local-id="8f7743e8ccff"><li local-id="d2fc5575440c"><p local-id="951e538ea65d">Os dados agregados multi-sistemas são renderizados em tela (gráficos e tabelas).</p></li><li local-id="f28ae64546b4"><p local-id="ef3b2158b410">Um arquivo digital (PDF ou Excel) contendo o relatório é gerado pelo servidor e disponibilizado para download pelo usuário.</p></li></ul><p local-id="a3d351ee7378"><strong>FLUXO PRINCIPAL 1: VISUALIZAÇÃO DO RELATÓRIO UNIFICADO:</strong></p><ul local-id="4be0e620d45e"><li local-id="8345ca291d92"><p local-id="8f597f9d0fe8">Usuário acessa a aba de &quot;Relatórios Consolidados&quot; (Multi-sistemas).     </p></li><li local-id="daf3aef70a9b"><p local-id="9912f21ea342">Sistema (Frontend) solicita ao Backend os dados analíticos referentes ao CNPJ do usuário.</p></li><li local-id="efe78e0f6c27"><p local-id="27559d553d94">Backend executa uma Aggregation Pipeline no MongoDB agrupando logs por sistema, status e criticidade.     </p></li><li local-id="9791181c89c5"><p local-id="c753d5ed1043"><code>Backend</code> retorna o conjunto de dados consolidados e sumarizados.</p></li><li local-id="37cf80c8ac46"><p local-id="49a68a78e53d">Sistema exibe os gráficos, totalizadores e tabelas comparativas entre os sistemas do usuário.</p></li></ul><p local-id="abad8aae6374"><strong>FLUXO PRINCIPAL 2: EXPORTAÇÃO DE RELATÓRIO (PDF/EXCEL):</strong></p><ul local-id="648d05d2f2d0"><li local-id="79a191ec0b4e"><p local-id="232fda9b3fcf">Usuário visualiza a página de relatório unificada e aplica filtros desejados (ex: últimos 30 dias).</p></li><li local-id="6810131aa7d3"><p local-id="3c012ad7e687">Usuário clica no botão <code>Exportar Relatório</code>.</p></li><li local-id="0233c93fdbd9"><p local-id="6322c1eef10d">Sistema exibe as opções de formato: &quot;PDF&quot; ou &quot;Excel&quot;.</p></li><li local-id="9d2819821c1c"><p local-id="833625ce6733">Usuário seleciona o formato desejado (ex: PDF)</p></li><li local-id="2e750a3e4dce"><p local-id="9bb231179958">Sistema (Frontend) envia a requisição de exportação ao Backend contendo os filtros e o formato desejado</p></li><li local-id="3e7d9e398c28"><p local-id="f2c39c727d96">Backend valida a requisição e busca os dados brutos no MongoDB baseados nos filtros</p></li><li local-id="e953d4e60a2b"><p local-id="ebbe61d1b9a1">Backend aplica o <em>Strategy Pattern</em> no Core Domain para selecionar o Adapter correto (<code>PdfExportAdapter</code> ou <code>ExcelExportAdapter</code>).</p></li><li local-id="fa2be88a14ff"><p local-id="89b6c8d8a1f3">O Adapter correspondente processa os dados e gera um buffer de arquivo na memória do servidor.</p></li><li local-id="cc07267049ba"><p local-id="4907c1e73b52">Backend retorna o arquivo gerado via stream ou link temporário seguro para o Frontend.</p></li><li local-id="6123afba54f4"><p local-id="46aa7f21a142">Sistema realiza o download automático do arquivo no dispositivo do Usuário</p></li></ul><p local-id="1733379c3e53"><strong>FLUXOS ALTERNATIVOS:</strong></p><ul local-id="3ebab8eda5b2"><li local-id="578302a958c8"><p local-id="2afc539b29fa">A1: Nenhum dado disponível para exportação:</p><ul local-id="b4b0bb2f-3acf-46e2-aa9f-e01e9757ac3a"><li local-id="8e234c0f-49fa-47ab-af0f-db4f025b51b1"><p local-id="f7ad78f8cfb2">Usuário tenta exportar um relatório de um período sem logs registrados.</p></li><li local-id="a4764f91-931d-429d-be30-f12439f7a2d3"><p local-id="2c69431c6d06">Backend identifica a ausência de dados antes de acionar o Adapter de exportação.</p></li><li local-id="9608fe08-9d8e-43d5-ae5c-655032df3f97"><p local-id="39bfbcb59e04">Sistema exibe a mensagem: &quot;Não há dados suficientes neste período para gerar o relatório.&quot;</p></li></ul></li><li local-id="b94c8959c515"><p local-id="361f5f090ee6">A2: Falha na geração do arquivo por volume de dados excessivo:</p><ul local-id="2b9f3653e2f4"><li local-id="ec9af193ea3a"><p local-id="c579627871b3">Backend tenta alocar em memória um relatório Excel gigante e atinge o limite (timeout ou out-of-memory).</p></li><li local-id="7b566f9d9c2e"><p local-id="253d40b6c477">Backend cancela a operação e retorna um erro 500 tratado.</p></li><li local-id="175c4eb86577"><p local-id="2b90db3fae39">Sistema exibe interface de erro recomendando que o usuário diminua o intervalo de datas do filtro.</p></li></ul></li></ul><p local-id="c0c7221dcd85"><strong>OBSERVAÇÕES:</strong></p><p local-id="b64d37b9ab85">A geração de arquivos (PDF/Excel) ocorre estritamente no Backend. Isso é uma decisão arquitetural para manter o Baixo PLT (Page Load Time) exigido para a aplicação React Web e evitar travamentos de interface no React Native (Mobile), visto que bibliotecas de renderização de PDF no client-side são pesadas.     O uso do <em>Strategy Pattern</em> facilita a extensibilidade do sistema. Se no futuro o LogViewer precisar exportar relatórios para CSV ou JSON nativo, bastará criar um novo Adapter, sem alterar absolutamente nenhuma linha de código da regra de negócio (Core Domain).     A autenticação do <em>Driving Adapter</em> (rota da API) repassa as credenciais baseadas no Clerk, garantindo que o usuário só baixe logs do seu próprio CNPJ.</p><hr local-id="79774a0d2638"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260327-114305.png" width="760" loading="lazy" src="../attachments/20447233/21037086.png?width=760" data-image-src="../attachments/20447233/21037086.png" data-height="437" data-width="780" data-unresolved-comment-count="0" data-linked-resource-id="21037086" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260327-114305.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="20447233" data-linked-resource-container-version="11" data-media-id="c05aaa4f-98f4-41d8-bd9f-476552d46d14" data-media-type="file"></span><hr local-id="922ad502e455"/><p local-id="4c756757063b">@startuml<br/>left to right direction<br/>skinparam packageStyle rectangle<br/>skinparam usecase {<br/>    BackgroundColor LightCyan<br/>    BorderColor DarkCyan<br/>    ArrowColor DimGray<br/>}</p><p local-id="ac203975459d">actor &quot;Usuário\n(Gestor/Admin)&quot; as User<br/>actor &quot;MongoDB\n&lt;&lt;Database&gt;&gt;&quot; as DB</p><p local-id="341ce739cf03">rectangle &quot;LogViewer - Módulo de Relatórios (Core Domain)&quot; {<br/>    usecase &quot;Visualizar Relatório Unificado\n(Multi-sistemas)&quot; as UC1<br/>    usecase &quot;Aplicar Filtros\n(Data, Criticidade)&quot; as UC2<br/>    usecase &quot;Exportar Relatório&quot; as UC3<br/>    usecase &quot;Exportar como PDF&quot; as UC4<br/>    usecase &quot;Exportar como Excel&quot; as UC5<br/>}</p><p local-id="9fcde082939b">' Relações Primárias do Ator<br/>User --&gt; UC1<br/>User --&gt; UC2<br/>User --&gt; UC3</p><p local-id="6728911b5a23">' Relações de Inclusão/Extensão (Regras de Negócio)<br/>UC2 .&gt; UC1 : &lt;&lt;extend&gt;&gt;<br/>UC3 .&gt; UC1 : &lt;&lt;extend&gt;&gt;</p><p local-id="044ddcc36908">' Generalização (Herança) - Mapeia perfeitamente para o Strategy Pattern<br/>UC4 -up-|&gt; UC3<br/>UC5 -up-|&gt; UC3</p><p local-id="f325f78b77f4">' Interações com o Sistema Externo (Banco de Dados)<br/>UC1 --&gt; DB : Consulta Agregada\n(Pipeline Aggregation)<br/>UC3 --&gt; DB : Busca Dados Brutos\npara Exportação</p><p local-id="ef3fa6e5943a">note bottom of UC1<br/>  RN-10: Consolida dados de<br/>  todos os sistemas do CNPJ.<br/>end note</p><p local-id="70bd5d42a795">note bottom of UC4<br/>  Adapter: PdfExportAdapter<br/>end note</p><p local-id="97a90fa37ad4">note bottom of UC5<br/>  Adapter: ExcelExportAdapter<br/>end note</p><p local-id="f1d378727f92">@enduml</p><hr local-id="806a0b8a7354"/><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="../attachments/20447233/21102606.xml" data-nice-type="XML File" data-file-src="/wiki/download/attachments/20447233/UC%20-%2014.drawio.xml?version=1&amp;modificationDate=1774611899469&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="21102606" data-linked-resource-type="attachment" data-linked-resource-container-id="20447233" data-linked-resource-default-alias="UC - 14.drawio.xml" data-mime-type="text/xml" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="83b4c231-782c-4fd6-bf7d-5dc79e034075" data-media-type="file"><img src="https://groupfromthesouth.atlassian.net/wiki/download/thumbnails/20447233/UC%20-%2014.drawio.xml?version=1&amp;modificationDate=1774611899469&amp;cacheVersion=1&amp;api=v2&amp;viewType=fileMacro" height="250" /></a></span></p><p local-id="404e243f03b6" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/20447233/21200910.png">image-20260327-005608.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/20447233/21037086.png">image-20260327-114305.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/20447233/21102606.xml">UC - 14.drawio.xml</a> (text/xml)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

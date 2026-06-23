@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 16: Varredura e Processamento Periódico de Logs (Ingestão em Lote)</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 16: Varredura e Processamento Periódico de Logs (Ingestão em Lote)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified on abr. 02, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="786f49320761"><strong>Itens associados:</strong></p><p local-id="bafb54ead77a"><strong>Regras de Negócio:</strong></p><ul local-id="0bb3ab07-1331-4dc8-a9fc-e233d48c3ed1"><li local-id="e7fea706-a1bb-4cab-ba1a-674ee864d7dd"><p local-id="ba5b907bd434"><strong>RN-04 (Inteligência Contextual e Tipificação):</strong> Durante a captura via varredura, o erro extraído do arquivo deve ser classificado e salvo com Timestamp, Tipo_do_Erro, Conteúdo_do_Log e Contexto_Aplicado.</p></li><li local-id="185944a8-dd6e-4c20-aa48-6281837377f1"><p local-id="9f9dd17f2255"><strong>RN-05 (Prevenção de Dados Sensíveis):</strong> O sistema deve validar ativamente e ofuscar credenciais ou senhas vazadas no conteúdo lido dos arquivos antes da persistência.</p></li></ul><p local-id="55a4fa15a98f"><strong>Requisitos Funcionais:</strong></p><ul local-id="edf693bf-8d35-4a41-a86b-004e6a491911"><li local-id="fdc9934e-62b3-444c-9161-2a684f6f366a"><p local-id="d010d6ce4109"><strong>RF-10:</strong> O Sistema deve fazer uma varredura periódica nos logs.</p></li><li local-id="fbb69a10-557f-4d62-8c9b-e4f9d4a4cf5e"><p local-id="3724d04a51a2"><strong>RF-07:</strong> O Sistema identifica os logs de erros, mesmo que sem padrões.</p></li><li local-id="8742af24-d820-4cab-b747-64338b0ce6dc"><p local-id="e3e6c784053b"><strong>RF-03:</strong> O Sistema deve receber o caminho dos Logs da Aplicação configurada (Utilizado como base para a varredura).</p></li></ul><p local-id="03125008b644"><strong>Requisitos Não Funcionais:</strong></p><ul local-id="3ac8ca49-3504-46f7-ab42-f9b2aeb76918"><li local-id="c1d92e62-f53a-46c3-b632-b5ba44985655"><p local-id="c133152914da"><strong>RNF-08:</strong> O Sistema deve ser capaz de varrer e processar múltiplos formatos de arquivos de logs.</p></li><li local-id="0ec6c43a-6419-45fc-b6d7-d28a62b872d0"><p local-id="21d1af1d3a99"><strong>RNF-04:</strong> O banco de dados principal será o MongoDB (armazenamento maleável dos dados extraídos).</p></li><li local-id="ba12cdf3-f1a1-465a-ba93-13f33a39fa3e"><p local-id="6ad79454e66e"><strong>RNF-09:</strong> O desenvolvimento deve ser estritamente orientado a Padrões de Projeto (Arquitetura Hexagonal com <em>Strategy Pattern</em> para parseamento de arquivos).</p></li></ul><p local-id="a7718b7949da"><strong>Nome:</strong> Varredura e Processamento Periódico de Logs (Ingestão em Lote)</p><p local-id="960147ccac31"><strong>Atores:</strong></p><ul local-id="636e80af-d247-421d-a898-a323a4b5bcb9"><li local-id="fde9477b-3528-4d26-b20b-46a38342b51e"><p local-id="ebbdb9d3d717">Sistema Agendador (CronJob / Scheduler) - <em>Ator Primário</em></p></li><li local-id="ef1cac89-0871-4ef0-9438-fb8d66a27992"><p local-id="97ab2f526577">Sistema LogViewer (Backend)</p></li><li local-id="a3b6d6d6-bf0a-42a0-8bda-55b2352066fe"><p local-id="0eaedb7235e4">Repositório de Arquivos (Servidor do Cliente)</p></li><li local-id="a03ae1db-caab-4b79-af2b-33a164cd0fa9"><p local-id="90e131afd056">Banco de Dados (MongoDB)</p></li></ul><p local-id="058fd96ef2aa"><strong>Descrição:</strong> Permite que o sistema execute rotinas autônomas (em background) para ler arquivos de log armazenados em diretórios ou servidores configurados pelo cliente. O sistema identifica novos arquivos em múltiplos formatos (ex: <code>.txt</code>, <code>.json</code>, <code>.csv</code>), extrai os dados, ofusca informações sensíveis, tipifica o erro com base no contexto do sistema associado e persiste os registros no banco de dados para futura análise no dashboard.</p><p local-id="147b33cbbc2b"><strong>Pré-condições:</strong></p><ul local-id="b773957e-843e-4e99-8daa-9370ceb7d713"><li local-id="c25d9ebc-20c8-4da8-961d-c2f6433246cb"><p local-id="71818f13d7bf">O usuário configurou previamente um &quot;Caminho de Origem&quot; (path do diretório ou credenciais de SFTP/S3) atrelado a um de seus sistemas.</p></li><li local-id="1198acf3-5221-45f5-95ba-81eb701f8a85"><p local-id="d08f3832e03d">O sistema possui as permissões necessárias de leitura no diretório alvo.</p></li><li local-id="ad90daa0-4673-4a10-8fce-bf402ffb7edb"><p local-id="cb6ab9ff01f3">O serviço de Agendamento (Scheduler) do backend está ativo e configurado para o intervalo correto.</p></li></ul><p local-id="705947ea1371"><strong>Pós-condições:</strong></p><ul local-id="29cb23fe-de7c-46d4-8399-a518216254eb"><li local-id="44992480-4e63-4e64-8d0d-88539672b0bc"><p local-id="d205b29a20c5">Os erros contidos nos arquivos lidos são normalizados e persistidos no MongoDB.</p></li><li local-id="00ed12a1-1b93-4209-b279-25565dd10874"><p local-id="ed8cb33d432b">O arquivo original lido é marcado como &quot;processado&quot; (movido, renomeado ou tem seu ponteiro salvo) para evitar ingestão duplicada na próxima varredura.</p></li></ul><p local-id="4ca1609e5cae"><strong>FLUXO PRINCIPAL 1: EXECUÇÃO DA VARREDURA PERIÓDICA:</strong></p><ol start="1" local-id="f2aca30b-2448-4942-8f31-a641eaf4bb94"><li local-id="cdda7006-3041-46bd-9e4d-f6530bec9772"><p local-id="47a8d1fbe47a">O Sistema Agendador (CronJob) dispara o gatilho de execução de acordo com o intervalo configurado (ex: a cada 5 minutos).</p></li><li local-id="44ed3de8-5016-43d8-9d4c-99c8fde5b987"><p local-id="0df516ca0d55">O Backend consulta o banco de dados para recuperar a lista de sistemas que possuem &quot;Caminho de Logs&quot; configurado.</p></li><li local-id="b2a608de-ff95-4787-b706-12bcf4646535"><p local-id="d5e336378f94">Para cada sistema, o Backend acessa o Repositório de Arquivos do Cliente.</p></li><li local-id="bca25414-0aaf-4e30-951d-cab490336cd6"><p local-id="b69d6f180434">O Backend lista os arquivos presentes no diretório e filtra apenas os que ainda não foram processados.</p></li><li local-id="db6db4d0-2168-409a-b988-c1437be583b9"><p local-id="092c90a1124a">O Backend enfileira os arquivos pendentes para a etapa de processamento.</p></li></ol><p local-id="7ed9f1ca345f"><strong>FLUXO PRINCIPAL 2: PROCESSAMENTO E PERSISTÊNCIA MULTIFORMATO:</strong></p><ol start="1" local-id="2ca042a7-67f5-424e-bfcd-15875e819105"><li local-id="8f48ddc6-ad5a-49f5-9c44-18859c0cbf16"><p local-id="277a898150a4">O Backend inicia a leitura de um arquivo da fila.</p></li><li local-id="5692399a-d6c7-4643-b1db-fed379aabfc0"><p local-id="a97594db5011">O Backend identifica a extensão/formato do arquivo (ex: <code>.json</code>, <code>.txt</code>).</p></li><li local-id="962e5898-4461-49fa-89dc-73ec5d44c965"><p local-id="5029276276d6">O Backend aplica o <em>Strategy Pattern</em> no Core Domain, selecionando o Adapter de leitura adequado (<code>JsonParserAdapter</code>, <code>TxtParserAdapter</code>, etc.).</p></li><li local-id="880bde55-72ef-467a-9323-468fbe2e6e0e"><p local-id="cba5659a94b1">O Adapter correspondente extrai os blocos de texto (erros) e os transforma em um objeto padrão do domínio.</p></li><li local-id="816029c3-74e5-475b-accd-e5822092586c"><p local-id="3d3de733bf72">O Backend executa a validação de segurança (RN-05), aplicando Regex ou IA rápida para ofuscar senhas/tokens vazados no texto bruto.</p></li><li local-id="4ce932c0-4384-4c29-9ada-f845d938089d"><p local-id="c19f265f6533">O Backend cruza os dados extraídos com o Contexto configurado (RN-04) e classifica o erro.</p></li><li local-id="64475791-eff0-4055-9d05-9e7aada26f4c"><p local-id="df7d8b4b30dd">O Backend persiste os logs estruturados no MongoDB.</p></li><li local-id="39ee2cc6-4ad3-4352-88b9-cfdea250cd21"><p local-id="9cbfcc6a24c2">O Backend renomeia o arquivo original (ex: adicionando a extensão <code>.processed</code>) para evitar dupla leitura.</p></li></ol><p local-id="3b03369a8102"><strong>FLUXOS ALTERNATIVOS:</strong></p><ul local-id="848d8680-a791-45af-a8ee-f068cee17b6e"><li local-id="e2e1e4da-39b4-4a19-b693-39bd3dbb3333"><p local-id="c4d415d6dc80"><strong>A1: Caminho de logs inacessível (Falha de Conexão/Permissão):</strong></p><ul local-id="52e5ab49-a881-4fbe-95ca-e1491911b77f"><li local-id="9d810529-68a9-42d4-9fac-89a5f14014c5"><p local-id="452cfb0e6a6b">No Passo 3 do Fluxo 1, o Backend não consegue acessar o diretório configurado.</p></li><li local-id="95fdb1b4-5bf3-47d3-a241-334f3ff95e22"><p local-id="d957b8475b6f">O Backend registra uma falha interna atrelada àquele sistema.</p></li><li local-id="ad2726f3-f45a-4461-a0e7-23e84859cd85"><p local-id="6c131aa000c4">O fluxo daquele sistema específico é abortado, mas o Backend continua a varredura para os sistemas dos outros clientes.</p></li><li local-id="361e4d08-5152-40f3-bedb-07c916832d5e"><p local-id="31b5d381e363">(Opcional) O sistema gera um alerta no Dashboard do cliente informando que o diretório de logs perdeu a conexão.</p></li></ul></li><li local-id="755db265-26a9-4056-a4ca-913deee6d50b"><p local-id="cf9ee32b0d0d"><strong>A2: Formato de arquivo não suportado:</strong></p><ul local-id="eaafc7d2-c0d5-44e9-aff5-b420c866bd50"><li local-id="e893315c-4ca4-4032-ba55-c23f7934993f"><p local-id="885e2d7b924a">No Passo 2 do Fluxo 2, o Backend encontra um arquivo com extensão desconhecida (ex: <code>.dat</code> proprietário).</p></li><li local-id="e29d81cb-a434-4723-9aa0-4cfcb4b79b2b"><p local-id="b9c62424e256">O <em>Strategy Pattern</em> não encontra um Adapter correspondente.</p></li><li local-id="f6d01498-131e-41c6-9d2f-b8819370b250"><p local-id="286f012c5955">O arquivo é ignorado (ou movido para uma pasta de <code>/unsupported</code>), e o sistema passa para o próximo arquivo da fila, sem interromper o serviço.</p></li></ul></li></ul><p local-id="989131669bdb"><strong>OBSERVAÇÕES:</strong></p><ul local-id="10aace1a-22e6-4d29-81fc-b1997f7c7e80"><li local-id="c285ea57-93c2-4fce-923f-a1ca71a3de1f"><p local-id="664ce26e6851"><strong>Arquitetura Hexagonal e Strategy (RNF-08/RNF-09):</strong> O domínio não deve conter as regras de &quot;como ler um CSV&quot; ou &quot;como ler um TXT&quot;. O caso de uso recebe uma porta <code>LogFileParserPort</code>. Dependendo do arquivo encontrado, a fábrica injeta a estratégia correta (<code>CsvAdapter</code>, <code>TxtAdapter</code>). Isso garante que, se amanhã precisarmos ler logs em XML, basta criar um novo Adapter, sem alterar o motor de ingestão.</p></li><li local-id="4e7a8376-88af-4f3e-afdd-81ea21d97816"><p local-id="0dd533e47783"><strong>Performance (Worker Threads):</strong> A leitura de arquivos em disco pode bloquear a <em>Event Loop</em> do Node.js (caso a stack backend utilize Node). O processamento dos arquivos (Fluxo 2) deve ser feito utilizando filas assíncronas (ex: RabbitMQ, BullMQ) ou Worker Threads, garantindo que o servidor continue respondendo rapidamente às requisições da aplicação Web/Mobile.</p></li><li local-id="206f6b77-3263-46e1-8404-37baf5f51c02"><p local-id="a96336e5f576"><strong>Idempotência:</strong> A marcação do arquivo como lido (Passo 8 do Fluxo 2) é vital para evitar que o cliente seja tarifado duplamente ou que a inteligência de fadiga de alertas (RN-09) seja disparada equivocadamente por dados velhos lidos de novo.</p></li></ul><hr local-id="395ae4169313"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260403-003642.png" width="617" loading="lazy" src="../attachments/26738689/27295746.png?width=617" data-image-src="../attachments/26738689/27295746.png" data-height="492" data-width="617" data-unresolved-comment-count="0" data-linked-resource-id="27295746" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260403-003642.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="26738689" data-linked-resource-container-version="5" data-media-id="6b5c921d-8bdc-4696-855c-d0d5c6175797" data-media-type="file"></span><hr local-id="6fdca602f4a0"/><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+&#39; Removido o &quot;left to right direction&quot; para empilhar de cima para baixo
+skinparam packageStyle rectangle
+skinparam usecase {
+    BackgroundColor LightCyan
+    BorderColor DarkCyan
+    ArrowColor DimGray
+}
+actor &quot;CronJob\n&lt;&lt;Scheduler&gt;&gt;&quot; as Cron
+actor &quot;Repositório do Cliente\n&lt;&lt;File System / SFTP&gt;&gt;&quot; as FS
+actor &quot;MongoDB\n&lt;&lt;Database&gt;&gt;&quot; as DB
+rectangle &quot;LogViewer - Ingestão em Lote&quot; {</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">usecase &quot;Executar Varredura\\nPeriódica&quot; as UC1
+usecase &quot;Listar Arquivos\\nPendentes&quot; as UC2
+usecase &quot;Extrair Dados\\n(Strategy Pattern)&quot; as UC3
+
+&#39; Sub-casos (Estratégias)
+usecase &quot;Ler arquivo\\nJSON&quot; as UC3_1
+usecase &quot;Ler arquivo\\nTXT/CSV&quot; as UC3_2
+
+usecase &quot;Ofuscar Dados\\nSensíveis&quot; as UC4
+usecase &quot;Persistir Logs\\nNormalizados&quot; as UC5</pre>
+</div></div><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">}
+&#39; Fluxo Inicial (De cima para baixo)
+Cron -down-&gt; UC1
+&#39; Inclusões do fluxo
+UC1 ..&gt; UC2 : &lt;&lt;include&gt;&gt;
+UC1 ..&gt; UC3 : &lt;&lt;include&gt;&gt;
+&#39; Herança das estratégias empurrando para cima
+UC3_1 -up-|&gt; UC3
+UC3_2 -up-|&gt; UC3
+&#39; Sequência de processamento
+UC3 ..&gt; UC4 : &lt;&lt;include&gt;&gt;
+UC4 ..&gt; UC5 : &lt;&lt;include&gt;&gt;
+&#39; Conexões com os atores de Infraestrutura (Laterais)
+FS -right- UC2 : Consulta
+FS -right- UC3 : Lê conteúdo
+UC5 -left-&gt; FS : Marca &#39;.processed&#39;
+UC5 -right-&gt; DB : Salva documento (BSON)
+note right of UC1
+  RF-10: Rotina autônoma.
+end note
+note right of UC4
+  RN-05: Segurança.
+end note
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/26738689/26738698.png">image-20260330-225434.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/26738689/26738701.png">image-20260330-225431.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/26738689/27361287.png">image-20260403-003635.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/26738689/27295746.png">image-20260403-003642.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

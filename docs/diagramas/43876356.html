@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 1 -&gt; Caso de uso 1: Notificar Erros Encontrados</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 1 -&gt; Caso de uso 1: Notificar Erros Encontrados
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified on mai. 23, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="85437f30364f"><a data-card-appearance="inline" href="https://groupfromthesouth.atlassian.net/wiki/x/AYBHAQ" local-id="b6d1bcab1d14" rel="nofollow">https://groupfromthesouth.atlassian.net/wiki/x/AYBHAQ</a> </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="diagramaSequencia1.png" width="760" loading="lazy" src="../attachments/43876356/43745287.png?width=760" data-image-src="../attachments/43876356/43745287.png" data-height="621" data-width="1017" data-unresolved-comment-count="0" data-linked-resource-id="43745287" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="diagramaSequencia1.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="43876356" data-linked-resource-container-version="4" data-media-id="fa5cc93a-7e60-4955-9078-7d886f817dac" data-media-type="file"></span><p local-id="9d0e9f9b7db4" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">title Diagrama de Sequência: Notificar Erros Encontrados
+
+actor &quot;Worker de\nProcessamento de Logs&quot; as W
+participant &quot;Sistema de Gestão\nde Logs e Alertas&quot; as S
+participant &quot;Servidor de\nWebSockets&quot; as WS
+participant &quot;Provedor de\nPush Notification&quot; as PN
+participant &quot;Provedor de\nE-mail&quot; as EP
+
+W-&gt;S: Notificar Erros Encontrados
+activate S
+
+group «include» Processos Obrigatórios
+    activate WS
+    S-&gt;WS: Enviar Evento WebSocket (Toast/Modal)
+    deactivate WS
+    S-&gt;PN: Enviar Notificação Push
+    activate PN
+    S-&gt;EP: Enviar E-mail de Erro
+    deactivate PN
+    activate EP
+end
+deactivate EP
+
+opt «extend» Condicional
+    S-&gt;WS: Atualizar Dashboard Silenciosamente
+end
+
+S--&gt;W: Processamento Concluído
+deactivate S</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43876356/43745287.png">diagramaSequencia1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

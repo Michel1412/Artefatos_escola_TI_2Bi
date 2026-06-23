@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 3: Captura e Identificação de Logs Não Estruturados via SDK</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 3: Captura e Identificação de Logs Não Estruturados via SDK
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified on mar. 30, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="e231bf929b8b"><strong>Nome:</strong> Captura e Identificação de Logs Não Estruturados via SDK </p><p local-id="816dae31766d"><strong>Atores:</strong></p><ul local-id="9748cb63-38c2-45e6-a0e6-610f8574297c"><li local-id="b3c8a683-ccbe-4d32-a4b8-32bc196e0250"><p local-id="51f5c3832870">Aplicação Cliente (Sistema Gerador do Log)</p></li><li local-id="c657227f-613b-4078-8357-8ca46a29b77e"><p local-id="f20e636c6b29">SDK LogViewer (Porta de Entrada/Driving Adapter)</p></li><li local-id="85494b43-d18b-46b9-b254-fc31c4818799"><p local-id="9d475ef3e6d8">Backend LogViewer (Core Domain)</p></li></ul><p local-id="fa4d36d7af71"><strong>Descrição:</strong> Define o propósito e a disponibilidade da SDK do LogViewer como a ferramenta oficial para interceptação de erros na infraestrutura do cliente. A SDK é distribuída publicamente através de gerenciadores de pacotes padrão de mercado (ex: Maven Central para Java/SpringBoot, npm para Node.js, NuGet para ambientes C#). Ela serve exclusivamente para atuar como um &quot;escutador&quot; passivo ou leitor de diretórios, capturando strings de erros, stacktraces e saídas de terminal independentemente de possuírem uma formatação estruturada (como JSON ou XML) ou serem apenas texto livre. Seu papel é empacotar essa saída bruta e enviá-la com segurança para que a Inteligência do LogViewer faça a interpretação.</p><p local-id="754b9056892b"><strong>Pré-condições:</strong></p><ol start="1" local-id="2fa0fe1e-1467-4158-8845-e8b23933b69a"><li local-id="9838a722-d099-4637-8d71-8688540f74aa"><p local-id="185e54c6827a">O cliente cadastrou o sistema no painel Web e obteve um token de integração válido.</p></li><li local-id="086d30de-e5d5-4e59-9e08-89f797c66e53"><p local-id="f245994d32bf">A SDK do LogViewer foi adicionada como dependência no projeto do cliente (via gerenciador de pacotes).</p></li><li local-id="508c3a65-8937-44a5-b27a-d6f20c2ed831"><p local-id="e8b3b0abd468">A SDK foi inicializada no código da aplicação cliente utilizando o token de integração.</p></li><li local-id="1d87c319-ab9b-4125-bf24-f1c103a7fa4e"><p local-id="1bb23e7187af">A aplicação cliente está em tempo de execução, sujeita a emitir saídas de erro ou exceções não tratadas no console ou em arquivos de log locais.</p></li></ol><p local-id="b987cf52d731"><strong>Pós-condições:</strong></p><ol start="1" local-id="ca767e9d-a151-46c6-ae55-d357c1c52dee"><li local-id="1e7fcf2f-dd7b-4a70-aba0-0a1137468d37"><p local-id="2e1f93cf4772">Textos de log (estruturados ou não) são interceptados com sucesso pela SDK.</p></li><li local-id="8bbb4eab-fc4c-4220-abb8-4798bdcedbd5"><p local-id="0a8c89f0b8f3">O log bruto é envelopado em um payload padrão de transporte contendo os metadados mínimos (Timestamp e Token da SDK).</p></li><li local-id="9fac8b4e-e16f-4ed7-a177-78711289ce96"><p local-id="f9d9a5a734bd">O payload é enviado via túnel criptografado ao Backend do LogViewer e enfileirado para ofuscação (RN-05) e análise do LLM (RN-04).</p></li></ol><p local-id="ae4a1bdd7fe4"><strong>Fluxo Principal:</strong></p><ol start="1" local-id="c298d635-774d-44f9-adb9-c0038ff33ef2"><li local-id="9257b12b-6735-47bb-9098-2e1e61bc533a"><p local-id="c93e16eed49e">A aplicação cliente sofre uma anomalia e emite uma saída de erro arbitrária (ex: uma <em>stacktrace</em> complexa, um print de erro genérico ou uma falha de banco de dados).</p></li><li local-id="5a9c1601-3791-4cdb-a775-b756c3f65f21"><p local-id="e419bf576d54">A SDK do LogViewer identifica que uma nova saída de erro foi gerada no ecossistema da aplicação.</p></li><li local-id="0a06c88a-87c0-4b44-b574-f82fe720209e"><p local-id="f252d836e62d">A SDK captura o bloco de texto do erro de forma integral, sem exigir que o cliente o formate previamente.</p></li><li local-id="ecf49de3-d3db-4199-a444-4184a49becae"><p local-id="3245ef21aaa6">A SDK anexa o Timestamp do momento da captura e o token de integração único do sistema ao bloco de texto bruto.</p></li><li local-id="41d6f274-6705-4a7f-b904-26c166c9efeb"><p local-id="65340b24c3c0">A SDK empacota essas informações em uma requisição leve.</p></li><li local-id="0c3ce710-242e-49ee-a723-c6b02c8c95b2"><p local-id="48add9442dd4">A SDK envia o pacote de forma assíncrona (via webhooks ou tráfego HTTPS criptografado) para a API de ingestão do Backend LogViewer.</p></li><li local-id="d3e759d1-d1df-46ce-9739-9a267f343f8c"><p local-id="6e4852572724">O Backend LogViewer recebe o pacote, valida a autenticidade do token e acusa o recebimento com um status de sucesso <code>202 Accepted</code>.</p></li></ol><p local-id="1a2cdc63e389"><strong>Fluxos Alternativos:</strong></p><ul local-id="db6524ed-062c-48ea-9a0a-c05c0c2cf535"><li local-id="4e481253-e7af-4b4e-bd7c-b9c49625dc16"><p local-id="55ea138d1719"><strong>A1: Log excede o limite máximo de tamanho de tráfego</strong></p><ol start="1" local-id="6ef5b885-45ac-4f98-b4d6-8854afd4afbe"><li local-id="93bd0a98-1293-4c82-b6cf-68e390d76769"><p local-id="eb03c60a82db">A SDK identifica que o texto capturado é excepcionalmente grande (ex: um <em>dump</em> massivo de memória disfarçado de log).</p></li><li local-id="d72ced5f-0d7d-4aff-9536-4ec5d8a604d0"><p local-id="8438939bcd94">A SDK trunca o texto até o limite de caracteres permitido, adicionando uma flag <code>[TRUNCATED]</code> ao final da string.</p></li><li local-id="967ce146-76ef-4357-abde-9b52f437bcf8"><p local-id="f74bef9df933">O fluxo retorna ao passo 4 do Fluxo Principal.</p></li></ol></li><li local-id="d3d7488d-e5e6-4530-a7aa-9bccae819018"><p local-id="413f55ff6b4a"><strong>A2: Aplicação cliente offline ou sem conectividade com o Backend</strong></p><ol start="1" local-id="ce14d2b1-6e68-466a-84e0-da09af2043a8"><li local-id="6411633d-2744-46fb-99ca-4e4f44d8e8a1"><p local-id="73e3d8db26d7">A SDK tenta enviar o log bruto para o Backend LogViewer e falha por timeout de rede.</p></li><li local-id="7058922d-d58d-48cd-a290-4ef3eb8e67bc"><p local-id="fb993b25ef81">A SDK armazena o log de forma temporária e volátil na memória ou disco local do cliente (estratégia de <em>buffer</em>).</p></li><li local-id="1e9831c8-9225-4e9b-a369-4d85991ed869"><p local-id="0c9f97622fe3">A SDK implementa um mecanismo de <em>retry</em> com <em>backoff</em> exponencial até que a conexão seja restabelecida para esvaziar o <em>buffer</em>.</p></li></ol></li></ul><p local-id="ca533ab27a55"><strong>Regras de Negócio:</strong></p><ul local-id="97ac9ac4-3f9c-424c-8a39-5c91d5f35dd0"><li local-id="1f080e73-4d2a-47a0-be3a-c917b9188778"><p local-id="e44c761dde18"><strong>RN-04:</strong> Inteligência Contextual e Tipificação</p></li><li local-id="7f0e93ec-14ee-4c4d-aad8-57186de59c1c"><p local-id="78bd675bea60"><strong>RN-05:</strong> Prevenção de Dados Sensíveis</p></li><li local-id="502d31a5-cd4f-4265-817d-5ad337ccab1c"><p local-id="d196000f98b4"><strong>RN-08:</strong> Notificação Multicanal Obrigatória</p></li></ul><p local-id="deea7e4795ae"><strong>Requisitos Funcionais:</strong></p><ul local-id="4bc6018a-048c-4924-bb64-b8a279b5759d"><li local-id="f764c524-83aa-47fe-9fb9-c0bb40d65dcc"><p local-id="f054f8407bea"><strong>RF-07:</strong> O Sistema identifica os logs de erros, mesmo que sem padrões</p></li><li local-id="58c49768-6eda-4bc8-8035-0b7b7c7d66b9"><p local-id="26983738e862"><strong>RF-12:</strong> O Sistema deve disponibilizar uma SDK capaz de capturar e enviar os logs da aplicação do cliente</p></li></ul><p local-id="2c14ad3a002e"><strong>Requisitos Não Funcionais:</strong></p><ul local-id="f844678f-e620-488a-884f-127aca943f5a"><li local-id="ee432f33-4b5c-47f3-80eb-c80008fc4de0"><p local-id="813a04c5d634"><strong>RNF-01:</strong> Comunicação criptografada obrigatória (TLS/Túnel seguro)</p></li><li local-id="0e7361a0-2b8b-4526-ac92-270b2a103c6c"><p local-id="e953774f5ecc"><strong>RNF-02:</strong> Baixo impacto na performance</p></li></ul><p local-id="b9edaddb3479"><strong>Observações:</strong></p><ul local-id="3638fb81-f8a5-46a8-b580-bec61cf26f88"><li local-id="f2ccd80c-477a-4b23-8004-b62b86e54c05"><p local-id="c1562666e52d"><strong>Abstração Arquitetural:</strong> Dentro da Arquitetura Hexagonal, a SDK age estritamente fora do hexágono. Ela não possui inteligência de categorização de erros nem capacidade de entender o &quot;Contexto&quot; da empresa; seu escopo é puramente a extração agnóstica de texto e o transporte seguro. Toda a carga de &quot;entender&quot; o erro sem padrão fica delegada ao Core Domain (com apoio do LLM) no Backend.</p></li><li local-id="ca14bcec-9f18-4535-8b91-9a7bb6dc74c3"><p local-id="6408ae02bd43"><strong>Agnosticismo de Padrão:</strong> A documentação fornecida aos desenvolvedores clientes deve deixar explícito que não é necessário criar <em>parsers</em> customizados ou formatar os erros em JSON antes de enviá-los à SDK. A promessa de valor do RF-07 é justamente a fricção zero na ingestão.</p></li></ul><hr local-id="67afb099-98fd-4212-8615-1c94a2b91760"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260327-192701.png" width="760" loading="lazy" src="../attachments/21168193/22380547.png?width=760" data-image-src="../attachments/21168193/22380547.png" data-height="4760" data-width="4084" data-unresolved-comment-count="0" data-linked-resource-id="22380547" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260327-192701.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="21168193" data-linked-resource-container-version="3" data-media-id="7a91123f-173c-4852-84b2-8bfe9b6692e4" data-media-type="file"></span><p local-id="d20efff1a025" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21168193/22773776.png">image-20260327-192612.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21168193/22380547.png">image-20260327-192701.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

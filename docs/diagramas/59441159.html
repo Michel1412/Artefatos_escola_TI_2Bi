@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe de Apoio → Documento Relatório</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="53346309.html">Diagrama de Classe 5  — UC-14 e UC-16 (Sistema LogViewer)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe de Apoio → Documento Relatório
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andre Felipe</span>, last modified on jun. 01, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="c100a9c082df">Classe de apoio responsável por representar o arquivo gerado a partir da exportação de um relatório no sistema LogViewer. Ela armazena informações como nome do arquivo, formato, caminho de armazenamento, URL de download e data de criação, permitindo que o usuário acesse posteriormente o documento exportado.</p><p local-id="ceffb12c63d2" /><h2 local-id="1afa7b572404" id="ClassedeApoio→DocumentoRelatório-Atributos">Atributos</h2><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="9d9977b4-6746-4e98-8c43-e4b0dc8e823e" class="confluenceTable"><tbody><tr data-local-id="b71b19da-58a8-44c0-ad69-ee6749bb224f"><th data-local-id="7139ab67-b7ea-42c7-a3f0-6b0bf1569a42" class="confluenceTh"><p local-id="4e62f77aab67">Atributo</p></th><th data-local-id="1233d064-d425-40b6-9553-3625fdf9643e" class="confluenceTh"><p local-id="d7f018a1a175">Tipo</p></th><th data-local-id="8c9392ad-a443-4c17-9fa2-20d30e81fc05" class="confluenceTh"><p local-id="5f52cab86627">Visibilidade</p></th><th data-local-id="478f9b07-bb10-463a-b148-5b1f9967ff6a" class="confluenceTh"><p local-id="ac65ebe747fb">Descrição</p></th></tr><tr data-local-id="b51a32db-5bd9-447b-a1b7-3b70519f8c4e"><td data-local-id="e809e1ff-d42d-48e9-8b55-3c4a50b3a360" class="confluenceTd"><p local-id="174c3d52a653">id</p></td><td data-local-id="18d36698-d117-4c15-bb9d-bcdac0748c59" class="confluenceTd"><p local-id="728c940058b5">String (UUID)</p></td><td data-local-id="a1fd6711-04cb-4904-b15c-29b91672ad22" class="confluenceTd"><p local-id="222ac174e504">privado</p></td><td data-local-id="5621669c-88cf-4d56-8cbc-76c90cb27ace" class="confluenceTd"><p local-id="a5975b092b5a">Identificador único do documento gerado</p></td></tr><tr data-local-id="640a7cda-ba46-46be-8689-6b4cf11a2699"><td data-local-id="c812a1df-5d20-49fb-b881-e5091fd9f30d" class="confluenceTd"><p local-id="2f8828f59738">relatorioId</p></td><td data-local-id="dc29103b-4efc-4c78-b9f2-a8c86ffec6d3" class="confluenceTd"><p local-id="3af9e8e90802">String</p></td><td data-local-id="ac2ae01a-0f6c-4e67-8614-9455496bca4f" class="confluenceTd"><p local-id="3deb7c34def3">privado</p></td><td data-local-id="845e273a-291a-4f62-bd13-09e36795dc90" class="confluenceTd"><p local-id="d90a432cabe8">Identifica o relatório que originou o documento</p></td></tr><tr data-local-id="64cc1252-6360-4330-94a2-072bf566fcf8"><td data-local-id="efd286ea-2051-4ef0-bff4-098c871887c0" class="confluenceTd"><p local-id="78a3a30a414a">nomeArquivo</p></td><td data-local-id="4696df23-0aa6-48ba-8492-7924e52d6b0d" class="confluenceTd"><p local-id="62b4680df10c">String</p></td><td data-local-id="39317a0b-329c-409e-a3dc-822131058c41" class="confluenceTd"><p local-id="f8d1a3f5ec3e">privado</p></td><td data-local-id="785f40e2-57f9-4374-8128-41c05d07f082" class="confluenceTd"><p local-id="9ce1bc845016">Nome do arquivo exportado</p></td></tr><tr data-local-id="134d159b-d81b-4a4d-a136-4c594eadb6a4"><td data-local-id="2232f70e-a269-4914-9b38-2a9dca0bb6e9" class="confluenceTd"><p local-id="5de434f204e7">formato</p></td><td data-local-id="6b6c7cde-37a4-4bfe-a237-4d93d6f3515f" class="confluenceTd"><p local-id="bb104d827040">Enum</p></td><td data-local-id="7ba559fc-3cf2-43fb-a201-2a9c5d5e11af" class="confluenceTd"><p local-id="714bff5b0c24">privado</p></td><td data-local-id="340e8e61-1203-40a2-8710-05e8279da2e3" class="confluenceTd"><p local-id="7e4a46957152">Formato do documento, como PDF, CSV ou XLSX</p></td></tr><tr data-local-id="59c25453-7ad0-416c-af18-f30eb866e967"><td data-local-id="a728033b-9979-4cc8-8adb-1f1724c7c410" class="confluenceTd"><p local-id="7010f5fef911">caminhoArquivo</p></td><td data-local-id="6b10c6b4-5cb6-4544-a3ab-8b183ec5a000" class="confluenceTd"><p local-id="67acd095d6fc">String</p></td><td data-local-id="ab46d9d3-c92c-4b11-aab6-cd55424ac378" class="confluenceTd"><p local-id="2194ec6c18cb">privado</p></td><td data-local-id="04ceb5d7-6db7-4ed4-a54e-dbdcac1a1737" class="confluenceTd"><p local-id="b9a1619ce5c5">Caminho onde o arquivo foi armazenado</p></td></tr><tr data-local-id="a1e250a1-a6f6-4efa-8507-f7380eaafc40"><td data-local-id="3f92daeb-5ede-41af-8ded-d9cd42e9fa26" class="confluenceTd"><p local-id="352b52c91e2d">urlDownload</p></td><td data-local-id="ede8a57c-36b3-4b18-a863-7c270bb96341" class="confluenceTd"><p local-id="930adb3aa458">String</p></td><td data-local-id="c56ca02f-3658-4120-8a57-5d4843c45f18" class="confluenceTd"><p local-id="3185491ddbab">privado</p></td><td data-local-id="602b7053-52dc-490d-a11f-dd0218c51ec0" class="confluenceTd"><p local-id="689dfecaa9fa">Link utilizado para baixar o documento exportado</p></td></tr><tr data-local-id="81936bd3-3885-4a44-ab57-521068090347"><td data-local-id="2e4d9957-bcfa-47a5-9d70-b272f2a92284" class="confluenceTd"><p local-id="4179deec30a0">dataCriacao</p></td><td data-local-id="fcc98998-d62c-4e88-b572-898b61b8122e" class="confluenceTd"><p local-id="af444f0303f0">DateTime</p></td><td data-local-id="2ad7dce1-29c3-4919-ba5f-e29ab6a21bb5" class="confluenceTd"><p local-id="cbce7965560a">privado</p></td><td data-local-id="c06fbdf5-24f4-4034-81e8-b1c54323e08a" class="confluenceTd"><p local-id="05f5d6215a32">Data e hora em que o documento foi criado</p></td></tr></tbody></table></div><hr local-id="3a2152a7-1227-4621-b63d-cb3c2f150490"/><h2 local-id="5e8d30dd04e0" id="ClassedeApoio→DocumentoRelatório-Métodos">Métodos</h2><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="65b2bd2e-4773-40de-a03e-75cd0a9592fd" class="confluenceTable"><tbody><tr data-local-id="244a8359-dd82-474a-b8f6-1ab0ee59c564"><th data-local-id="1d356329-0059-405b-91ec-73e612f19ae1" class="confluenceTh"><p local-id="c5ada7116e6c">Método</p></th><th data-local-id="ce817880-8f87-4930-87db-8c61eaf5413a" class="confluenceTh"><p local-id="6dd0cdbffaf7">Retorno</p></th><th data-local-id="6604af41-c8a6-4814-a2be-c725a166c9c2" class="confluenceTh"><p local-id="c3c1d019ab1e">Visibilidade</p></th><th data-local-id="fd2783b5-4e1c-4efa-9d7c-455c25b92bcd" class="confluenceTh"><p local-id="14fa5f531b8c">Descrição</p></th></tr><tr data-local-id="1795cdce-9db8-45a4-a56a-3c3ca613680c"><td data-local-id="1dd6ec52-8249-4fdd-9c74-4ab069baffee" class="confluenceTd"><p local-id="0d3505bfd894">gerarArquivo()</p></td><td data-local-id="9cdd4752-7a38-4919-962a-25f557aa2e0e" class="confluenceTd"><p local-id="97bb1f48f0d3">void</p></td><td data-local-id="0a2599f0-9693-4092-b8c5-a0038616a611" class="confluenceTd"><p local-id="51681f6407ed">público</p></td><td data-local-id="5be9984e-c627-494d-88af-93c7d7f16b6c" class="confluenceTd"><p local-id="2b4589a71374">Gera o arquivo físico ou digital a partir dos dados do relatório</p></td></tr><tr data-local-id="f68476d7-dff4-4160-be85-8152e5aa85c4"><td data-local-id="09412ace-c36f-44d7-b57b-ce712bae6b8a" class="confluenceTd"><p local-id="be2a11e576d3">disponibilizarDownload()</p></td><td data-local-id="e4595d9d-2ce4-4bc5-99f5-f13d0187c2fc" class="confluenceTd"><p local-id="379b6e8862d7">String</p></td><td data-local-id="039e8e5b-4c23-4aa2-b43d-02ccb926f160" class="confluenceTd"><p local-id="53235a651a0f">público</p></td><td data-local-id="734b6baf-8dbd-4f34-b512-562efe153a76" class="confluenceTd"><p local-id="e002483afeba">Retorna a URL para download do documento gerado</p></td></tr><tr data-local-id="684ccf5a-9a5f-4045-a943-19d33f558a37"><td data-local-id="49790295-462a-4779-875b-62f8f3667967" class="confluenceTd"><p local-id="39b539b5c546">validarArquivo()</p></td><td data-local-id="03b986a2-f388-4951-818e-571b21af79a4" class="confluenceTd"><p local-id="5c7f23225453">Boolean</p></td><td data-local-id="e40cda31-e2b9-417f-8b11-22718e1d7570" class="confluenceTd"><p local-id="3e27dad62bf7">público</p></td><td data-local-id="acf36784-e463-47ab-9970-a3e52f51f873" class="confluenceTd"><p local-id="b64ba15e74c7">Verifica se o arquivo foi criado corretamente e está disponível</p></td></tr></tbody></table></div><p local-id="5c093e960d36" /><p local-id="ee164f591e12" /><p local-id="a408013cdda0">Diagrama UML : </p><p local-id="c6be59395705" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260601-225725.png" width="209" loading="lazy" src="../attachments/59441159/59965443.png?width=209" data-image-src="../attachments/59441159/59965443.png" data-height="406" data-width="209" data-unresolved-comment-count="0" data-linked-resource-id="59965443" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260601-225725.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59441159" data-linked-resource-container-version="3" data-media-id="0646bd57-0c2d-4d7b-8b8b-b5b025eb113d" data-media-type="file"></span><p local-id="97a5574a17d0" /><p local-id="eb4d6d9ca62f" /><p local-id="7c33dfc1811a">@startuml DocumentoRelatorio</p><p local-id="1095954e14e1">skinparam backgroundColor #FFFFFF<br/>skinparam classBackgroundColor #FFFFFF<br/>skinparam classBorderColor #333333<br/>skinparam classAttributeFontColor #000000<br/>skinparam classFontColor #000000<br/>skinparam classFontSize 10<br/>skinparam classAttributeFontSize 10<br/>skinparam padding 5<br/>skinparam roundcorner 5<br/>skinparam arrowColor #333333<br/>skinparam arrowThickness 1.5</p><p local-id="86816ea0053f">class DocumentoRelatorio {<br/>  .. Atributos ..<br/>  &lt;b&gt;- id&lt;/b&gt; : String (UUID)<br/>  &lt;b&gt;- relatorioId&lt;/b&gt; : String<br/>  &lt;b&gt;- nomeArquivo&lt;/b&gt; : String<br/>  &lt;b&gt;- formato&lt;/b&gt; : Enum<br/>  &lt;b&gt;- caminhoArquivo&lt;/b&gt; : String<br/>  &lt;b&gt;- urlDownload&lt;/b&gt; : String<br/>  &lt;b&gt;- dataCriacao&lt;/b&gt; : DateTime</p><p local-id="19a53d67fb1d">  .. Métodos ..</p><p local-id="79a0d58e68b0">  gerarArquivo() : void</p><p local-id="50a016ff8b19">  disponibilizarDownload() : String</p><p local-id="13153ee344bd">  validarArquivo() : Boolean<br/>}</p><p local-id="9df3862fc548">@enduml</p><p local-id="93d4b0c1d6c5" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59441159/58458116.png">image-20260601-195027.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59441159/59965443.png">image-20260601-225725.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

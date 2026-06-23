@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 4: Integrar SDK e Processar Logs com Segurança</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 4: Integrar SDK e Processar Logs com Segurança
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span>, last modified on mar. 30, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="0aa0d044b1f7">Descrição formal do Caso de uso - 4 </p><h3 local-id="26551c740c29" id="Casodeuso-4:IntegrarSDKeProcessarLogscomSegurança-Itensassociados:">Itens associados:</h3><h4 local-id="177e955b9577" id="Casodeuso-4:IntegrarSDKeProcessarLogscomSegurança-RegrasdeNegócio:">Regras de Negócio:</h4><ul local-id="9acdd996-24cf-4dc5-b245-23db16e57234"><li local-id="338c6749-f313-4e54-a2ad-315d50f6849d"><p local-id="014e9ee09ca0">RN-02: Tokens de integração devem ser únicos por sistema</p></li><li local-id="f6891b6f-6a28-431d-a3a2-cf799d66649e"><p local-id="654d1274b650">RN-05: Dados sensíveis devem ser obrigatoriamente mascarados antes da persistência</p></li></ul><h4 local-id="f6ceb8495c45" id="Casodeuso-4:IntegrarSDKeProcessarLogscomSegurança-RequisitosFuncionais:">Requisitos Funcionais:</h4><ul local-id="4ddd900a-488f-41f9-9d0b-d15010d0cc72"><li local-id="1e49938a-95ce-428e-8ea3-c926018dd1e3"><p local-id="9ea7788101ae">RF-16: Gerenciamento de tokens da SDK</p></li><li local-id="97c77405-3daa-44b8-bbd8-5629ea286e63"><p local-id="bdd8fd92b2b6">RF-25: Validação e mascaramento de credenciais</p></li></ul><h4 local-id="7d6848689148" id="Casodeuso-4:IntegrarSDKeProcessarLogscomSegurança-RequisitosNãoFuncionais:">Requisitos Não Funcionais:</h4><ul local-id="dccca1ba-d1a6-4dae-b992-5690a5e362b4"><li local-id="7ca0c95b-d00f-40b5-85c3-7c4626e042fe"><p local-id="f19bf0d06a52">RNF-01: Comunicação criptografada obrigatória (TLS/Túnel seguro)</p></li><li local-id="3483b500-6b9e-4b91-9ae2-f494c157fa1b"><p local-id="35e54eeaed2f">RNF-03: Autenticação gerida via Clerk</p></li><li local-id="0992b5820014"><p local-id="f4b8b9faa3de">RNF-07: A API de recebimento deve ser focada em alta performance e utilizar Webhooks para evitar travamento na aplicação cliente (SDK)</p></li></ul><h3 local-id="5f89eeb84509" id="Casodeuso-4:IntegrarSDKeProcessarLogscomSegurança-Linkdatarefa:">Link da tarefa: </h3><p local-id="bab475d7b677">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-21" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-21" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-21</a>
+                    -
+            <span class="summary">Criação de caso de uso - 4: Integrar SDK e Processar Logs com Segurança</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+ </p><hr local-id="6868407364d0"/><p local-id="f982abf3526a">Nome: Integrar SDK e Processar Logs com Segurança</p><p local-id="04bac7d3314a">Atores:</p><ul local-id="f9d0489205d9"><li local-id="391a10b81bd4"><p local-id="f79c6748d4db">Sistema Cliente (SDK)</p></li><li local-id="32249bf58edd"><p local-id="274319b48c7d">Backend LogViewer</p></li><li local-id="a8a08fc8c877"><p local-id="70cbd3efc736">Provedor de Autenticação (Clerk)</p></li></ul><p local-id="c49353435ec4">Descrição:<br/>Permite que aplicações clientes, por meio da SDK, enviem logs de forma segura, autenticada e criptografada, garantindo o mascaramento de dados sensíveis e a validação dos tokens de integração.</p><p local-id="459b93603b45">Pré-condições:</p><ul local-id="784b094ab381"><li local-id="336d2957ce5f"><p local-id="ff711d402a67">O cliente possui um sistema cadastrado</p></li><li local-id="ed86ec42289c"><p local-id="4e1815f4cf07">Um token de integração foi gerado para o sistema</p></li><li local-id="1d692f06f39c"><p local-id="5a49f726a0a6">A SDK está configurada com o token válido</p></li><li local-id="d530583f543c"><p local-id="03f11b092612">A comunicação com o backend está configurada via canal criptografado</p></li></ul><p local-id="2edd82838588">Pós-condições:</p><ul local-id="733a56c48199"><li local-id="5808ce12a8bf"><p local-id="3d585f4b2cf3">Logs recebidos são validados, sanitizados e processados</p></li><li local-id="fcb7b80135f6"><p local-id="29b1fd340c29">Dados sensíveis são mascarados antes da persistência</p></li><li local-id="202e5079d312"><p local-id="b31d51cc3177">Logs são aceitos ou rejeitados com base na validade do token</p></li></ul><p local-id="433530318245">Fluxo Principal:</p><ol start="1" local-id="8be7e901e259"><li local-id="f31134b4b0cd"><p local-id="f57ba4891565">A aplicação cliente gera um log de erro</p></li><li local-id="1f152561ce46"><p local-id="31a12107c3ba">A SDK captura o log automaticamente</p></li><li local-id="c00d4519f5db"><p local-id="ba02e4058946">A SDK estabelece conexão segura com o backend (túnel criptografado)</p></li><li local-id="9c1c969f6a8b"><p local-id="04bf5dcfd40a">A SDK envia o log junto com o token de integração</p></li><li local-id="82c607c40f0e"><p local-id="d0b8a394ec56">O sistema recebe a requisição</p></li><li local-id="203670a11fca"><p local-id="e064e54a936d">O sistema valida o token de integração:<br/>6.1 Verifica se o token existe<br/>6.2 Verifica se o token está ativo<br/>6.3 Verifica associação com um sistema válido</p></li><li local-id="e06ce452ba09"><p local-id="f216a990f839">O sistema valida o payload recebido</p></li><li local-id="643f8dc1dfeb"><p local-id="8e83dc3bbe66">O sistema executa o processo de detecção de dados sensíveis:<br/>8.1 Identifica padrões de senha, tokens, credenciais<br/>8.2 Aplica mascaramento (ex: ****)</p></li><li local-id="0cb91141374c"><p local-id="8c29f225aaa9">O sistema encaminha o log para o fluxo de processamento interno</p></li><li local-id="2ca569e26807"><p local-id="cbb2567539de">O sistema retorna status de sucesso para a SDK</p></li></ol><p local-id="a28d550542df">Fluxos Alternativos:</p><p local-id="2a432b947cbb">A1: Token inválido ou inexistente</p><ul local-id="53d1b4f8ecf1"><li local-id="5c709152d02a"><p local-id="b413ea956e89">O sistema rejeita a requisição</p></li><li local-id="ace915da1f31"><p local-id="48c4ff3992d5">Retorna erro de autenticação</p></li></ul><p local-id="10ae8dcc0786">A2: Token revogado ou inativo</p><ul local-id="50972c9215f4"><li local-id="f06749c47b40"><p local-id="69d024c6884b">O sistema bloqueia o envio</p></li><li local-id="5e902e1b80c8"><p local-id="e47bf8f2573c">Registra tentativa inválida</p></li></ul><p local-id="362cb855dc5f">A3: Falha na conexão criptografada</p><ul local-id="296d6ef7fa1f"><li local-id="9275fbedf331"><p local-id="48faaa697085">A SDK tenta reenvio automático (retry com backoff)</p></li><li local-id="9794401d7ef3"><p local-id="af5be87d812e">Se persistir, registra erro local</p></li></ul><p local-id="03c64595d9cb">A4: Detecção de dados sensíveis falha</p><ul local-id="408c30257671"><li local-id="deb6ed6005d4"><p local-id="1935b4090796">O sistema aplica fallback de mascaramento genérico</p></li><li local-id="7744da9931b6"><p local-id="32106a7dff70">Log ainda é persistido de forma segura</p></li></ul><p local-id="b1f864aa8588">Regras de Negócio:</p><ul local-id="1fd010717306"><li local-id="381f0c803357"><p local-id="60efd30e53ba">RN-02: Tokens de integração devem ser únicos por sistema</p></li><li local-id="0dfd0513decf"><p local-id="b150bc133d0e">RN-05: Dados sensíveis devem ser obrigatoriamente mascarados antes da persistência</p></li></ul><p local-id="c3f1d49e7414">Requisitos Funcionais:</p><ul local-id="18f64f923930"><li local-id="4ada78ca11c2"><p local-id="53b2f308cc8b">RF-16: Gerenciamento de tokens da SDK</p></li><li local-id="155bfb66f11c"><p local-id="2a56ab46feb7">RF-25: Validação e mascaramento de credenciais</p></li></ul><p local-id="96669d6862f9">Requisitos Não Funcionais:</p><ul local-id="c0e7ee9a0a7e"><li local-id="16eee1e71e39"><p local-id="b710e4669931">RNF-01: Comunicação criptografada obrigatória (TLS/Túnel seguro)</p></li><li local-id="8f08d5f71103"><p local-id="213ff9b3f29d">RNF-03: Autenticação gerida via Clerk</p></li></ul><p local-id="75aa7206b949">Observações:</p><ul local-id="728f1a3b3dc0"><li local-id="600bcbfd91b6"><p local-id="cb259c5c67d6">O token da SDK atua como chave de autenticação da aplicação cliente, não substituindo autenticação de usuário</p></li><li local-id="1cd7dd186b75"><p local-id="71563a364b6a">A validação do token deve ocorrer antes de qualquer processamento do log</p></li><li local-id="48180a0e0831"><p local-id="d3976319326c">O mascaramento deve ocorrer antes de qualquer persistência ou envio ao LLM</p></li><li local-id="2842424c1cc1"><p local-id="8bb381b29346">Esse caso de uso deve ser implementado como um UseCase central no Core (ex: ProcessIncomingLogUseCase)</p></li><li local-id="2e3dbca15f5b"><p local-id="3ac1922761e1">A comunicação da SDK deve priorizar envio assíncrono (webhooks ou fila) para não impactar a aplicação cliente</p></li></ul><hr local-id="b59e8e44d9e0"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260330-231614.png" width="760" loading="lazy" src="../attachments/18907138/24772612.png?width=760" data-image-src="../attachments/18907138/24772612.png" data-height="1448" data-width="5004" data-unresolved-comment-count="0" data-linked-resource-id="24772612" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260330-231614.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="18907138" data-linked-resource-container-version="5" data-media-id="703669f8-a98e-4d43-a7b4-15f0520c71e5" data-media-type="file"></span><p local-id="604540ca1d90" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/18907138/24707077.png">image-20260330-230130.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/18907138/24313873.png">image-20260330-231344.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/18907138/24772612.png">image-20260330-231614.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

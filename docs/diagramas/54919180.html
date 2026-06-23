@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe: LLMService</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Diagrama-de-Classes-4_54755329.html">Diagrama de Classes 4</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe: LLMService
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span> on mai. 25, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 local-id="cf13e7d3d57f" id="Classe:LLMService-Descrição">Descrição</h2><p local-id="e9ec238770a9">Representa a interface responsável pela integração com modelos de IA generativa (LLM) utilizados pelo sistema LogViewer. Atua como ponto central de comunicação entre o Backend API e o provedor de IA, sendo responsável por montar o contexto empresarial do usuário, enviar logs para análise e retornar sugestões passivas de solução. A classe abstrai detalhes de integração externa e padroniza o fluxo de análise inteligente de erros conforme o UC-13.</p><hr local-id="df06eb26-d8ea-4d84-9247-c6b712ce4181"/><h1 local-id="42556fc05b89" id="Classe:LLMService-Atributos">Atributos</h1><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="3beef80c-35d6-43a8-bcc5-279156ec8d0d" class="confluenceTable"><tbody><tr data-local-id="9782a52e-2b0c-4895-bf1c-3856d487f258"><th data-local-id="6f22fb26-7ed4-416f-b0f2-9f8d0015e21e" class="confluenceTh"><p local-id="0aaa531acad7">#</p></th><th data-local-id="70d49a0d-81b8-4d88-9ac1-83ea56c747f2" class="confluenceTh"><p local-id="394986afffc7">Atributo</p></th><th data-local-id="2b1a1685-32d7-4450-b39b-0f583e5af947" class="confluenceTh"><p local-id="2854f3d1affe">Tipo</p></th><th data-local-id="ed11b5ea-6f95-4fab-8027-4981b972be09" class="confluenceTh"><p local-id="c6ef9a9548ba">Visibilidade</p></th><th data-local-id="babbd7f3-f4fd-476e-bf41-ae633ff7823a" class="confluenceTh"><p local-id="f0ce78cee882">Descrição</p></th></tr><tr data-local-id="aadf4fa7-722c-49cb-8a6e-755b1e7bb484"><td data-local-id="4c76902c-0ab3-492e-ae6d-acbfb91838f8" class="confluenceTd"><p local-id="dd68d5fb37bb">1</p></td><td data-local-id="dec50002-7c81-4324-9071-d75c7c15a109" class="confluenceTd"><p local-id="5ce32631fd47">provider</p></td><td data-local-id="7f5c493c-4fc9-431c-9410-bac86515fb36" class="confluenceTd"><p local-id="7b52d618754b">String</p></td><td data-local-id="9012cf51-1aa9-4dc3-b64c-e37b2382f058" class="confluenceTd"><p local-id="df01e9db130b">privado</p></td><td data-local-id="60bc5c06-a7dd-47cf-b741-340692833466" class="confluenceTd"><p local-id="24c679ccb18c">Nome do provedor de IA utilizado</p></td></tr><tr data-local-id="a6b78b54-9a6f-4db2-898e-2b39732efdda"><td data-local-id="3124992e-1c4a-4ba7-a515-513e94ef151a" class="confluenceTd"><p local-id="3d548649c4c2">2</p></td><td data-local-id="4ea85955-364c-4246-af6c-76929ef69a8b" class="confluenceTd"><p local-id="143a877d38b3">apiKey</p></td><td data-local-id="6c51c8a4-a26d-4362-9f4b-5950ba9aa157" class="confluenceTd"><p local-id="26f9c04923f9">String</p></td><td data-local-id="2ce870be-69e8-4afd-89a3-d129b18475e2" class="confluenceTd"><p local-id="8cdd2bde7dd9">privado</p></td><td data-local-id="da1dd9f7-694e-4f9e-9d7a-b6070f7ef6d2" class="confluenceTd"><p local-id="b01c71effca0">Credencial de autenticação da API externa</p></td></tr><tr data-local-id="9070b0ce-aff3-4132-b9e0-1b3026336f31"><td data-local-id="bc145251-7280-429c-bc7d-4885c96248eb" class="confluenceTd"><p local-id="13a6d025651f">3</p></td><td data-local-id="530d280a-2be4-49dc-acd8-f7db76b17bb9" class="confluenceTd"><p local-id="de25e1b661b1">endpoint</p></td><td data-local-id="b2ec7d30-f36c-41b2-8bc6-444d40647032" class="confluenceTd"><p local-id="0c1e6fa62e72">String</p></td><td data-local-id="e3a4e53f-3f98-4c67-8b3b-62c528e55560" class="confluenceTd"><p local-id="ce45c6c3be82">privado</p></td><td data-local-id="e3e06594-1037-4591-9ef3-8c555d3f898d" class="confluenceTd"><p local-id="23ddd765f7df">URL de integração com o serviço LLM</p></td></tr><tr data-local-id="0bc42fff-36be-407a-ae13-f71c49d3db79"><td data-local-id="c2d70b5a-9e9d-47b5-9b6d-4553fc243729" class="confluenceTd"><p local-id="10b5b8677d79">4</p></td><td data-local-id="5ed58089-350c-4daa-8719-06b3005b4096" class="confluenceTd"><p local-id="8445872eea51">timeout</p></td><td data-local-id="2ec7ab3e-b038-4772-bd0c-24b14dfceaa2" class="confluenceTd"><p local-id="26d7c16248b2">Integer</p></td><td data-local-id="5d6ae2d1-3e8a-4607-b6dc-7e0a1a23b1b6" class="confluenceTd"><p local-id="11130324cb0f">privado</p></td><td data-local-id="66625d10-5aed-4266-a7b2-02efcb754d94" class="confluenceTd"><p local-id="a64e02d7c25a">Tempo máximo de espera pela resposta da IA</p></td></tr><tr data-local-id="29c120dc-f727-4498-b92b-20617b574d45"><td data-local-id="1bafe3af-3af1-40df-93ab-e3a26fcd595c" class="confluenceTd"><p local-id="8c0945b0ba35">5</p></td><td data-local-id="3c3bfa04-5838-48f3-a131-9181fe46455c" class="confluenceTd"><p local-id="5c8d99df767c">contextoEmpresa</p></td><td data-local-id="bffd4587-bd69-4a6e-8eb7-f9b6d55e7370" class="confluenceTd"><p local-id="ace219398689">ContextoEmpresa</p></td><td data-local-id="c4f05231-50ff-438c-a8ac-e042570fa0c0" class="confluenceTd"><p local-id="ed65cf8df28e">privado</p></td><td data-local-id="f563c9ea-36e2-425a-824d-c5fb8df74669" class="confluenceTd"><p local-id="157b8fcd189f">Contexto empresarial utilizado para enriquecer prompts</p></td></tr><tr data-local-id="86207654-ae09-4264-9d21-9b98fc465657"><td data-local-id="e43f2235-d133-4a85-8e39-4fd247e57e4b" class="confluenceTd"><p local-id="df8cb40099ca">6</p></td><td data-local-id="f9a3ba4d-0a63-4daa-9338-b9f4a0910c96" class="confluenceTd"><p local-id="404c156e4dd6">modeloAtivo</p></td><td data-local-id="7899c4f9-ddec-4c27-aae7-185378f71bfd" class="confluenceTd"><p local-id="f4a0c6576b9c">String</p></td><td data-local-id="7f3d4db5-a449-4e0f-adde-37c8af0739b0" class="confluenceTd"><p local-id="ba4299897202">privado</p></td><td data-local-id="942984ba-ac4c-4450-8fc4-9ad8c472f2cd" class="confluenceTd"><p local-id="4ff0e761b9d7">Modelo atualmente utilizado para análise</p></td></tr><tr data-local-id="7b5fc2c9-20d8-41ff-a402-48516c6f2060"><td data-local-id="aef9653b-90c4-4693-9430-886dd7e863d9" class="confluenceTd"><p local-id="dc8eaafe1de1">7</p></td><td data-local-id="01d6897c-41da-4eff-a46d-2ef5f1ba8726" class="confluenceTd"><p local-id="7c94af8224c3">temperatura</p></td><td data-local-id="7b88d51e-c0d3-48ad-8e1a-983ba77f8e8c" class="confluenceTd"><p local-id="18e1d70e06fa">Float</p></td><td data-local-id="9c675205-22d3-47ac-b6d1-56e3b249b2bd" class="confluenceTd"><p local-id="33e9756e3e17">privado</p></td><td data-local-id="4467d959-8094-4d7b-84aa-6b50c3a897b5" class="confluenceTd"><p local-id="06736c06ca28">Configuração de criatividade da IA</p></td></tr><tr data-local-id="c5db831e-6e7e-4dcc-85b3-235a9b6791b6"><td data-local-id="e5161492-8c84-44cb-a44e-089602a80bb0" class="confluenceTd"><p local-id="7bdf723347d9">8</p></td><td data-local-id="a46202eb-5ec9-40bd-bac8-3b83ae252d23" class="confluenceTd"><p local-id="c66db1e03eff">maxTokens</p></td><td data-local-id="4d26356d-b29d-4f02-bfc0-2100c2b5965a" class="confluenceTd"><p local-id="87649201befd">Integer</p></td><td data-local-id="b46ba16c-cd6a-4223-b21f-700cd057e1ff" class="confluenceTd"><p local-id="295d1ae4c43c">privado</p></td><td data-local-id="8c785d0c-b5ea-4a82-95e0-1faed0c439e3" class="confluenceTd"><p local-id="5b8252119ef7">Quantidade máxima de tokens da resposta</p></td></tr><tr data-local-id="ee02a93c-51a8-42ea-8a85-faa8d322459d"><td data-local-id="f38d4adf-033a-45b3-ab75-2c6ecf357558" class="confluenceTd"><p local-id="216dafacdb7c">9</p></td><td data-local-id="958b294e-6ccc-4542-a8d2-b82301eb9b43" class="confluenceTd"><p local-id="b73bc47ebcf2">ativo</p></td><td data-local-id="f502fef8-6aeb-4825-9604-2d15e6e494f4" class="confluenceTd"><p local-id="72b4e83a69a8">Boolean</p></td><td data-local-id="36dd13b9-628e-4567-befe-302932a885e4" class="confluenceTd"><p local-id="3da5390beffe">privado</p></td><td data-local-id="02b9bceb-58bf-40eb-b2ce-0a5cdcc85f9c" class="confluenceTd"><p local-id="9eb9231cfd6f">Define se o serviço está habilitado</p></td></tr></tbody></table></div><hr local-id="0faf2a09-00f8-48c6-9e57-86306063f817"/><h1 local-id="d8aa3c9c6aa7" id="Classe:LLMService-Métodos">Métodos</h1><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="135af039-f2bf-457c-981a-4b0c3491e790" class="confluenceTable"><tbody><tr data-local-id="bd42d380-eb4e-44f5-aa05-322ad1cff7d9"><th data-local-id="a8811025-d1d8-4ebb-b0d5-3e193a595916" class="confluenceTh"><p local-id="8f931de9b306">#</p></th><th data-local-id="edca517b-9b12-47f2-a78e-7a85d513bb80" class="confluenceTh"><p local-id="dd4c7fdecbf8">Método</p></th><th data-local-id="ea8e41d3-f808-451d-b20f-a7190905e5dc" class="confluenceTh"><p local-id="a5ebe0daa896">Retorno</p></th><th data-local-id="8f870437-c822-439b-81fc-a75d0b07109c" class="confluenceTh"><p local-id="4ce4d539f145">Visibilidade</p></th><th data-local-id="769b7fce-a3e4-4b3d-9bac-5e16bc0f1400" class="confluenceTh"><p local-id="dc75552599bf">Descrição</p></th></tr><tr data-local-id="6e794e28-815d-478a-93f8-366a7d9d0051"><td data-local-id="982e3356-9edb-4546-b9f4-1b17b82f41b4" class="confluenceTd"><p local-id="ec47543eb6d7">1</p></td><td data-local-id="d12c3120-93d2-466b-8cd4-87eea3e21f3f" class="confluenceTd"><p local-id="fcbdc1037721">analisarLog(log: LogErro)</p></td><td data-local-id="4fb2d9e9-5037-4a6f-b2cc-58fd9e611540" class="confluenceTd"><p local-id="45fb3dc0addd">String</p></td><td data-local-id="d9b62178-10da-4425-82ca-805d7bced0be" class="confluenceTd"><p local-id="10cd336aff71">público</p></td><td data-local-id="49bf2db0-6ec9-4ce1-8f11-201a07b0cc93" class="confluenceTd"><p local-id="b0cbf3ec622a">Envia o log para análise da IA e retorna sugestão</p></td></tr><tr data-local-id="3b75649b-eb9e-4238-89d2-60ed812f8e75"><td data-local-id="51364a70-4bcb-4c3a-a861-8e9c55b2fe9d" class="confluenceTd"><p local-id="3d3bf5c09c6a">2</p></td><td data-local-id="c6f9f735-38b2-40a5-89f9-cb9b2fd8197e" class="confluenceTd"><p local-id="67eb10aa797d">montarContexto(usuario: Usuario)</p></td><td data-local-id="eabf98e7-e009-4262-87cb-49399d3e3654" class="confluenceTd"><p local-id="e9d171b5fae5">String</p></td><td data-local-id="08d230e5-5f57-4dd3-aa4e-13c0875a7d11" class="confluenceTd"><p local-id="094a0e442a9c">público</p></td><td data-local-id="62db4cd4-0e8a-4e52-adfb-e68895ff4813" class="confluenceTd"><p local-id="c3fbd6c384d6">Constrói o contexto empresarial utilizado no prompt</p></td></tr><tr data-local-id="0530e0de-60d5-49e5-a974-9f4b12063812"><td data-local-id="ba5f249b-eefc-4bc3-bdd4-5b72f1c42c0f" class="confluenceTd"><p local-id="5f53dbeab2be">3</p></td><td data-local-id="6cea44d8-b234-4d61-944a-5d68d2261a96" class="confluenceTd"><p local-id="498a72343793">validarDisponibilidade()</p></td><td data-local-id="b24a919f-22d2-4c9b-b585-e57f57945371" class="confluenceTd"><p local-id="5d64b6249761">Boolean</p></td><td data-local-id="b56a055a-091c-498d-a3a5-cfd8e8e0504b" class="confluenceTd"><p local-id="81976558ffa4">público</p></td><td data-local-id="87c1af5a-3798-47d2-bbfe-0be12721efbf" class="confluenceTd"><p local-id="3ece2d6b373f">Verifica se o provedor LLM está disponível</p></td></tr><tr data-local-id="5023450c-4899-4d5f-afe4-d04e92e24a0b"><td data-local-id="04b30ee4-7412-4989-93fe-ee61ede1440c" class="confluenceTd"><p local-id="d7656d9cbec0">4</p></td><td data-local-id="b17b7582-af07-4990-ab07-de66db644ee9" class="confluenceTd"><p local-id="e0023876be44">configurarModelo(modelo: String)</p></td><td data-local-id="42675197-76fd-42db-b17b-1a6eb8474ee6" class="confluenceTd"><p local-id="bd7240293dd9">void</p></td><td data-local-id="d28dc73b-ce82-406b-aaf8-4ce2fef67bc1" class="confluenceTd"><p local-id="f1605bfb1318">público</p></td><td data-local-id="8b476cb8-ee7c-4f51-a97a-4170e6a295f0" class="confluenceTd"><p local-id="f7080bc78d61">Atualiza o modelo utilizado</p></td></tr><tr data-local-id="3070a1e4-b9c9-46d9-a423-86c0438f8e9f"><td data-local-id="c18f66f0-4433-44fd-a61d-1af4a6b8f832" class="confluenceTd"><p local-id="bee6925f39d6">5</p></td><td data-local-id="dff0667f-f263-469b-90ea-4ce2d5be1a8a" class="confluenceTd"><p local-id="5b0f3ec427f8">definirTemperatura(valor: Float)</p></td><td data-local-id="658a1928-0511-4359-bb6c-c85aaa7db15b" class="confluenceTd"><p local-id="62cd963b7e0e">void</p></td><td data-local-id="ba15528a-4dfc-48e6-9e9c-5c0d90d2013e" class="confluenceTd"><p local-id="e85e66017814">público</p></td><td data-local-id="c3995a14-d9b0-45a2-91f0-03111df73c5e" class="confluenceTd"><p local-id="1f65bc454aa5">Configura nível de criatividade da IA</p></td></tr><tr data-local-id="788406e4-c283-45b9-a9ea-e3ae0c3a5bc4"><td data-local-id="131f4fef-8c34-4340-a02e-95836987ab45" class="confluenceTd"><p local-id="5584d4b59a46">6</p></td><td data-local-id="9a2b3cdc-c886-45e3-9cf0-928316286565" class="confluenceTd"><p local-id="76ab6aa9c0c3">gerarPrompt(log: LogErro)</p></td><td data-local-id="6f98fc07-88ff-4b0e-8380-b299aa6ef850" class="confluenceTd"><p local-id="5d8efa03d045">String</p></td><td data-local-id="fde9f2ec-ceed-43fa-bce4-1a5e94fe3746" class="confluenceTd"><p local-id="b61d799d0537">público</p></td><td data-local-id="7b4a28f6-5743-4988-87b2-a4ff64171df1" class="confluenceTd"><p local-id="6e2a8d39a98d">Gera o prompt contextualizado para análise</p></td></tr><tr data-local-id="40f4351f-6746-4288-8e0d-a45f418ef538"><td data-local-id="8875546c-87a7-4049-b8c8-da7d2cadb17b" class="confluenceTd"><p local-id="8be1711513db">7</p></td><td data-local-id="a344f105-cab3-47f4-9d75-ff5db2dcd311" class="confluenceTd"><p local-id="f3c18338226c">registrarFalha(mensagem: String)</p></td><td data-local-id="47f53e40-3398-4a60-b225-daaa198096d8" class="confluenceTd"><p local-id="26df3460c0d1">void</p></td><td data-local-id="8127dae6-65ca-41f3-b59a-2fcdd37ce066" class="confluenceTd"><p local-id="8319e2ba549e">público</p></td><td data-local-id="cd2f1a96-2f53-4b2d-bac3-f5354ebdea5b" class="confluenceTd"><p local-id="2680fd9a8da6">Registra falhas de comunicação com IA</p></td></tr><tr data-local-id="895fab0c-e617-4bdf-99ec-fb8753322285"><td data-local-id="51dd123a-907d-47f0-9fcf-67cf8ac4570f" class="confluenceTd"><p local-id="57c82026dd6c">8</p></td><td data-local-id="3d62b39b-921d-4f9a-a162-baa726dd8011" class="confluenceTd"><p local-id="c2b0821a33be">obterStatusServico()</p></td><td data-local-id="1e7d5c4b-18db-4b54-9134-abdd5672049f" class="confluenceTd"><p local-id="99d60489729c">String</p></td><td data-local-id="809cad4b-d67c-4f58-b715-3ebe14bffa7c" class="confluenceTd"><p local-id="b7b1c39a59be">público</p></td><td data-local-id="8c3aa928-fea1-4de8-bf0a-828be2121dab" class="confluenceTd"><p local-id="cc98025a2aed">Retorna status atual do serviço</p></td></tr></tbody></table></div><hr local-id="27c0b92e-8afc-42b2-baf3-40ad0baed26a"/><h1 local-id="aa1ded7c46b5" id="Classe:LLMService-ClasseLLMService.puml">Classe LLMService.puml</h1><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml LLMService
+
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #333333
+skinparam classAttributeFontColor #000000
+skinparam classFontColor #000000
+skinparam classFontSize 13
+skinparam classAttributeFontSize 13
+skinparam linetype ortho
+skinparam padding 8
+skinparam roundcorner 8
+
+interface LLMService {
+
+  .. Atributos ..
+
+  &lt;b&gt;- provider&lt;/b&gt; : String
+  &lt;b&gt;- apiKey&lt;/b&gt; : String
+  &lt;b&gt;- endpoint&lt;/b&gt; : String
+  &lt;b&gt;- timeout&lt;/b&gt; : Integer
+  &lt;b&gt;- contextoEmpresa&lt;/b&gt; : ContextoEmpresa
+  &lt;b&gt;- modeloAtivo&lt;/b&gt; : String
+  &lt;b&gt;- temperatura&lt;/b&gt; : Float
+  &lt;b&gt;- maxTokens&lt;/b&gt; : Integer
+  &lt;b&gt;- ativo&lt;/b&gt; : Boolean
+
+  .. Métodos ..
+
+  analisarLog(log : LogErro) : String
+
+  montarContexto(usuario : Usuario) : String
+
+  validarDisponibilidade() : Boolean
+
+  configurarModelo(modelo : String) : void
+
+  definirTemperatura(valor : Float) : void
+
+  gerarPrompt(log : LogErro) : String
+
+  registrarFalha(mensagem : String) : void
+
+  obterStatusServico() : String
+}
+
+@enduml</pre>
+</div></div>
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

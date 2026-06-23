@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe de Caso de Uso -&gt;API de Pagamento</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../requisitos/Vinicius-Completo---2_54525957.html">Vinicius Completo - 2</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe de Caso de Uso -&gt;API de Pagamento
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span> on mai. 25, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="28902abebf37">Descrição: Classe responsável por implementar a comunicação física (HTTP/REST) com o provedor externo de pagamentos (ex: Mercado Pago, Stripe, Abacate Pay). Na Arquitetura Hexagonal, ela atua como um <em>Secondary Adapter</em> (Adapter de Saída), implementando a interface (Port) definida pelo domínio. Sua responsabilidade primária é encapsular a complexidade técnica da integração (RF-28), gerenciando credenciais de API, <em>timeouts</em>, políticas de <em>retry</em> em caso de falha de rede e a transformação dos DTOs internos do LogViewer para o formato de JSON exigido pelo parceiro financeiro. Também possui a lógica criptográfica para validar se os webhooks recebidos são autênticos.</p><h3 local-id="0523c10aa956" id="ClassedeCasodeUso-&gt;APIdePagamento-Atributos">Atributos</h3><div class="table-wrap"><table data-layout="default" data-local-id="a800f46d-7f50-4f27-ba15-24dc18efc198" data-table-display-mode="default" class="confluenceTable"><colgroup><col style="width: 49.0px;"/><col style="width: 153.0px;"/><col style="width: 134.0px;"/><col style="width: 138.0px;"/><col style="width: 283.0px;"/></colgroup><tbody><tr data-local-id="cd8b5148-4100-40ba-a359-53ec22f0658c"><td data-local-id="0b71e591-a53d-4437-8f1e-9fa40ebe76e3" class="confluenceTd"><p local-id="057d64bcb79d"><strong>#</strong></p></td><td data-local-id="cf7a38d2-20fe-4dab-ab43-e42dea3651ec" class="confluenceTd"><p local-id="ba37d55f6b67"><strong>Atributo</strong></p></td><td data-local-id="328be9d6-c891-4e2a-a272-448b556be031" class="confluenceTd"><p local-id="c29a7abc6486"><strong>Tipo</strong></p></td><td data-local-id="eb708bf1-d457-44de-a3a2-8e9ffe3ede9c" class="confluenceTd"><p local-id="e91e7dbff26a"><strong>Visibilidade</strong></p></td><td data-local-id="73fd7469-6cc4-4880-bdc9-1fc15fd20c8c" class="confluenceTd"><p local-id="a801d6839b65"><strong>Descrição</strong></p></td></tr><tr data-local-id="97c62848-d8ce-488f-a781-5d3b8d95f8a9"><td data-local-id="bb3c987c-6cf4-4ad2-8ee0-0748594f7dc8" class="confluenceTd"><p local-id="c4df377a7437">1</p></td><td data-local-id="2b066e33-dabd-43dd-9ea2-0edf99214712" class="confluenceTd"><p local-id="38089a27ad01">baseUrl</p></td><td data-local-id="8beee870-c826-49a9-98b7-8717355daef1" class="confluenceTd"><p local-id="76ed2604ee46">String (URL)</p></td><td data-local-id="ff4a1153-b1e3-4150-a52b-4c090f23bb08" class="confluenceTd"><p local-id="bf7b5d09208b">privado</p></td><td data-local-id="dd1c06ff-111c-47ff-9037-ca94fe38f0f1" class="confluenceTd"><p local-id="b35b5073b8d1">Endereço base do endpoint da API do gateway de pagamento</p></td></tr><tr data-local-id="0042de38-da57-43ce-aef4-535d23efa38c"><td data-local-id="c2574406-baa5-48e8-a403-7d37dc443e41" class="confluenceTd"><p local-id="40cd2d0e2040">2</p></td><td data-local-id="30b41b46-7532-4214-8ea9-aa01eea08806" class="confluenceTd"><p local-id="343729759a88">apiKey</p></td><td data-local-id="2c66c9f4-11c2-4cd6-b5e6-3b5010b58ba6" class="confluenceTd"><p local-id="4bcaa3cd054c">String</p></td><td data-local-id="03aa3846-c3c4-4330-89b1-dbaefab2765d" class="confluenceTd"><p local-id="930908b05a5b">privado</p></td><td data-local-id="68a9c51e-00c4-4bee-b9a4-9be1d9d01ba0" class="confluenceTd"><p local-id="18443dceb359">Chave secreta de autenticação (Bearer Token) para consumo da API</p></td></tr><tr data-local-id="c654b658-73c2-43b9-9a03-546a1c5dce66"><td data-local-id="52c6dce3-1ffd-42a1-a1b5-e52cae1336d4" class="confluenceTd"><p local-id="ce36ae593a62">3</p></td><td data-local-id="8553e6cb-0d86-411f-bab3-5e1b9e684d58" class="confluenceTd"><p local-id="17f7ec87e045">webhookSecret</p></td><td data-local-id="25da3385-af94-4544-86b5-6350f14d4c6e" class="confluenceTd"><p local-id="94081a295ed0">String</p></td><td data-local-id="e62b0b01-f0ba-4e27-b224-9aad7c7864a7" class="confluenceTd"><p local-id="74d1b7d00b6d">privado</p></td><td data-local-id="a126fa48-e53b-4261-87cf-09cbed32828e" class="confluenceTd"><p local-id="0162db77077b">Chave criptográfica usada para validar a assinatura dos webhooks recebidos</p></td></tr><tr data-local-id="d84b2782-15d8-46f1-8d29-2f4e70d38b6c"><td data-local-id="4f1ad03e-76b3-4318-91c3-a84cff7b0c4c" class="confluenceTd"><p local-id="c5f9ae9c1638">4</p></td><td data-local-id="3140e2c4-56ee-4af8-8391-f2e4a5c1a05b" class="confluenceTd"><p local-id="30bc7d095029">timeoutMilissegundos</p></td><td data-local-id="46c1c013-20bc-40bf-a7db-f301e7cb267e" class="confluenceTd"><p local-id="3bf67ed6f7d4">Integer</p></td><td data-local-id="08176530-121f-4984-97ce-cfe94646abc4" class="confluenceTd"><p local-id="1190409700b3">privado</p></td><td data-local-id="35611f34-71a7-4992-9b95-e09477b4dea1" class="confluenceTd"><p local-id="1bf9d715a714">Tempo máximo de espera para requisições externas antes de abortar (prevenção de gargalo)</p></td></tr><tr data-local-id="284f333b-a0c5-4952-83f9-9aed5f372187"><td data-local-id="efd67fec-7f6e-40a4-ba04-868eda6e7e00" class="confluenceTd"><p local-id="17b4abe5518f">5</p></td><td data-local-id="a20851c8-d005-4318-91b4-73c25fc30b60" class="confluenceTd"><p local-id="78fb09762d25">maxRetries</p></td><td data-local-id="72194e67-516e-403f-a812-ed2e77fb2555" class="confluenceTd"><p local-id="c78e7284336f">Integer</p></td><td data-local-id="49aba320-b705-4071-8ce1-d1bf077b877d" class="confluenceTd"><p local-id="fb93116eccf5">privado</p></td><td data-local-id="dcc1dc27-3dc7-47a7-ae24-e829c2a749d4" class="confluenceTd"><p local-id="0b8d19e882ef">Número de tentativas configuradas em caso de falhas temporárias (HTTP 503, Timeout)</p></td></tr></tbody></table></div><h3 local-id="757fdde01761" id="ClassedeCasodeUso-&gt;APIdePagamento-Métodos">Métodos</h3><div class="table-wrap"><table data-layout="default" data-local-id="6d2ab04d-a8d1-4e75-8ffa-097cf72637df" class="confluenceTable"><colgroup><col style="width: 58.0px;"/><col style="width: 188.0px;"/><col style="width: 158.0px;"/><col style="width: 116.0px;"/><col style="width: 230.0px;"/></colgroup><tbody><tr data-local-id="f358992d-25d7-4aba-a294-e7c01a490e1a"><td data-local-id="c434f015-245d-48c2-aab1-9fdb268287ef" class="confluenceTd"><p local-id="71c2a5aa2fb0"><strong>#</strong></p></td><td data-local-id="34d148d3-ee87-412e-8f57-c5391d3479b1" class="confluenceTd"><p local-id="1cbcb4e04a3c"><strong>Método</strong></p></td><td data-local-id="5ab48534-3ad2-4eae-b813-6b149f938a62" class="confluenceTd"><p local-id="a497c19bbc81"><strong>Retorno</strong></p></td><td data-local-id="ce0a1003-9d46-42e7-80a6-43fe384ee3e2" class="confluenceTd"><p local-id="cbbc6ecc4c53"><strong>Visibilidade</strong></p></td><td data-local-id="e3b3a516-ae41-4f88-a63d-e7c5b3f568bb" class="confluenceTd"><p local-id="0fdafd6c60ae"><strong>Descrição</strong></p></td></tr><tr data-local-id="fbcc3966-c39e-4b3c-b493-2c83671acb4e"><td data-local-id="c0d63ea5-0b26-4614-8fc7-82651708d61b" class="confluenceTd"><p local-id="9e498043975c">1</p></td><td data-local-id="c11d3d0b-9080-4486-985d-7f493285439e" class="confluenceTd"><p local-id="9ff5dee5ef67">criarCobranca(dados: DadosCobranca)</p></td><td data-local-id="233ee7fd-0c5b-4daf-a757-5c4ab0bc375b" class="confluenceTd"><p local-id="abdba2eaf8c5">TransacaoExterna</p></td><td data-local-id="8562ec54-7fed-4359-bfcc-088f2e3652fc" class="confluenceTd"><p local-id="5f34e9d64c14">público</p></td><td data-local-id="cf9e66f4-c44c-4afc-baa2-595696538390" class="confluenceTd"><p local-id="1c35ae60da86">Faz o POST na API externa para gerar um PIX, emitir Boleto ou debitar o Cartão de Crédito</p></td></tr><tr data-local-id="bf03056c-87be-4a5d-bebc-a8b7a7d90220"><td data-local-id="6b5fb62c-a120-4ccd-b6d2-d2b589724f99" class="confluenceTd"><p local-id="0ab433f6fb1e">2</p></td><td data-local-id="2a6bf718-d383-41e6-a145-bbd6840e4c96" class="confluenceTd"><p local-id="4bbe5d97ecb0">consultarTransacao (gatewayId: String)</p></td><td data-local-id="fee3de75-4acb-42a2-9d72-e888dacc5f40" class="confluenceTd"><p local-id="72855acb2b69">DetalhesTransacao</p></td><td data-local-id="6389e032-f5fa-447b-9a41-47b83144275f" class="confluenceTd"><p local-id="30f2d2dc344a">público</p></td><td data-local-id="b8b31759-3cf0-4401-ade9-0fa27d850da8" class="confluenceTd"><p local-id="a3faff05e9a3">Faz um GET direto no parceiro para buscar o status em tempo real de uma cobrança específica</p></td></tr><tr data-local-id="1eca821a-dfb6-40f5-9bfb-38940013277a"><td data-local-id="3950049b-627a-45a0-81c2-54784b7c2478" class="confluenceTd"><p local-id="20fa8fce3edc">3</p></td><td data-local-id="530cab6d-47eb-40b1-b360-10a04a0970b2" class="confluenceTd"><p local-id="f6cb8908bb6c">estornarCobranca (gatewayId: String)</p></td><td data-local-id="368f446c-baa6-4da8-b3af-6b6cb28d3ca0" class="confluenceTd"><p local-id="66c030de7b0a">Boolean</p></td><td data-local-id="17d1ae49-4fc0-45f5-b4a1-1a7dcdc91d13" class="confluenceTd"><p local-id="c6bbb82029f0">público</p></td><td data-local-id="5446de91-d3cb-4639-a826-435aa73a441b" class="confluenceTd"><p local-id="b9c357fc83d2">Aciona o endpoint de cancelamento/estorno (Refund) da API externa</p></td></tr><tr data-local-id="c36c9db9-640b-4fc2-8d39-070487d37111"><td data-local-id="81ddb5e6-1038-421c-9f82-17502370b53f" class="confluenceTd"><p local-id="27f7b5213bb6">4</p></td><td data-local-id="c04308c0-5855-4e55-88d7-e8c3da0c8024" class="confluenceTd"><p local-id="595ffd573dba">validarAssinaturaWebhook (payload: String, signature: String)</p></td><td data-local-id="d6d080a6-ec25-45f0-be0c-87a01aa5ad9e" class="confluenceTd"><p local-id="cf5b2b6802f7">Boolean</p></td><td data-local-id="24b4b853-6726-4fe9-9adc-98d05d0ae04f" class="confluenceTd"><p local-id="191927e73435">público</p></td><td data-local-id="9b3e66b0-e860-4074-8737-000e6c2f7d89" class="confluenceTd"><p local-id="5338a9575fb1">Aplica algoritmo criptográfico (ex: HMAC SHA-256) para garantir que o webhook não é uma fraude</p></td></tr><tr data-local-id="08c9d85d-2f2b-4083-bfff-f6f119009c07"><td data-local-id="0b78d20e-4303-41d3-b5b7-178065d4d9fb" class="confluenceTd"><p local-id="87b7528ae271">5</p></td><td data-local-id="e11ab155-c4ec-4c10-8e8c-c43a08ecd68b" class="confluenceTd"><p local-id="e358d05cefcf">mapearErroGateway (response: HttpResponse)</p></td><td data-local-id="8e163ffa-6d80-4de8-9b9a-89e0141c7ef7" class="confluenceTd"><p local-id="c7288dab6bb9">ErroPagamento</p></td><td data-local-id="82f7272f-becb-42f3-9792-d23ab55aad47" class="confluenceTd"><p local-id="4061ecc9688a">privado</p></td><td data-local-id="30628cdb-2f3f-49e0-bb0b-d6f82aa3321c" class="confluenceTd"><p local-id="2c7ba67adbc4">Traduz códigos de erro HTTP e mensagens do parceiro para exceções conhecidas pelo LogViewer</p></td></tr><tr data-local-id="65063c12-9f53-42d5-8211-ca05be7da2b4"><td data-local-id="ab665e2d-1521-40fa-aebe-6a47d385d803" class="confluenceTd"><p local-id="ca2f3c6c7ac2">6</p></td><td data-local-id="67caff6b-fedf-494f-8a3e-1e7798a33c81" class="confluenceTd"><p local-id="ac178b5d8ab1">executarRequisicaoComRetry(request: HttpRequest)</p></td><td data-local-id="38590111-b1ee-40c0-bfa5-f445795fbd85" class="confluenceTd"><p local-id="ed828da525c8">HttpResponse</p></td><td data-local-id="73308501-5ffe-4934-980b-dd2c521a91d8" class="confluenceTd"><p local-id="16ac6566a23d">privado</p></td><td data-local-id="b2948c4a3d07" class="confluenceTd"><p local-id="ebe8ba5e1a93">Encapsula a chamada HTTP aplicando a política de <em>retry</em> configurada nos atributos</p></td></tr></tbody></table></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260525-233335.png" width="760" loading="lazy" src="../attachments/54820871/54525985.png?width=760" data-image-src="../attachments/54820871/54525985.png" data-height="1868" data-width="2320" data-unresolved-comment-count="0" data-linked-resource-id="54525985" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260525-233335.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="54820871" data-linked-resource-container-version="1" data-media-id="340bef6d-d7fc-4234-b963-99b085d4e834" data-media-type="file"></span><p local-id="2a4314ddc901" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml ApiDePagamento
+skinparam classAttributeIconSize 0
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #005A9C
+skinparam linetype ortho
+skinparam padding 8
+skinparam roundcorner 5
+
+class ApiDePagamento &lt;&lt;Secondary Adapter&gt;&gt; {
+  - baseUrl : String
+  - apiKey : String
+  - webhookSecret : String
+  - timeoutMilissegundos : Integer
+  - maxRetries : Integer
+  
+  + criarCobranca(dados : DadosCobranca) : TransacaoExterna
+  + consultarTransacao(gatewayId : String) : DetalhesTransacao
+  + estornarCobranca(gatewayId : String) : Boolean
+  + validarAssinaturaWebhook(payload : String, signature : String) : Boolean
+  - mapearErroGateway(response : HttpResponse) : ErroPagamento
+  - executarRequisicaoComRetry(request : HttpRequest) : HttpResponse
+}
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/54820871/54525985.png">image-20260525-233335.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

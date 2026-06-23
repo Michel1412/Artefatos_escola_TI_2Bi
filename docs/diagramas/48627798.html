@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 8-&gt; Caso de uso 8:      Apresentar Histórico de Erros</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 8-&gt; Caso de uso 8:      Apresentar Histórico de Erros
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified by <span class='editor'> Michel Bocchi Junior</span> on mai. 18, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="1480b153657c">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-57" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-57" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-57</a>
+                    -
+            <span class="summary">Criação diagrama de sequencia 8</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+ </p><hr local-id="412338cd0f86"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-232758.png" width="643" loading="lazy" src="../attachments/48627798/50462731.png?width=643" data-image-src="../attachments/48627798/50462731.png" data-height="451" data-width="643" data-unresolved-comment-count="0" data-linked-resource-id="50462731" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-232758.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="48627798" data-linked-resource-container-version="4" data-media-id="49a2fc3d-c556-4ddf-821d-1e451e056d03" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-08: 1. Carregamento Inicial do Histórico
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+User -&gt; UI: Acessa a tela de &quot;Histórico de Erros&quot;
+activate UI
+
+UI -&gt; API: Solicita histórico (Paginado)
+activate API
+
+API -&gt; API: Valida Sessão e Extrai CNPJ (Tenant ID)
+
+API -&gt; DB: Query de logs do CNPJ (Regra de Isolamento: RN-01)
+activate DB
+
+alt Cenário Principal: Erros Encontrados
+    DB --&gt; API: Retorna documentos paginados
+    API -&gt; API: Formata dados (Timestamp, Tipo, Status)
+    API --&gt; UI: JSON com lista de erros
+    UI --&gt; User: Renderiza a tabela/lista na tela
+    
+else Alternativa A1: Nenhum erro encontrado
+    DB --&gt; API: Retorna array vazio []
+    API --&gt; UI: 200 OK (Sem dados)
+    UI --&gt; User: Exibe interface amigável de &quot;Estado Vazio&quot;
+end
+deactivate DB
+deactivate API
+deactivate UI
+@enduml</pre>
+</div></div><hr local-id="05043684e255"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-232844.png" width="743" loading="lazy" src="../attachments/48627798/50364447.png?width=743" data-image-src="../attachments/48627798/50364447.png" data-height="285" data-width="743" data-unresolved-comment-count="0" data-linked-resource-id="50364447" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-232844.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="48627798" data-linked-resource-container-version="4" data-media-id="b6fc77f8-fac3-457d-b88c-ddc5e6193642" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-08: 2. Busca e Filtros Avançados
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+User -&gt; UI: Aplica filtro (Ex: Multi-sistemas, Status ou Pesquisa)
+activate UI
+
+UI -&gt; API: Solicita histórico com parâmetros (search, status, systemId)
+activate API
+
+API -&gt; API: Garante isolamento (CNPJ) e monta Query Otimizada
+
+API -&gt; DB: Executa busca utilizando índices do MongoDB
+activate DB
+DB --&gt; API: Retorna lista filtrada
+deactivate DB
+
+API --&gt; UI: JSON atualizado
+UI --&gt; User: Atualiza a interface com resultados refinados
+deactivate API
+deactivate UI
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627812.jpg">caso_7-20260518-175433.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627815.png">5_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627818.png">5_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627821.png">5_2.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627827.png">diagrama_sequencia_5-20260508-003238.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627824.png">5.1-20260508-004107.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627830.png">5_teste.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627833.png">diagrama_sequencia_5.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627836.png">6_1.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48627839.png">Untitled 21.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48922626.jpg">caso8.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/48889863.png">cas_8_1.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/50069528.png">cas_8_1.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/50462731.png">image-20260518-232758.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627798/50364447.png">image-20260518-232844.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

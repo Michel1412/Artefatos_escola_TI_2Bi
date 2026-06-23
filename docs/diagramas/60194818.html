@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe: ClerkIdentity</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="Diagrama-de-Classes-4_54755329.html">Diagrama de Classes 4</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe: ClerkIdentity
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span> on jun. 04, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 local-id="ce3beaf52909" id="Classe:ClerkIdentity-Descrição">Descrição</h2><p local-id="90dc505d723b">Representa a identidade autenticada de um usuário proveniente do Clerk. Centraliza o gerenciamento dos tokens de autenticação (Frontend e Backend), metadados personalizados, roles, permissões e informações de assinatura transmitidas através de Claims JWT.</p><p local-id="a11cd5c03f5d">Funciona como a principal abstração de identidade dentro do LogViewer, desacoplando as regras de negócio da implementação específica do Clerk.</p><p local-id="0a99b6f1019f">A classe é utilizada pelos serviços de autenticação, autorização e controle de acesso para validar permissões, recuperar informações do tenant (CNPJ) e determinar recursos disponíveis conforme o plano contratado.</p><hr local-id="82077251-6692-4abe-8af7-d4bd37c24b82"/><h1 local-id="6095927dbb92" id="Classe:ClerkIdentity-Atributos">Atributos</h1><div class="table-wrap"><table data-layout="default" data-local-id="83574617-ff46-4743-851d-5e8c53b7708a" class="confluenceTable"><colgroup><col style="width: 85.0px;"/><col style="width: 161.0px;"/><col style="width: 195.0px;"/><col style="width: 104.0px;"/><col style="width: 210.0px;"/></colgroup><tbody><tr data-local-id="244a3dad-d080-4051-813f-18838628c6de"><th data-local-id="7c6673a0-69fb-41b5-a825-1f44d109510c" class="confluenceTh"><p local-id="f5fb7509b24a">#</p></th><th data-local-id="cb3f20b6-18c6-492a-ae64-f8a82988fb5f" class="confluenceTh"><p local-id="09c8a67f5488">Atributo</p></th><th data-local-id="ea639b68-d043-401c-8871-7884cf4dfd95" class="confluenceTh"><p local-id="44647ec81299">Tipo</p></th><th data-local-id="b71dfe2e-0217-4aa9-aff5-bac827135f91" class="confluenceTh"><p local-id="f44c9f520b67">Visibilidade</p></th><th data-local-id="29dfd66a-33ce-4fb3-8d6e-4aa9b98d820b" class="confluenceTh"><p local-id="442c2b11d722">Descrição</p></th></tr><tr data-local-id="a8ec7e0a-0de7-41d4-979b-921add2c8959"><td data-local-id="e8638f69-5321-48f0-8d83-ff6e6e16b7c8" class="confluenceTd"><p local-id="ad9ee0f77491">1</p></td><td data-local-id="6ea058cd-cede-4fd5-8290-43adf74b5e39" class="confluenceTd"><p local-id="1374faeefd19">clerkUserId</p></td><td data-local-id="1ad9aadd-7fe5-48f5-ad2c-7f6754aa3275" class="confluenceTd"><p local-id="4046a6b37c06">String</p></td><td data-local-id="22461bf2-67b7-4c7e-8668-d17c3fb44570" class="confluenceTd"><p local-id="7fe7293b7fdc">privado</p></td><td data-local-id="c8118ce6-4600-4e11-8742-a6ba14f461d1" class="confluenceTd"><p local-id="f7e33ca4aa3c">Identificador único do usuário no Clerk</p></td></tr><tr data-local-id="1c18dd01-2ebb-48f5-a269-25160afc4f37"><td data-local-id="1f229da3-ed26-4df4-8e01-6a4c59b311db" class="confluenceTd"><p local-id="4f56ba6bae97">2</p></td><td data-local-id="e8be85a3-8726-4e1b-8e0b-d1223e812e76" class="confluenceTd"><p local-id="e6a205e382a5">sessionId</p></td><td data-local-id="ab651583-2185-468b-9e25-aff1610ce287" class="confluenceTd"><p local-id="535321d47110">String</p></td><td data-local-id="8486c003-83d5-4a79-a398-704f360bfac2" class="confluenceTd"><p local-id="d3d1a75d8fab">privado</p></td><td data-local-id="d491d276-d491-4b5a-9f6d-d181fdc4d739" class="confluenceTd"><p local-id="36e788d280c0">Identificador da sessão autenticada</p></td></tr><tr data-local-id="91cb7723-d903-4f82-bcbe-8f74e67a4947"><td data-local-id="6d00480f-d64c-4985-a90b-a1da1d87f8a2" class="confluenceTd"><p local-id="444267b15c02">3</p></td><td data-local-id="81b66c41-9ccb-4353-9595-02eb1f1c7ab6" class="confluenceTd"><p local-id="1b4b03ffcee7">accessToken</p></td><td data-local-id="1c68e6b7-440b-4f9c-b0df-ce2e96b1f6b9" class="confluenceTd"><p local-id="42e62f436e86">String</p></td><td data-local-id="99804be5-3306-494f-b173-ae7cee995ab5" class="confluenceTd"><p local-id="a9abc175a9b4">privado</p></td><td data-local-id="f8a5d981-7fc6-4ced-b5e5-00032be712e4" class="confluenceTd"><p local-id="0ca0634179bc">JWT utilizado pelo frontend</p></td></tr><tr data-local-id="cc7c2818-a2f6-4dc2-a5fe-76597a9f8ea2"><td data-local-id="d0e99820-6ec1-401e-831e-05cc5747eb4e" class="confluenceTd"><p local-id="8f9e4dcb36e9">4</p></td><td data-local-id="32864b67-8b45-4830-9ecb-ff8bd14fd6d3" class="confluenceTd"><p local-id="e321ba4ecc88">backendToken</p></td><td data-local-id="d5c69a4b-a623-4f9f-8f7d-673e3b07f282" class="confluenceTd"><p local-id="989d937e3d0a">String</p></td><td data-local-id="65dac67c-808b-4e56-b853-3c7e3979c472" class="confluenceTd"><p local-id="56ba9437daa4">privado</p></td><td data-local-id="6e2c4a50-3e1a-459b-b19b-33dc2a25f98b" class="confluenceTd"><p local-id="8b39a9338cf9">Token utilizado pela API para validações internas</p></td></tr><tr data-local-id="5cdaea01-272a-420b-b9d7-b4e38253bd5a"><td data-local-id="c3571aa3-ceff-44ca-ab16-203143b5d8d0" class="confluenceTd"><p local-id="cad5aefc8729">5</p></td><td data-local-id="d41133a5-f021-4a1d-b62e-4049e81ee936" class="confluenceTd"><p local-id="1cc1ab07fd38">refreshToken</p></td><td data-local-id="33460e05-ed5b-4741-8a21-5b54f741513d" class="confluenceTd"><p local-id="f4efec87a181">String</p></td><td data-local-id="a04c183f-59f1-4a6b-a023-63a31eeff4b7" class="confluenceTd"><p local-id="407d0a966a0c">privado</p></td><td data-local-id="c54cf6a3-8551-4d27-8859-f2711db036b4" class="confluenceTd"><p local-id="726194c103d5">Token de renovação da sessão</p></td></tr><tr data-local-id="70737c4f-9cb0-42a3-a615-64c19ecffcc6"><td data-local-id="f43ee315-62d0-4dc3-8d95-4d9968c7e246" class="confluenceTd"><p local-id="30c16218056d">6</p></td><td data-local-id="6a96dbae-abdf-42d6-83a3-dbcf14577f03" class="confluenceTd"><p local-id="ec783ecf19e5">role</p></td><td data-local-id="65bc99f6-491e-46c0-bef1-baa81a055e4e" class="confluenceTd"><p local-id="737d99176fc4">String</p></td><td data-local-id="83b5d5db-513b-4d61-9240-b89e0351dff9" class="confluenceTd"><p local-id="eb7f27f91858">privado</p></td><td data-local-id="ac728537-b07c-458a-b936-380b90f7c45d" class="confluenceTd"><p local-id="f1b2f904dfe2">Perfil do usuário (ADMIN, ANALYST, VIEWER)</p></td></tr><tr data-local-id="8e357f4a-c6b3-4aa9-a5e1-60b47fd55539"><td data-local-id="581d81c9-80b3-4a67-be4f-0678126f624b" class="confluenceTd"><p local-id="beff158c009a">7</p></td><td data-local-id="b60afef0-db0f-4d0f-9ec5-07c901db78fe" class="confluenceTd"><p local-id="df4e2c39cea8">plano</p></td><td data-local-id="bdd2e1fe-15d7-4bbf-ae86-28ab966b0cc7" class="confluenceTd"><p local-id="dfc93c580026">String</p></td><td data-local-id="9900d32e-4ddf-465d-be17-eb5a8cc6b86b" class="confluenceTd"><p local-id="4355e20cedce">privado</p></td><td data-local-id="af5a1ccd-8248-492e-8a06-847ea67dbbef" class="confluenceTd"><p local-id="ebacd08ce8e8">Plano contratado obtido via claims</p></td></tr><tr data-local-id="52e3ce8a-891c-44a8-b35b-66749ce85f0c"><td data-local-id="ea41bf00-0f03-4039-987c-50e43c038877" class="confluenceTd"><p local-id="f35165ba4866">8</p></td><td data-local-id="66cb8ac4-1f9d-4593-acdd-8e6c0d50750a" class="confluenceTd"><p local-id="ae81171e6000">tenantId</p></td><td data-local-id="4f0f8890-321d-4913-9762-6fcee74a5385" class="confluenceTd"><p local-id="437342be276d">String</p></td><td data-local-id="ffc4d1ec-d1a7-4ad0-a780-90c6961e9f18" class="confluenceTd"><p local-id="10bab8cfd97d">privado</p></td><td data-local-id="9609ed62-2829-418a-b80a-14840f0914ec" class="confluenceTd"><p local-id="e6b4ae66553c">CNPJ da empresa vinculada</p></td></tr><tr data-local-id="cd9d0534-e4e2-4365-9633-c108c6ae25cd"><td data-local-id="ac4ad12c-7ee8-4fc1-9afe-fea185092a46" class="confluenceTd"><p local-id="6a0f01a3605c">9</p></td><td data-local-id="7d7173d6-c882-4dae-ba10-5333d1fc1913" class="confluenceTd"><p local-id="d3a21d47ccba">metadata</p></td><td data-local-id="cc690b24-9c5b-43b0-afac-fa79a8ecdf6b" class="confluenceTd"><p local-id="cb838358d48c">Map&lt;String,Object&gt;</p></td><td data-local-id="70f6e0c3-2d2e-467f-b615-8b3058c4dfc4" class="confluenceTd"><p local-id="1cae9ef27049">privado</p></td><td data-local-id="ea629e7d-9c73-4982-bb31-22adf458747a" class="confluenceTd"><p local-id="e0e3b1747b90">Metadados customizados enviados pelo Clerk</p></td></tr><tr data-local-id="ffd3ede4-4e75-429f-b71d-e632f9d45a18"><td data-local-id="11124d9e-9536-4336-95e0-2b015e759f7e" class="confluenceTd"><p local-id="79154fd5b3b1">10</p></td><td data-local-id="d6c15ea3-771b-41dd-af61-fa8ac523c21a" class="confluenceTd"><p local-id="898d77c29497">claims</p></td><td data-local-id="1cb1d815-8505-4032-82d9-86b292f792cd" class="confluenceTd"><p local-id="04c32a24e600">Map&lt;String,Object&gt;</p></td><td data-local-id="3be8857f-b250-4bdd-93d3-024545d9d547" class="confluenceTd"><p local-id="28858262bfb3">privado</p></td><td data-local-id="04e8262a-dc80-4b2f-9c97-dea62ed9ceb5" class="confluenceTd"><p local-id="f5ea50844c4f">Claims extraídos do JWT</p></td></tr><tr data-local-id="fc95de55-5a55-4fd5-a765-68a6f301f9d3"><td data-local-id="ab5bd7db-3ce0-435b-9edf-318a2a6897f8" class="confluenceTd"><p local-id="12430cebf5ff">11</p></td><td data-local-id="d8570cb8-b56c-4bbe-86a5-3df78331d244" class="confluenceTd"><p local-id="dff68b879841">permissoes</p></td><td data-local-id="fa43308a-6ce4-498d-99bb-5c78e1c020d9" class="confluenceTd"><p local-id="1a3f8b52598a">List</p></td><td data-local-id="fce1e2c6-e6f5-46de-b6ba-c43aadcd7f31" class="confluenceTd"><p local-id="e684073e9d76">privado</p></td><td data-local-id="116e3d87-a720-4e85-870d-eff5d85daf48" class="confluenceTd"><p local-id="f5e530334ad8">Permissões derivadas da role</p></td></tr><tr data-local-id="7aeba9c1-91a1-4713-bb26-b51daf16f0a6"><td data-local-id="4fb89e35-507f-46b6-98da-6303255047b8" class="confluenceTd"><p local-id="1fd0a4bab2ec">12</p></td><td data-local-id="1cb36426-9a8d-44e5-9cfc-3f7c75c41ee3" class="confluenceTd"><p local-id="b95d8f3d18eb">issuedAt</p></td><td data-local-id="b913b8f6-4750-4da0-a697-1156196be5b9" class="confluenceTd"><p local-id="63c1eecac646">DateTime</p></td><td data-local-id="243813fc-8d8b-4d00-9963-379b5af131b7" class="confluenceTd"><p local-id="1c111b68fc73">privado</p></td><td data-local-id="325692fa-fed1-4f46-8647-597ce34d5c24" class="confluenceTd"><p local-id="969ea62376a8">Data de emissão do token</p></td></tr><tr data-local-id="40ed7f59-d12f-4a99-8e5a-743cc7b75167"><td data-local-id="83a33d1a-6f67-46e4-ae22-42486428be49" class="confluenceTd"><p local-id="8bc625c583e4">13</p></td><td data-local-id="909c462e-74e8-460a-9fa1-ff6b49dc5e96" class="confluenceTd"><p local-id="51879c2aa517">expiresAt</p></td><td data-local-id="e7541f67-eb1c-4b9b-8c4f-88ad5f5cee6d" class="confluenceTd"><p local-id="b0163fd0d032">DateTime</p></td><td data-local-id="93120b82-4de1-4073-9d50-be910fa07368" class="confluenceTd"><p local-id="1e56e9aff21a">privado</p></td><td data-local-id="131ccdc6-deb2-44b0-9203-eb725fa84946" class="confluenceTd"><p local-id="48f41b0e3d60">Data de expiração do token</p></td></tr><tr data-local-id="c4ff14aa-f3b2-481e-b9cc-0f23bf05e41c"><td data-local-id="379b988e-5338-43fa-b972-5fc995cb9ac7" class="confluenceTd"><p local-id="0265f239896b">14</p></td><td data-local-id="a80d7a7b-5e8e-48a6-ad55-6b76da3a5282" class="confluenceTd"><p local-id="589fb5843364">autenticado</p></td><td data-local-id="d841dc80-58a7-4b55-8ea2-7135898202f7" class="confluenceTd"><p local-id="53749f23699f">Boolean</p></td><td data-local-id="573ce0dc-89d9-4aa4-8e48-31db16b3a9ba" class="confluenceTd"><p local-id="82353b01b17b">privado</p></td><td data-local-id="e1ae4d01-3576-4c98-b2d1-876c52f874e9" class="confluenceTd"><p local-id="9e82c564512e">Indica se a identidade é válida</p></td></tr></tbody></table></div><hr local-id="795aeb53-5469-463f-8747-34988a20eafd"/><h1 local-id="8552432a06be" id="Classe:ClerkIdentity-Métodos">Métodos</h1><div class="table-wrap"><table data-layout="default" data-local-id="b4663785-a510-47ec-9d94-12ce1e8f2cc9" class="confluenceTable"><colgroup><col style="width: 77.0px;"/><col style="width: 226.0px;"/><col style="width: 152.0px;"/><col style="width: 152.0px;"/><col style="width: 152.0px;"/></colgroup><tbody><tr data-local-id="0dcfcc2a-0d3b-4e4a-8b02-0a6f7f18b1b0"><th data-local-id="2c32fbf2-4357-48d0-95f3-ef1f67ead203" class="confluenceTh"><p local-id="6dd67efc041b">#</p></th><th data-local-id="9b55705f-e188-4d3c-8519-5cd3a1fb3d5b" class="confluenceTh"><p local-id="d0f2bd75e2a0">Método</p></th><th data-local-id="5701f89f-bc09-41ac-b738-05ad0be8a53d" class="confluenceTh"><p local-id="0fe0bdabd24f">Retorno</p></th><th data-local-id="5ce96856-53ed-4572-bb02-a6da6694ac00" class="confluenceTh"><p local-id="afec047bae05">Visibilidade</p></th><th data-local-id="ff468f4b-1149-47df-b0d2-bf5eb0c7e71c" class="confluenceTh"><p local-id="de0e73aceecf">Descrição</p></th></tr><tr data-local-id="07042a33-7208-4229-a045-2723815cad34"><td data-local-id="ca802a11-7d4d-458e-98ed-eab8007c8c5d" class="confluenceTd"><p local-id="6c4bda3485c3">1</p></td><td data-local-id="47f39ffc-7dd5-454d-b4c5-23204610e74b" class="confluenceTd"><p local-id="4df3eeba843b">carregarClaims(jwt: String)</p></td><td data-local-id="e9ef5e68-4ed5-4a39-9470-6f1e6eaaf7c0" class="confluenceTd"><p local-id="1e83bb6715d2">void</p></td><td data-local-id="0357460d-284b-4e16-8c67-2b777ba6d583" class="confluenceTd"><p local-id="620fd09709f4">público</p></td><td data-local-id="42a19713-5e78-46b8-ba83-cca6e9a5fa9a" class="confluenceTd"><p local-id="291dba5943e0">Extrai claims do token JWT</p></td></tr><tr data-local-id="c02625b8-892c-437d-9b6d-819d0d58322b"><td data-local-id="b5aa365f-6834-4ddb-8120-0e8e87ffdc06" class="confluenceTd"><p local-id="e6a9b4a3be74">2</p></td><td data-local-id="11757981-2a80-4889-9faa-87a3552e046e" class="confluenceTd"><p local-id="1d1f1fffa0a0">obterRole()</p></td><td data-local-id="67771ec6-9ef0-4398-97e5-e0a1df3fe433" class="confluenceTd"><p local-id="fedf0b9f798a">String</p></td><td data-local-id="9429f86b-987d-4dc6-a716-1c0cdbb6d8ae" class="confluenceTd"><p local-id="2cb198ceadb1">público</p></td><td data-local-id="782ec560-5751-4916-8889-230a1ceaf226" class="confluenceTd"><p local-id="3cb80a3b017c">Retorna a role atual</p></td></tr><tr data-local-id="65db5d81-d2d6-4196-86d7-84149f2dbe34"><td data-local-id="a243361d-3b59-400e-8533-fc4d2243c28a" class="confluenceTd"><p local-id="97a69a596a7e">3</p></td><td data-local-id="2a4ea19a-1122-4801-9166-f8cabad5c012" class="confluenceTd"><p local-id="e075e558b65f">obterPlano()</p></td><td data-local-id="c9eb9b60-c9be-4336-a89c-f73d567d3c48" class="confluenceTd"><p local-id="6c9a5e7d1bd4">String</p></td><td data-local-id="2a848a21-a426-4ed3-87a2-cafb3af847c9" class="confluenceTd"><p local-id="d2183a76e733">público</p></td><td data-local-id="6a075d3a-b140-4412-bd0a-6dc185092e35" class="confluenceTd"><p local-id="5500293d87fd">Retorna o plano contratado</p></td></tr><tr data-local-id="11c08fd0-f4c5-4f01-a9a6-715876d05f50"><td data-local-id="7d919c21-a58b-4673-b0a2-c9a96e245ded" class="confluenceTd"><p local-id="b43d5215e9f6">4</p></td><td data-local-id="d52c9cb8-8752-43e7-a915-2be7d9756c4e" class="confluenceTd"><p local-id="adbdddae438e">obterTenantId()</p></td><td data-local-id="bb45ebf5-fc11-49ca-be43-e4e3269d99b4" class="confluenceTd"><p local-id="1c6219274940">String</p></td><td data-local-id="435ee65c-0149-4641-9484-1227c9babffd" class="confluenceTd"><p local-id="50fad5094295">público</p></td><td data-local-id="ddf42715-ce14-4e1a-9861-1338c77f31af" class="confluenceTd"><p local-id="8687a8a9d9ca">Retorna o CNPJ associado</p></td></tr><tr data-local-id="dabcdd00-17a5-4520-8da0-2cbd4cd962a8"><td data-local-id="6cb4ddb4-a492-42ee-af6b-8b365e06939f" class="confluenceTd"><p local-id="1069cb6c17f5">5</p></td><td data-local-id="de3223d1-b6fe-4472-b241-87b8ddaeebc5" class="confluenceTd"><p local-id="23c517f350e6">obterMetadata(chave: String)</p></td><td data-local-id="1d2f71e7-2d4c-4e78-94ef-bf9be63b79a3" class="confluenceTd"><p local-id="5e0b5ce56587">Object</p></td><td data-local-id="10fc3edc-db7f-4653-ba73-a32c373f9668" class="confluenceTd"><p local-id="0086e0559201">público</p></td><td data-local-id="cd3b8a2e-a80b-4a01-84f1-45766778b28d" class="confluenceTd"><p local-id="c0435e803417">Recupera metadado específico</p></td></tr><tr data-local-id="f0bc3839-92c1-4230-bef7-6007b2bf9680"><td data-local-id="b4e72c9b-3248-4017-9b06-d825580dff89" class="confluenceTd"><p local-id="7055396f04b1">6</p></td><td data-local-id="8007ce27-739c-4d39-9547-e514076145ae" class="confluenceTd"><p local-id="fcefd62a5978">atualizarMetadata(chave: String, valor: Object)</p></td><td data-local-id="cfac57d3-4017-4513-8761-370269b5287d" class="confluenceTd"><p local-id="ad9f86bc739d">void</p></td><td data-local-id="1270a3c9-6a21-4b00-aaca-e2fc9544933c" class="confluenceTd"><p local-id="e2044a281270">público</p></td><td data-local-id="c11fc12c-dc1a-4159-bb5d-ddaff2fe79b3" class="confluenceTd"><p local-id="04dccbdeb143">Atualiza metadados locais</p></td></tr><tr data-local-id="3ade4672-f362-4d53-bb85-7484a589b2e5"><td data-local-id="9f9cec7c-6fe5-4470-8e55-cb428105d75c" class="confluenceTd"><p local-id="458781a97027">7</p></td><td data-local-id="d3cfd4af-5373-40fd-8371-2630a1ed7d08" class="confluenceTd"><p local-id="6c5f68b4956b">validarExpiracao()</p></td><td data-local-id="6071243b-7f4e-4fa7-9223-717420d1028e" class="confluenceTd"><p local-id="5eb7b43a0511">Boolean</p></td><td data-local-id="83d64f61-0c57-4c61-87f6-4f831c4eefb0" class="confluenceTd"><p local-id="88264be57d9a">público</p></td><td data-local-id="a2c035c7-2de5-424d-b845-e595328a19a6" class="confluenceTd"><p local-id="ab759f0c6777">Verifica validade do token</p></td></tr><tr data-local-id="2b5e4d21-10e9-4270-8d06-5273f221df3e"><td data-local-id="53d14069-d62d-424f-b65c-01b7ffe15751" class="confluenceTd"><p local-id="dc59a2d00c84">8</p></td><td data-local-id="f852f648-5d23-449b-84ae-ff45f1091dd4" class="confluenceTd"><p local-id="5db87c597145">possuiPermissao(permissao: String)</p></td><td data-local-id="27fdae14-7b93-4327-b285-e428da3907c5" class="confluenceTd"><p local-id="7bb77ad02642">Boolean</p></td><td data-local-id="16ce0c12-728d-4fb3-bd8c-93ce209bd0d5" class="confluenceTd"><p local-id="768d07c99627">público</p></td><td data-local-id="09e85fdf-6374-4abc-9335-5228999ce311" class="confluenceTd"><p local-id="48f4534855ce">Verifica autorização</p></td></tr><tr data-local-id="3ddc598f-7d83-4c6f-8b49-2a4d51485c38"><td data-local-id="800c5395-67b8-4ed0-a2e8-9b315155bbdf" class="confluenceTd"><p local-id="11b9517aa4b0">9</p></td><td data-local-id="7b749166-1288-4ad1-aa6d-66e2c4d5b0ce" class="confluenceTd"><p local-id="a51c472c05c0">renovarSessao()</p></td><td data-local-id="64dc8b58-0fae-4483-89fd-af2f4d2999dd" class="confluenceTd"><p local-id="27bf8d58006d">void</p></td><td data-local-id="ae020079-085d-4ae9-89c2-7fadbddaf3d8" class="confluenceTd"><p local-id="e7c0362ea826">público</p></td><td data-local-id="c678b755-6a6d-416a-a414-cd33ffcc1e3d" class="confluenceTd"><p local-id="7683efe1aa69">Atualiza tokens da sessão</p></td></tr><tr data-local-id="a52123ef-9259-416f-a2bb-a1cf0fd8c976"><td data-local-id="5e2d343e-aa3c-452a-8623-5d4a9426dc93" class="confluenceTd"><p local-id="91424197f289">10</p></td><td data-local-id="a6b800b4-96f3-4a76-937c-81c50e9af24b" class="confluenceTd"><p local-id="9f2a7f154fae">invalidarSessao()</p></td><td data-local-id="1f8c9b1c-0ac4-414a-9084-81952b2076a4" class="confluenceTd"><p local-id="2beaab7a1db0">void</p></td><td data-local-id="f3e26082-7a95-4b02-a498-6f5117f35d29" class="confluenceTd"><p local-id="c7155abee935">público</p></td><td data-local-id="502fcbbe-cee0-4a27-a61e-eb55192d788c" class="confluenceTd"><p local-id="6aca140616a0">Remove autenticação ativa</p></td></tr><tr data-local-id="7935e611-566b-4850-a991-66f54022102f"><td data-local-id="2f29e3a1-52a0-4bf1-a98f-f5a0339cde06" class="confluenceTd"><p local-id="6ed8394a523a">11</p></td><td data-local-id="185c5802-f07f-4aa9-8ca3-73773ec087a9" class="confluenceTd"><p local-id="bff84d6d671e">obterClaims()</p></td><td data-local-id="cd307e4a-25b5-4159-b14e-47c81a452b05" class="confluenceTd"><p local-id="a50da04e0257">Map&lt;String,Object&gt;</p></td><td data-local-id="f43c32a0-58c1-48a3-a8b6-ff7b920d4feb" class="confluenceTd"><p local-id="b2f2a8b4e3fe">público</p></td><td data-local-id="9357fc6f-a147-4a2e-9de2-93f748be2022" class="confluenceTd"><p local-id="d78197a0b3eb">Retorna claims carregados</p></td></tr><tr data-local-id="e012d869-c0b4-4719-bb6a-406e4d999bfa"><td data-local-id="45916d51-96ff-48ce-956c-79483c9a03ed" class="confluenceTd"><p local-id="9bb0820073ba">12</p></td><td data-local-id="ca005210-6343-44b6-9a5a-43c4dcef8338" class="confluenceTd"><p local-id="f4b25be4b3fd">estaAutenticado()</p></td><td data-local-id="bd0139dd-c6fb-461a-a65c-93c9d4184ccb" class="confluenceTd"><p local-id="c882501c6766">Boolean</p></td><td data-local-id="cacc7683-60c8-4878-a114-8c1f65b696cc" class="confluenceTd"><p local-id="e15f1f36de2d">público</p></td><td data-local-id="81d738c3-53a9-471d-a5e3-a32a58d6e911" class="confluenceTd"><p local-id="8334d691ded7">Indica se a identidade é válida</p></td></tr></tbody></table></div><hr local-id="1ee5f39e-039b-4d7b-ba17-504cf5e378a1"/><h1 local-id="d1c275d844b2" id="Classe:ClerkIdentity-ClasseClerkIdentity.puml">Classe ClerkIdentity.puml</h1><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml ClerkIdentity
+
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #333333
+skinparam classAttributeFontColor #000000
+skinparam classFontColor #000000
+skinparam classFontSize 13
+skinparam classAttributeFontSize 13
+skinparam linetype ortho
+skinparam padding 8
+skinparam roundcorner 8
+
+class ClerkIdentity {
+
+  .. Atributos ..
+
+  &lt;b&gt;- clerkUserId&lt;/b&gt; : String
+
+  &lt;b&gt;- sessionId&lt;/b&gt; : String
+
+  &lt;b&gt;- accessToken&lt;/b&gt; : String
+
+  &lt;b&gt;- backendToken&lt;/b&gt; : String
+
+  &lt;b&gt;- refreshToken&lt;/b&gt; : String
+
+  &lt;b&gt;- role&lt;/b&gt; : String
+
+  &lt;b&gt;- plano&lt;/b&gt; : String
+
+  &lt;b&gt;- tenantId&lt;/b&gt; : String
+
+  &lt;b&gt;- metadata&lt;/b&gt; : Map&lt;String,Object&gt;
+
+  &lt;b&gt;- claims&lt;/b&gt; : Map&lt;String,Object&gt;
+
+  &lt;b&gt;- permissoes&lt;/b&gt; : List&lt;String&gt;
+
+  &lt;b&gt;- issuedAt&lt;/b&gt; : DateTime
+
+  &lt;b&gt;- expiresAt&lt;/b&gt; : DateTime
+
+  &lt;b&gt;- autenticado&lt;/b&gt; : Boolean
+
+  .. Métodos ..
+
+  carregarClaims(jwt : String) : void
+
+  obterRole() : String
+
+  obterPlano() : String
+
+  obterTenantId() : String
+
+  obterMetadata(chave : String) : Object
+
+  atualizarMetadata(chave : String, valor : Object) : void
+
+  validarExpiracao() : Boolean
+
+  possuiPermissao(permissao : String) : Boolean
+
+  renovarSessao() : void
+
+  invalidarSessao() : void
+
+  obterClaims() : Map&lt;String,Object&gt;
+
+  estaAutenticado() : Boolean
+}
+
+@enduml
+</pre>
+</div></div><h2 local-id="49c95714b188" id="Classe:ClerkIdentity-Relaçãocomasdemaisclasses">Relação com as demais classes</h2><p local-id="eeda5296dc82">Eu faria o modelo completo assim:</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">ClerkService --&gt; ClerkHTTPHandler
+ClerkService --&gt; ClerkIdentity
+ClerkService --&gt; NotifyAuth2Factor
+
+UserService --&gt; ClerkService
+
+Usuario --&gt; ClerkIdentity
+
+ClerkIdentity --&gt; Usuario
+</pre>
+</div></div><h3 local-id="88e465801902" id="Classe:ClerkIdentity-Responsabilidades">Responsabilidades</h3><div class="table-wrap"><table data-layout="default" data-local-id="55b5e989-7b7b-45ee-a4d2-71ff94299372" class="confluenceTable"><tbody><tr data-local-id="16cb8fe2-fe82-43ce-82dc-72e3aadb4845"><th data-local-id="ca53daef-31d4-4d4d-a2c2-cde1144ee22e" class="confluenceTh"><p local-id="66a523b4e774">Classe</p></th><th data-local-id="700560b9-f4ee-4257-8989-a8dfd5b35e67" class="confluenceTh"><p local-id="d636561c36ac">Responsabilidade</p></th></tr><tr data-local-id="2debe4c6-3e5f-4a3b-a9da-aae664e7b56e"><td data-local-id="f2428822-0628-42b0-b2a4-c83c99aef94d" class="confluenceTd"><p local-id="fe219d54089c">Usuario</p></td><td data-local-id="2a852c23-d46f-40fc-975d-a20fc7af46d2" class="confluenceTd"><p local-id="12ddcfc20c55">Dados de negócio do usuário</p></td></tr><tr data-local-id="2bd9a1ac-4494-48f8-94e8-f27443685ab8"><td data-local-id="cc43a615-d4a5-45fd-9dc1-58e9c1b855bf" class="confluenceTd"><p local-id="b104590b8b5b">ClerkIdentity</p></td><td data-local-id="d0d56104-d197-4cd2-bb4c-a4c39843c19c" class="confluenceTd"><p local-id="8052833d4acb">Dados de autenticação, sessão e claims</p></td></tr><tr data-local-id="a36b6e76-4fc5-426a-b928-5e2088aa4297"><td data-local-id="03f65c69-b7d7-4326-b23e-a1df48a1ad56" class="confluenceTd"><p local-id="aef73d1ba293">ClerkHTTPHandler</p></td><td data-local-id="c5dc7731-f16c-4e08-8ef9-a69fb1556757" class="confluenceTd"><p local-id="7d72bdcd951e">Comunicação REST com Clerk</p></td></tr><tr data-local-id="e81f1fd3-6ea3-4331-acd0-00e8a4358a5b"><td data-local-id="66a34105-71ec-4636-9f68-824823addd78" class="confluenceTd"><p local-id="e6823b8eafb5">ClerkService</p></td><td data-local-id="69d5152a-4f67-47eb-b5b9-181a90899570" class="confluenceTd"><p local-id="379a216a2699">Orquestra autenticação</p></td></tr><tr data-local-id="23a14fe4-3239-4d7c-b1cd-057c21c35a98"><td data-local-id="072b614f-0601-4063-b4da-a57741a9b416" class="confluenceTd"><p local-id="0c3664f6bb14">NotifyAuth2Factor</p></td><td data-local-id="47bd9435-3b22-40a1-be27-9d09481cb834" class="confluenceTd"><p local-id="b2752822c519">Aprovação mobile</p></td></tr><tr data-local-id="51579c82-dbff-4b42-8f84-7d100895de05"><td data-local-id="a422b8f5-99a9-4a78-8880-22815b0428df" class="confluenceTd"><p local-id="3d932dff494f">UserService</p></td><td data-local-id="7c08531e-760c-467b-ba38-b7ecef372356" class="confluenceTd"><p local-id="996dba6e3069">Regras de negócio do usuário</p></td></tr></tbody></table></div><p local-id="5d484bf75855" />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

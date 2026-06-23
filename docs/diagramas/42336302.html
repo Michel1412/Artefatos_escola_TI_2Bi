@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 6-&gt; Caso de uso 6:      Autenticar Usuário com 2FA e Aprovação via Aplicativo Mobile</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 6-&gt; Caso de uso 6:      Autenticar Usuário com 2FA e Aprovação via Aplicativo Mobile
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified on mai. 07, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="1480b153657c"><a href="../requisitos/18907157.html" data-linked-resource-id="18907157" data-linked-resource-version="7" data-linked-resource-type="page">Caso de uso - 6: Autenticar Usuário com 2FA e Aprovação via Aplicativo Mobile</a>  </p><h3 local-id="0fb75c8c8275" id="DiagramadeSequência6-&gt;Casodeuso6:AutenticarUsuáriocom2FAeAprovaçãoviaAplicativoMobile-OCaminhoFeliz(HappyPath):Mostraofluxoperfeitodepontaaponta."><strong>O Caminho Feliz (Happy Path):</strong> Mostra o fluxo perfeito de ponta a ponta.</h3><p local-id="7f8b4a11f991"><strong>Os Fluxos de Exceção:</strong> Mostra o que acontece quando dá errado (Rejeição ou Timeout).</p><hr local-id="412338cd0f86"/><p local-id="eb2fff5cedf6"><strong>Diagrama 1: O Caminho Feliz (Aprovação com Sucesso)</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="6_1.png" width="677" loading="lazy" src="../attachments/42336302/43679768.png?width=677" data-image-src="../attachments/42336302/43679768.png" data-height="615" data-width="677" data-unresolved-comment-count="0" data-linked-resource-id="43679768" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="6_1.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="42336302" data-linked-resource-container-version="2" data-media-id="a69939ef-bdf5-41f1-8c13-f863abbefae7" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+}
+
+title 1. Caminho Feliz: Login Web com Aprovação Mobile (Sucesso)
+
+actor &quot;Usuário&quot; as User
+participant &quot;Aplicação Web&quot; as Web
+participant &quot;Backend API&quot; as API
+participant &quot;Clerk Auth&quot; as Clerk
+participant &quot;App Mobile&quot; as Mobile
+
+== Autenticação Primária (Clerk) ==
+User -&gt; Web: Informa login e senha
+activate Web
+Web -&gt; API: Iniciar login
+activate API
+API -&gt; Clerk: Encaminhar validação
+activate Clerk
+Clerk --&gt; User: Solicita código 2FA (Email/SMS)
+User -&gt; Clerk: Informa código
+Clerk --&gt; API: Autenticação válida
+deactivate Clerk
+
+== Estado de Espera e Aprovação ==
+API -&gt; API: Cria solicitação com cronômetro
+API -&gt; Mobile: Notificação Push: &quot;Tentativa de login&quot;
+activate Mobile
+API --&gt; Web: Status: &quot;Aguardando Mobile...&quot;
+
+User -&gt; Mobile: Aprova acesso via Biometria (Face ID/Touch ID)
+Mobile -&gt; API: Retorna status &quot;Aprovado&quot;
+deactivate Mobile
+
+API -&gt; API: Finaliza autenticação
+API --&gt; Web: Dispara liberação do acesso
+Web --&gt; User: Redireciona para o Dashboard
+deactivate API
+deactivate Web
+@enduml</pre>
+</div></div><hr local-id="05043684e255"/><p local-id="21394004ffef"><strong>Diagrama 2: Caminhos de Bloqueio (Rejeição e Timeout)</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="5_2.png" width="760" loading="lazy" src="../attachments/42336302/42336324.png?width=760" data-image-src="../attachments/42336302/42336324.png" data-height="344" data-width="808" data-unresolved-comment-count="0" data-linked-resource-id="42336324" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="5_2.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="42336302" data-linked-resource-container-version="2" data-media-id="cb3f03ea-e328-48a8-a5d3-680fee36e373" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+}
+
+title 2. Exceções: Rejeição Biométrica e Timeout
+
+actor &quot;Usuário&quot; as User
+participant &quot;Aplicação Web&quot; as Web
+participant &quot;Backend API&quot; as API
+participant &quot;App Mobile&quot; as Mobile
+
+note over Web, API: O sistema já passou pelo Clerk e a Web está aguardando aprovação.
+
+alt Exceção A: Usuário Rejeita o Acesso (RN-16)
+    User -&gt; Mobile: Clica em &quot;Não sou eu / Rejeitar&quot;
+    activate Mobile
+    Mobile -&gt; API: Retorna status &quot;Rejeitado&quot;
+    deactivate Mobile
+    activate API
+    
+    API -&gt; API: Cancela login e Registra Evento de Segurança
+    API --&gt; Web: Notifica: Acesso Negado
+    activate Web
+    Web --&gt; User: Exibe alerta de bloqueio de segurança
+    deactivate Web
+    deactivate API
+
+else Exceção B: Tempo Expirado / Timeout (RN-17)
+    activate API
+    API -&gt; API: Cronômetro atinge o limite (Ex: 3 minutos)
+    API -&gt; API: Invalida a solicitação de login pendente
+    
+    API --&gt; Web: Notifica: Tempo Expirado
+    activate Web
+    Web --&gt; User: Exibe erro e solicita novo login do zero
+    deactivate Web
+    deactivate API
+end
+@enduml</pre>
+</div></div><p local-id="2d0a33be6d68" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336318.png">5_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336321.png">5_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336324.png">5_2.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336327.png">5_teste.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336330.png">5.1-20260508-004107.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336333.png">diagrama_sequencia_5-20260508-003238.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336336.png">diagrama_sequencia_5.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/42336339.png">Untitled 21.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/42336302/43679768.png">6_1.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Classe Geral</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Classe Geral
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> pedroalvaro193</span>, last modified on jun. 08, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="6a54fefaa2ae"><strong>Descrição: </strong>Diagrama completo contendo todas as Classes do Sistema.</p><p local-id="3fc9d88d4dcb">(Diagrama de Classe Geral incompleto, sujeito a alteração. Ainda falta as Classes do Felipe - “Diagrama de Classe 6”)</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Diagrama de Classe Incompleto.png" width="760" loading="lazy" src="../attachments/64061441/64421889.png?width=760" data-image-src="../attachments/64061441/64421889.png" data-height="3418" data-width="4478" data-unresolved-comment-count="0" data-linked-resource-id="64421889" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Diagrama de Classe Incompleto.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="64061441" data-linked-resource-container-version="2" data-media-id="187a1e22-2f3e-4061-92a3-849584feee83" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml LogViewer_DiagramaClasses_Unificado
+
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #EBF8FF
+skinparam classBorderColor #005A9C
+skinparam classAttributeFontColor #333333
+skinparam classFontColor #1A1A1A
+skinparam classFontSize 10
+skinparam classAttributeFontSize 10
+skinparam arrowColor #005A9C
+skinparam arrowThickness 1.5
+skinparam linetype ortho
+skinparam padding 6
+skinparam roundcorner 8
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+
+title LogViewer - Diagrama de Classes Unificado
+
+&#39; ===========================================================
+&#39;  PACOTE: AUTENTICACAO E IDENTIDADE
+&#39; ===========================================================
+package &quot;Autenticação e Identidade&quot; #DDEEFF {
+
+  class ClerkIdentity {
+    - clerkUserId : String
+    - sessionId : String
+    - accessToken : String
+    - backendToken : String
+    - refreshToken : String
+    - role : String
+    - plano : String
+    - tenantId : String
+    - metadata : Map&lt;String, Object&gt;
+    - claims : Map&lt;String, Object&gt;
+    - permissoes : List&lt;String&gt;
+    - issuedAt : DateTime
+    - expiresAt : DateTime
+    - autenticado : Boolean
+    --
+    + carregarClaims(jwt : String) : void
+    + obterRole() : String
+    + obterPlano() : String
+    + obterTenantId() : String
+    + obterMetadata(chave : String) : Object
+    + atualizarMetadata(chave : String, valor : Object) : void
+    + validarExpiracao() : Boolean
+    + possuiPermissao(permissao : String) : Boolean
+    + renovarSessao() : void
+    + invalidarSessao() : void
+    + obterClaims() : Map&lt;String, Object&gt;
+    + estaAutenticado() : Boolean
+  }
+
+  class AuthenticationManager {
+    - sessionId : String
+    - accessToken : String
+    - backendToken : String
+    - refreshToken : String
+    - claims : Map&lt;String, Object&gt;
+    - metadata : Map&lt;String, Object&gt;
+    - role : String
+    - permissoes : List&lt;String&gt;
+    - tenantId : String
+    - planoAssinatura : String
+    - issuedAt : DateTime
+    - expiresAt : DateTime
+    - autenticado : Boolean
+    - ultimoRefresh : DateTime
+    --
+    + carregarToken(jwt : String) : void
+    + extrairClaims() : Map&lt;String, Object&gt;
+    + obterRole() : String
+    + obterPermissoes() : List&lt;String&gt;
+    + obterTenantId() : String
+    + obterPlanoAssinatura() : String
+    + validarToken() : Boolean
+    + validarPermissao(permissao : String) : Boolean
+    + renovarToken() : void
+    + invalidarSessao() : void
+    + compartilharContexto() : ContextoAutenticacao
+    + atualizarMetadata(metadata : Map&lt;String, Object&gt;) : void
+    + obterClaimsCustomizadas() : Map&lt;String, Object&gt;
+    + estaAutenticado() : Boolean
+  }
+
+  class NotifyAuth2Factor {
+    - solicitacaoId : String (UUID)
+    - usuarioId : String
+    - tokenTemporario : String
+    - dispositivoMobileId : String
+    - status : Status2FA
+    - dataCriacao : DateTime
+    - dataExpiracao : DateTime
+    - dataResposta : DateTime
+    - tentativas : Integer
+    - tempoLimiteSegundos : Integer
+    - biometriaObrigatoria : Boolean
+    - ipOrigem : String
+    - dispositivoOrigem : String
+    - ativo : Boolean
+    --
+    + gerarSolicitacao(usuarioId : String) : String
+    + gerarTokenTemporario() : String
+    + enviarNotificacaoPush() : void
+    + validarBiometria() : Boolean
+    + aprovarSolicitacao() : void
+    + rejeitarSolicitacao() : void
+    + expirarSolicitacao() : void
+    + validarToken(token : String) : Boolean
+    + verificarExpiracao() : Boolean
+    + obterStatus() : Status2FA
+    + registrarTentativa() : void
+    + registrarEventoSeguranca(evento : String) : void
+    + cancelarSolicitacao() : void
+    + estaAprovada() : Boolean
+  }
+
+  enum Status2FA {
+    PENDENTE
+    AGUARDANDO_BIOMETRIA
+    APROVADO
+    REJEITADO
+    EXPIRADO
+    CANCELADO
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: DOMÍNIO PRINCIPAL - USUÁRIO E SISTEMA
+&#39; ===========================================================
+package &quot;Domínio: Usuário e Sistema&quot; #DFFDE8 {
+
+  class Usuario {
+    - id : String (UUID)
+    - cnpj : String
+    - sistemasCadastrados : List&lt;String&gt;
+    - _2faAtivado : Boolean
+    - contextoEmpresa : ContextoEmpresa
+    --
+    + ativar2FA() : void
+    + atualizarContexto() : void
+    + registrarErroInterface() : void
+    + acessarRelatorios() : void
+    + solicitarExportacao() : void
+  }
+
+  class Sistema {
+    - id : String (UUID)
+    - nome : String
+    - tenantId : String
+    - tokenSDK : String
+    --
+    + validarSistema() : Boolean
+  }
+
+  class ContextoEmpresa {
+    - ramoAtuacao : String
+    - stack : String
+    - criticidade : String
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: CAPTURA E INGESTÃO DE LOGS
+&#39; ===========================================================
+package &quot;Captura e Ingestão&quot; #FFF9DB {
+
+  class CapturadorDeErroSDK &lt;&lt;Secondary Adapter&gt;&gt; {
+    - apiEndpoint : String
+    - apiToken : String
+    - nomeSistema : String
+    --
+    + configurar(endpoint : String, token : String) : void
+    + capturarErro(erro : Throwable) : Log
+    + enviarLog(log : Log) : RespostaIngestao
+  }
+
+  class CapturadorErroInterface {
+    - id : String (UUID)
+    - usuarioId : String
+    - sistemaId : String
+    - mensagemErro : String
+    - criticidade : Enum
+    --
+    + capturarErroManual() : Erro
+    + validarDadosErro() : Boolean
+    + enviarParaTratamento() : void
+  }
+
+  class LogController {
+    --
+    + receberLog(dto : LogDTO, token : String) : RespostaIngestao
+    + listarLogs(tenantId : String) : List&lt;Log&gt;
+    + obterLog(id : String) : Log
+    + confirmarLeitura(id : String) : RespostaHttp
+  }
+
+  interface ParserStrategy {
+    + suporta(extensao : String) : Boolean
+    + parse(conteudoBruto : String) : Log
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: ENTIDADE DE DOMÍNIO - LOG
+&#39; ===========================================================
+package &quot;Entidade de Domínio: Log&quot; #FDE8FF {
+
+  class Log {
+    - id : String (UUID)
+    - tenantId : String
+    - sistemaOrigem : String
+    - mensagem : String
+    - stackTrace : String
+    - nivel : String
+    - origem : String
+    - status : Enum {NAO_SOLUCIONADO, SOLUCIONADO, ARQUIVADO, IGNORADO}
+    - formato : String
+    - timestamp : LocalDateTime
+    - isRead : Boolean
+    - dadosMascarados : Boolean
+    - hashIdentificacao : String
+    - contadorOcorrencias : Integer
+    - contextoAplicado : ContextoEmpresa
+    --
+    + marcarComoLido() : void
+    + estaLido() : Boolean
+    + definirNivel(nivel : String) : void
+    + marcarDadosMascarados() : void
+  }
+
+  class Erro {
+    - id : String (UUID)
+    - mensagem : String
+    - criticidade : Enum
+    - status : Enum {NAO_SOLUCIONADO, SOLUCIONADO, ARQUIVADO, IGNORADO}
+    --
+    + classificarErro() : void
+    + marcarComoResolvido() : void
+  }
+
+  class LogTratado {
+    - id : String (UUID)
+    - conteudo : String
+    - criticidade : Enum
+    --
+    + consultarDetalhes() : String
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: PROCESSAMENTO E INTELIGÊNCIA
+&#39; ===========================================================
+package &quot;Processamento e Inteligência&quot; #FFF0E8 {
+
+  class ProcessamentoDeLogs {
+    --
+    + enfileirar(log : Log) : void
+    + consumirDaFila() : void
+    + processarEValidar(log : Log) : Log
+    + ofuscarDadosSensiveis(log : Log) : Log
+    + classificarErro(log : Log) : String
+    + persistir(log : Log) : Boolean
+    + notificarTempoReal(log : Log) : void
+    + executarVarredura() : void
+    + selecionarEstrategia(extensao : String) : ParserStrategy
+  }
+
+  class ServicoTratamentoLog {
+    - logBruto : String
+    - logSanitizado : String
+    - contextoAplicado : ContextoEmpresa
+    - criticidade : Enum
+    --
+    + processarLog() : LogTratado
+    + sanitizarDadosSensiveis() : String
+    + aplicarContexto() : LogEnriquecido
+  }
+
+  interface LLMService {
+    - provider : String
+    - apiKey : String
+    - endpoint : String
+    - timeout : Integer
+    - contextoEmpresa : ContextoEmpresa
+    - modeloAtivo : String
+    - temperatura : Float
+    - maxTokens : Integer
+    - ativo : Boolean
+    --
+    + analisarLog(log : Log) : String
+    + montarContexto(usuario : Usuario) : String
+    + validarDisponibilidade() : Boolean
+    + configurarModelo(modelo : String) : void
+    + definirTemperatura(valor : Float) : void
+    + gerarPrompt(log : Log) : String
+    + registrarFalha(mensagem : String) : void
+    + obterStatusServico() : String
+  }
+
+  class SugestaoDeLogs {
+    - provedorIA : String
+    --
+    + solicitarSugestao(log : Log) : SugestaoIA
+    + gerarSolucao(log : Log) : String
+  }
+
+  class ServicoSugestao {
+    - erroId : String (UUID)
+    - statusConsentimento : Enum
+    - statusSolucao : Enum
+    - linkAgente : String
+    --
+    + solicitarConsentimento() : void
+    + gerarSugestao() : Sugestao
+    + aceitarSugestao() : void
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: NOTIFICAÇÕES E ALERTAS
+&#39; ===========================================================
+package &quot;Notificações e Alertas&quot; #E8F4FD {
+
+  class ServicoNotificacao {
+    - usuarioId : String (UUID)
+    - tipoCanal : Enum {EMAIL, PUSH, WEBSOCKET}
+    - statusEnvio : Enum
+    - contadorAgrupamento : Integer
+    --
+    + notificarErro() : void
+    + enviarEmail() : void
+    + enviarPushMobile() : void
+    + emitirWebSocket() : void
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: PERSISTÊNCIA DE LOGS
+&#39; ===========================================================
+package &quot;Persistência&quot; #E8FDF5 {
+
+  class ServicoPersistenciaLog {
+    - id : String (UUID)
+    - sistemaId : String
+    - hashIdentificacao : String
+    - statusPersistencia : Enum {SUCESSO, FALHA, AGRUPADO}
+    --
+    + persistir(log : LogTratado, sistemaId : String) : DocumentoLog
+    - gerarHashIdentificacao(log : LogTratado) : String
+    - buscarOcorrenciaRecente(hash : String) : DocumentoLog
+  }
+
+  class ServicoFiltragemLog {
+    - usuarioId : String (UUID)
+    - filtrosSelecionados : FiltroLog
+    - totalResultados : Long
+    --
+    + filtrarLogs() : Page&lt;LogTratado&gt;
+    + buscarPorTexto() : List&lt;LogTratado&gt;
+    + filtrarPorCriticidade() : List&lt;LogTratado&gt;
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: RELATÓRIOS E EXPORTAÇÃO
+&#39; ===========================================================
+package &quot;Relatórios e Exportação&quot; #FDF5E8 {
+
+  class FiltroRelatorio {
+    - id : String (UUID)
+    - dataInicial : DateTime
+    - dataFinal : DateTime
+    - criticidade : Enum
+    --
+    + aplicarFiltro() : List&lt;Erro&gt;
+    + validarPeriodo() : Boolean
+  }
+
+  class GerarRelatorio {
+    - usuarioId : String (UUID)
+    - statusGeracao : Enum
+    --
+    + gerarRelatorio() : Relatorio
+    + buscarDadosFiltrados() : List&lt;LogTratado&gt;
+    + salvarRelatorio() : void
+  }
+
+  class Relatorio {
+    - id : String (UUID)
+    - titulo : String
+    - totalLogs : Long
+    - totalErros : Long
+    - statusRelatorio : Enum
+    --
+    + calcularTotais() : void
+    + gerarResumo() : String
+  }
+
+  class ExportarRelatorio {
+    - relatorioId : String (UUID)
+    - formatoExportacao : Enum {PDF, EXCEL}
+    - urlDownload : String
+    --
+    + validarFormato() : Boolean
+    + gerarLinkDownload() : String
+  }
+
+  class DocumentoRelatorio {
+    - id : String (UUID)
+    - nomeArquivo : String
+    - formato : Enum {PDF, EXCEL}
+    - urlDownload : String
+    --
+    + gerarArquivo() : void
+    + disponibilizarDownload() : String
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  PACOTE: ASSINATURA E PAGAMENTO
+&#39; ===========================================================
+package &quot;Assinatura e Pagamento&quot; #F5E8FD {
+
+  class GerenciadorAssinatura {
+    - id : String (UUID)
+    - tenantId : String
+    - valorAtualCalculado : Decimal
+    - statusAssinatura : Enum {ATIVA, PENDENTE, INADIMPLENTE, CANCELADA}
+    - totalSistemasContratados : Integer
+    --
+    + calcularValorProporcional(tenantId : String) : Decimal
+    + contratarPlano(tenantId : String, plano : PlanoBase) : Assinatura
+    + verificarInadimplencia(tenantId : String) : Boolean
+    - validarPermissaoAdmin(adminId : String) : Boolean
+  }
+
+  class ServicoProcessamentoPagamento {
+    - id : String (UUID)
+    - assinaturaId : String
+    - transacaoGatewayId : String
+    - statusPagamento : Enum {PENDENTE, PAGO, RECUSADO, ESTORNADO}
+    --
+    + processarPagamento(assinaturaId : String, valor : Decimal) : TransacaoGateway
+    + processarNotificacaoWebhook(payload : Object) : void
+    - validarAutenticidadeWebhook(payload : Object, sig : String) : Boolean
+  }
+
+  class ApiDePagamento &lt;&lt;Secondary Adapter&gt;&gt; {
+    - baseUrl : String
+    - apiKey : String
+    - webhookSecret : String
+    --
+    + criarCobranca(dados : DadosCobranca) : TransacaoExterna
+    + consultarTransacao(gatewayId : String) : DetalhesTransacao
+    + validarAssinaturaWebhook(payload : String, sig : String) : Boolean
+  }
+
+}
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - AUTENTICAÇÃO
+&#39; ===========================================================
+ClerkIdentity &quot;1&quot; --&gt; &quot;1&quot; AuthenticationManager : fornece identidade\nautenticada ao manager
+AuthenticationManager &quot;1&quot; --&gt; &quot;1&quot; NotifyAuth2Factor : orquestra fluxo\nde 2FA quando ativado
+NotifyAuth2Factor --&gt; Status2FA : possui status
+AuthenticationManager &quot;1&quot; --&gt; &quot;1&quot; Usuario : resolve identidade\npara o domínio
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - USUÁRIO E SISTEMA
+&#39; ===========================================================
+Usuario &quot;1&quot; --&gt; &quot;N&quot; Sistema : cadastra e gerencia
+Usuario &quot;1&quot; --&gt; &quot;1&quot; ContextoEmpresa : configura contexto
+Sistema &quot;1&quot; --&gt; &quot;1&quot; ContextoEmpresa : aplica contexto\nno processamento
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - CAPTURA E INGESTÃO
+&#39; ===========================================================
+CapturadorDeErroSDK ..&gt; LogController : envia log via HTTP
+CapturadorDeErroSDK ..&gt; Log : cria instância
+CapturadorErroInterface &quot;1&quot; --&gt; &quot;1&quot; Sistema : vincula ao sistema
+CapturadorErroInterface &quot;1&quot; --&gt; &quot;1&quot; Erro : cria erro
+CapturadorErroInterface ..&gt; LogController : encaminha para ingestão
+LogController ..&gt; ProcessamentoDeLogs : delega processamento
+LogController ..&gt; Log : gerencia ciclo de vida
+LogController ..&gt; ServicoSugestao : solicita sugestão ao aceitar
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - PROCESSAMENTO E INTELIGÊNCIA
+&#39; ===========================================================
+ProcessamentoDeLogs ..&gt; Log : processa e enriquece
+ProcessamentoDeLogs ..&gt; ParserStrategy : usa estratégia de parse
+ProcessamentoDeLogs ..&gt; ServicoNotificacao : dispara notificação\napós processar
+ProcessamentoDeLogs &quot;1&quot; --&gt; &quot;1&quot; ServicoPersistenciaLog : persiste log\ntratado
+ServicoTratamentoLog &quot;1&quot; --&gt; &quot;1&quot; ContextoEmpresa : aplica contexto
+ServicoTratamentoLog ..&gt; LogTratado : produz log tratado
+ServicoTratamentoLog &quot;1&quot; --&gt; &quot;1&quot; ServicoNotificacao : dispara alerta\napós processar erro
+SugestaoDeLogs ..&gt; LLMService : delega análise ao LLM
+SugestaoDeLogs ..&gt; Log : analisa log para sugestão
+ServicoSugestao &quot;1&quot; --&gt; &quot;1&quot; ServicoNotificacao : notifica ao gerar\nsugestão
+ServicoSugestao ..&gt; SugestaoDeLogs : usa para gerar solução
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - USUÁRIO → SERVIÇOS CORE
+&#39; ===========================================================
+Usuario &quot;1&quot; --&gt; &quot;N&quot; ServicoTratamentoLog : aciona processamento\npelo contexto configurado
+ServicoFiltragemLog &quot;N&quot; --&gt; &quot;1&quot; Usuario : filtra logs por usuário
+ServicoSugestao &quot;N&quot; --&gt; &quot;1&quot; Usuario : apresenta sugestão\npara consentimento
+Usuario &quot;1&quot; --&gt; &quot;N&quot; CapturadorErroInterface : registra erro
+Usuario &quot;1&quot; --&gt; &quot;N&quot; Relatorio : visualiza relatórios
+Sistema &quot;1&quot; --&gt; &quot;N&quot; Relatorio : possui relatórios associados
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - FILTRAGEM E PERSISTÊNCIA
+&#39; ===========================================================
+ServicoTratamentoLog &quot;1&quot; --&gt; &quot;N&quot; ServicoFiltragemLog : fornece logs\ntratados para consulta
+ServicoPersistenciaLog ..&gt; LogTratado : recebe e persiste
+ServicoFiltragemLog ..&gt; LogTratado : consulta logs tratados
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - RELATÓRIOS E EXPORTAÇÃO
+&#39; ===========================================================
+GerarRelatorio &quot;1&quot; --&gt; &quot;1&quot; FiltroRelatorio : usa filtro
+GerarRelatorio &quot;1&quot; --&gt; &quot;N&quot; LogTratado : consulta logs
+GerarRelatorio &quot;1&quot; --&gt; &quot;N&quot; Erro : consulta erros
+GerarRelatorio &quot;1&quot; --&gt; &quot;1&quot; Relatorio : gera relatório
+Relatorio &quot;1&quot; --&gt; &quot;1&quot; FiltroRelatorio : mantém filtro aplicado
+Relatorio &quot;1&quot; --&gt; &quot;N&quot; Erro : consolida erros
+Relatorio &quot;1&quot; --&gt; &quot;N&quot; LogTratado : consolida logs
+Usuario &quot;1&quot; --&gt; &quot;N&quot; ExportarRelatorio : solicita exportação
+ExportarRelatorio &quot;1&quot; --&gt; &quot;1&quot; Relatorio : exporta
+ExportarRelatorio &quot;1&quot; --&gt; &quot;1&quot; DocumentoRelatorio : gera documento
+Relatorio &quot;1&quot; --&gt; &quot;N&quot; DocumentoRelatorio : possui documentos
+
+&#39; ===========================================================
+&#39;  RELACIONAMENTOS - ASSINATURA E PAGAMENTO
+&#39; ===========================================================
+GerenciadorAssinatura &quot;1&quot; --&gt; &quot;1&quot; ServicoProcessamentoPagamento : solicita geração\nde cobrança e checkout
+ServicoProcessamentoPagamento &quot;1&quot; --&gt; &quot;1&quot; GerenciadorAssinatura : atualiza status da\nconta após aprovação
+ServicoProcessamentoPagamento &quot;1&quot; --&gt; &quot;1&quot; ApiDePagamento : consome serviços REST\ndo gateway externo
+ApiDePagamento &quot;1&quot; --&gt; &quot;1&quot; ServicoProcessamentoPagamento : dispara eventos via\nchamada de Webhook
+GerenciadorAssinatura &quot;1&quot; --&gt; &quot;N&quot; ServicoPersistenciaLog : dita regras de bloqueio\npor inadimplência
+GerenciadorAssinatura &quot;1&quot; --&gt; &quot;1&quot; Usuario : gerencia assinatura\ndo tenant (CNPJ)
+Sistema &quot;1&quot; --&gt; &quot;1&quot; GerenciadorAssinatura : incrementa valor\nao adicionar sistema
+
+@enduml
+</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/64061441/64290817.drawio">Diagrama de Classe SemiCompleto.drawio</a> (text/plain)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/64061441/64421889.png">Diagrama de Classe Incompleto.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

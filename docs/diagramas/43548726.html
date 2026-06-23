@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 4 -&gt; Caso de uso - 4: Integrar SDK e Processar Logs com Segurança</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 4 -&gt; Caso de uso - 4: Integrar SDK e Processar Logs com Segurança
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified on mai. 23, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="5d79c16e99c3" /><p local-id="b78ef283b315"><a data-card-appearance="inline" href="https://groupfromthesouth.atlassian.net/wiki/x/AoAgAQ" local-id="f03dbdcad3d1" rel="nofollow">https://groupfromthesouth.atlassian.net/wiki/x/AoAgAQ</a> </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="diagramaSequencia4.png" width="760" loading="lazy" src="../attachments/43548726/43974676.png?width=760" data-image-src="../attachments/43548726/43974676.png" data-height="693" data-width="984" data-unresolved-comment-count="0" data-linked-resource-id="43974676" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="diagramaSequencia4.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="43548726" data-linked-resource-container-version="2" data-media-id="7d3e3382-d937-42e9-9f82-bc5c566df41b" data-media-type="file"></span><p local-id="c4ae63809a40" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">title Fluxo de Ingestão - Sistema de Gestão de Logs
+
+actor &quot;Sistema Cliente (SDK)&quot; as SDK
+participant &quot;Sistema de gestão de Logs&quot; as API
+participant &quot;Clerk (Auth Provider)&quot; as Clerk
+participant &quot;Backend LogViewer&quot; as Backend
+
+SDK-&gt;API: Enviar Log + Token
+activate API
+
+API-&gt;API: Mascarar Dados Sensíveis
+
+API-&gt;Clerk: Validação de Sessão/User
+activate Clerk
+Clerk--&gt;API: Retorno da Validação (Válido/Inválido)
+deactivate Clerk
+
+opt Token Válido
+    API-&gt;Backend: Processamento Interno (Persistir Log)
+    activate Backend
+    Backend--&gt;API: Confirmação de Persistência
+    deactivate Backend
+    
+    API--&gt;SDK: Sucesso (200 OK)
+else Token Inválido
+    API--&gt;SDK: Erro de Autenticação (401 Unauthorized)
+end
+
+deactivate API</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/43548726/43974676.png">diagramaSequencia4.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe de Apoio → Filtro Relatório</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="53346309.html">Diagrama de Classe 5  — UC-14 e UC-16 (Sistema LogViewer)</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe de Apoio → Filtro Relatório
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andre Felipe</span>, last modified on jun. 01, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="8dbb410a45e2">Classe de apoio responsável por armazenar os critérios utilizados na busca de logs e erros para geração de relatórios no sistema LogViewer. Ela permite filtrar os dados por período, sistema, tipo de erro, criticidade, status e texto de pesquisa, garantindo que o relatório seja gerado apenas com as informações relevantes para o usuário.</p><p local-id="3791f1956cbb" /><h2 local-id="67f1172455e5" id="ClassedeApoio→FiltroRelatório-Atributos">Atributos</h2><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="874e61f5-f5cc-4eec-a05a-377190f2d057" class="confluenceTable"><tbody><tr data-local-id="960941e4-7ca9-4e97-a519-21d53278df86"><th data-local-id="461d948b-4396-4fc0-9829-0d801197bb1c" class="confluenceTh"><p local-id="fd57bf37ccb7">Atributo</p></th><th data-local-id="66073010-277f-4e4f-81a2-39e3e85f862f" class="confluenceTh"><p local-id="6b0281b3dee8">Tipo</p></th><th data-local-id="77898c76-91f1-4a6f-aadd-93481b9b6fbd" class="confluenceTh"><p local-id="827437b066dd">Visibilidade</p></th><th data-local-id="67a362df-6ee8-414e-89c3-79117c0833ed" class="confluenceTh"><p local-id="e6356ca5872c">Descrição</p></th></tr><tr data-local-id="fcc358c7-0cb0-441c-b5b8-3f9e491936dd"><td data-local-id="0e59123d-d7af-4f44-a8fd-9a78da4eec43" class="confluenceTd"><p local-id="d9263f57b333">id</p></td><td data-local-id="4aab2014-cc9a-4eb5-93e0-29de8114c293" class="confluenceTd"><p local-id="9ff0017bb8f7">String (UUID)</p></td><td data-local-id="934d33c3-ea91-458c-9f9e-756ce9a811b4" class="confluenceTd"><p local-id="65b2fc4a1d75">privado</p></td><td data-local-id="24f672ac-0d87-43d0-a0f8-b6f382c837c4" class="confluenceTd"><p local-id="3f60d895fe78">Identificador único do filtro utilizado na geração do relatório</p></td></tr><tr data-local-id="1ed13dc1-09dd-44f6-b1a0-a4434fcc07f9"><td data-local-id="e346b7a5-d252-41c6-be18-bfe58d8fafdf" class="confluenceTd"><p local-id="b185197cdab5">usuarioId</p></td><td data-local-id="80d29ed2-c3af-44df-8a79-0b05ff113cfa" class="confluenceTd"><p local-id="ca3ca464ac5f">String</p></td><td data-local-id="be8492a7-be6c-417e-8b1b-21774aeee5a6" class="confluenceTd"><p local-id="85033c9b94c4">privado</p></td><td data-local-id="8c06ef4e-0dad-4746-8c55-39860901696f" class="confluenceTd"><p local-id="73e852dd333c">Identifica o usuário que definiu os filtros</p></td></tr><tr data-local-id="86e50ffc-77b4-48fc-8f60-08e814707904"><td data-local-id="eb0a2f1d-0cf0-4810-b70c-b0bad2a3f76a" class="confluenceTd"><p local-id="cc4ad9d1579a">sistemaId</p></td><td data-local-id="72d45019-2db8-43a5-b92d-fd5cae28ac3a" class="confluenceTd"><p local-id="53e207bac9a4">String</p></td><td data-local-id="1176400e-7857-4923-8458-c3a01352a898" class="confluenceTd"><p local-id="19beededc818">privado</p></td><td data-local-id="5e0cc172-0b27-4d8b-b491-54c8e030aae7" class="confluenceTd"><p local-id="a02df0884907">Identifica o sistema selecionado para a consulta</p></td></tr><tr data-local-id="07d8afca-cd7d-46f0-8811-87ba738825f1"><td data-local-id="84bb1642-f4a6-426d-bb67-0b75862c4d55" class="confluenceTd"><p local-id="aeb29fe189d9">dataInicial</p></td><td data-local-id="87269710-116f-4104-9426-fe6770ac9f74" class="confluenceTd"><p local-id="650c736b4efd">DateTime</p></td><td data-local-id="0aa9ee50-52c3-4734-8194-45684bd3b55c" class="confluenceTd"><p local-id="2c493a7b226e">privado</p></td><td data-local-id="b8006ead-a007-4ec1-818f-98082a19069c" class="confluenceTd"><p local-id="4083f91e7670">Data inicial do período usado na filtragem</p></td></tr><tr data-local-id="f72cc8ca-e656-40b0-bf94-018478937f94"><td data-local-id="1428daa6-03cb-4d7b-aba8-636a164eab14" class="confluenceTd"><p local-id="919b38e86986">dataFinal</p></td><td data-local-id="8d2b74f1-cec8-40ba-b122-64a80c09d6dc" class="confluenceTd"><p local-id="5e7f5215a4fd">DateTime</p></td><td data-local-id="e9f36be8-0628-4383-b5c2-7998179635fc" class="confluenceTd"><p local-id="c0e8dcc99db6">privado</p></td><td data-local-id="c1b38638-731f-4064-b75c-59ac73771afb" class="confluenceTd"><p local-id="bfb42e2f2c46">Data final do período usado na filtragem</p></td></tr><tr data-local-id="7f7cec8d-1a6e-43c5-83d7-1f11448943ea"><td data-local-id="45498a96-e117-456c-8081-38439811a577" class="confluenceTd"><p local-id="5adbb831594f">tipoErro</p></td><td data-local-id="6221ce77-76b9-415a-a3bf-99ea1ca71f6d" class="confluenceTd"><p local-id="e37c6f38e700">String</p></td><td data-local-id="ee7aba0c-dd81-4e3b-abbf-2f7d65206a79" class="confluenceTd"><p local-id="31530683ea95">privado</p></td><td data-local-id="a4f57d76-631b-44ae-bd2e-e3208be1a30c" class="confluenceTd"><p local-id="d76e3cc4e6bc">Define o tipo de erro que será considerado na busca</p></td></tr><tr data-local-id="7197c7f6-e10b-4e08-92f7-072b8d16a8ca"><td data-local-id="2f2588ed-bb80-40a1-b881-c813b3f94af1" class="confluenceTd"><p local-id="741abacfa23e">criticidade</p></td><td data-local-id="b6012b94-9e1d-4f13-a6c3-bce1aeb88db4" class="confluenceTd"><p local-id="b2154d70b46a">Enum</p></td><td data-local-id="d9e92ade-a5b3-43b4-a247-da760bd3b7ae" class="confluenceTd"><p local-id="35af0efb0ee2">privado</p></td><td data-local-id="f2c45241-7530-470b-b22d-8c060ff50f2f" class="confluenceTd"><p local-id="015935e28942">Define o nível de criticidade dos erros filtrados</p></td></tr><tr data-local-id="c3d5327f-de53-43ed-9ed7-8e4b1ba092f5"><td data-local-id="505c5cfd-5b42-4e94-abdc-cd550176d587" class="confluenceTd"><p local-id="5229f04f3108">statusErro</p></td><td data-local-id="ab097efc-6c16-498e-b926-10247f98ccae" class="confluenceTd"><p local-id="2a55acd63c26">Enum</p></td><td data-local-id="9c6d9f0a-306a-4f5d-b5b7-457d739773ea" class="confluenceTd"><p local-id="1426a502232f">privado</p></td><td data-local-id="75557ada-4f3f-4c7c-8e0b-4f28ae95c687" class="confluenceTd"><p local-id="45d7de1c3565">Define se serão buscados erros solucionados, não solucionados ou ambos</p></td></tr><tr data-local-id="cbb85e7c-1d88-4908-8eb2-c3d1df9f474a"><td data-local-id="d3bb1784-6f14-435f-9102-becf8db0197d" class="confluenceTd"><p local-id="fcfc3256efd3">textoPesquisa</p></td><td data-local-id="a4fb373a-6c15-42df-8f27-4b3fe8e53b66" class="confluenceTd"><p local-id="ec38c612726a">String</p></td><td data-local-id="497c11d3-7074-4cf2-9c22-a154a0f6c910" class="confluenceTd"><p local-id="f2bd78fcba6f">privado</p></td><td data-local-id="1c859bcb-e11b-4b98-899f-9aed2657d074" class="confluenceTd"><p local-id="30ab387c49a7">Texto utilizado para pesquisa livre nos logs ou mensagens de erro</p></td></tr></tbody></table></div><hr local-id="e38a85c3-6ae7-4288-ae87-2ac6d62193e3"/><h2 local-id="7a2f74d05c62" id="ClassedeApoio→FiltroRelatório-Métodos">Métodos</h2><div class="table-wrap"><table data-table-width="760" data-layout="default" data-local-id="98f0d3f3-7491-43cc-81e5-412b0b005822" class="confluenceTable"><tbody><tr data-local-id="a53c16c7-5c7c-4061-9e08-c9fb4c644084"><th data-local-id="1db293d8-12b8-4a10-8a97-0b0526b99c47" class="confluenceTh"><p local-id="b68c0b6191c2">Método</p></th><th data-local-id="034fcdc3-bd16-4a1c-9f61-30ac2407eaa1" class="confluenceTh"><p local-id="8a7fd5cca6c3">Retorno</p></th><th data-local-id="e5f74161-fff4-4e2a-8b27-d721b8bdd0ec" class="confluenceTh"><p local-id="5bceba021354">Visibilidade</p></th><th data-local-id="98a5265e-8add-434a-bd34-5d10616b9807" class="confluenceTh"><p local-id="c29fb9ab76b4">Descrição</p></th></tr><tr data-local-id="1f932c47-1311-4525-a0ac-724a7925f606"><td data-local-id="08065a42-2aac-4dd0-aaf1-769a927a9659" class="confluenceTd"><p local-id="003144b54c77">aplicarFiltro()</p></td><td data-local-id="870e9054-30ff-419a-b6ba-57c68b5b2d7c" class="confluenceTd"><p local-id="d8a788b3135b">List&lt;Erro&gt;</p></td><td data-local-id="296448b0-beb2-4cba-958a-68c2564d0423" class="confluenceTd"><p local-id="ec79131d8d90">público</p></td><td data-local-id="49e878a1-19e2-45ef-904c-9c8c1cc6f825" class="confluenceTd"><p local-id="df3f1f7d7468">Aplica os critérios definidos e retorna os erros compatíveis com o filtro</p></td></tr><tr data-local-id="efe4050a-fea7-4557-b364-8f8620aa727b"><td data-local-id="22afb7b7-8fb6-4d47-b4ff-d511f3788806" class="confluenceTd"><p local-id="a63d4de87235">validarPeriodo()</p></td><td data-local-id="560fd3bb-fda1-4774-966a-4d608cdddbaa" class="confluenceTd"><p local-id="bc8b881ca26f">Boolean</p></td><td data-local-id="ad27ec56-d94b-46b0-9744-526a57ced987" class="confluenceTd"><p local-id="e8ef52c81fb0">público</p></td><td data-local-id="2c81b458-2962-48c1-8f33-3ce67d4dd2cc" class="confluenceTd"><p local-id="b1a2cffa7720">Verifica se o período informado é válido</p></td></tr><tr data-local-id="596cbe43-0882-4ae2-a52c-b2e7853e404c"><td data-local-id="8418fd2e-e9b8-4147-a315-bc786cb89561" class="confluenceTd"><p local-id="5f56b20ef080">limparFiltros()</p></td><td data-local-id="e09075b2-c0cd-45ed-9411-54db79e2cd14" class="confluenceTd"><p local-id="5984a794f1c0">void</p></td><td data-local-id="667f5670-5aa6-43c6-b58d-8e7238e32303" class="confluenceTd"><p local-id="54c369c4da4c">público</p></td><td data-local-id="de9df867-01ad-40e4-b44c-fa924a25171a" class="confluenceTd"><p local-id="fb7261255da8">Remove os critérios selecionados e retorna o filtro ao estado inicial</p></td></tr></tbody></table></div><p local-id="68a2af48fd65" /><p local-id="6824e2d4562c">Diagrama UML : </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260601-225627.png" width="162" loading="lazy" src="../attachments/59179011/60784641.png?width=162" data-image-src="../attachments/59179011/60784641.png" data-height="447" data-width="162" data-unresolved-comment-count="0" data-linked-resource-id="60784641" data-linked-resource-version="2" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260601-225627.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="59179011" data-linked-resource-container-version="4" data-media-id="edb46b32-4884-44e3-a664-f6fa9d2da12b" data-media-type="file"></span><p local-id="2a18383a6b2d" /><p local-id="af1e54c88e57" /><p local-id="50651e61d619">@startuml FiltroRelatorio</p><p local-id="929b6e0f8fde">skinparam backgroundColor #FFFFFF<br/>skinparam classBackgroundColor #FFFFFF<br/>skinparam classBorderColor #333333<br/>skinparam classAttributeFontColor #000000<br/>skinparam classFontColor #000000<br/>skinparam classFontSize 10<br/>skinparam classAttributeFontSize 10<br/>skinparam padding 5<br/>skinparam roundcorner 5<br/>skinparam arrowColor #333333<br/>skinparam arrowThickness 1.5</p><p local-id="acc49ca39ade">class FiltroRelatorio {<br/>  .. Atributos ..<br/>  &lt;b&gt;- id&lt;/b&gt; : String (UUID)<br/>  &lt;b&gt;- usuarioId&lt;/b&gt; : String<br/>  &lt;b&gt;- sistemaId&lt;/b&gt; : String<br/>  &lt;b&gt;- dataInicial&lt;/b&gt; : DateTime<br/>  &lt;b&gt;- dataFinal&lt;/b&gt; : DateTime<br/>  &lt;b&gt;- tipoErro&lt;/b&gt; : String<br/>  &lt;b&gt;- criticidade&lt;/b&gt; : Enum<br/>  &lt;b&gt;- statusErro&lt;/b&gt; : Enum<br/>  &lt;b&gt;- textoPesquisa&lt;/b&gt; : String</p><p local-id="cb5b7d945047">  .. Métodos ..</p><p local-id="0650ec57d517">  aplicarFiltro() : List&lt;Erro&gt;</p><p local-id="b9f5c1e5d0dd">  validarPeriodo() : Boolean</p><p local-id="dfcd9053e11c">  limparFiltros() : void<br/>}</p><p local-id="0d56eb31f2c3">@enduml</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59179011/59375629.png">image-20260601-193556.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59179011/60882945.png">image-20260601-225627.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59179011/60260376.png">image-20260601-225631.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59179011/60817409.png">image-20260601-225631.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/59179011/60784641.png">image-20260601-225627.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

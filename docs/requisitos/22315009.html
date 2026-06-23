@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 15: Confirmação de Leitura de Logs no Dashboard</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 15: Confirmação de Leitura de Logs no Dashboard
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified on mar. 30, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="a0f3539a590b">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-32" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-32" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-32</a>
+                    -
+            <span class="summary">Criação de caso de uso - 15 Gerenciar Alertas e Confirmação de Leitura de Notificações</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+ </p><p local-id="4f588c3c400c"><strong>Itens associados:</strong></p><p local-id="18f5eb61d5c1"><strong>Regras de Negócios:</strong></p><ul local-id="59c852767258"><li local-id="c47893f0cee1"><p local-id="5e099bcb176d"><strong>RN-10:</strong> Visões do Dashboard. O Dashboard deve exibir dados consolidados e permitir a diferenciação visual e filtragem baseada no status de leitura do erro. </p></li><li local-id="eacf2b0bbac7"><p local-id="07f9f2c24f8c"><strong>RN-12:</strong> Gestão de Marcadores. O sistema deve permitir a organização da &quot;caixa de erros&quot;, utilizando o estado intrínseco de &quot;Lido/Não Lido&quot; como um marcador padrão do sistema para facilitar a triagem operacional. Requisitos Funcionais:</p></li></ul><p local-id="b943aa3a5884"><strong>Requisitos Funcionais:</strong></p><ul local-id="89a092f1-d88f-4f6e-adfc-8c15a3510a20"><li local-id="183ca0da-848d-4314-9278-61b13ebdb4bc"><p local-id="4a97349d5d60"><strong>RF-26:</strong> O Sistema deve possuir um mecanismo de confirmação de leitura informando se o log encontrado já foi acessado no dashboard.</p></li><li local-id="ed11f644-ac45-4f10-a597-71d026eb9abe"><p local-id="28c563f94bd6"><strong>RF-14:</strong> O Sistema deve permitir filtrar logs por múltiplas opções (Apoiado por este fluxo, permitindo filtrar por &quot;Lidos&quot; e &quot;Não Lidos&quot;).</p></li></ul><p local-id="401827753aee"><strong>Requisitos Não Funcionais:</strong></p><ul local-id="fae4b857-2138-4029-a307-9b99c7230034"><li local-id="a47a8b27-541d-40a5-a0d1-dc3da1199e53"><p local-id="29bfb332b0f5"><strong>RNF-04:</strong> O banco de dados principal será o MongoDB.</p></li><li local-id="6ae218a7-f59b-48b6-b902-43aca2548be0"><p local-id="b4325bd9619a"><strong>RNF-09:</strong> O desenvolvimento deve ser estritamente orientado a Padrões de Projeto (Arquitetura Hexagonal).</p></li></ul><hr local-id="60c26f60-965c-4086-8dbe-e9664eea14cc"/><p local-id="646201b16ee7"><strong>Nome:</strong> Confirmação de Leitura de Logs no Dashboard</p><p local-id="b47a526bbf13"><strong>Atores:</strong></p><ul local-id="ed7ef78b-1d64-4339-a57b-6e647c43db65"><li local-id="de8cf17d-65d5-49b3-a422-7a1dc3b744c5"><p local-id="b4547d438a9f">Usuário (Via Web ou Mobile)</p></li><li local-id="fe2e1c01-857d-4fca-abb7-635827a970ab"><p local-id="5f1ad343c6ed">Aplicação Web (React) / Aplicativo Mobile (React Native)</p></li><li local-id="3104c9ae-7da4-4c77-93c2-f0f5ee57c402"><p local-id="73c596d759ea">Sistema LogViewer (Backend)</p></li><li local-id="84f776a9-6e16-4186-877a-34d222d09c36"><p local-id="70943e805f70">Banco de Dados (MongoDB)</p></li></ul><p local-id="4ce32f2fe59b"><strong>Descrição:</strong></p><p local-id="8967cd1d99d7">Garante que o Dashboard funcione de maneira semelhante a uma &quot;caixa de entrada&quot; de e-mails. O sistema deve registrar e indicar visualmente quando um log de erro inédito foi aberto e visualizado pelo usuário, atualizando seu estado para &quot;Lido&quot;. Isso facilita a gestão operacional, permitindo que a equipe saiba rapidamente quais erros já foram investigados e quais ainda precisam de atenção.</p><p local-id="01f6924799df"><strong>Pré-condições:</strong></p><ul local-id="0019e6e0-b9ef-4be7-9bdc-8561464a597a"><li local-id="c0dd7071-0a30-44e0-9060-dcd62d2ae753"><p local-id="5628b1d77b3b">Usuário autenticado e navegando na interface do Dashboard (Web ou Mobile).</p></li><li local-id="fc30803b-5f2e-482a-b30e-a16f192f050b"><p local-id="7f4c2879924f">O banco de dados possui logs registrados para os sistemas associados ao CNPJ do usuário.</p></li></ul><p local-id="4e20c934a7d0"><strong>Pós-condições:</strong></p><ul local-id="55446558-0c23-4409-8848-e2c4bb7d9cf0"><li local-id="ef7e0db9-dafe-4c5c-8e24-a1bc8d2688d3"><p local-id="bc2fa1db63d6">O documento do Log no MongoDB tem sua propriedade de controle atualizada (ex: <code>isRead: true</code>).</p></li><li local-id="50930b87-5cc9-456b-9cc9-ddd4289c28ca"><p local-id="0744fba9cd73">A interface do usuário é atualizada em tempo real para remover o destaque visual de &quot;Não Lido&quot; daquele item.</p></li></ul><hr local-id="21bc12b4-2776-414c-8a5e-744a48e90c83"/><p local-id="e6f025dd731a"><strong>FLUXO PRINCIPAL 1: ACESSO E CONFIRMAÇÃO DE LEITURA (RF-26):</strong></p><ol start="1" local-id="8d54ae1d-a4ca-42a3-bce1-4a832a06263a"><li local-id="4da6efa0-8d60-43a2-a323-900196036dff"><p local-id="32b544df9d1b">Usuário acessa a listagem de erros no Dashboard.</p></li><li local-id="06eb7392-2631-4009-b3bc-ff56d8194b19"><p local-id="1d253c8e9d3f">Sistema (Frontend) renderiza a lista, aplicando um destaque visual (ex: texto em negrito, ícone de <em>badge</em> ou cor de fundo diferente) em todos os logs que possuem o status de leitura pendente (<code>isRead: false</code>).</p></li><li local-id="f56774e4-60da-40a6-9d43-116ed9d3bea8"><p local-id="913bf399e667">Usuário clica em um log destacado para abrir a tela/modal de Detalhes do Erro.</p></li><li local-id="39d4ca45-9d54-4f7c-91da-b23e9caf2a4a"><p local-id="f00f2a832eea">Sistema (Frontend) exibe as informações completas do erro (Payload, Contexto, etc.).</p></li><li local-id="7100253c-3d40-49ab-96cd-1fc69f1faefb"><p local-id="080efc1ad2da">Sistema (Frontend) dispara, em background, uma requisição assíncrona para o Backend sinalizando a leitura (Ex: <code>PATCH /logs/{id}/read</code>).</p></li><li local-id="ec0a6fe4-2cac-48b0-a705-4a72cb93bd17"><p local-id="1a82579b2989">Backend recebe a requisição e atualiza o documento específico no MongoDB, definindo <code>isRead: true</code>.</p></li><li local-id="bc89878e-19ed-4541-aecf-ac2c20973c8a"><p local-id="cd80d0f4a19a">Backend retorna status de sucesso (200 OK) para o Frontend.</p></li><li local-id="5127e092-6706-41bf-bf10-79553a742468"><p local-id="7fe907893396">Sistema (Frontend) atualiza o estado local (React State) e remove o destaque visual de &quot;Não Lido&quot; daquele log na listagem.</p></li></ol><p local-id="29b27f6d84df"><strong>FLUXOS ALTERNATIVOS:</strong></p><ul local-id="c3311f0a-690c-4222-92ea-92c543c979c3"><li local-id="2cb6c238-b183-4f8a-8a3a-ae6599dbf4d5"><p local-id="6eb8b037974d"><strong>A1: Log já havia sido lido anteriormente:</strong></p><ul local-id="c436f725-6651-404b-81ba-6983dc40ddef"><li local-id="e7825e59-2456-4797-8203-cde253f367f4"><p local-id="110bb14f2d62">No Passo 3, o Usuário clica em um log que já foi acessado no passado (não possui destaque visual).</p></li><li local-id="8a2d4ee6-e544-4bab-9aba-f993f12c8617"><p local-id="f79f16321de1">O Sistema (Frontend) abre os detalhes do log normalmente.</p></li><li local-id="51ba6206-5f08-4070-9ac9-ed718ed05ab4"><p local-id="0888c6944113">O Sistema identifica localmente que o log já está como <code>isRead: true</code> e <strong>aborta</strong> o Passo 5 (não faz a requisição de atualização para a API).</p></li><li local-id="899ed5e4-4eac-4082-a8eb-355c803b2f99"><p local-id="a88daf52d934">O fluxo é encerrado, economizando tráfego de rede e processamento do servidor.</p></li></ul></li><li local-id="2edccb94-949e-4983-8fb9-5b900fca27d2"><p local-id="a9ec51e67977"><strong>A2: Falha na comunicação com o Backend ao confirmar leitura:</strong></p><ul local-id="fe45fbc8-c459-438b-8287-c1d1024266ff"><li local-id="1cbb4a95-b841-47e4-9830-4fbea267469d"><p local-id="363ad1b30a83">No Passo 5, a requisição assíncrona falha (timeout ou erro 500).</p></li><li local-id="50874b47-a379-4b22-b113-4dc69a63b5fd"><p local-id="ecfd52277279">O Sistema (Frontend) loga o erro silenciosamente no console.</p></li><li local-id="7783fe1c-c143-4273-8bcd-69100a87d4fd"><p local-id="87fbf15ee5e8">O usuário continua vendo os detalhes do erro normalmente (não é bloqueado), mas o log pode voltar a aparecer como &quot;Não Lido&quot; em um próximo <em>refresh</em> da página, garantindo a resiliência dos dados.</p></li></ul></li></ul><hr local-id="12c664a0-a746-47c2-96c7-3342c8e2e936"/><p local-id="77e133ad1e44"><strong>OBSERVAÇÕES ARQUITETURAIS:</strong></p><ul local-id="6f24f64e-07ef-4728-a849-1e9f35cc2677"><li local-id="aac8941a-1f34-48b4-8acd-254ea580bec8"><p local-id="4af6fb19636c"><strong>Modelagem MongoDB (RNF-04):</strong> A entidade <code>Log</code> no banco de dados ganha um campo booleano nativo. O schema básico deve contemplar <code>isRead: { type: Boolean, default: false }</code>. Isso garante que todo log recém-capturado nasça automaticamente como não lido.</p></li><li local-id="a197c588-22c3-40c6-a3ae-8fa5daf1ef9a"><p local-id="15addf46d411"><strong>Filtros do Dashboard (RF-14):</strong> Com a implementação deste caso de uso, a barra de filtros do Dashboard ganha a capacidade técnica de buscar por status de visualização. O backend deve aceitar a flag <code>isRead</code> como parâmetro de <em>query</em> na rota de listagem (ex: <code>GET /logs?isRead=false</code>).</p></li><li local-id="e590c8bd-1553-4634-8374-158b05b33688"><p local-id="701e3965efc0"><strong>Baixo PLT / Otimização UX:</strong> A mudança de estado visual na interface (Passo 8) deve ocorrer através de <em>Optimistic UI Update</em> (atualização otimista). O React/React Native altera a interface no instante do clique, sem obrigar o usuário a esperar o retorno da API, garantindo uma sensação de extrema fluidez.</p></li></ul><hr local-id="45e579224e52"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260330-224957.png" width="760" loading="lazy" src="../attachments/22315009/24477698.png?width=760" data-image-src="../attachments/22315009/24477698.png" data-height="423" data-width="806" data-unresolved-comment-count="0" data-linked-resource-id="24477698" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260330-224957.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="22315009" data-linked-resource-container-version="4" data-media-id="2847168e-99ec-477b-85b9-0acfcf80eeac" data-media-type="file"></span><p local-id="165a1ffecbd4" /><hr local-id="0c730e1f34da"/><p local-id="2d0cfdc38595">@startuml<br/>left to right direction<br/>skinparam packageStyle rectangle<br/>skinparam usecase {<br/>    BackgroundColor LightCyan<br/>    BorderColor DarkCyan<br/>    ArrowColor DimGray<br/>}</p><p local-id="bd67fb1b41b2">actor &quot;Usuário\n(Web/Mobile)&quot; as User<br/>actor &quot;MongoDB\n&lt;&lt;Database&gt;&gt;&quot; as DB</p><p local-id="5642dfdb6e6d">rectangle &quot;LogViewer - Gestão de Dashboard&quot; {</p><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">usecase &quot;Acessar Lista de Logs&quot; as UC1
+usecase &quot;Visualizar Log &#39;Não Lido&#39;&quot; as UC2
+usecase &quot;Visualizar Detalhes do Log&quot; as UC3
+usecase &quot;Marcar Log como Lido\\n(isRead: true)&quot; as UC4</pre>
+</div></div><p local-id="0ef134902250">}</p><p local-id="81aae2b1c411">' Fluxo de navegação primária<br/>User --&gt; UC1<br/>UC1 --&gt; UC2 : Analisa destaque visual<br/>User --&gt; UC3 : Clica no item</p><p local-id="c42b1b1152db">' Regra de negócio mapeada na UML<br/>UC3 .&gt; UC4 : &lt;&lt;include&gt;&gt;\n(Se isRead == false)</p><p local-id="ea9ba3ec9936">' Ação no sistema de persistência<br/>UC4 --&gt; DB : Atualiza documento\nvia PATCH /logs/{id}/read</p><p local-id="18b6e24a2beb">note right of UC4<br/>  RF-26: Mecanismo de confirmação<br/>  de acesso visual (estilo Inbox).<br/>end note</p><p local-id="3029bbcdc73c">note bottom of UC2<br/>  Logs não lidos recebem<br/>  destaque visual na interface.<br/>end note</p><p local-id="6547932ea8ca">@enduml</p><hr local-id="0ca145813fa2"/><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="../attachments/22315009/21889033.xml" data-nice-type="XML File" data-file-src="/wiki/download/attachments/22315009/UC%20-%2015.drawio.xml?version=2&amp;modificationDate=1774910963762&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="21889033" data-linked-resource-type="attachment" data-linked-resource-container-id="22315009" data-linked-resource-default-alias="UC - 15.drawio.xml" data-mime-type="text/xml" data-has-thumbnail="true" data-linked-resource-version="2" data-media-id="1c6745cf-603f-4922-ad64-2e226d4888d4" data-media-type="file"><img src="https://groupfromthesouth.atlassian.net/wiki/download/thumbnails/22315009/UC%20-%2015.drawio.xml?version=2&amp;modificationDate=1774910963762&amp;cacheVersion=1&amp;api=v2&amp;viewType=fileMacro" height="250" /></a></span></p><p local-id="fa40e8b2d12e" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22315009/22315021.png">image-20260327-114305.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22315009/22315018.xml">UC - 14.drawio.xml</a> (text/xml)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22315009/22315024.png">image-20260327-005608.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22315009/21528611.png">image-20260327-123627.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22315009/24641538.xml">UC - 15.drawio.xml</a> (text/xml)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22315009/24477698.png">image-20260330-224957.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22315009/21889033.xml">UC - 15.drawio.xml</a> (text/xml)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

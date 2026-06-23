@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Equipe 3</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="12091393.html">Regras de Negócios</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Equipe 3
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified by <span class='editor'> pedroalvaro193</span> on mar. 12, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <ul local-id="00d1a24e-ef40-46ed-8213-a3ea5c7c4ac9"><li local-id="2a9108f0-a278-453c-b09b-1e530b0e21e4"><p local-id="e813e52aa295">RF - 01: O Sistema deve <code>autenticar</code> o Usuário </p></li><li local-id="0ef8b0dd-f72c-4c32-9799-72e7bcb181ee"><p local-id="1598764ae01c">RF - 02: O Sistema pergunta ao Usuário se deseja uma <code>solução</code> para o erro descoberto</p></li><li local-id="a0193f3d-47cc-456a-a742-0f14fd9a55ba"><p local-id="2448cb5e7e36">RF - 03: O Sistema deve receber o <code>caminho</code> dos Logs da Aplicação configurada</p></li><li local-id="4dc72011-7699-4430-8bc5-52bc3f7dae7b"><p local-id="2cc7966b0596">RF - 04: O Sistema deve <code>notificar</code> os erros encontrados na Varredura</p></li><li local-id="18a5ced1-45f9-4ad8-974b-8b4713c782a9"><p local-id="c8ec9b9db9ea">RF - 05: O Sistema deve <code>alertar</code> possíveis situações criticas descobertas pelo SDK</p></li><li local-id="b653a3ab-cbd8-4eb0-b9a5-01612526d4f0"><p local-id="5239e107dbe7">RF - 06: O Sistema deve apresentar um <code>histórico</code> de erros</p></li><li local-id="4ae21118-36b8-4b61-9e50-623a5b706b23"><p local-id="0f8b8befe853">RF - 07: O Sistema deve ser capaz de classificar entradas de log como &quot;Erros&quot; utilizando Processamento de Linguagem Natural (NLP), independentemente da formatação (ex: JSON, Plain Text, XML).</p></li><li local-id="ec9bc020-91e8-4f24-b5b5-0e267b341b5d"><p local-id="361198b95966">RF - 08: O Usuário deve configurar um <code>Contexto </code>onde sua empresa está atuando</p></li><li local-id="eb1700ee-aed2-413b-9672-dbdd28aaaf5a"><p local-id="1d044a83a7e6">RF - 09: O Sistema aplicará o <code>contexto</code> configurado no momento da Varredura</p></li><li local-id="4773f752-5179-44dd-8ab7-602620be9d02"><p local-id="3c23e25ddda6">RF - 10: O Sistema deve fazer uma varredura <code>periódica</code> nos logs</p></li><li local-id="9f069a3b-f361-4f11-b4a9-83d63a2af4d6"><p local-id="bc667579248c">RF - 11: O Usuário poderá fazer a <code>alteração do contexto</code></p></li><li local-id="fb5f5a55-42e4-42e1-861e-2ccdbe3231f8"><p local-id="86f9f7348fff">RF - 12: O Sistema deve disponibilizar uma  SDK capaz de <code>capturar e enviar</code> os logs da aplicação do cliente</p></li><li local-id="6c5d5887-aad4-48cb-9b30-e70b872f5652"><p local-id="b090fee936b7">RF - 13: O Sistema deve compartilhar o <code>link</code> do Agente, que recebeu o contexto e os possíveis logs de erro</p></li><li local-id="3f4ea22d-7f43-411a-9602-8472e48e0293"><p local-id="0e03c2cf3b60">RF - 14: O Sistema deve permitir a filtragem do histórico de logs pelos critérios de: Data/Hora, Severidade (Warning, Error, Fatal), Ambiente (Contexto) e Palavra-chave.<br/>=======================================</p></li></ul><p local-id="9107c8fb31d6" /><ul local-id="9fced39e4598"><li local-id="dfd713928fb9"><p local-id="cf17d93730cf">RN - 01 -  O sistema deve APENAS perguntar se o user deseja receber uma solução. (RF - 02, RF - 13)<br/>Ex: <em>Fulano, voce deseja receber uma possivel solucão para o erro 23456789 encontrado?</em></p></li></ul><p local-id="7254fa182e02">O sistema não deve aplicar correções automaticamente. Toda solução gerada pela IA deve passar por uma etapa de <strong>consentimento do usuário</strong>.</p><p local-id="9de3e90f1019"><strong>Fluxo (Sugestão Ativa):</strong> O sistema apresenta a solução A e questiona a aceitação, e disponibiliza o link do agente que recebeu o erro e o contexto aplacado o encaminhando para a página de conversa do agente. </p><p local-id="448fa225f789" style="margin-left: 30.0px;">Possiveis variações<br/>O sistema sugere uma solução e pergunta se ele quer acatar ou procurar outra possivel solução<br/>Ex: <em>Fulano, essa solucao (limpar cache) esta do seu agrado? voce deseja prosseguir com ela ou quer analisar outras possibilidades?</em></p><p local-id="ee83bea721dc" /><ul local-id="7dcc72006a4c"><li local-id="28b737111866"><p local-id="9ba5f3f74865">RN - 02 -  Armazenamento e notificação de erro (RF - 04, RF - 05, RF - 06)</p></li></ul><p local-id="76376bc87281">Ao iniciar varredura o sistema deve identificar o tipo de erros, armazenar em um banco contendo data, tipo, conteúdo e contexto aplicado.</p><blockquote local-id="6a3759e4-2226-44b0-9ca7-c1f96b94efbf"><p local-id="44065603ff64">Todo erro identificado na varredura deve seguir obrigatoriamente o fluxo: <strong>Identificação → Persistência → Alerta. </strong></p><p local-id="aefc06df9ef1"><strong>Persistência: </strong>O registro no banco de dados deve conter obrigatoriamente: Timestamp, Tipo_do_Erro, Conteúdo_do_Log e Contexto_Aplicado. </p><p local-id="2bfce3e8abb4"><strong>Notificação Multicanal: </strong></p><ul local-id="dc284c7c81b8"><li local-id="7b0c222fd80f"><p local-id="dae969267f34">Assíncrona: Envio de E-mail e Push Notification no App Mobile. </p></li><li local-id="7b44cfa3af74"><p local-id="d517aa801c01">Síncrona: Se o usuário estiver com o Dashboard web aberto (via WebSockets), um alerta visual (toast/modal) deve aparecer em tempo real.</p></li></ul><p local-id="acde522c0cf7"><strong>Regra de Silenciamento:</strong> Caso o mesmo erro ocorra repetidamente em um intervalo de 5 minutos, as notificações de e-mail devem ser agrupadas em um único resumo para evitar fadiga de alertas.</p></blockquote><p local-id="de7947e04131" /><ul local-id="cfa23edea0b6"><li local-id="0148c02a046a"><p local-id="a79fb3e063b9">RN - 03: Varredura de Logs com Inteligência Contextual</p></li></ul><p local-id="e7abae000bf1" style="margin-left: 60.0px;">Fluxo de Execução:<br/></p><ol start="1" local-id="88721bd5-b2b4-41d5-b3e1-61d0cbef8ac7"><li local-id="886fab5e-3829-4008-92b8-f579df7cac42"><p local-id="c674ad2f5b9f"><strong>Input:</strong> O sistema captura os logs (via SDK ou caminho configurado).</p></li><li local-id="bdb7a0b3-0719-4c3b-a9ad-021d2a2ebd19"><p local-id="e66f8e4dc923"><strong>Processamento (IA + Contexto):</strong> A IA cruza o log bruto com as respostas da <strong>Pesquisa de Onboarding</strong> (Ramo, Stack, Criticidade) realizada após o pagamento.</p></li><li local-id="66ac7309-18f8-4873-854c-1c7c585d8151"><p local-id="2cbba6c18822"><strong>Classificação:</strong> O erro é tipificado (Ex: Erro de Checkout em E-commerce = <em>Crítico</em>; Erro de CSS em Blog = <em>Baixo</em>).</p></li><li local-id="92ff4f97-f4cd-4b69-97bf-ffaeef4e6740"><p local-id="131730c096be"><strong>Persistência:</strong> O log é salvo no banco com: <code>Data</code>, <code>Tipo</code>, <code>Conteúdo</code> e o <code>Contexto Aplicado</code>.</p></li><li local-id="c9f53ba5-f79e-4892-8bb3-8b32a505e3bd"><p local-id="5c6ace70d1b9"><strong>Notificação Multicanal:</strong></p><ul local-id="3b33690c-51e2-4570-a1e6-bb19b9406122"><li local-id="385f3152-0296-4d86-90e4-9bbf6f6e44fc"><p local-id="b09a87a5dcc7"><strong>Dashboard:</strong> Alerta visual em tempo real (se logado).</p></li><li local-id="32f842cb-cc71-4d4c-9855-c8d44718620f"><p local-id="532a4a362aa5"><strong>E-mail/App:</strong> Push automático com o resumo do erro e link para a solução.</p></li></ul></li></ol><p local-id="10fd8a19ca06" style="margin-left: 30.0px;"></p><p local-id="0f5ee6b2f318" style="margin-left: 30.0px;"></p><p local-id="2b6a51bae830" style="margin-left: 30.0px;"></p><p local-id="ff7f83d43ff4" style="margin-left: 30.0px;"></p><p local-id="c75f0c80a6a3" style="margin-left: 30.0px;"><br/></p><p local-id="79a7e1d92636"><br/>$$  Ideia para modelo de negócio:<br/> Crie mais um plano, onde o cliente ele paga mais. para receber uma solução objetiva ao encontrar um erro. </p><p local-id="a73e2ce55eda" />
+                    </div>
+
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

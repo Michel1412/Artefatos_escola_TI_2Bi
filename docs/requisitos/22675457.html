@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 2: Identificação de logs sem padrões estruturados</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 2: Identificação de logs sem padrões estruturados
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span>, last modified on mar. 27, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="98cd28376519" /><p local-id="7b27bdbd0ac4"><strong>Nome:</strong> Recebimento e Aceitação de Logs Agnósticos (Sem Padrão Estruturado) </p><p local-id="2f8eb1d04c06"><strong>Atores:</strong></p><ul local-id="44a5da19-16c0-46b5-9956-f7368d39441d"><li local-id="7c88ad7e-a2d3-4f61-aa97-1ad10c215db0"><p local-id="af938d63727f">Sistema Cliente (SDK) ou Serviço de Varredura (Scanner de Diretório)</p></li><li local-id="fcf1f084-35c2-4646-878b-f7e068a66bd1"><p local-id="d218b332f2bf">Backend LogViewer (Porta de Entrada / API)</p></li><li local-id="634de39b-de10-4d91-9665-a4df15180b65"><p local-id="75640e54172d">Banco de Dados MongoDB (Adapter de Persistência)</p></li></ul><p local-id="4966df5fa426"><strong>Descrição:</strong> Garante que o sistema atue como um receptor flexível, sendo capaz de identificar, aceitar e armazenar a entrada de logs de erros em sua forma bruta (<em>raw text</em>, arquivos variados ou payloads não padronizados), sem exigir um <em>schema</em> rígido (como um JSON ou XML predefinido) por parte do cliente.</p><p local-id="f98c108790ee"><strong>Pré-condições:</strong></p><ul local-id="45bd5b22-c2f7-4677-a607-028c2a7cc2b8"><li local-id="9f42c349-e236-4d95-af75-40cb776ca2cb"><p local-id="3d94a0a4c5db">O cliente possui um sistema cadastrado e ativo.</p></li><li local-id="2333434a-d78a-4a0c-a110-b94197e338fc"><p local-id="eea0dc04a71e">A autenticação/token de integração da origem é válida (RF-16 / RN-02).</p></li><li local-id="1e8025d9-aabd-4c9a-9824-e38df4400dc5"><p local-id="50293b40b7ea">A conexão entre a origem e o sistema está estabelecida de forma segura (RNF-01).</p></li></ul><p local-id="0f198d56c672"><strong>Pós-condições:</strong></p><ul local-id="6950a044-cc43-43c3-a74c-1c0bd401f461"><li local-id="0e57e571-a30c-4da9-b99f-df71d1b125e6"><p local-id="4ccbf636adcd">O log, independentemente do seu formato, é aceito pelo backend sem erros de validação de estrutura (<em>schema validation</em>).</p></li><li local-id="af78d999-a645-45de-be1c-001e95e0b543"><p local-id="b3aee538265b">O conteúdo bruto é armazenado com sucesso no MongoDB, aguardando a esteira de processamento inteligente.</p></li><li local-id="a706d46f-dd86-4989-abc1-203faba03b2c"><p local-id="1dde0ff009d0">O sistema de origem recebe a confirmação de que o log foi capturado.</p></li></ul><p local-id="c9a607a3dd72"><strong>Fluxo Principal:</strong></p><ol start="1" local-id="3e6754c9-8689-403c-bf4f-e5ff82770461"><li local-id="8e05486c-f14f-41df-8118-4786693b7d7d"><p local-id="010714fdd5b4">O Sistema Cliente (via SDK ou Varredura) envia um payload de log de erro para o <em>endpoint</em> de captura do LogViewer.</p></li><li local-id="0360ea6a-4287-4013-aca3-2a778111aa0f"><p local-id="8a79b9b96f8f">O sistema (Backend LogViewer) recebe a requisição.</p></li><li local-id="0dda3231-e9ce-48bd-8fb6-d75c4f3b688b"><p local-id="2963abdcc877">O sistema realiza a validação de segurança primária (verifica a autenticidade do token e mascara dados sensíveis básicos, conforme RN-02 e RN-05).</p></li><li local-id="52012607-bcb3-470d-8cd7-f62ed4a1ca0d"><p local-id="6466b10dc250">O sistema identifica o payload como um &quot;Log de Erro&quot; associado ao sistema de origem, <strong>ignorando a validação de estrutura interna do arquivo/texto</strong>.</p></li><li local-id="0c49e902-07df-4a36-90b8-3121fc9f5401"><p local-id="281f0fefa992">O sistema empacota o conteúdo recebido em um formato bruto (<em>RawLogEntry</em>), anexando apenas metadados básicos de origem (ID do Sistema e Timestamp de recebimento).</p></li><li local-id="bb54d83a-fb79-48b0-9b9b-58f20b76a777"><p local-id="c20eef9fc3b9">O sistema persiste esse documento bruto em uma coleção inicial no MongoDB (aproveitando a característica <em>schema-less</em> do banco).</p></li><li local-id="081a60f9-a3a2-4bcc-9d3e-765d8d7cb11d"><p local-id="61cc47d48536">O sistema retorna um HTTP Status de sucesso (ex: <code>202 Accepted</code>) para a SDK/Origem, liberando a aplicação cliente rapidamente.</p></li><li local-id="00ac547e-f519-40de-b650-27ea6fdb99dd"><p local-id="aa879e4a6773">O sistema enfileira o log bruto para o processo subsequente de inteligência e tipificação (que ocorre em background).</p></li></ol><p local-id="d93acee002e4"><strong>Fluxos Alternativos:</strong></p><ul local-id="6b13ee61-31c2-4979-b559-d2b40c9f5aca"><li local-id="63a1c834-2503-475e-8cd0-a7f1f3c32051"><p local-id="575dc5b61b4d"><strong>A1: Payload excede o tamanho máximo permitido</strong></p><ol start="1" local-id="27b4f38a-fd8e-49e3-8677-cf58fe141b13"><li local-id="9696842e-f047-4bcf-9386-301265784f2b"><p local-id="73dee6008e67">O sistema identifica que o arquivo ou texto enviado ultrapassa o limite de MB configurado para uma única requisição.</p></li><li local-id="dc363cda-401c-4bd7-b8a7-0749345117b7"><p local-id="425fd456e846">O sistema rejeita o recebimento.</p></li><li local-id="e7bc7fe8-b4c2-4326-be04-1efaf73ed622"><p local-id="b85e75d0146e">O sistema retorna um erro de <code>Payload Too Large</code> (413) para a SDK, orientando o descarte ou fracionamento.</p></li></ol></li><li local-id="a6208616-4fbf-4f3d-8ccc-a39d93ccf09f"><p local-id="476b80e3bc26"><strong>A2: Falha na identificação da Origem (Token/Contexto não localizado)</strong></p><ol start="1" local-id="403b64a8-d199-4e80-acd1-f69ac1d3ddc8"><li local-id="9962c226-d6d1-41b9-a25c-1692c199399a"><p local-id="6e834afb74ce">O sistema não consegue vincular o log recebido a nenhum sistema/CNPJ cadastrado.</p></li><li local-id="b735583d-e54c-4a45-a91d-0b30fe7a5e61"><p local-id="c59103eecb1e">O sistema descarta o payload imediatamente para evitar sobrecarga no banco.</p></li><li local-id="fc2d85d7-1d7e-41b6-ad47-a5c64ca6c1c1"><p local-id="8d8bb3f7eadc">O sistema retorna erro de autenticação para a origem.</p></li></ol></li></ul><p local-id="1d90172eb61f"><strong>Itens associados:</strong></p><p local-id="24922b0c484d"><strong>Regras de Negócio:</strong></p><ul local-id="1baf767f-b639-4b64-978c-2d0f4fe582e2"><li local-id="5bf9700f-aad6-43e6-920c-eaca1f65cdda"><p local-id="098c3a8ff6e3">RN-02: Tokens de integração devem ser únicos por sistema.</p></li><li local-id="4f6cf8f8-f17a-46eb-bc2e-8e55e4210ef1"><p local-id="c896e2a800cf">RN-05: Dados sensíveis devem ser obrigatoriamente mascarados antes da persistência.</p></li></ul><p local-id="b37bb18f4cc2"><strong>Requisitos Funcionais:</strong></p><ul local-id="b84ffcb0-18de-4871-9a0c-c30fd0b13f93"><li local-id="7f8caf87-7db4-4d24-b1ff-972158b22930"><p local-id="7c07f21f2165">RF-07: O Sistema identifica os logs de erros, mesmo que sem padrões.</p></li><li local-id="0ac4bb58-7d56-4f43-8f37-7da3693274a2"><p local-id="fc275071c069">RF-16: Gerenciamento de tokens da SDK.</p></li><li local-id="d4212055-9ea6-4f8e-b30f-2a8ae8af50fc"><p local-id="38012b7e0678">RF-25: Validação e mascaramento de credenciais.</p></li></ul><p local-id="1966f55808bc"><strong>Requisitos Não Funcionais:</strong></p><ul local-id="5c526092-d85b-4a68-b913-ad857383e426"><li local-id="3cbfcf8a-6994-456f-a783-5ed9c1ef2766"><p local-id="54baa8d27812">RNF-01: Comunicação criptografada obrigatória (TLS/Túnel seguro).</p></li><li local-id="805c609e-67df-4f67-8267-9b01ec716b9b"><p local-id="6eb3fdc9498d">RNF-03: Autenticação gerida via Clerk.</p></li></ul><p local-id="38f6dea0500f"><strong>Observações (Notas de Arquitetura):</strong></p><ul local-id="9b64a1fa-f978-4794-a20d-23172960ee1a"><li local-id="c0fe4804-945f-4dd0-aa9d-bd97dd93c368"><p local-id="d938506b4840">Este caso de uso reflete o padrão <em>Fire and Forget</em> para o cliente. A API de entrada (<em>Inbound Adapter</em>) deve ser extremamente rápida e permissiva quanto ao formato do corpo da requisição (<code>text/plain</code>, <code>application/octet-stream</code>, <code>application/json</code> desestruturado, etc.).</p></li><li local-id="4660a65c-6944-4f2a-ba43-fbd7031b857a"><p local-id="486cbb4a0a7d">O uso do MongoDB aqui é justificado pela capacidade de salvar um documento onde o campo <code>raw_content</code> pode ser literalmente qualquer coisa, adiando a complexidade estrutural para o momento em que a IA (LLM) entrar em ação em um caso de uso posterior.</p></li></ul><p local-id="064e19d36a02" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260327-181433.png" width="760" loading="lazy" src="../attachments/22675457/22806529.png?width=760" data-image-src="../attachments/22675457/22806529.png" data-height="4004" data-width="7200" data-unresolved-comment-count="0" data-linked-resource-id="22806529" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260327-181433.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="22675457" data-linked-resource-container-version="2" data-media-id="9e7f74bf-c5d8-44be-8dcf-30461347f8bf" data-media-type="file"></span><p local-id="63b028894096" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/22675457/22806529.png">image-20260327-181433.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

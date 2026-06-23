@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 13: Explorar, Filtrar e Interagir com Logs via Agente IA</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 13: Explorar, Filtrar e Interagir com Logs via Agente IA
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified on mar. 27, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="877179250992"><strong>Caso de uso</strong> - 1: Explorar, Filtrar e Interagir com Logs via Agente IA</p><p local-id="7657a9b78f35">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-30" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-30" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-30</a>
+                    -
+            <span class="summary">Criação de caso de uso - 13 Explorar, Filtrar e Interagir com Logs via Agente IA</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+ </p><p local-id="920677d0ce25"><strong>Itens associados:</strong></p><p local-id="775a4cac500a"><strong>Regras de Negócio:</strong></p><ul local-id="8c19dadcf40c"><li local-id="7e3cd2a3ff63"><p local-id="e46b568a7f7b"><strong>RN-06:</strong> O sistema NÃO aplica correções automaticamente. Deve apenas apresentar uma sugestão passiva e disponibilizar o link para o ambiente do Agente.</p></li><li local-id="00d91bbbc296"><p local-id="8a3324d8acc7"><strong>RN-07:</strong> Ao solicitar/aceitar uma solução através do LLM, o status do erro muda automaticamente de &quot;Não Solucionado&quot; para &quot;Solucionado&quot;.</p></li><li local-id="a964b06ecc8c"><p local-id="3dd1752ebace"><strong>RN-10:</strong> O Dashboard deve exibir dados com um filtro mestre para visualizar dados de um sistema específico ou &quot;multi-sistemas&quot;.</p></li></ul><p local-id="5ab2a072b6f7"><br/><strong>Requisitos Funcionais:</strong></p><ul local-id="54fc6f408b15"><li local-id="9787b6a7df06"><p local-id="ce673e9e7fda"><strong>RF-14:</strong> O Sistema deve permitir filtrar logs por múltiplas opções (ex: data, criticidade, sistema).</p></li><li local-id="8c721f29140d"><p local-id="539d6a2b7453"><strong>RF-21:</strong> O Sistema deve ter uma barra de pesquisa global para os erros já armazenados.</p></li><li local-id="ff0986a2a1d0"><p local-id="a821e7bd811e"><strong>RF-23:</strong> O Sistema deve categorizar erros por Status (Ex: Não Solucionado, Solucionado).</p></li></ul><p local-id="1e1bb120b568" /><p local-id="371d377a736d"><strong>Requisitos Não Funcionais:</strong></p><ul local-id="a009254bd550"><li local-id="b41630cb22b7"><p local-id="de33b2f57b36"><strong>RNF-04:</strong> O banco de dados principal será o MongoDB (maleabilidade para logs não estruturados).</p></li><li local-id="be32a3bfc48c"><p local-id="b223a25fc49b"><strong>RNF-06:</strong> O MongoDB utilizará um Índice TTL (Time-To-Live) configurado para expirar os documentos automaticamente após 7 dias, garantindo a retenção temporária sem necessidade de rotinas em background.</p></li><li local-id="8f50afe209e6"><p local-id="68dd8337e5a7"><strong>RNF-09:</strong> O desenvolvimento deve ser estritamente orientado a Padrões de Projeto (Arquitetura Hexagonal).</p></li></ul><p local-id="1bd9005bb3dc"><strong>Atores:</strong></p><ul local-id="ca3dce37807f"><li local-id="77921c8f85f1"><p local-id="bd18ad8e66be"> Usuário</p></li><li local-id="659ff87e0aa8"><p local-id="1162e47468ea">Aplicação Web / Aplicativo Mobile</p></li><li local-id="80eaf1b82115"><p local-id="b6de2bcd2cde">Sistema LogViewer (Backend)</p></li><li local-id="a01089f437f7"><p local-id="234435dbac3b">Banco de Dados (MongoDB)</p></li><li local-id="0c7ed9481699"><p local-id="4f274115c5b8">Agente IA (LLM)</p></li></ul><p local-id="88d1fccc93d4" /><p local-id="fad17f37d9a4"><strong>Descrição:</strong><br/>Permite ao usuário consultar o histórico de logs armazenados, realizando buscas textuais globais e aplicando filtros combinados. O usuário pode visualizar os detalhes de um erro específico e interagir com um Agente IA para buscar sugestões de resolução, o que altera automaticamente a categorização de status do log no sistema.</p><p local-id="e3190c99a22e"><br/><strong>Pré-condições:</strong></p><ul local-id="d6919298421a"><li local-id="179281653101"><p local-id="6c925f928177">Usuário autenticado no sistema (Web ou Mobile).</p></li><li local-id="58719ab1b4d2"><p local-id="3be5d865b133">O CNPJ do usuário possui sistemas cadastrados e logs indexados no MongoDB.</p></li><li local-id="2ce8824f1813"><p local-id="8c36c4ad93ff">O serviço do Agente IA (LLM) está acessível e configurado.</p></li></ul><p local-id="9d3b1473edfa"><br/><strong>Pós-condições:</strong></p><ul local-id="16f69a4d0fa5"><li local-id="5d9f7a72eb50"><p local-id="aa8929ccf5a1">Lista de logs é renderizada no Dashboard de acordo com os filtros.</p></li><li local-id="f78782ac938c"><p local-id="615045616240">Interações com o Agente IA são concluídas com sucesso.</p></li><li local-id="8f83b4f09518"><p local-id="49b484f80dea">O status do log interagido é atualizado para &quot;Solucionado&quot; no banco de dados.</p></li></ul><p local-id="b47e84461621"><br/><strong>FLUXO PRINCIPAL 1: BUSCA E FILTRAGEM DE LOGS (DASHBOARD):</strong></p><ul local-id="b3f6ca2eb40b"><li local-id="f32e85d020a3"><p local-id="e89f4ff21f92">Usuário acessa a área de Dashboard/Histórico de Erros.</p></li><li local-id="33413f0fe671"><p local-id="a2902fa283fb">Sistema (Frontend) solicita a listagem inicial ao Backend.</p></li><li local-id="d463a675cc43"><p local-id="bef131f4423a">Backend consulta o MongoDB e retorna os logs recentes.</p></li><li local-id="65c9b8b4e22c"><p local-id="bef9bc569d3a">Sistema exibe a lista de erros padrão.</p></li><li local-id="d441ce1852bb"><p local-id="68d80235a3be">Usuário insere um termo na barra de pesquisa global OU seleciona filtros (data, criticidade, sistema específico).</p></li><li local-id="9f640777def1"><p local-id="b874ba3cb0b7">Sistema envia os novos parâmetros de busca ao Backend.</p></li><li local-id="20d9ac5bd818"><p local-id="64693cc66be7">Backend executa a query no MongoDB (utilizando Text Indexes para a busca global).</p></li><li local-id="a713582bc15e"><p local-id="88727bb9466c">Backend retorna o conjunto de logs filtrados e paginados.</p></li><li local-id="3566473278c9"><p local-id="4f6d0319f63b">Sistema exibe os resultados atualizados para o Usuário.</p></li></ul><p local-id="b9c27f14328c"><br/><strong>FLUXO PRINCIPAL 2: INTERAÇÃO COM AGENTE IA E RESOLUÇÃO DO ERRO:</strong></p><ul local-id="2bae639fe438"><li local-id="eaa46b3adf0e"><p local-id="2c6f0ef43a77">Usuário clica em um erro específico na listagem</p></li><li local-id="7b4e4d55535c"><p local-id="261eb102bc99">Sistema exibe os detalhes completos (Conteúdo do Log, Timestamp, Contexto Aplicado)</p></li><li local-id="9ff75b965e65"><p local-id="04faa5128c11">Sistema exibe passivamente a mensagem: &quot;Deseja receber uma possível solução para o erro X?&quot;</p></li><li local-id="3f83a92a7f56"><p local-id="f8adf43d4366">Usuário clica no botão/link para acionar o Agente IA</p></li><li local-id="b7e7ee88dcb6"><p local-id="6c40ae059fa8">Backend recebe a requisição de ajuda</p></li><li local-id="ef80ba9b6bd0"><p local-id="bb9a73fbb3c1">Backend envia o payload do log e o contexto da empresa para o Agente IA (via Adapter)</p></li><li local-id="a441dd595540"><p local-id="cdc20c263bb0">Agente IA processa as informações e devolve a sugestão de solução</p></li><li local-id="144f674cce5f"><p local-id="3625d1e5c4c3">Backend executa a mudança de estado do log para &quot;Solucionado&quot; (Regra RN-07)</p></li><li local-id="18644bb7bbee"><p local-id="9a5cf0468950">Backend persiste a alteração de status no MongoDB</p></li><li local-id="c72674f4e7a7"><p local-id="392e77a5227f">Backend retorna a sugestão de solução para o Frontend</p></li><li local-id="edd0046307fc"><p local-id="59b2e9209180">Sistema exibe a solução sugerida e atualiza a interface mostrando o novo status</p></li></ul><p local-id="4836e45cbceb"><br/><strong>FLUXOS ALTERNATIVOS:</strong></p><ul local-id="c6276e05eef5"><li local-id="6e8c4a62e7f9"><p local-id="147b5fb576c1"><strong>A1:</strong> Nenhum log encontrado na busca/filtro:</p><ul local-id="b7208416fb21"><li local-id="d87df2f1-d341-4c0b-a373-ad747e5f4a13"><p local-id="a5f33b36d79c">Backend executa a consulta no MongoDB e não encontra documentos</p></li><li local-id="695e83ec-a33e-42ff-8ef8-aacca05a9be1"><p local-id="011fbb94d8fd">Sistema exibe interface de &quot;Empty State&quot; (Nenhum erro encontrado com estes critérios)</p></li></ul></li><li local-id="93be99e5b0c3"><p local-id="c41b432cfe47"><strong>A2:</strong> Usuário não deseja acionar a IA:</p><ul local-id="628c7becee29"><li local-id="9dd3fc92-5004-4757-80f4-5f6b10886a97"><p local-id="826dd3c56691">Usuário visualiza o log, mas ignora a sugestão passiva (não clica no link do Agente)</p></li><li local-id="d6a25e13-6be4-4284-b44a-b2790a70d874"><p local-id="5cd87978d78b">O status do log permanece inalterado (&quot;Não Solucionado&quot;)</p></li></ul></li><li local-id="48c445b3ff67"><p local-id="9a8c79f5bb0a"><strong>A3:</strong> Falha na comunicação com o Agente IA (LLM):</p><ul local-id="f833f0d73e53"><li local-id="59dc72dac659"><p local-id="c26087ec2bec">Backend tenta enviar os dados ao Agente IA e ocorre um timeout/erro</p></li><li local-id="82cd9066dbbe"><p local-id="ec5371543929">Sistema exibe mensagem amigável de indisponibilidade da IA</p></li><li local-id="f2d85a1a0412"><p local-id="c94403736693">O status do log não sofre alteração<br/></p></li></ul></li></ul><p local-id="e3cee42d4ca0"><br/><strong>OBSERVAÇÕES:</strong></p><ul local-id="bbbd3c99c93e"><li local-id="79dc09f47e82"><p local-id="9064801f117a">A performance da barra de pesquisa global (RF-21) é garantida pelo uso de índices de texto compostos no MongoDB, evitando gargalos no carregamento da aplicação (baixo PLT).</p></li><li local-id="c71eea7a30ee"><p local-id="291a1c8be4f6">A alteração de status (RN-07) ocorre como uma transação de domínio (Core) logo após o retorno positivo da IA, garantindo que o banco de dados e a interface fiquem sempre sincronizados.</p></li><li local-id="c6c0a2e09260"><p local-id="eee9fa35e692">Os Driving Adapters (React Web e React Native) consomem a exata mesma porta de entrada para buscar logs, garantindo que a regra de exibição multi-sistemas funcione de forma idêntica em ambas as plataformas.</p></li></ul><p local-id="33401bf3f757" /><hr local-id="44c30b0853fa"/><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260327-012917.png" width="653" loading="lazy" src="../attachments/21987329/21037076.png?width=653" data-image-src="../attachments/21987329/21037076.png" data-height="462" data-width="653" data-unresolved-comment-count="0" data-linked-resource-id="21037076" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260327-012917.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="21987329" data-linked-resource-container-version="4" data-media-id="fd4ac2ac-1f61-423a-a8af-a0ec4cbafa14" data-media-type="file"></span><hr local-id="5ec977d8a496"/><p local-id="f4bdd46a8a89">@startuml<br/>left to right direction<br/>skinparam packageStyle rectangle</p><p local-id="ccd971cfa8c5">actor &quot;Usuário&quot; as user<br/>actor &quot;Agente IA (LLM)&quot; as ia</p><p local-id="ec0e9339dff1">package &quot;Sistema LogViewer&quot; {<br/>  usecase &quot;Consultar Histórico de Logs&quot; as UC1<br/>  usecase &quot;Buscar e Filtrar Logs&quot; as UC2<br/>  usecase &quot;Visualizar Detalhes do Erro&quot; as UC3<br/>  usecase &quot;Solicitar Solução à IA&quot; as UC4<br/>  usecase &quot;Atualizar Status do Log&quot; as UC5<br/>}</p><p local-id="a775d1065da1">user --&gt; UC1<br/>user --&gt; UC3<br/>UC2 .&gt; UC1 : &lt;&lt;extend&gt;&gt;<br/>UC4 .&gt; UC3 : &lt;&lt;extend&gt;&gt;<br/>UC4 ..&gt; UC5 : &lt;&lt;include&gt;&gt;<br/>UC4 --&gt; ia<br/>@enduml</p><hr local-id="04f15d4dd853"/><p class="media-group"><span class="confluence-embedded-file-wrapper"><a class="confluence-embedded-file" href="../attachments/21987329/21266453.xml" data-nice-type="XML File" data-file-src="/wiki/download/attachments/21987329/UC%20-%2013.drawio.xml?version=1&amp;modificationDate=1774574493775&amp;cacheVersion=1&amp;api=v2" data-linked-resource-id="21266453" data-linked-resource-type="attachment" data-linked-resource-container-id="21987329" data-linked-resource-default-alias="UC - 13.drawio.xml" data-mime-type="text/xml" data-has-thumbnail="true" data-linked-resource-version="1" data-media-id="758c3be0-1bf6-4f3f-b921-e3dd226862ec" data-media-type="file"><img src="https://groupfromthesouth.atlassian.net/wiki/download/thumbnails/21987329/UC%20-%2013.drawio.xml?version=1&amp;modificationDate=1774574493775&amp;cacheVersion=1&amp;api=v2&amp;viewType=fileMacro" height="250" /></a></span></p><p local-id="c5b3f148513a" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21987329/21987337.png">image-20260327-005608.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21987329/21037076.png">image-20260327-012917.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/21987329/21266453.xml">UC - 13.drawio.xml</a> (text/xml)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

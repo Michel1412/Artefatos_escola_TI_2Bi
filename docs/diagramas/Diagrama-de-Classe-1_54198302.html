@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Classe 1</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Classe 1
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span> on jun. 01, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Diagrama de Classe.drawio.png" width="760" loading="lazy" src="../attachments/54198302/60981249.png?width=760" data-image-src="../attachments/54198302/60981249.png" data-height="930" data-width="914" data-unresolved-comment-count="0" data-linked-resource-id="60981249" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Diagrama de Classe.drawio.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="54198302" data-linked-resource-container-version="1" data-media-id="0878d531-d313-43a3-985b-95da19a167fb" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml DiagramaClasses_LogViewer
+title Diagrama de Classes - Sistema de Gestão de Logs (LogViewer)
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 12
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+skinparam class {
+  BackgroundColor #EBF8FF
+  BorderColor #005A9C
+  ArrowColor #005A9C
+  FontColor #1A1A1A
+  AttributeFontColor #333333
+}
+hide empty members
+&#39; ===================== ENTIDADE DE DOMÍNIO =====================
+class Log {
+
+id: String
+
+tenantId: String
+
+sistemaOrigem: String
+
+mensagem: String
+
+stackTrace: String
+
+nivel: String
+
+origem: String
+
+status: String
+
+formato: String
+
+timestamp: LocalDateTime
+
+isRead: boolean
+
+dadosMascarados: boolean
+--
+
+marcarComoLido(): void
+
+estaLido(): boolean
+
+definirNivel(nivel: String): void
+
+marcarDadosMascarados(): void
+}
+&#39; ================= CAPTURADOR DE ERRO VIA SDK =================
+class CapturadorDeErroSDK {
+
+apiEndpoint: String
+
+apiToken: String
+
+nomeSistema: String
+--
+
+configurar(endpoint: String, token: String): void
+
+capturarErro(erro: Throwable): Log
+
+enviarLog(log: Log): RespostaIngestao
+}
+&#39; ========================= CONTROLLER =========================
+class LogController {
+
+receberLog(dto: LogDTO, token: String): RespostaIngestao
+
+listarLogs(tenantId: String): List&lt;Log&gt;
+
+obterLog(id: String): Log
+
+confirmarLeitura(id: String): RespostaHttp
+}
+&#39; ===================== PROCESSAMENTO DE LOGS =====================
+class ProcessamentoDeLogs {
+
+enfileirar(log: Log): void
+
+consumirDaFila(): void
+
+processarEValidar(log: Log): Log
+
+ofuscarDadosSensiveis(log: Log): Log
+
+classificarErro(log: Log): String
+
+persistir(log: Log): boolean
+
+notificarTempoReal(log: Log): void
+
+executarVarredura(): void
+
+selecionarEstrategia(extensao: String): ParserStrategy
+}
+&#39; ======================= SUGESTÃO DE LOGS =======================
+class SugestaoDeLogs {
+
+provedorIA: String
+--
+
+solicitarSugestao(log: Log): SugestaoIA
+
+gerarSolucao(log: Log): String
+}
+&#39; ===================== COLABORADOR (UC-16) =====================
+interface ParserStrategy {
+
+suporta(extensao: String): boolean
+
+parse(conteudoBruto: String): Log
+}
+&#39; ========================= RELAÇÕES =========================
+CapturadorDeErroSDK ..&gt; LogController : envia
+CapturadorDeErroSDK ..&gt; Log : cria
+LogController ..&gt; ProcessamentoDeLogs : delega
+LogController ..&gt; Log : gerencia
+LogController ..&gt; SugestaoDeLogs : solicita
+ProcessamentoDeLogs ..&gt; Log : processa
+ProcessamentoDeLogs ..&gt; ParserStrategy : usa
+SugestaoDeLogs ..&gt; Log : analisa
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/54198302/60981249.png">Diagrama de Classe.drawio.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

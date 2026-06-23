@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 20: Gerir Usuários</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 20: Gerir Usuários
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peng</span>, last modified on abr. 02, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="7712bd180efd"><strong>Baseado no requisito:</strong>  <strong>RF-15:</strong> O Sistema deve gerir os Usuários cadastrados.</p><p local-id="f6168c9a8922"><strong>Nome:</strong> Gerir Usuários </p><p local-id="437e8b49876a"><strong>Atores:</strong></p><ul local-id="de6dcc73-739c-406b-8f0d-b3f153e9c89b"><li local-id="3780310d-8cb4-4f03-ad42-7f6e62a5cfd4"><p local-id="914667e4ba19">Administrador do Sistema (Gestor do CNPJ)</p></li><li local-id="276e4769-732c-4452-ba3d-b6509f92aa2c"><p local-id="9d639106dcd8">Usuário Convidado (Desenvolvedor/Analista)</p></li><li local-id="f2436706-71a8-47dd-8944-ca0f23370f75"><p local-id="daabec75a439">Sistema de Autenticação (Clerk)</p></li><li local-id="9a600068-9968-421b-a002-6eedfca16042"><p local-id="0eedbbd3431f">Backend LogViewer</p></li></ul><p local-id="84f2ace3af5b"><strong>Descrição:</strong> Permite que um administrador cadastre, edite, remova ou visualize os usuários que têm acesso aos logs dos sistemas da empresa, controlando níveis de acesso e convites.</p><p local-id="e8ef95abd025"><strong>Pré-condições:</strong></p><ul local-id="121d8fe0-bfe1-4746-bc84-e44e780bbdaa"><li local-id="88f71f5d-9697-4d8f-9579-8d8586073779"><p local-id="c99fa5adc410">Administrador autenticado com permissões.</p></li><li local-id="4edb7b3b-bf5a-4421-a104-1ef2e83b50f4"><p local-id="a540fe0c9a13">Empresa (CNPJ) devidamente cadastrada e com plano ativo (RN-01).</p></li></ul><p local-id="9b4eb9e90c36"><strong>Pós-condições:</strong></p><ul local-id="fac14a27-6938-486b-8ca7-f29a93dcbd93"><li local-id="44fd9029-690c-43da-bd7b-aba2900421a4"><p local-id="9d7e8bd01bc3">Usuário cadastrado no banco de dados e sincronizado com o Clerk.</p></li><li local-id="34cbc59b-0cab-44f2-bdbc-62eddbeb5a88"><p local-id="505228d5d969">Permissões de acesso devidamente atribuídas no contexto do sistema.</p></li></ul><p local-id="08f09b664712"><strong>Fluxo Principal:</strong></p><ol start="1" local-id="31303ede-a3aa-44ba-8164-162ba1694cff"><li local-id="6ad61147-ee01-4cf4-b515-c5d970d1b1c0"><p local-id="df43a6ce8161">O Administrador acessa a seção &quot;Gestão de Usuários&quot; no Dashboard.</p></li><li local-id="5cf87957-efbc-409c-bc92-62ee87e686ab"><p local-id="98dd06cd2809">O sistema lista todos os usuários vinculados ao CNPJ atual (RN-01).</p></li><li local-id="8fa70011-e052-4f30-afc0-a2d58efb335d"><p local-id="4b2e2c21c585">O Administrador solicita a adição de um novo usuário informando E-mail e Nível de Acesso (Admin ou Dev).</p></li><li local-id="dbd6d67d-2380-4809-b7ec-8a3478549f5a"><p local-id="c1b99b292c23">O sistema valida se o plano de assinatura permite a adição de novos usuários (RF-18).</p></li><li local-id="e7f55a26-4881-4c47-b40c-fce500e302af"><p local-id="f56782031551">O sistema dispara um convite via <strong>Clerk API</strong> para o e-mail do convidado.</p></li><li local-id="4f489480-2128-46d1-9f3e-9d7c52f10acc"><p local-id="043a51181e60">O Backend LogViewer cria uma entrada de referência no MongoDB vinculando o <code>userID</code> do Clerk ao <code>tenantID</code> (CNPJ).</p></li><li local-id="acec9a8e-dce9-4d3a-a7df-cc4e0772ccef"><p local-id="f0ccd46e5b7d">O Administrador confirma a exclusão ou alteração de nível de um usuário existente.</p></li><li local-id="7b710007-8974-4bd2-9bea-63343ae525ad"><p local-id="2e3437ccef59">O sistema sincroniza as alterações instantaneamente com o provedor de identidade.</p></li></ol><p local-id="8fd347749af4"><strong>Fluxos Alternativos:</strong></p><ul local-id="22ccce04-7335-47b7-b331-5464c031d3d5"><li local-id="0a3c2b5d-0c65-479d-8d13-300f2b7012ef"><p local-id="380bcdf8ef1c"><strong>A1: Limite de usuários do plano atingido</strong></p><ol start="1" local-id="8d6b6ac4-74af-43a5-926a-1da213a2b830"><li local-id="eb5bb8a9-be15-4008-9e01-ec771d801dce"><p local-id="969fc8f51a09">O sistema bloqueia a criação do novo usuário.</p></li><li local-id="36d1dd9c-2c64-4272-8d2c-3266228e8e16"><p local-id="5b2fe70460b9">O sistema sugere o upgrade de plano de assinatura.</p></li></ol></li><li local-id="bee66e1f-4f5f-49a7-96b0-8a3036b3dd6f"><p local-id="c31766de14fd"><strong>A2: Usuário já cadastrado em outro CNPJ</strong></p><ol start="1" local-id="4ad3d676-f6a5-4a7c-b4bc-27f2e6eac69a"><li local-id="3f65809a-c8d5-4c9a-ad1f-c6de0de21493"><p local-id="75d23849bf4c">O Clerk identifica o e-mail existente.</p></li><li local-id="144afb3f-5b38-4b65-9a76-5888970618ea"><p local-id="6160c3cb59c0">O sistema vincula o usuário ao novo CNPJ, permitindo que ele alterne entre organizações (Multi-tenancy).</p></li></ol></li><li local-id="d1607291-aa48-45af-8dd4-3ca22c6fd186"><p local-id="482c4c3750b0"><strong>A3: Cancelamento de convite pendente</strong></p><ol start="1" local-id="b0c6a5a1-a3b6-49be-a332-26f1d5c4d3c0"><li local-id="373be25c-6c0a-482a-994e-9f85b3527435"><p local-id="647eb7a19f1c">O Administrador revoga o convite antes do aceite.</p></li><li local-id="44e053a6-6972-42ea-9d33-7399867eb0c7"><p local-id="75eacff3c61b">O sistema invalida o link de acesso via Clerk.</p></li></ol></li></ul><p local-id="fe4c108849ee"><strong>Regras de Negócio Aplicadas:</strong></p><ul local-id="77a3af43-06a4-40d0-a969-d76c0003376b"><li local-id="eba0a657-0ad3-4ea0-a349-67b3fc87026a"><p local-id="617b0ac7d375"><strong>RN-01:</strong> Todo usuário criado deve estar obrigatoriamente vinculado a um CNPJ pai.</p></li><li local-id="41cfb749-1079-423e-890b-a955544250dd"><p local-id="a73e8052be41"><strong>RN-02:</strong> A gestão de usuários deve garantir que tokens de SDK sejam visíveis apenas para níveis de acesso autorizados.</p></li></ul><p local-id="95e96573b00f"><strong>Diagrama:</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260330-232706.png" width="760" loading="lazy" src="../attachments/24412192/24936470.png?width=760" data-image-src="../attachments/24412192/24936470.png" data-height="1636" data-width="6760" data-unresolved-comment-count="0" data-linked-resource-id="24936470" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260330-232706.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="24412192" data-linked-resource-container-version="5" data-media-id="d5b0bd27-2784-4874-a9be-8a282eba29df" data-media-type="file"></span><p local-id="8164ebc1af3b" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/24412192/24936470.png">image-20260330-232706.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequencia 15 - Confirmação de Leitura de Logs no Dashboard</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequencia 15 - Confirmação de Leitura de Logs no Dashboard
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span> on mai. 18, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-225751.png" width="760" loading="lazy" src="../attachments/49315875/49643537.png?width=760" data-image-src="../attachments/49315875/49643537.png" data-height="661" data-width="920" data-unresolved-comment-count="0" data-linked-resource-id="49643537" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-225751.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49315875" data-linked-resource-container-version="1" data-media-id="595c781e-d5bc-496d-ba2f-42d1aaeb0d50" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-15: Confirmação de Leitura de Logs no Dashboard
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+== 1. Carregamento do Dashboard ==
+User -&gt; UI: Acessa Dashboard
+activate UI
+
+UI -&gt; API: GET /logs
+activate API
+
+API -&gt; DB: Busca logs do Tenant
+activate DB
+
+DB --&gt; API: Lista de logs + isRead
+
+deactivate DB
+
+API --&gt; UI: JSON com status de leitura
+
+UI --&gt; User: Exibe logs destacados\n(isRead=false)
+
+@enduml</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-225815.png" width="760" loading="lazy" src="../attachments/49315875/49709061.png?width=760" data-image-src="../attachments/49315875/49709061.png" data-height="705" data-width="943" data-unresolved-comment-count="0" data-linked-resource-id="49709061" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-225815.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49315875" data-linked-resource-container-version="1" data-media-id="a536ef5d-cdda-4208-bc04-879c12450b8a" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-15: Confirmação de Leitura de Logs no Dashboard
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+== 2. Abertura do Log ==
+User -&gt; UI: Seleciona log da lista
+
+UI -&gt; API: GET /logs/{id}
+activate API
+
+API -&gt; DB: Busca detalhes do log
+activate DB
+
+DB --&gt; API: Documento completo
+
+deactivate DB
+
+API --&gt; UI: Payload detalhado
+
+UI --&gt; User: Exibe modal/tela do erro
+
+@enduml</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-225843.png" width="717" loading="lazy" src="../attachments/49315875/50561033.png?width=717" data-image-src="../attachments/49315875/50561033.png" data-height="836" data-width="717" data-unresolved-comment-count="0" data-linked-resource-id="50561033" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-225843.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49315875" data-linked-resource-container-version="1" data-media-id="98053457-e46d-49d7-89ed-1b8a6d9e644a" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-15: Confirmação de Leitura de Logs no Dashboard
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+== 3. Confirmação de Leitura ==
+alt Fluxo Principal: Log ainda não lido
+    UI -&gt; API: PATCH /logs/{id}/read
+    activate API
+
+    API -&gt; DB: Atualiza isRead = true
+    activate DB
+
+    DB --&gt; API: Confirma atualização
+
+    deactivate DB
+
+    API --&gt; UI: 200 OK
+
+    UI -&gt; UI: Atualização otimista\n(remover destaque visual)
+
+    UI --&gt; User: Log marcado como lido
+
+else Alternativa A1: Log já estava lido
+    UI -&gt; UI: Aborta requisição\npara economizar recursos
+
+    UI --&gt; User: Apenas exibe detalhes
+
+else Alternativa A2: Falha na confirmação
+    UI -&gt; API: PATCH /logs/{id}/read
+
+    API --&gt; UI: Timeout / erro 500
+
+    UI -&gt; UI: Registra erro silencioso
+
+    UI --&gt; User: Mantém navegação sem bloqueio
+end
+
+deactivate API
+deactivate UI
+
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49315875/49643537.png">image-20260518-225751.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49315875/49709061.png">image-20260518-225815.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49315875/50069522.png">image-20260518-225812.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49315875/50561033.png">image-20260518-225843.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Classe Geral — Sistema LogViewer</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Classe Geral — Sistema LogViewer
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andre Felipe</span> on jun. 14, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="086d6987bcc0">Diagrama de Classe Geral — Sistema LogViewer</p><p local-id="31a2a09a1fce">Objetivo:<br/>Documentar a visão geral das principais classes do sistema LogViewer, reunindo os módulos de autenticação, processamento de logs, inteligência artificial, notificações, relatórios, assinatura e pagamento.</p><p local-id="7cb63d0aa438">Descrição:<br/>Este diagrama apresenta uma visão unificada da estrutura de classes do sistema LogViewer. Ele foi criado a partir dos diagramas individuais desenvolvidos pelos integrantes da equipe e consolidado para representar os principais componentes do sistema de forma organizada.</p><p local-id="bc7fcb22e80a">Módulos representados:</p><ul local-id="e9d7d7ccc005"><li local-id="981a9f64c209"><p local-id="58c4d218bc12">Usuário e Autenticação</p></li><li local-id="9911e851b76a"><p local-id="65fa37290c8a">Logs e Processamento</p></li><li local-id="1ca220fc5c90"><p local-id="53d39c2af359">IA e Notificações</p></li><li local-id="c8e05c26720e"><p local-id="84370adbdef9">Relatórios e Exportação</p></li><li local-id="42a06e2981b5"><p local-id="4a85b7e6aab1">Assinatura e Pagamento</p></li></ul><p local-id="000ad911f30b">Ferramenta utilizada:<br/>PlantUML</p><p local-id="af47cbdf5634" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Diagrama sem nome.jpg" width="699" loading="lazy" src="../attachments/64913409/64552962.jpg?width=699" data-image-src="../attachments/64913409/64552962.jpg" data-height="1048" data-width="3697" data-unresolved-comment-count="0" data-linked-resource-id="64552962" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Diagrama sem nome.jpg" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/jpeg" data-linked-resource-container-id="64913409" data-linked-resource-container-version="1" data-media-id="d26205cc-d52b-4455-b604-627fba6abcf7" data-media-type="file"></span><p local-id="c34fd343d32d" /><p local-id="922f9ca77fe6" /><p local-id="dc32209e2b91" /><p local-id="4f13e1535ce6">Código PlantUML:</p><p local-id="c66dfff3255b" /><p local-id="004c19f94dee" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml LogViewer_DiagramaClasse_Unificado_Limpo
+
+title Diagrama de Classes Unificado - Sistema LogViewer
+
+skinparam backgroundColor #FFFFFF
+skinparam shadowing false
+skinparam roundcorner 10
+skinparam linetype ortho
+skinparam classAttributeIconSize 0
+skinparam defaultFontName Arial
+skinparam packageStyle rectangle
+skinparam nodesep 80
+skinparam ranksep 90
+
+skinparam class {
+BackgroundColor #FFFFFF
+BorderColor #333333
+ArrowColor #333333
+FontColor #000000
+AttributeFontColor #000000
+FontSize 11
+AttributeFontSize 10
+}
+
+skinparam package {
+BackgroundColor #F9F9F9
+BorderColor #777777
+FontColor #000000
+FontSize 12
+}
+
+top to bottom direction
+hide empty members
+
+&#39; =====================================================
+&#39; USUÁRIO E AUTENTICAÇÃO
+&#39; =====================================================
+
+package &quot;Usuário e Autenticação&quot; {
+
+class Usuario {
+
+id : String
+
+cnpj : String
+
+contextoEmpresa : ContextoEmpresa
+--
+
+ativar2FA() : void
+
+acessarRelatorios() : void
+
+solicitarExportacao() : void
+}
+
+class ClerkIdentity {
+
+clerkUserId : String
+
+sessionId : String
+
+tenantId : String
+
+role : String
+--
+
+carregarClaims(jwt : String) : void
+
+estaAutenticado() : Boolean
+}
+
+class AuthenticationManager {
+
+accessToken : String
+
+backendToken : String
+
+tenantId : String
+--
+
+validarToken() : Boolean
+
+validarPermissao(permissao : String) : Boolean
+}
+
+class NotifyAuth2Factor {
+
+solicitacaoId : String
+
+usuarioId : String
+
+status : Status2FA
+--
+
+gerarSolicitacao(usuarioId : String) : String
+
+aprovarSolicitacao() : void
+}
+
+class UserToken {
+
+id : UUID
+
+systemId : UUID
+
+tokenHash : String
+
+status : TokenStatus
+--
+
+generate() : UserToken
+
+revoke() : void
+
+isValid() : Boolean
+}
+
+enum Status2FA {
+PENDENTE
+APROVADO
+REJEITADO
+EXPIRADO
+}
+
+enum TokenStatus {
+ATIVO
+EXPIRADO
+REVOGADO
+}
+
+Usuario --&gt; ClerkIdentity
+Usuario --&gt; NotifyAuth2Factor
+Usuario --&gt; UserToken
+AuthenticationManager ..&gt; ClerkIdentity
+AuthenticationManager ..&gt; UserToken
+NotifyAuth2Factor --&gt; Status2FA
+UserToken --&gt; TokenStatus
+
+}
+
+&#39; =====================================================
+&#39; LOGS E PROCESSAMENTO
+&#39; =====================================================
+
+package &quot;Logs e Processamento&quot; {
+
+class Sistema {
+
+id : String
+
+nome : String
+--
+
+validarSistema() : Boolean
+}
+
+class Log {
+
+id : String
+
+tenantId : String
+
+sistemaOrigem : String
+
+mensagem : String
+
+nivel : String
+
+status : String
+--
+
+marcarComoLido() : void
+
+definirNivel(nivel : String) : void
+}
+
+class Erro {
+
+id : String
+
+mensagem : String
+
+criticidade : Enum
+
+status : Enum
+--
+
+classificarErro() : void
+
+marcarComoResolvido() : void
+}
+
+class LogTratado {
+
+id : String
+
+conteudo : String
+
+criticidade : Enum
+--
+
+consultarDetalhes() : String
+}
+
+class CapturadorDeErroSDK {
+
+apiEndpoint : String
+
+apiToken : String
+--
+
+capturarErro(erro : Throwable) : Log
+
+enviarLog(log : Log) : RespostaIngestao
+}
+
+class CapturadorErroInterface {
+
+id : String
+
+usuarioId : String
+
+sistemaId : String
+--
+
+capturarErroManual() : Erro
+
+enviarParaTratamento() : void
+}
+
+class LogController {
+
+receberLog(dto : LogDTO, token : String) : RespostaIngestao
+
+listarLogs(tenantId : String) : List
+
+obterLog(id : String) : Log
+}
+
+class ProcessamentoDeLogs {
+
+enfileirar(log : Log) : void
+
+processarEValidar(log : Log) : Log
+
+persistir(log : Log) : Boolean
+}
+
+interface ParserStrategy {
+
+suporta(extensao : String) : Boolean
+
+parse(conteudoBruto : String) : Log
+}
+
+class ServicoTratamentoLog {
+
+logBruto : String
+
+logSanitizado : String
+
+criticidade : Enum
+--
+
+processarLog() : LogTratado
+
+sanitizarDadosSensiveis() : String
+}
+
+class ServicoFiltragemLog {
+
+usuarioId : String
+
+filtrosSelecionados : FiltroLog
+--
+
+filtrarLogs() : Page
+
+buscarPorTexto() : List
+}
+
+class ServicoPersistenciaLog {
+
+id : String
+
+sistemaId : String
+
+statusPersistencia : StatusPersistencia
+--
+
+persistir(log : LogTratado, sistemaId : String) : DocumentoLog
+}
+
+enum StatusPersistencia {
+SUCESSO
+FALHA
+AGRUPADO
+}
+
+CapturadorDeErroSDK --&gt; Log
+CapturadorDeErroSDK --&gt; LogController
+CapturadorErroInterface --&gt; Sistema
+CapturadorErroInterface --&gt; Erro
+LogController --&gt; ProcessamentoDeLogs
+LogController --&gt; Log
+ProcessamentoDeLogs --&gt; ParserStrategy
+ProcessamentoDeLogs --&gt; ServicoPersistenciaLog
+ServicoTratamentoLog --&gt; LogTratado
+ServicoTratamentoLog --&gt; ServicoFiltragemLog
+ServicoFiltragemLog --&gt; LogTratado
+ServicoPersistenciaLog --&gt; StatusPersistencia
+
+}
+
+&#39; =====================================================
+&#39; IA E NOTIFICAÇÕES
+&#39; =====================================================
+
+package &quot;IA e Notificações&quot; {
+
+interface LLMService {
+
+provider : String
+
+modeloAtivo : String
+
+ativo : Boolean
+--
+
+analisarLog(log : LogErro) : String
+
+gerarPrompt(log : LogErro) : String
+}
+
+class SugestaoDeLogs {
+
+provedorIA : String
+--
+
+solicitarSugestao(log : Log) : SugestaoIA
+
+gerarSolucao(log : Log) : String
+}
+
+class ServicoSugestao {
+
+erroId : String
+
+statusConsentimento : Enum
+--
+
+gerarSugestao() : Sugestao
+
+aceitarSugestao() : void
+}
+
+class ServicoNotificacao {
+
+usuarioId : String
+
+tipoCanal : Enum
+
+statusEnvio : Enum
+--
+
+notificarErro() : void
+
+enviarEmail() : void
+
+emitirWebSocket() : void
+}
+
+SugestaoDeLogs --&gt; LLMService
+ServicoSugestao --&gt; LLMService
+ServicoSugestao --&gt; ServicoNotificacao
+
+}
+
+&#39; =====================================================
+&#39; RELATÓRIOS E EXPORTAÇÃO
+&#39; =====================================================
+
+package &quot;Relatórios e Exportação&quot; {
+
+class FiltroRelatorio {
+
+dataInicial : DateTime
+
+dataFinal : DateTime
+
+criticidade : Enum
+--
+
+aplicarFiltro() : List
+}
+
+class GerarRelatorio {
+
+usuarioId : String
+
+statusGeracao : Enum
+--
+
+gerarRelatorio() : Relatorio
+}
+
+class Relatorio {
+
+id : String
+
+titulo : String
+
+totalLogs : Long
+
+totalErros : Long
+--
+
+calcularTotais() : void
+
+gerarResumo() : String
+}
+
+class ExportarRelatorio {
+
+relatorioId : String
+
+formatoExportacao : Enum
+--
+
+validarFormato() : Boolean
+
+gerarLinkDownload() : String
+}
+
+class DocumentoRelatorio {
+
+id : String
+
+nomeArquivo : String
+
+formato : Enum
+--
+
+gerarArquivo() : void
+}
+
+GerarRelatorio --&gt; FiltroRelatorio
+GerarRelatorio --&gt; Relatorio
+Relatorio --&gt; DocumentoRelatorio
+ExportarRelatorio --&gt; Relatorio
+ExportarRelatorio --&gt; DocumentoRelatorio
+
+}
+
+&#39; =====================================================
+&#39; ASSINATURA E PAGAMENTO
+&#39; =====================================================
+
+package &quot;Assinatura e Pagamento&quot; {
+
+class GerenciadorAssinatura {
+
+id : String
+
+tenantId : String
+
+statusAssinatura : StatusAssinatura
+--
+
+contratarPlano() : Assinatura
+
+verificarInadimplencia() : Boolean
+}
+
+class ServicoProcessamentoPagamento {
+
+id : String
+
+assinaturaId : String
+
+statusPagamento : StatusPagamento
+--
+
+processarPagamento() : TransacaoGateway
+
+processarNotificacaoWebhook() : void
+}
+
+class ApiDePagamento {
+
+baseUrl : String
+
+apiKey : String
+--
+
+criarCobranca() : TransacaoExterna
+
+consultarTransacao() : DetalhesTransacao
+}
+
+enum StatusAssinatura {
+ATIVA
+PENDENTE
+INADIMPLENTE
+CANCELADA
+}
+
+enum StatusPagamento {
+PENDENTE
+PAGO
+RECUSADO
+ESTORNADO
+}
+
+GerenciadorAssinatura --&gt; ServicoProcessamentoPagamento
+ServicoProcessamentoPagamento --&gt; ApiDePagamento
+GerenciadorAssinatura --&gt; StatusAssinatura
+ServicoProcessamentoPagamento --&gt; StatusPagamento
+
+}
+
+&#39; =====================================================
+&#39; RELAÇÕES PRINCIPAIS ENTRE MÓDULOS
+&#39; =====================================================
+
+Usuario ..&gt; CapturadorErroInterface
+Usuario ..&gt; Relatorio
+Usuario ..&gt; ExportarRelatorio
+
+Sistema ..&gt; Relatorio
+
+LogController ..&gt; SugestaoDeLogs
+SugestaoDeLogs ..&gt; Log
+
+ServicoTratamentoLog ..&gt; ServicoNotificacao
+ServicoNotificacao ..&gt; Usuario
+
+ServicoSugestao ..&gt; Usuario
+
+GerarRelatorio ..&gt; LogTratado
+GerarRelatorio ..&gt; Erro
+
+GerenciadorAssinatura ..&gt; ServicoPersistenciaLog
+
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/64913409/64552962.jpg">Diagrama sem nome.jpg</a> (image/jpeg)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

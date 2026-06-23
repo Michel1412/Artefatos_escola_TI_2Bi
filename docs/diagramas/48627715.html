@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 7-&gt; Caso de uso 7:      O Sistema deve autenticar o Usuário</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 7-&gt; Caso de uso 7:      O Sistema deve autenticar o Usuário
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span>, last modified by <span class='editor'> Michel Bocchi Junior</span> on mai. 18, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="1480b153657c">
+
+    
+
+            
+
+
+
+
+    <span class="confluence-jim-macro jira-issue resolved" data-jira-key="TR-56" >
+                <a href="https://groupfromthesouth.atlassian.net/browse/TR-56" class="jira-issue-key"><img class="icon" src="https://groupfromthesouth.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/10318?size=medium" />TR-56</a>
+                    -
+            <span class="summary">Criação diagrama de sequencia 7</span>
+                                                            <span class="aui-lozenge aui-lozenge-subtle aui-lozenge-success jira-macro-single-issue-export-pdf">Concluído</span>
+            </span>
+</p><hr local-id="412338cd0f86"/><ul local-id="83b9e149b55a"><li local-id="19e99d0e-04ff-4088-8410-ca12b3d51cc5"><p local-id="89887509b285"><strong>Passo 1:</strong> Comunicação do nosso backend com o serviço externo (Clerk).</p></li><li local-id="b882f96c-fda5-4dc8-a507-c6506002684b"><p local-id="341087ed4786"><strong>Passo 2:</strong> Comunicação assíncrona do backend com o celular do cliente (Push).</p></li><li local-id="543386d6-3ce1-4ad3-a40d-2c9fb4582e13"><p local-id="10e62d6414a3"><strong>Passo 3:</strong> Comunicação interna do nosso backend com o nosso próprio Banco de Dados (MongoDB) validando regras financeiras.</p></li></ul><hr local-id="59db464f2279"/><h3 local-id="83c18cd1e2cd" id="DiagramadeSequência7-&gt;Casodeuso7:OSistemadeveautenticaroUsuário-Parte1:ValidaçãodeCredenciais(Clerk)">Parte 1: Validação de Credenciais (Clerk)</h3><p local-id="187ea1d01e2e">Focado apenas na tentativa inicial do usuário de colocar e-mail e senha.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="caso_7_1.drawio.png" width="679" loading="lazy" src="../attachments/48627715/49315849.png?width=679" data-image-src="../attachments/48627715/49315849.png" data-height="548" data-width="679" data-unresolved-comment-count="0" data-linked-resource-id="49315849" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="caso_7_1.drawio.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="48627715" data-linked-resource-container-version="4" data-media-id="abf93cb6-40a4-4f9f-9ab8-a2b12f6d2161" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+}
+
+title 1. Validação de Credenciais (Clerk)
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+participant &quot;Clerk Auth&quot; as Clerk
+
+User -&gt; UI: Insere credenciais (E-mail/Senha)
+activate UI
+UI -&gt; API: Inicia requisição de Login
+activate API
+API -&gt; Clerk: Validar credenciais
+activate Clerk
+
+alt Exceção A1: Credenciais Inválidas
+    Clerk --&gt; API: Retorna falha de autenticação
+    API --&gt; UI: Retorna erro 401 (Não autorizado)
+    UI --&gt; User: Exibe: &quot;E-mail ou senha incorretos&quot;
+else Credenciais Válidas
+    Clerk --&gt; API: Sucesso (Retorna dados básicos)
+end
+deactivate Clerk
+deactivate API
+deactivate UI
+@enduml</pre>
+</div></div><hr local-id="05043684e255"/><h3 local-id="a9298840b7e7" id="DiagramadeSequência7-&gt;Casodeuso7:OSistemadeveautenticaroUsuário-Parte2:VerificaçãodeSegundoFator(AppMobile)">Parte 2: Verificação de Segundo Fator (App Mobile)</h3><p local-id="f43f44a5f18c">Focado no momento em que a senha está certa, mas o sistema exige a confirmação biométrica pelo celular.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="caso_7_2.drawio.png" width="677" loading="lazy" src="../attachments/48627715/49643527.png?width=677" data-image-src="../attachments/48627715/49643527.png" data-height="622" data-width="677" data-unresolved-comment-count="0" data-linked-resource-id="49643527" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="caso_7_2.drawio.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="48627715" data-linked-resource-container-version="4" data-media-id="acbaf0dd-3b8b-4037-b2fd-5110e1d91e27" data-media-type="file"></span><p local-id="40cb9e6e87aa" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+}
+
+title 2. Verificação de Segundo Fator (MFA)
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+participant &quot;App Mobile\n(Aprovador)&quot; as App
+
+note over API: Senha validada no Passo 1
+activate API
+
+API -&gt; API: Verifica se perfil exige 2FA
+
+alt Exceção A2: 2FA Ativo mas App não instalado
+    API --&gt; UI: Retorna erro 403 (Ação bloqueada)
+    activate UI
+    UI --&gt; User: Exibe alerta: &quot;Instale o app para validar o acesso&quot;
+    deactivate UI
+    
+else App Mobile Instalado
+    API -&gt; App: Dispara Notificação Push
+    activate App
+    App --&gt; User: Solicita aprovação (Face ID/Touch ID)
+    User -&gt; App: Aprova acesso biometricamente
+    App -&gt; API: Retorna confirmação de 2FA aprovado
+    deactivate App
+end
+deactivate API
+@enduml</pre>
+</div></div><p local-id="5f1638cbde90" /><hr local-id="da2347f35c21"/><h3 local-id="357ef1b6e4a6" id="DiagramadeSequência7-&gt;Casodeuso7:OSistemadeveautenticaroUsuário-Parte3:ValidaçãodeAssinaturaeLiberação">Parte 3: Validação de Assinatura e Liberação</h3><p local-id="3331ad0256c5">Focado na regra de negócio final: checar se a conta está paga no banco de dados e liberar o acesso.</p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="caso_7_3.drawio.png" width="632" loading="lazy" src="../attachments/48627715/49283078.png?width=632" data-image-src="../attachments/48627715/49283078.png" data-height="635" data-width="632" data-unresolved-comment-count="0" data-linked-resource-id="49283078" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="caso_7_3.drawio.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="48627715" data-linked-resource-container-version="4" data-media-id="1b703664-e3a4-48b7-9559-25d36ed3759b" data-media-type="file"></span><p local-id="7079a05a7684" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 150
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title 3. Validação de Assinatura e Liberação
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;Banco de Dados&quot; as DB
+
+note over API: 2FA aprovado no Passo 2
+activate API
+
+API -&gt; DB: Consultar status do CNPJ vinculado
+activate DB
+DB --&gt; API: Retorna status da assinatura
+deactivate DB
+
+alt Exceção A3: Assinatura Inativa / Inadimplente
+    API -&gt; API: Gera token restrito
+    API --&gt; UI: Redireciona para área financeira
+    activate UI
+    UI --&gt; User: Exibe página de Gestão de Assinatura
+    deactivate UI
+    
+else Assinatura Ativa
+    API -&gt; API: Gera JWT final
+    API --&gt; UI: Libera acesso ao sistema
+    activate UI
+    UI --&gt; User: Exibe Dashboard principal do LogViewer
+    deactivate UI
+end
+deactivate API
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627731.png">6_1.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627734.png">Untitled 21.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627737.png">diagrama_sequencia_5.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627743.png">5_teste.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627740.png">diagrama_sequencia_5-20260508-003238.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627746.png">5.1-20260508-004107.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627749.png">5_2.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627755.png">5_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/48627752.png">5_3.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/49086465.jpg">caso_7-20260518-175433.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/49315849.png">caso_7_1.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/49643527.png">caso_7_2.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/49283078.png">caso_7_3.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/48627715/50364423.png">caso_7_3.drawio.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

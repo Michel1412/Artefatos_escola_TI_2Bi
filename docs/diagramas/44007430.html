@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 2 -&gt; Caso de uso - 2: Identificação de logs sem padrões estruturados</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 2 -&gt; Caso de uso - 2: Identificação de logs sem padrões estruturados
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> João Pedro Souza Peixoto Saraiva</span> on mai. 07, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="97333c6df47e"><a data-card-appearance="inline" href="https://groupfromthesouth.atlassian.net/wiki/x/AQBaAQ" local-id="d95f548ced83" rel="nofollow">https://groupfromthesouth.atlassian.net/wiki/x/AQBaAQ</a> </p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="diagramaSequencia1 (1).png" width="760" loading="lazy" src="../attachments/44007430/44269581.png?width=760" data-image-src="../attachments/44007430/44269581.png" data-height="1811" data-width="1139" data-unresolved-comment-count="0" data-linked-resource-id="44269581" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="diagramaSequencia1 (1).png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="44007430" data-linked-resource-container-version="1" data-media-id="b48edf6f-1e3b-4a99-b821-663ee7db00ba" data-media-type="file"></span><p local-id="1f17d79ef8a1" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">title Receber e Aceitar Logs Agnósticos - LogViewer
+
+actor &quot;Sistema Cliente\n(SDK / Scanner)&quot; as Client
+participant &quot;Backend LogViewer\n(Porta de Entrada / API)&quot; as API
+participant &quot;Clerk\n(Gestor de Autenticação)&quot; as Clerk
+database &quot;MongoDB\n(Adapter de Persistência)&quot; as Mongo
+queue &quot;Message Broker\n(Fila de Processamento)&quot; as MQ
+
+Client-&gt;API: Enviar Log Bruto (Payload + Token)
+activate API
+
+alt Tamanho Payload &gt; Limite
+    note right of API: Gerenciar Excesso de Tamanho
+    API--&gt;Client: HTTP 413 Payload Too Large
+else Tamanho dentro do limite
+    
+    note right of API: Validar Autenticidade do Token
+    API-&gt;Clerk: Validar Token do Request
+    activate Clerk
+    Clerk--&gt;API: Resultado da Validação
+    deactivate Clerk
+
+    alt Token Inválido
+        note right of API: [Token Inválido]
+        API--&gt;Client: HTTP 401 Unauthorized
+    else Token Válido
+        
+        note right of API: Identificar Sistema de Origem
+        API-&gt;API: Extrair/Analisar Metadados da Origem
+        
+        alt Origem Não Localizada
+            note right of API: Gerenciar Falha na Identificação
+            API-&gt;API: Atribuir Origem Desconhecida / Falha
+            API--&gt;Client: HTTP 400 Bad Request
+        else Origem Localizada
+            
+            note right of API: Mascarar Dados Sensíveis Básicos
+            API-&gt;API: Aplicar máscaras (RN-05, RF-25)
+            
+            note right of API: Persistir Documento Bruto
+            API-&gt;Mongo: Salvar RawLogEntry (Schema-less)
+            activate Mongo
+            Mongo--&gt;API: Confirmação de Gravação
+            deactivate Mongo
+            
+            note right of API: Enfileirar Log Bruto
+            API-&gt;MQ: Publicar evento para Processamento Inteligente (IA)
+            activate MQ
+            MQ--&gt;API: Confirmação de Enfileiramento
+            deactivate MQ
+            
+            note right of API: Retornar HTTP Status 202
+            API--&gt;Client: HTTP 202 Accepted (Fire &amp; Forget)
+            
+        end
+    end
+end
+
+deactivate API</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/44007430/44269581.png">diagramaSequencia1 (1).png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/44007430/43909130.png">diagramaSequencia1 (1).png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/44007430/44138499.png">diagramaSequencia1 (1).png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

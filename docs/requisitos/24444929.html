@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 8: Apresentar Histórico de Erros</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 8: Apresentar Histórico de Erros
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peng</span>, last modified by <span class='editor'> João Pedro Souza Peixoto Saraiva</span> on mar. 30, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="13217056369d"><strong>Nome:</strong> Apresentar Histórico de Erros <br/><strong>Atores:</strong></p><ul local-id="4c59da19-3e9a-4cf9-a26e-e626832129a9"><li local-id="8b27d76a-db33-4528-8dd3-daf1c4700998"><p local-id="e11f6ae4ea3a">Usuário (Gestor/Desenvolvedor)</p></li><li local-id="04e71c51-3886-47ed-b9fd-d7341b0aef9f"><p local-id="ac24a7958c21">Backend LogViewer </p></li></ul><p local-id="adb497f14dc1"><strong>Descrição:</strong> O sistema consulta o banco de dados e apresenta ao usuário uma listagem paginada e filtrável de todos os logs de erro capturados, respeitando o isolamento de dados do cliente. </p><p local-id="363828a60f0a"><strong>Pré-condições:</strong></p><ul local-id="faecf2d3-5dae-4fd3-8b33-ae53d8355e05"><li local-id="b3b2585d-b4ab-4083-a741-0f76b1b258b2"><p local-id="07c0b1942931">Usuário autenticado no sistema (Sessão válida via Clerk)</p></li><li local-id="1011e17c-ce6a-4030-b269-e316ce185066"><p local-id="ffeb41617ccb">Usuário possui ao menos um sistema cadastrado associado ao seu CNPJ </p></li></ul><p local-id="0358dd1a4979"><strong>Pós-condições:</strong></p><ul local-id="7e63601c-dcaf-47c7-a0da-4cd7b775184c"><li local-id="08e3ff0f-69ba-4199-89e0-aad8f58f90a1"><p local-id="d728555348c9">Lista de erros exibida na interface (Web ou Mobile) </p></li></ul><p local-id="b9dc9a290213"><strong>Fluxo Principal:</strong></p><ol start="1" local-id="6709a449-beab-4020-ae9d-eee09157829f"><li local-id="390ab9e2-b90b-490a-928f-c4b570124972"><p local-id="fa3dc2e48a90">Usuário acessa a tela de &quot;Histórico de Erros&quot; no Dashboard (Web ou App Mobile)</p></li><li local-id="efeb0b07-beee-46ac-b71a-9a55de86d675"><p local-id="34328005f683">Sistema frontend solicita a lista de logs ao Backend LogViewer</p></li><li local-id="5e47cba2-de2c-42bd-8bdc-de58e52d09cf"><p local-id="a6d7fef82cf9">Backend valida a sessão do usuário e extrai o identificador do CNPJ (Tenant ID)</p></li><li local-id="0b880002-c323-4136-b63c-ba32e8ce9736"><p local-id="3b1de45c7580">Backend consulta o MongoDB buscando os logs associados aos sistemas do CNPJ (aplicando paginação)</p></li><li local-id="d81b3972-4cc0-40f8-bb45-0fcf2b8a7b5b"><p local-id="9644df1c79aa">Backend formata e retorna os dados (Timestamp, Tipo_do_Erro, Status, Criticidade)</p></li><li local-id="8420201d-1ab1-4fb2-95f0-77aceab62656"><p local-id="11b9d8e75e7a">Frontend renderiza a lista de histórico para o usuário <strong>Fluxos Alternativos:</strong></p></li></ol><ul local-id="e93cabca-bb56-4dc3-8f26-a3a544b635d9"><li local-id="740333ef-9c69-439b-9c39-e2468d7c5922"><p local-id="ac37193020cf">A1: Nenhum erro encontrado</p><ol start="1" local-id="cae0250f-387c-44e2-ac52-7ef2112da529"><li local-id="26aa972b-5db4-4f4f-a7aa-650720205d06"><p local-id="8a9f7499fcfd">A consulta no MongoDB não retorna documentos.</p></li><li local-id="17178fce-effd-41e3-9997-548492b5276f"><p local-id="64335eaaa94c">O sistema exibe um &quot;Empty State&quot; (estado vazio) amigável, informando que não há logs no período ou filtro atual.</p></li></ol></li><li local-id="b5ccf25f-e0a4-4035-96c2-4f1b25e534e3"><p local-id="296dfacc2c95">A2: Usuário utiliza barra de pesquisa ou filtros (RF-21 / RF-14)</p><ol start="1" local-id="0cbc8741-7802-43de-8f85-b53d776fcc66"><li local-id="42248168-c03a-48a4-bff0-eb6928cae1b3"><p local-id="7e070e97d407">Usuário preenche a busca ou seleciona um status específico (ex: &quot;Não Solucionado&quot;).</p></li><li local-id="c07aff52-929f-4927-89b3-af51fe4682ba"><p local-id="0d09b38ce871">Backend constrói uma query otimizada no MongoDB utilizando índices de texto ou parâmetros exatos.</p></li><li local-id="79b43eeb-dfc4-4b85-ad57-df07ceb57ebd"><p local-id="a2f03dfbcf86">Sistema retorna e renderiza a lista refinada. </p></li></ol></li></ul><p local-id="18b983cb1581"><strong>Regras de Negócio:</strong></p><ul local-id="b99cd45f0558"><li local-id="d37c4464-449d-4e1f-8f44-4a6c9609a4d8"><p local-id="ca1dfc18ffb1">RN-01: Isolamento de dados obrigatório; a busca deve ser sempre restrita ao escopo do CNPJ autenticado.</p></li><li local-id="a351e369-9448-4a07-9d02-1a0a6725c507"><p local-id="b544df3ff895">RN-10: O histórico deve responder ao filtro mestre de visão (dados de um &quot;sistema específico&quot; ou &quot;multi-sistemas&quot;).</p></li><li local-id="175962ea-2e41-44d2-8e17-efa7d781d6c7"><p local-id="d46f2a2fcb2d">RF-23: Os erros apresentados no histórico devem refletir e permitir a distinção de Status (Solucionado, Não solucionado).</p><p local-id="0bb775285010"><strong>Diagrama:</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="Diagrama 08.png" width="736" loading="lazy" src="../attachments/24444929/24838145.png?width=736" data-image-src="../attachments/24444929/24838145.png" data-height="304" data-width="1640" data-unresolved-comment-count="0" data-linked-resource-id="24838145" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="Diagrama 08.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="24444929" data-linked-resource-container-version="10" data-media-id="d0bbcc11-1bf6-4b05-a5a2-58b7f4a8df7f" data-media-type="file"></span></li></ul>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/24444929/24444938.png">CasoDeUso07.drawio.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/24444929/24444941.png">CasoDeUso07.drawio-20260327-011228.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/24444929/24444944.png">Diagrama07.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/24444929/24444947.jpg">f54f5326a939266f8bf4091ee1ed1957.jpg</a> (image/jpeg)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/24444929/24838145.png">Diagrama 08.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

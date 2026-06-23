@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 22: Integração e Visualização de Logs via SDK Java e Dashboard React</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 22: Integração e Visualização de Logs via SDK Java e Dashboard React
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peng</span> on abr. 02, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <h2 local-id="ec8f41cb2d0c" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-Nome:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact"><strong>Nome:</strong> Integração e Visualização de Logs via SDK Java e Dashboard React</h2><h3 local-id="d6a7f837f8cc" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-Atores:"><strong>Atores:</strong></h3><ul local-id="e3476872-7c0a-49ac-8796-0aab0d5dde3f"><li local-id="f1b844b3-00db-4445-b897-943c3cf5195b"><p local-id="36fa64ba136a">Sistema Cliente (SDK Java)</p></li><li local-id="afad06a4-cd07-4fcb-88b5-68a076e16d5c"><p local-id="e5f8630ceb6a">Backend LogViewer</p></li><li local-id="623e7151-be94-414d-a1b4-78276d02a8ba"><p local-id="e9265aed7a4b">Usuário (via Dashboard Web React)</p></li></ul><hr local-id="b3722f35-4d2a-474c-8e21-8bedb4652983"/><h3 local-id="762a7fae08b9" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-Descrição:"><strong>Descrição:</strong></h3><p local-id="7ae269ca417b">Permite que aplicações cliente enviem logs através de uma SDK Java padronizada, enquanto o usuário visualiza, em tempo real, esses logs processados em um dashboard Web desenvolvido em React (ou React Native Web), garantindo consistência de interface e performance.</p><hr local-id="06e7f1a8-216c-4543-8f98-b9557b424f91"/><h3 local-id="51c1de06f364" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-Pré-condições:"><strong>Pré-condições:</strong></h3><ul local-id="55448663-8403-4cd5-8c3d-9d945b22ec78"><li local-id="2174b768-fc0c-4151-9291-94518a7139b2"><p local-id="6f5de6a03661">SDK Java instalada e configurada no sistema cliente</p></li><li local-id="48447e51-5498-4419-93d2-3c6b2f64e5c1"><p local-id="ba4da11e7411">Token de integração válido e vinculado a um sistema (RN-02)</p></li><li local-id="ae3c04fb-4a94-4968-8073-ac1240b3a5af"><p local-id="3250d8bb640c">Usuário autenticado no dashboard Web</p></li><li local-id="44e076f0-f9bd-4f10-bca8-42814dd94f1d"><p local-id="2066a24c3dac">Sistema cadastrado com contexto definido</p></li></ul><hr local-id="fdaf2180-f1df-47fa-b1a3-b64fd4ab1d2b"/><h3 local-id="f5117f72d90e" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-Pós-condições:"><strong>Pós-condições:</strong></h3><ul local-id="fc8f1094-9fa1-4fff-ab29-20064c985425"><li local-id="26e2a38b-dbe6-48b1-8c49-b8d725bc6572"><p local-id="1d16cdda3a67">Logs capturados via SDK Java são exibidos no Dashboard React</p></li><li local-id="84e18a8a-5a9a-4bea-adc1-1f3ed86cfd7c"><p local-id="52d19a4d18eb">Dados apresentados de forma padronizada e performática</p></li><li local-id="1383f17d-f2fa-433e-a2f2-54642a4c20bc"><p local-id="e45f55d39454">Interface consistente entre Web e Mobile (quando aplicável)</p></li></ul><hr local-id="11168f01-da40-4735-805f-c5746e9ffcaf"/><h3 local-id="fb8881a6ccc5" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-FluxoPrincipal:"><strong>Fluxo Principal:</strong></h3><ol start="1" local-id="e674e4d1-8c9b-41c4-8503-6b41093d145d"><li local-id="3ccdf23c-c408-404c-949b-aacc9ad9d799"><p local-id="2d2510137272">Aplicação cliente inicializa a SDK Java com o token do sistema</p></li><li local-id="fa82ce00-be4f-4e0c-b4b3-69c8b6391acc"><p local-id="8f8b0f675ca5">SDK captura logs de erro automaticamente ou via interceptadores</p></li><li local-id="d705d250-d133-4681-bd4d-679a21c9c300"><p local-id="34c0eab60318">SDK envia logs para o Backend via API segura (HTTPS + criptografia)</p></li><li local-id="395c27bb-a7e8-40ac-abda-13085459a456"><p local-id="d8162a1a3e83">Backend valida o token e identifica o sistema</p></li><li local-id="dab4398f-307c-4c65-8a80-455bfc62970d"><p local-id="9df86fa1603d">Backend processa e persiste o log no MongoDB</p></li><li local-id="07cdb1f6-a338-45ec-b620-1bff319bac22"><p local-id="f3fe954ab097">Backend publica evento via WebSocket</p></li><li local-id="0eb7cd42-7e9e-4f83-a2ee-14d7e3a63ce2"><p local-id="406dd5704c5d">Dashboard React recebe evento em tempo real</p></li><li local-id="1103978f-613d-4b1c-8c89-d4da6b7b0a90"><p local-id="5834afa324f2">Interface atualiza dinamicamente exibindo o novo log</p></li><li local-id="097c4e86-7a81-4073-bddc-8a592940ca85"><p local-id="67983b031f11">Usuário visualiza o erro no dashboard com filtros e contexto</p></li></ol><hr local-id="d0e4bc1a-5bf8-4a8c-800b-52f3dc97a99d"/><h3 local-id="96f2b714a7ff" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-FluxosAlternativos:"><strong>Fluxos Alternativos:</strong></h3><p local-id="ec774fba9c1d"><strong>A1: SDK não inicializada corretamente</strong></p><ul local-id="496bc809-21b9-4478-b074-db1b72d33e31"><li local-id="e28250a5-0890-4f11-820b-c0c2a5c5215d"><p local-id="c5a25fae1ea5">Logs não são capturados</p></li><li local-id="51f6fd6b-c4c8-406b-842d-31533aeab9bf"><p local-id="c03bb9c24914">Sistema cliente registra erro localmente</p></li></ul><p local-id="bca1d7740bc1"><strong>A2: Incompatibilidade de versão da SDK</strong></p><ul local-id="79b9b4b4-f2df-43e3-afeb-7c0599da4d0c"><li local-id="2da66785-e854-432f-a27c-4cf47059298a"><p local-id="01534c74c448">Backend rejeita payload</p></li><li local-id="46208d2e-1b79-4859-9535-43a0069dbc57"><p local-id="5d2f80b70dd4">SDK deve ser atualizada</p></li></ul><p local-id="6d4626e69e7d"><strong>A3: Falha na conexão WebSocket</strong></p><ul local-id="9fafb4aa-3891-408a-b783-168508213037"><li local-id="749bd0cf-51ef-4cc9-b41e-5650fdae4c09"><p local-id="87b44f5ca9b6">Dashboard realiza fallback para polling</p></li></ul><hr local-id="266b884a-1d71-46c2-ac35-bae02350cf2b"/><h3 local-id="5ee4611e8d8a" id="Casodeuso-22:IntegraçãoeVisualizaçãodeLogsviaSDKJavaeDashboardReact-RegrasdeNegócioAplicadas:"><strong>Regras de Negócio Aplicadas:</strong></h3><ul local-id="7b14009a-d279-4481-ad2d-97390244b7d9"><li local-id="4c3c529e-5335-4f18-a0f0-39b3143d0787"><p local-id="4b5c9deb6033"><strong>RNF-02:</strong> SDK deve ser inicialmente desenvolvida em Java, com arquitetura extensível para outras linguagens (ex: Node, Python)</p></li><li local-id="d8f51c4c-a6a5-414b-b07d-62268827509a"><p local-id="72078ffcbcf1"><strong>RNF-10:</strong> Frontend Web deve utilizar React (ou React Native Web) garantindo padronização e reaproveitamento entre Web e Mobile</p></li></ul><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260403-004208.png" width="760" loading="lazy" src="../attachments/27426817/26771462.png?width=760" data-image-src="../attachments/27426817/26771462.png" data-height="1216" data-width="4572" data-unresolved-comment-count="0" data-linked-resource-id="26771462" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260403-004208.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="27426817" data-linked-resource-container-version="1" data-media-id="2f88d663-69a2-43e0-a5f6-a154369d13d4" data-media-type="file"></span><p local-id="63d4af7e621c" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/27426817/26771462.png">image-20260403-004208.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

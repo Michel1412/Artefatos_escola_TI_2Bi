@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Caso de uso - 9: Interagir com Agente IA para Solução</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/17498114.html">Sprint 3 | Atividade 5 |  23/03/26</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Caso de uso - 9: Interagir com Agente IA para Solução
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Peng</span> on mar. 30, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="702ac30835be"><strong>Nome:</strong> Interagir com Agente IA para Solução </p><p local-id="fc4c54ecb1e4"><strong>Atores:</strong></p><ul local-id="3dc3de73-d994-497a-ad69-3f8a4fcfdb20"><li local-id="d606c2c4-7149-41c7-8a5e-a7fe1f1ecf10"><p local-id="8550e7042fec">Usuário (Gestor/Desenvolvedor)</p></li><li local-id="6e91eb7f-5161-45de-a5f1-0b826ed0fc9a"><p local-id="7c4f0598bccc">Backend LogViewer (Orquestrador)</p></li><li local-id="bb993858-b7fa-47c1-93fe-8cd494a29b96"><p local-id="98a0798c7af2">Agente LLM (Interface de IA)</p></li></ul><p local-id="fc7390e1d662"><strong>Descrição:</strong> O sistema disponibiliza um link ou ambiente de chat onde o Usuário pode interagir com um Agente IA que já possui o contexto completo do erro (Stack, Ramo, Criticidade e Conteúdo do Log) para obter diagnósticos e sugestões de correção.</p><p local-id="3d228a845756"><strong>Pré-condições:</strong></p><ul local-id="38ae4009-f5de-4467-b6d8-0de37fa010f0"><li local-id="1a1223de-10d2-4829-b4d3-7bf3f9045ec0"><p local-id="778c330ebbe2">Log de erro já processado e persistido no MongoDB.</p></li><li local-id="64bb7a42-8547-40e2-987d-00e277431c45"><p local-id="e073803f5338">Contexto da empresa previamente configurado (RN-04).</p></li><li local-id="d97a9e81-0a0a-406d-9049-f4134fb504bd"><p local-id="09cfc0353805">Usuário autenticado e com permissão de visualização do log.</p></li></ul><p local-id="052fc56e940a"><strong>Pós-condições:</strong></p><ul local-id="b927631a-8310-4a1a-b145-3a6b0291b051"><li local-id="8def6c86-0bb5-4280-8458-7374ab6de591"><p local-id="31d0c9061e7b">Interface de chat com a IA aberta com o histórico do erro carregado.</p></li><li local-id="086838bb-98c9-4550-ac0e-ece9f96cfd71"><p local-id="27bb26356dfa">Status do erro alterado para &quot;Solucionado&quot; caso o usuário aceite a proposta (RN-07).</p></li></ul><p local-id="a38bc611aa4a"><strong>Fluxo Principal:</strong></p><ol start="1" local-id="e6da27d9-7657-48e3-933c-fe33049cc638"><li local-id="a46dce63-f47a-4a01-8537-802a808310a2"><p local-id="22829b66d783">O Usuário visualiza um erro específico no Histórico ou via Alerta.</p></li><li local-id="71263a29-c73b-4e6a-8c75-89b1ddb3a4cb"><p local-id="6ea70374d7cb">O sistema apresenta a sugestão passiva: &quot;Deseja receber uma possível solução para o erro X?&quot; (RN-06).</p></li><li local-id="ca1ce6d0-83dc-4ac2-816b-3bea87797154"><p local-id="e56af9450b16">O Usuário clica no botão/link para interagir com o Agente.</p></li><li local-id="4e2c2b2c-81c6-4dd5-9f94-f41b8f4216f1"><p local-id="1160d8a81ed9">O Backend gera um &quot;Payload de Contexto&quot; contendo: Stack tecnológica, Ramo de atuação do cliente, Conteúdo do Log e o Timestamp (RN-04).</p></li><li local-id="02a152de-b03a-4168-8b5d-6597358a44fe"><p local-id="a4766b7b562e">O sistema redireciona o usuário para o ambiente do Agente, injetando o contexto automaticamente via API.</p></li><li local-id="6a030231-38e3-41f6-b1c7-b972f79ced4a"><p local-id="e260a72fea10">O Usuário interage com o Agente para tirar dúvidas ou solicitar código de correção.</p></li><li local-id="a3c61609-49f8-4168-bfc4-05160dfd22d9"><p local-id="0fc22182a575">O Usuário confirma que a solução é satisfatória.</p></li><li local-id="fc4063bf-546d-4547-b91b-60fcf2d03fb5"><p local-id="95a893e5a3ba">O sistema altera o status do erro de &quot;Não Solucionado&quot; para &quot;Solucionado&quot; automaticamente (RN-07).</p></li></ol><p local-id="c7aec1bca6dd"><strong>Fluxos Alternativos:</strong></p><ul local-id="1fc8730a-31dc-42f4-aa73-0919e29487ac"><li local-id="f003a9c8-d949-42ec-bce6-fc6762e041cd"><p local-id="f44eff7bcb6a"><strong>A1: Usuário ignora a sugestão</strong></p><ol start="1" local-id="14d49d7d-2351-42c4-9d82-1911b25f4a69"><li local-id="6e4c589f-5805-4ca9-9c7d-18c2c03d09f2"><p local-id="90a9f3820254">O sistema mantém o link disponível, mas não abre a interface da IA. O status permanece &quot;Não Solucionado&quot;.</p></li></ol></li><li local-id="593ce1bb-37bb-4e99-86f4-9c8b458a7566"><p local-id="a58e385cdce6"><strong>A2: Falha na recuperação do contexto</strong></p><ol start="1" local-id="b78ffd2f-cc7d-4d73-9d17-278301323db1"><li local-id="1af8692c-a22e-49e2-94d0-4582a04ce9a7"><p local-id="6950ffb6e569">O sistema informa que o contexto original foi perdido ou alterado e abre o Agente apenas com os dados brutos do log.</p></li></ol></li></ul><p local-id="2a43289627ea"><strong>Regras de Negócio Aplicadas:</strong></p><ul local-id="597e5381-8b3b-4644-bf88-fc8aaf6165fb"><li local-id="98437496-1f3d-41b2-877e-860c91a2b19c"><p local-id="756bf8b4d7e5"><strong>RN-06:</strong> O sistema não corrige o erro sozinho; ele depende do consentimento do usuário para sugerir a solução.</p></li><li local-id="810a4ee0-a6a3-4336-b249-4af18eb93433"><p local-id="90238b531c83"><strong>RN-07:</strong> A aceitação da solução via interface do Agente implica na mudança automática de status do log no banco de dados.</p></li></ul><p local-id="adf4e417cd96" /><p local-id="777146c46c4c"><strong>Diagrama:</strong></p><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260330-230130.png" width="760" loading="lazy" src="../attachments/25264129/24838152.png?width=760" data-image-src="../attachments/25264129/24838152.png" data-height="1536" data-width="7756" data-unresolved-comment-count="0" data-linked-resource-id="24838152" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260330-230130.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="25264129" data-linked-resource-container-version="1" data-media-id="a572a806-2a5b-4c62-9b92-e940a4884991" data-media-type="file"></span><p local-id="ad822b43e5ed" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/25264129/24838152.png">image-20260330-230130.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:44</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

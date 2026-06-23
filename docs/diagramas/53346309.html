@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Classe 5  — UC-14 e UC-16 (Sistema LogViewer)</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Classe 5  — UC-14 e UC-16 (Sistema LogViewer)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andre Felipe</span>, last modified on jun. 01, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="098ea6e7e4db">Links para Classes : </p><p local-id="df10ddf9f133"><a href="58785793.html" data-linked-resource-id="58785793" data-linked-resource-version="5" data-linked-resource-type="page">Classe de Caso de Uso → Capturador de Erro via Interface</a></p><p local-id="27c257a2af05"><a href="58687492.html" data-linked-resource-id="58687492" data-linked-resource-version="6" data-linked-resource-type="page">Classe Principal → Relatório</a></p><p local-id="2f36ec2d886d"><a href="59244545.html" data-linked-resource-id="59244545" data-linked-resource-version="4" data-linked-resource-type="page">Classe de Caso de Uso → Gerar Relatório</a></p><p local-id="779435f3a601"><a href="59408385.html" data-linked-resource-id="59408385" data-linked-resource-version="5" data-linked-resource-type="page">Classe de Caso de Uso → Exportar Relatório</a></p><p local-id="099969217d15"><a href="59179011.html" data-linked-resource-id="59179011" data-linked-resource-version="4" data-linked-resource-type="page">Classe de Apoio → Filtro Relatório</a></p><p local-id="4dbef6e61d70"><a href="59441159.html" data-linked-resource-id="59441159" data-linked-resource-version="3" data-linked-resource-type="page">Classe de Apoio → Documento Relatório</a></p><p local-id="e39d40d5c156" /><p local-id="2d8c3c54b120" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260601-224856.png" width="760" loading="lazy" src="../attachments/53346309/60227585.png?width=760" data-image-src="../attachments/53346309/60227585.png" data-height="843" data-width="1527" data-unresolved-comment-count="0" data-linked-resource-id="60227585" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260601-224856.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="53346309" data-linked-resource-container-version="9" data-media-id="37fa746e-a0bc-4c9f-8c8f-19fa014a9ab5" data-media-type="file"></span><p local-id="238907302261" /><p local-id="39a331dbf88f">@startuml DiagramaClasse5AndreFelipe_Resumo</p><p local-id="b507bf91fb9d">skinparam backgroundColor #FFFFFF<br/>skinparam classBackgroundColor #FFFFFF<br/>skinparam classBorderColor #333333<br/>skinparam classAttributeFontColor #000000<br/>skinparam classFontColor #000000<br/>skinparam classFontSize 10<br/>skinparam classAttributeFontSize 10<br/>skinparam padding 5<br/>skinparam roundcorner 5<br/>skinparam arrowColor #333333<br/>skinparam arrowThickness 1.5</p><p local-id="941df1ced55a">left to right direction</p><h2 local-id="b10042aa05c2" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classUsuario{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-cnpj&lt;/b&gt;:String">class Usuario {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- cnpj&lt;/b&gt; : String</h2><p local-id="c7605ff0c451">  registrarErroInterface() : void<br/>  acessarRelatorios() : void<br/>  solicitarExportacao() : void<br/>}</p><h2 local-id="8829b662c4d4" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classSistema{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-nome&lt;/b&gt;:String">class Sistema {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- nome&lt;/b&gt; : String</h2><p local-id="0bd1c4a72381">  validarSistema() : Boolean<br/>}</p><h2 local-id="04b05ef2d0e4" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classCapturadorErroInterface{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-usuarioId&lt;/b&gt;:String&lt;b&gt;-sistemaId&lt;/b&gt;:String&lt;b&gt;-mensagemErro&lt;/b&gt;:String&lt;b&gt;-criticidade&lt;/b&gt;:Enum">class CapturadorErroInterface {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- usuarioId&lt;/b&gt; : String<br/>  &lt;b&gt;- sistemaId&lt;/b&gt; : String<br/>  &lt;b&gt;- mensagemErro&lt;/b&gt; : String<br/>  &lt;b&gt;- criticidade&lt;/b&gt; : Enum</h2><p local-id="79030106114f">  capturarErroManual() : Erro<br/>  validarDadosErro() : Boolean<br/>  enviarParaTratamento() : void<br/>}</p><h2 local-id="dc989d240540" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classErro{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-mensagem&lt;/b&gt;:String&lt;b&gt;-criticidade&lt;/b&gt;:Enum&lt;b&gt;-status&lt;/b&gt;:Enum">class Erro {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- mensagem&lt;/b&gt; : String<br/>  &lt;b&gt;- criticidade&lt;/b&gt; : Enum<br/>  &lt;b&gt;- status&lt;/b&gt; : Enum</h2><p local-id="876806e5fcfd">  classificarErro() : void<br/>  marcarComoResolvido() : void<br/>}</p><h2 local-id="d31258063dea" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classLogTratado{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-conteudo&lt;/b&gt;:String&lt;b&gt;-criticidade&lt;/b&gt;:Enum">class LogTratado {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- conteudo&lt;/b&gt; : String<br/>  &lt;b&gt;- criticidade&lt;/b&gt; : Enum</h2><p local-id="8373c181d619">  consultarDetalhes() : String<br/>}</p><h2 local-id="f288ec90b0f6" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classFiltroRelatorio{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-dataInicial&lt;/b&gt;:DateTime&lt;b&gt;-dataFinal&lt;/b&gt;:DateTime&lt;b&gt;-criticidade&lt;/b&gt;:Enum">class FiltroRelatorio {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- dataInicial&lt;/b&gt; : DateTime<br/>  &lt;b&gt;- dataFinal&lt;/b&gt; : DateTime<br/>  &lt;b&gt;- criticidade&lt;/b&gt; : Enum</h2><p local-id="e51e7de4101e">  aplicarFiltro() : List&lt;Erro&gt;<br/>  validarPeriodo() : Boolean<br/>}</p><h2 local-id="ada4c9e7fb89" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classGerarRelatorio{&lt;b&gt;-usuarioId&lt;/b&gt;:String&lt;b&gt;-statusGeracao&lt;/b&gt;:Enum">class GerarRelatorio {<br/>  &lt;b&gt;- usuarioId&lt;/b&gt; : String<br/>  &lt;b&gt;- statusGeracao&lt;/b&gt; : Enum</h2><p local-id="d2dbd59d0082">  gerarRelatorio() : Relatorio<br/>  buscarDadosFiltrados() : List&lt;LogTratado&gt;<br/>  salvarRelatorio() : void<br/>}</p><h2 local-id="784542909c1b" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classRelatorio{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-titulo&lt;/b&gt;:String&lt;b&gt;-totalLogs&lt;/b&gt;:Long&lt;b&gt;-totalErros&lt;/b&gt;:Long&lt;b&gt;-statusRelatorio&lt;/b&gt;:Enum">class Relatorio {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- titulo&lt;/b&gt; : String<br/>  &lt;b&gt;- totalLogs&lt;/b&gt; : Long<br/>  &lt;b&gt;- totalErros&lt;/b&gt; : Long<br/>  &lt;b&gt;- statusRelatorio&lt;/b&gt; : Enum</h2><p local-id="625c2be2cb19">  calcularTotais() : void<br/>  gerarResumo() : String<br/>}</p><h2 local-id="e95120824d63" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classExportarRelatorio{&lt;b&gt;-relatorioId&lt;/b&gt;:String&lt;b&gt;-formatoExportacao&lt;/b&gt;:Enum&lt;b&gt;-urlDownload&lt;/b&gt;:String">class ExportarRelatorio {<br/>  &lt;b&gt;- relatorioId&lt;/b&gt; : String<br/>  &lt;b&gt;- formatoExportacao&lt;/b&gt; : Enum<br/>  &lt;b&gt;- urlDownload&lt;/b&gt; : String</h2><p local-id="95bb1a66f829">  validarFormato() : Boolean<br/>  gerarLinkDownload() : String<br/>}</p><h2 local-id="08207871f726" id="DiagramadeClasse5—UC-14eUC-16(SistemaLogViewer)-classDocumentoRelatorio{&lt;b&gt;-id&lt;/b&gt;:String&lt;b&gt;-nomeArquivo&lt;/b&gt;:String&lt;b&gt;-formato&lt;/b&gt;:Enum&lt;b&gt;-urlDownload&lt;/b&gt;:String">class DocumentoRelatorio {<br/>  &lt;b&gt;- id&lt;/b&gt; : String<br/>  &lt;b&gt;- nomeArquivo&lt;/b&gt; : String<br/>  &lt;b&gt;- formato&lt;/b&gt; : Enum<br/>  &lt;b&gt;- urlDownload&lt;/b&gt; : String</h2><p local-id="7c8a09ca8eed">  gerarArquivo() : void<br/>  disponibilizarDownload() : String<br/>}</p><p local-id="6da56cc9c63d">Usuario &quot;1&quot; --&gt; &quot;0..*&quot; CapturadorErroInterface : registra erro<br/>CapturadorErroInterface &quot;1&quot; --&gt; &quot;1&quot; Sistema : vincula sistema<br/>CapturadorErroInterface &quot;1&quot; --&gt; &quot;1&quot; Erro : cria erro</p><p local-id="16cd2edf12e1">Usuario &quot;1&quot; --&gt; &quot;0..<em>&quot; Relatorio : visualiza</em><br/><em>Sistema &quot;1&quot; --&gt; &quot;0..</em>&quot; Relatorio : possui</p><p local-id="ef998c653b84">GerarRelatorio &quot;1&quot; --&gt; &quot;1&quot; FiltroRelatorio : usa<br/>GerarRelatorio &quot;1&quot; --&gt; &quot;0..<em>&quot; LogTratado : consulta</em><br/><em>GerarRelatorio &quot;1&quot; --&gt; &quot;0..</em>&quot; Erro : consulta<br/>GerarRelatorio &quot;1&quot; --&gt; &quot;1&quot; Relatorio : gera</p><p local-id="6c628bd408cb">Relatorio &quot;1&quot; --&gt; &quot;1&quot; FiltroRelatorio : mantém<br/>Relatorio &quot;1&quot; --&gt; &quot;0..<em>&quot; Erro : consolida</em><br/><em>Relatorio &quot;1&quot; --&gt; &quot;0..</em>&quot; LogTratado : consolida</p><p local-id="02f1bfddf192">Usuario &quot;1&quot; --&gt; &quot;0..<em>&quot; ExportarRelatorio : solicita</em><br/><em>ExportarRelatorio &quot;1&quot; --&gt; &quot;1&quot; Relatorio : exporta</em><br/><em>ExportarRelatorio &quot;1&quot; --&gt; &quot;1&quot; DocumentoRelatorio : gera</em><br/><em>Relatorio &quot;1&quot; --&gt; &quot;0..</em>&quot; DocumentoRelatorio : possui</p><p local-id="7caeb714f6c2">@enduml</p>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/53346309/53411847.png">diagrama de classe - 5.-20260525-023731.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/53346309/60227585.png">image-20260601-224856.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/53346309/60260353.png">image-20260601-224858.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

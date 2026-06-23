@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Classe de Caso de Uso -&gt; Serviço de Persistência de Log</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../requisitos/Vinicius-Completo---2_54525957.html">Vinicius Completo - 2</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Classe de Caso de Uso -&gt; Serviço de Persistência de Log
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Vinicius Ferrarini</span> on mai. 25, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="138135df2d19"><strong>Descrição: </strong>Classe responsável por gerenciar a persistência definitiva dos logs de erro no banco de dados (MongoDB). Atua na extremidade do Core Domain da arquitetura hexagonal, comunicando-se com o <em>Outbound Port</em> do repositório de dados. Implementa a regra de agrupamento e contagem de logs repetidos (RF-22 / RN-09), garantindo que erros idênticos ocorridos em uma janela de 5 minutos apenas incrementem um contador em vez de gerar registros duplicados. Também atua como a última barreira de validação, assegurando que o documento a ser salvo contenha estritamente as informações obrigatórias da RN-04 (Timestamp, Tipo_do_Erro, Conteúdo_do_Log e Contexto_Aplicado) e que já tenha passado pelo processo de sanitização (RN-05).</p><h3 local-id="30467f186504" id="ClassedeCasodeUso-&gt;ServiçodePersistênciadeLog-Atributos">Atributos</h3><div class="table-wrap"><table data-layout="default" data-local-id="e3b5ff8b-a0ee-44ee-8337-9f5770c4f6f5" class="confluenceTable"><colgroup><col style="width: 49.0px;"/><col style="width: 255.0px;"/><col style="width: 152.0px;"/><col style="width: 152.0px;"/><col style="width: 152.0px;"/></colgroup><tbody><tr data-local-id="756625e5-2d18-4453-8a37-341038dd5a97"><td data-local-id="90d4d0c7-07b7-446a-8574-b9f5623b81f1" class="confluenceTd"><p local-id="1d6b6123db0d"><strong>#</strong></p></td><td data-local-id="29a33fe8-677a-4beb-8ad6-d3ada8e33600" class="confluenceTd"><p local-id="69e6bd9cb9d3"><strong>Atributo</strong></p></td><td data-local-id="afebf9cd-2c9e-4140-bc5d-6a6f9d7e3473" class="confluenceTd"><p local-id="14425e2496dc"><strong>Tipo</strong></p></td><td data-local-id="5243b965-d225-48c5-a57f-8620a80c7e75" class="confluenceTd"><p local-id="05a89ab3fa5e"><strong>Visibilidade</strong></p></td><td data-local-id="7c5d178c-ca45-41a2-a9b8-2dcbbae70e73" class="confluenceTd"><p local-id="160d99308642"><strong>Descrição</strong></p></td></tr><tr data-local-id="bad761c9-1a45-4986-92a3-9b496dd2117a"><td data-local-id="7c146431-83be-4a51-b009-6f0859f899e5" class="confluenceTd"><p local-id="f2d6756d72bd">1</p></td><td data-local-id="651bfacc-be57-42ab-b709-0305f2d1ea4c" class="confluenceTd"><p local-id="3ed0c6573f7b">id</p></td><td data-local-id="f184e648-05cd-4641-ae47-747eff5286be" class="confluenceTd"><p local-id="230e21674f69">String (UUID)</p></td><td data-local-id="32064e0a-bfeb-4d45-8c00-c312c5a9e3e7" class="confluenceTd"><p local-id="eaa9296553bb">privado</p></td><td data-local-id="d18fec76-f26f-451b-935c-e6fc4c44e112" class="confluenceTd"><p local-id="74193a431b87">Identificador único da transação de persistência</p></td></tr><tr data-local-id="2513b877-ff1e-4234-a0be-5cc13ad3c523"><td data-local-id="76ae7559-ecc6-4920-bedc-5d2982dba014" class="confluenceTd"><p local-id="ec7ae19e2a7b">2</p></td><td data-local-id="f42dbe43-1858-46b6-be78-7409d7b1e08a" class="confluenceTd"><p local-id="e1de6dfd3db5">logTratado</p></td><td data-local-id="d2f39247-8437-4bfb-9015-82246005af2a" class="confluenceTd"><p local-id="47ecc533804a">LogTratado</p></td><td data-local-id="ac6f77f1-bc56-486a-8241-25c92eb96c19" class="confluenceTd"><p local-id="0fc1f20d6a2c">privado</p></td><td data-local-id="01aceec2-0759-4090-b900-be1520a3c8ce" class="confluenceTd"><p local-id="d3d39cc9e555">O objeto de log já enriquecido e sanitizado recebido da etapa anterior</p></td></tr><tr data-local-id="4fd50761-2067-4eee-b077-fdc97275284b"><td data-local-id="fcd30268-8194-49db-afc5-04e96e1de763" class="confluenceTd"><p local-id="7ef094dd1b10">3</p></td><td data-local-id="b1b39532-6ede-4486-83ad-2ff338db8c25" class="confluenceTd"><p local-id="1d220beb0698">sistemaId</p></td><td data-local-id="0d8891b1-3348-4305-bf01-04add6747ad7" class="confluenceTd"><p local-id="62a6923c0aec">String</p></td><td data-local-id="afd58f6e-dc13-4ca2-acbb-04abf0f79428" class="confluenceTd"><p local-id="116f5eb38d1f">privado</p></td><td data-local-id="c275559f-b385-4f1c-a27a-c5c4667dd413" class="confluenceTd"><p local-id="193406a81ab2">Referência ao sistema que gerou o log (usado para isolamento no banco)</p></td></tr><tr data-local-id="e3f6326f-c17b-4b8b-adc2-78c34b525d03"><td data-local-id="befc6238-1cdd-4a3b-b923-aa9f0ef6eb50" class="confluenceTd"><p local-id="f36fa70e9112">4</p></td><td data-local-id="2efcc989-a6ad-4161-a6dd-1f5658443999" class="confluenceTd"><p local-id="93e3f98a37fc">hashIdentificacao</p></td><td data-local-id="a84ce197-d0c0-4699-b138-e3d8ab386465" class="confluenceTd"><p local-id="fb3afbe100b8">String</p></td><td data-local-id="f8744e3b-4054-48ca-9b0e-48717555e105" class="confluenceTd"><p local-id="b40d1a79473d">privado</p></td><td data-local-id="58a42861-0fc5-4db6-96a9-6a01041c62db" class="confluenceTd"><p local-id="e285edd848e6">Hash único gerado a partir do tipo, conteúdo e contexto do erro</p></td></tr><tr data-local-id="f4c54091-64fb-4034-a017-b706c43ce12c"><td data-local-id="b12679fa-2201-44d6-aff3-24fd9907b397" class="confluenceTd"><p local-id="839ab49c0458">5</p></td><td data-local-id="76bc953d-d7b4-4e90-9020-8e5dc300e734" class="confluenceTd"><p local-id="be236716c3d2">janelaAgrupamentoMinutos</p></td><td data-local-id="218da927-e174-450d-b345-6246eed4455d" class="confluenceTd"><p local-id="871ca8a7bc22">Integer</p></td><td data-local-id="98a3f900-2e26-4466-8bd8-6330baa29f68" class="confluenceTd"><p local-id="3be3fe3e4c8b">privado</p></td><td data-local-id="7ad6a538-e067-4464-ba2d-5e095c918617" class="confluenceTd"><p local-id="2b4697fa54b1">Tempo configurado para agrupar erros repetidos (Padrão: 5 minutos - RN-09)</p></td></tr><tr data-local-id="5e76aa75-4da5-4557-b398-2b367ca43743"><td data-local-id="d3c475d6-5b2e-4b45-b123-829773230b4b" class="confluenceTd"><p local-id="fa8f93ffddfe">6</p></td><td data-local-id="46afc19e-4145-43be-a928-fc35c10ff407" class="confluenceTd"><p local-id="da886c2677fa">statusPersistencia</p></td><td data-local-id="60416e23-baa7-43f5-a183-5a0b38befd46" class="confluenceTd"><p local-id="8d7ef170f32a">Enum (SUCESSO|FALHA|AGRUPADO)</p></td><td data-local-id="3cc557a9-9499-4203-88f7-5d8a63091887" class="confluenceTd"><p local-id="582efdbb39e5">privado</p></td><td data-local-id="761433b4-b50a-4dca-97ce-8edbecfcd874" class="confluenceTd"><p local-id="89b645a7a06f">Estado final da operação de salvamento no banco de dados</p></td></tr><tr data-local-id="3e5d900a-b365-485f-983a-16d258d85abd"><td data-local-id="f5ca9135-7252-497c-9a0b-bf529a561e31" class="confluenceTd"><p local-id="d2a8df0a7044">7</p></td><td data-local-id="73b0ac9e-3004-40a4-9c83-0fcd30b0160c" class="confluenceTd"><p local-id="3242c28eb745">timestampExecucao</p></td><td data-local-id="abdfa37a-fb63-445d-8d91-f9c85a71e0e2" class="confluenceTd"><p local-id="bb06b63b0f01">DateTime</p></td><td data-local-id="52f69393-03f4-4b72-9e80-71e0c6330e93" class="confluenceTd"><p local-id="89be23975db0">privado</p></td><td data-local-id="07926f9e-b5a1-46ea-8876-0f586c9bae1b" class="confluenceTd"><p local-id="b0de78ed9bea">Momento exato em que a rotina de persistência foi acionada</p></td></tr></tbody></table></div><h3 local-id="edf0b8cfec8d" id="ClassedeCasodeUso-&gt;ServiçodePersistênciadeLog-Métodos">Métodos</h3><div class="table-wrap"><table data-layout="default" data-local-id="1306a7b8-a0de-496d-a395-f4ed9a923291" class="confluenceTable"><colgroup><col style="width: 50.0px;"/><col style="width: 228.0px;"/><col style="width: 143.0px;"/><col style="width: 117.0px;"/><col style="width: 218.0px;"/></colgroup><tbody><tr data-local-id="b121f3ab-c652-498c-ae5d-cfe3dfa16cdc"><td data-local-id="1579dc2c-446e-4234-bc19-491313898289" class="confluenceTd"><p local-id="e37abcbd1732"><strong>#</strong></p></td><td data-local-id="817e7293-341e-4ba5-a0fd-74d0ba0abfb3" class="confluenceTd"><p local-id="ce992928340d"><strong>Método</strong></p></td><td data-local-id="a70247b2-6da3-43b1-a592-76b420fd7fba" class="confluenceTd"><p local-id="7dbedadb6b24"><strong>Retorno</strong></p></td><td data-local-id="905d4515-30d8-43f9-8123-58f2d6186939" class="confluenceTd"><p local-id="50ceea6f5877"><strong>Visibilidade</strong></p></td><td data-local-id="c7664738-7808-4c9e-bae3-30ebd41c4933" class="confluenceTd"><p local-id="d245e48e165a"><strong>Descrição</strong></p></td></tr><tr data-local-id="62b4397e-2e5f-4c8f-95ea-3dcd1995bc69"><td data-local-id="4ba5d5fe-a507-4071-9653-f4043ea6ba4a" class="confluenceTd"><p local-id="d2c1bd332aa2">1</p></td><td data-local-id="5d4c5465-495f-459d-949b-6f0b8d892194" class="confluenceTd"><p local-id="38f88a0b9717">persistir(log: LogTratado, sistemaId: String)</p></td><td data-local-id="4b3c6db7-9860-4fe2-94f3-058c189c7d73" class="confluenceTd"><p local-id="62ce08009441">DocumentoLog</p></td><td data-local-id="499921a1-57b3-418d-b12c-1ad577599802" class="confluenceTd"><p local-id="8e5a3111a752">público</p></td><td data-local-id="fdfd79e0-fc55-4f18-a965-d5a2036ae42a" class="confluenceTd"><p local-id="ff5a56a9c456">Orquestra o fluxo de salvamento (gera hash, busca duplicatas, insere ou incrementa)</p></td></tr><tr data-local-id="bb2fc5b4-483b-49c4-b7ec-012f8a935d3b"><td data-local-id="bff6006d-7e25-4682-8bdd-907522dd469e" class="confluenceTd"><p local-id="0d385b309ee0">2</p></td><td data-local-id="ca59c341-a005-442d-9f40-423cb356f3bc" class="confluenceTd"><p local-id="6f736a0e5774">gerarHashIdentificacao(log: LogTratado)</p></td><td data-local-id="9d49dd36-e080-40bb-8f46-5f68a83a9b83" class="confluenceTd"><p local-id="6d10ddbb611b">String</p></td><td data-local-id="1b8501b7-1875-41c5-80b6-681032c76929" class="confluenceTd"><p local-id="02ffecfe527e">privado</p></td><td data-local-id="85385326-1c50-4522-87e4-8a0145d01ead" class="confluenceTd"><p local-id="f3ea93f633b8">Cria um hash (ex: SHA-256) baseado no erro para identificar duplicatas exatas</p></td></tr><tr data-local-id="37d7dd49-8681-4c84-bf49-e5a792611ded"><td data-local-id="d22ee032-6f30-4e3a-9a4b-d4549fbade93" class="confluenceTd"><p local-id="a8fc7c514962">3</p></td><td data-local-id="5e65118e-4b9f-41a5-ae79-91d303135584" class="confluenceTd"><p local-id="af59b71ccf8f">buscarOcorrenciaRecente(hash: String, sistemaId: String)</p></td><td data-local-id="3473bb0d-682e-46bb-8335-9e3289f0e2e0" class="confluenceTd"><p local-id="3eecb6625cb1">DocumentoLog</p></td><td data-local-id="f931d78e-c397-48bc-93f1-63f64a808509" class="confluenceTd"><p local-id="2c2f7c886867">privado</p></td><td data-local-id="a162c31a-6e49-49c5-9892-847145f23e4d" class="confluenceTd"><p local-id="8f8f88e1a971">Consulta no MongoDB se o mesmo hash ocorreu na janela de 5 minutos (RN-09)</p></td></tr><tr data-local-id="d92701f5-4ecf-47c8-bc14-b72b2e961af1"><td data-local-id="2f2add77-0de2-4775-bc5b-28e1286b2d17" class="confluenceTd"><p local-id="f4e13c58ff73">4</p></td><td data-local-id="e15e361e-8ce0-4334-8908-19f88ed63d92" class="confluenceTd"><p local-id="f91e2266e870">incrementarContador(documentoId: String)</p></td><td data-local-id="093f05bf-6b6d-445b-96d1-fc6513e8e15c" class="confluenceTd"><p local-id="38cc35ea9841">void</p></td><td data-local-id="128a8b80-1d6c-4fc4-9895-e701acbf7462" class="confluenceTd"><p local-id="d9ba28a84d66">privado</p></td><td data-local-id="428dda36-7192-4b0e-a29c-a243c100bbe3" class="confluenceTd"><p local-id="052c68a0ca47">Atualiza o documento existente incrementando o contador de repetições (RF-22)</p></td></tr><tr data-local-id="f848f3f2-871a-4732-9b88-29b37a1c62fa"><td data-local-id="70456092-122c-4683-b80b-68f12ea212fd" class="confluenceTd"><p local-id="78f037002ab1">5</p></td><td data-local-id="c62a01a1-090a-4fac-b908-a9f65034ad6e" class="confluenceTd"><p local-id="de08b12708f2">inserirNovoDocumento(log: LogTratado)</p></td><td data-local-id="4b99ca2f-0219-4505-969e-d9dca276f553" class="confluenceTd"><p local-id="994cc33e7adc">DocumentoLog</p></td><td data-local-id="38e171df-b55e-460a-9e19-1e3ef7941200" class="confluenceTd"><p local-id="68596787641b">privado</p></td><td data-local-id="12293a6f-5f31-4c07-9579-f8e7bfcceea4" class="confluenceTd"><p local-id="b11f97b82324">Cria um novo registro no MongoDB caso seja um erro inédito ou fora da janela de tempo</p></td></tr><tr data-local-id="7f69275e-307e-4e92-a6d8-23531ca34891"><td data-local-id="c9d90c30-9be9-4c8c-af05-0258c456f4de" class="confluenceTd"><p local-id="03a4678cd1d3">6</p></td><td data-local-id="6b7bfa6a-9096-4614-807f-61ed6609070b" class="confluenceTd"><p local-id="7a0a92021a53">validarCamposObrigatorios(log: LogTratado)</p></td><td data-local-id="f788bdf4-2ed3-42ec-accd-3510ea24e2c2" class="confluenceTd"><p local-id="8397b9913907">Boolean</p></td><td data-local-id="85e1969d-b84f-4a34-bb93-1dbf423368d5" class="confluenceTd"><p local-id="2709605c96aa">privado</p></td><td data-local-id="13177466-f5a9-4cac-8151-ebf68f90348b" class="confluenceTd"><p local-id="a84344143181">Garante que Timestamp, Tipo, Conteúdo e Contexto estão presentes antes de salvar (RN-04)</p></td></tr><tr data-local-id="f0d45a0a-54b8-4fbd-9b81-d3695f4d9086"><td data-local-id="f29e8744-53a9-437d-a2d4-cf0ac99f4d70" class="confluenceTd"><p local-id="d86d32a919f8">7</p></td><td data-local-id="1f391f49-9df2-4357-9a5c-b3820fb24ec6" class="confluenceTd"><p local-id="0f66b8d85faa">validarStatusSanitizacao(log: LogTratado)</p></td><td data-local-id="5e2f5889-54a8-4406-b6d0-41547996e963" class="confluenceTd"><p local-id="8581ab201bdc">Boolean</p></td><td data-local-id="c66dfcfc-8215-4bf2-a126-36c4d001cd29" class="confluenceTd"><p local-id="04d34f844ee3">privado</p></td><td data-local-id="a92a0513-77e8-46e6-997e-4e67dfc7179d" class="confluenceTd"><p local-id="4634a50fb450">Impede a persistência caso a flag de ofuscação de dados sensíveis seja falsa (RN-05)</p></td></tr></tbody></table></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260525-232922.png" width="760" loading="lazy" src="../attachments/54525977/54296589.png?width=760" data-image-src="../attachments/54525977/54296589.png" data-height="2124" data-width="2348" data-unresolved-comment-count="0" data-linked-resource-id="54296589" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260525-232922.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="54525977" data-linked-resource-container-version="1" data-media-id="49f205e9-d630-46d3-b06b-1ec94b9832b4" data-media-type="file"></span><p local-id="fe6f63a64ed9" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml ServicoPersistenciaLog
+skinparam classAttributeIconSize 0
+skinparam backgroundColor #FFFFFF
+skinparam classBackgroundColor #FFFFFF
+skinparam classBorderColor #005A9C
+skinparam linetype ortho
+skinparam padding 8
+skinparam roundcorner 5
+
+class ServicoPersistenciaLog {
+  - id : String (UUID)
+  - logTratado : LogTratado
+  - sistemaId : String
+  - hashIdentificacao : String
+  - janelaAgrupamentoMinutos : Integer
+  - statusPersistencia : Enum {SUCESSO, FALHA, AGRUPADO}
+  - timestampExecucao : DateTime
+  
+  + persistir(log : LogTratado, sistemaId : String) : DocumentoLog
+  - gerarHashIdentificacao(log : LogTratado) : String
+  - buscarOcorrenciaRecente(hash : String, sistemaId : String) : DocumentoLog
+  - incrementarContador(documentoId : String) : void
+  - inserirNovoDocumento(log : LogTratado) : DocumentoLog
+  - validarCamposObrigatorios(log : LogTratado) : Boolean
+  - validarStatusSanitizacao(log : LogTratado) : Boolean
+}
+@enduml</pre>
+</div></div><p local-id="3ff0bd6652be" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/54525977/54296589.png">image-20260525-232922.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

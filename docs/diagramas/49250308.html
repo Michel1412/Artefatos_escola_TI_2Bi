@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 16 - Varredura e Processamento Periódico de Logs</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 16 - Varredura e Processamento Periódico de Logs
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span>, last modified by <span class='editor'> João Pedro Souza Peixoto Saraiva</span> on mai. 23, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-230148.png" width="646" loading="lazy" src="../attachments/49250308/48693260.png?width=646" data-image-src="../attachments/49250308/48693260.png" data-height="808" data-width="646" data-unresolved-comment-count="0" data-linked-resource-id="48693260" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-230148.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49250308" data-linked-resource-container-version="2" data-media-id="853c75c6-9b20-44e6-be6e-8f28a62abd4c" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-16: Varredura e Processamento Periódico de Logs
+
+actor &quot;Scheduler\n(CronJob)&quot; as Cron
+participant &quot;Backend Worker&quot; as Worker
+participant &quot;Repositório de Arquivos&quot; as FS
+database &quot;MongoDB&quot; as DB
+
+== 1. Execução da Varredura ==
+Cron -&gt; Worker: Dispara rotina periódica
+activate Worker
+
+Worker -&gt; DB: Busca sistemas\ncom path configurado
+activate DB
+
+DB --&gt; Worker: Lista de sistemas
+
+deactivate DB
+
+loop Para cada sistema configurado
+    Worker -&gt; FS: Acessa diretório/SFTP
+    activate FS
+
+    alt Cenário Principal: Caminho acessível
+        FS --&gt; Worker: Lista arquivos pendentes
+
+        Worker -&gt; Worker: Filtra arquivos\nnão processados
+
+        Worker -&gt; Worker: Enfileira arquivos
+
+    else Alternativa A1: Caminho inacessível
+        FS --&gt; Worker: Erro de conexão/permissão
+
+        Worker -&gt; Worker: Registra falha interna
+
+        Worker --&gt; Cron: Continua próximos sistemas
+    end
+
+    deactivate FS
+end
+
+@enduml</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-230231.png" width="638" loading="lazy" src="../attachments/49250308/50298905.png?width=638" data-image-src="../attachments/49250308/50298905.png" data-height="878" data-width="638" data-unresolved-comment-count="0" data-linked-resource-id="50298905" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-230231.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49250308" data-linked-resource-container-version="2" data-media-id="486bd304-dfd1-4ed0-b792-4dd372e723dc" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-16: Varredura e Processamento Periódico de Logs
+
+participant &quot;Backend Worker&quot; as Worker
+participant &quot;Repositório de Arquivos&quot; as FS
+participant &quot;Parser Strategy\n(Adapter Factory)&quot; as Parser
+database &quot;MongoDB&quot; as DB
+
+== 2. Processamento do Arquivo ==
+loop Para cada arquivo pendente
+    Worker -&gt; FS: Lê arquivo bruto
+    activate FS
+
+    FS --&gt; Worker: Conteúdo + extensão
+
+    deactivate FS
+
+    Worker -&gt; Parser: Seleciona estratégia\npor extensão
+    activate Parser
+
+    alt Cenário Principal: Formato suportado
+        Parser --&gt; Worker: Objeto de domínio normalizado
+
+        Worker -&gt; Worker: Ofusca dados sensíveis\n(RN-05)
+
+        Worker -&gt; Worker: Classifica erro\n(RN-04)
+
+        Worker -&gt; DB: Persiste logs estruturados
+        activate DB
+
+        DB --&gt; Worker: Confirma persistência
+
+        deactivate DB
+
+        Worker -&gt; FS: Marca arquivo como .processed
+        activate FS
+
+        FS --&gt; Worker: Confirma renomeação
+
+        deactivate FS
+
+    else Alternativa A2: Formato não suportado
+        Parser --&gt; Worker: Adapter inexistente
+
+        Worker -&gt; FS: Move para /unsupported
+        activate FS
+
+        FS --&gt; Worker: Arquivo ignorado
+
+        deactivate FS
+    end
+
+    deactivate Parser
+end
+
+deactivate Worker
+
+@enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49250308/48693260.png">image-20260518-230148.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49250308/50298905.png">image-20260518-230231.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

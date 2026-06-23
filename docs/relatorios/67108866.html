@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : 📑 Modelo de Entrega: Sprint 6 - Modelagem de Dados (DER)</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="49577989.html">Sprint 6 | 18/05/2026 | [Criar diagrama de classes e DER]</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : 📑 Modelo de Entrega: Sprint 6 - Modelagem de Dados (DER)
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Andre Felipe</span> on jun. 14, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <p local-id="080c0bcf749a">Finalização e validação do <strong>Diagrama de Entidade-Relacionamento (DER)</strong> para o banco de dados relacional (<strong>PostgreSQL</strong>). O modelo foi desenhado seguindo uma arquitetura radial e modular, mapeando 100% dos Requisitos Funcionais (RFs) e Regras de Negócio (RNs) homologados.</p><p local-id="f7aec1fde579" /><p local-id="f5b3fcbc8e80">Diagrama Completo : </p><p local-id="da4e30787b33" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="diagrama completo.png" width="760" loading="lazy" src="../attachments/67108866/66650119.png?width=760" data-image-src="../attachments/67108866/66650119.png" data-height="2514" data-width="2181" data-unresolved-comment-count="0" data-linked-resource-id="66650119" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="diagrama completo.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="67108866" data-linked-resource-container-version="1" data-media-id="6f59b897-25ca-4b8f-8cb1-daac6d2cd920" data-media-type="file"></span><p local-id="c1aa0aeb714b" /><p local-id="9a643660a091" /><p local-id="7218986c7c24" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">Project LogViewer {
+  database_type: &quot;PostgreSQL&quot;
+  Note: &quot;DER completo do sistema LogViewer - modelo relacional para dbdiagram.io&quot;
+}
+
+/* =========================
+   ENUMS
+========================= */
+
+Enum perfil_usuario_enum {
+  ADMIN
+  OPERADOR
+  VISUALIZADOR
+}
+
+Enum status_usuario_enum {
+  ATIVO
+  INATIVO
+  BLOQUEADO
+}
+
+Enum status_sistema_enum {
+  ATIVO
+  INATIVO
+  BLOQUEADO
+}
+
+Enum status_token_enum {
+  ATIVO
+  EXPIRADO
+  REVOGADO
+}
+
+Enum criticidade_erro_enum {
+  BAIXA
+  MEDIA
+  ALTA
+  CRITICA
+}
+
+Enum status_erro_enum {
+  NAO_SOLUCIONADO
+  SOLUCIONADO
+  PENDENTE
+  ARQUIVADO
+  IGNORADO
+}
+
+Enum status_processamento_enum {
+  PENDENTE
+  PROCESSADO
+  FALHA
+}
+
+Enum status_persistencia_enum {
+  SUCESSO
+  FALHA
+  AGRUPADO
+}
+
+Enum status_consentimento_ia_enum {
+  PENDENTE
+  ACEITO
+  RECUSADO
+}
+
+Enum status_sugestao_enum {
+  GERADA
+  ACEITA
+  RECUSADA
+  EXPIRADA
+}
+
+Enum canal_notificacao_enum {
+  EMAIL
+  PUSH
+  WEBSOCKET
+}
+
+Enum status_notificacao_enum {
+  PENDENTE
+  ENVIADA
+  LIDA
+  FALHA
+  AGRUPADA
+}
+
+Enum status_2fa_enum {
+  PENDENTE
+  AGUARDANDO_BIOMETRIA
+  APROVADO
+  REJEITADO
+  EXPIRADO
+  CANCELADO
+}
+
+Enum plataforma_mobile_enum {
+  ANDROID
+  IOS
+}
+
+Enum status_assinatura_enum {
+  ATIVA
+  PENDENTE
+  INADIMPLENTE
+  CANCELADA
+}
+
+Enum status_pagamento_enum {
+  PENDENTE
+  PAGO
+  RECUSADO
+  ESTORNADO
+  CANCELADO
+}
+
+Enum tipo_marcador_enum {
+  PADRAO
+  PERSONALIZADO
+}
+
+Enum formato_relatorio_enum {
+  PDF
+  EXCEL
+}
+
+Enum status_relatorio_enum {
+  GERANDO
+  GERADO
+  FALHA
+}
+
+Enum tipo_varredura_enum {
+  MANUAL
+  PERIODICA
+  SDK
+}
+
+Enum status_varredura_enum {
+  PENDENTE
+  EM_PROCESSAMENTO
+  CONCLUIDA
+  FALHA
+}
+
+/* =========================
+   EMPRESAS E USUÁRIOS
+========================= */
+
+Table empresas {
+  id uuid [pk]
+  cnpj varchar [not null, unique]
+  razao_social varchar
+  nome_fantasia varchar
+  email_contato varchar
+  telefone varchar
+  status status_usuario_enum [not null]
+  created_at timestamp [not null]
+  updated_at timestamp
+  deleted_at timestamp
+}
+
+Table usuarios {
+  id uuid [pk]
+  empresa_id uuid [not null, ref: &gt; empresas.id]
+  nome varchar [not null]
+  email varchar [not null, unique]
+  perfil perfil_usuario_enum [not null]
+  status status_usuario_enum [not null]
+  dois_fatores_ativo boolean [not null]
+  ultimo_login_at timestamp
+  created_at timestamp [not null]
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    empresa_id
+    perfil
+    status
+  }
+}
+
+Table clerk_identities {
+  id uuid [pk]
+  usuario_id uuid [not null, unique, ref: &gt; usuarios.id]
+  clerk_user_id varchar [not null, unique]
+  session_id varchar
+  role varchar
+  plano varchar
+  tenant_id varchar
+  claims jsonb
+  metadata jsonb
+  issued_at timestamp
+  expires_at timestamp
+  autenticado boolean [not null]
+  created_at timestamp [not null]
+  updated_at timestamp
+}
+
+/* =========================
+   CONTEXTO DA EMPRESA
+========================= */
+
+Table contextos_empresa {
+  id uuid [pk]
+  empresa_id uuid [not null, ref: &gt; empresas.id]
+  ramo_atuacao varchar
+  stack_tecnologica jsonb
+  descricao_contexto text
+  criticidade_padrao criticidade_erro_enum
+  ativo boolean [not null]
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    empresa_id
+    ativo
+  }
+}
+
+/* =========================
+   SISTEMAS E TOKENS SDK
+========================= */
+
+Table sistemas {
+  id uuid [pk]
+  empresa_id uuid [not null, ref: &gt; empresas.id]
+  contexto_empresa_id uuid [ref: &gt; contextos_empresa.id]
+  nome varchar [not null]
+  descricao text
+  caminho_pasta_logs varchar
+  ambiente varchar
+  status status_sistema_enum [not null]
+  created_at timestamp [not null]
+  updated_at timestamp
+  deleted_at timestamp
+
+  indexes {
+    empresa_id
+    contexto_empresa_id
+    status
+  }
+}
+
+Table tokens_integracao {
+  id uuid [pk]
+  sistema_id uuid [not null, unique, ref: &gt; sistemas.id]
+  token_hash varchar [not null, unique]
+  token_prefix varchar [not null]
+  status status_token_enum [not null]
+  permissions jsonb
+  created_at timestamp [not null]
+  expires_at timestamp
+  last_used_at timestamp
+  revoked_at timestamp
+  revoked_by uuid [ref: &gt; usuarios.id]
+
+  indexes {
+    sistema_id
+    status
+  }
+}
+
+/* =========================
+   VARREDURA DE LOGS
+========================= */
+
+Table configuracoes_varredura {
+  id uuid [pk]
+  sistema_id uuid [not null, ref: &gt; sistemas.id]
+  caminho_pasta varchar [not null]
+  formatos_suportados jsonb
+  intervalo_minutos int
+  ativa boolean [not null]
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    sistema_id
+    ativa
+  }
+}
+
+Table execucoes_varredura {
+  id uuid [pk]
+  sistema_id uuid [not null, ref: &gt; sistemas.id]
+  configuracao_varredura_id uuid [ref: &gt; configuracoes_varredura.id]
+  tipo tipo_varredura_enum [not null]
+  status status_varredura_enum [not null]
+  total_logs_encontrados int
+  total_erros_identificados int
+  iniciada_em timestamp [not null]
+  finalizada_em timestamp
+  mensagem_falha text
+
+  indexes {
+    sistema_id
+    status
+    iniciada_em
+  }
+}
+
+/* =========================
+   LOGS, TRATAMENTO E ERROS
+========================= */
+
+Table logs {
+  id uuid [pk]
+  sistema_id uuid [not null, ref: &gt; sistemas.id]
+  token_integracao_id uuid [ref: &gt; tokens_integracao.id]
+  execucao_varredura_id uuid [ref: &gt; execucoes_varredura.id]
+  conteudo_bruto jsonb [not null]
+  mensagem text
+  formato varchar
+  origem varchar
+  nivel varchar
+  hash_conteudo varchar
+  recebido_em timestamp [not null]
+  expira_em timestamp
+  dados_mascarados boolean [not null]
+  status_processamento status_processamento_enum [not null]
+  created_at timestamp [not null]
+
+  indexes {
+    sistema_id
+    token_integracao_id
+    execucao_varredura_id
+    recebido_em
+    status_processamento
+    hash_conteudo
+  }
+}
+
+Table logs_tratados {
+  id uuid [pk]
+  log_id uuid [not null, unique, ref: &gt; logs.id]
+  contexto_empresa_id uuid [ref: &gt; contextos_empresa.id]
+  conteudo_tratado jsonb [not null]
+  contexto_aplicado jsonb
+  credenciais_ofuscadas boolean [not null]
+  status_persistencia status_persistencia_enum [not null]
+  processado_em timestamp [not null]
+
+  indexes {
+    log_id
+    contexto_empresa_id
+    status_persistencia
+  }
+}
+
+Table grupos_erro {
+  id uuid [pk]
+  sistema_id uuid [not null, ref: &gt; sistemas.id]
+  fingerprint varchar [not null]
+  tipo_erro varchar
+  mensagem_normalizada text
+  criticidade criticidade_erro_enum
+  contador_ocorrencias int [not null]
+  primeira_ocorrencia_em timestamp
+  ultima_ocorrencia_em timestamp
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    sistema_id
+    fingerprint
+    criticidade
+    ultima_ocorrencia_em
+    (sistema_id, fingerprint) [unique]
+  }
+}
+
+Table erros {
+  id uuid [pk]
+  sistema_id uuid [not null, ref: &gt; sistemas.id]
+  log_tratado_id uuid [not null, ref: &gt; logs_tratados.id]
+  grupo_erro_id uuid [ref: &gt; grupos_erro.id]
+  tipo_erro varchar [not null]
+  mensagem text [not null]
+  stack_trace text
+  criticidade criticidade_erro_enum [not null]
+  status status_erro_enum [not null]
+  arquivado boolean [not null]
+  solucionado_em timestamp
+  confirmado_leitura_em timestamp
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    sistema_id
+    log_tratado_id
+    grupo_erro_id
+    criticidade
+    status
+    created_at
+  }
+}
+
+/* =========================
+   MARCADORES
+========================= */
+
+Table marcadores {
+  id uuid [pk]
+  empresa_id uuid [not null, ref: &gt; empresas.id]
+  criado_por_usuario_id uuid [ref: &gt; usuarios.id]
+  nome varchar [not null]
+  tipo tipo_marcador_enum [not null]
+  cor varchar
+  created_at timestamp [not null]
+
+  indexes {
+    empresa_id
+    tipo
+    (empresa_id, nome) [unique]
+  }
+}
+
+Table erro_marcadores {
+  erro_id uuid [not null, ref: &gt; erros.id]
+  marcador_id uuid [not null, ref: &gt; marcadores.id]
+  created_at timestamp [not null]
+
+  indexes {
+    (erro_id, marcador_id) [pk]
+    marcador_id
+  }
+}
+
+/* =========================
+   IA, SUGESTÕES E LLM
+========================= */
+
+Table sugestoes_ia {
+  id uuid [pk]
+  erro_id uuid [not null, ref: &gt; erros.id]
+  usuario_id uuid [ref: &gt; usuarios.id]
+  provedor_ia varchar
+  modelo_utilizado varchar
+  prompt_utilizado text
+  resposta_sugerida text
+  link_agente varchar
+  status_consentimento status_consentimento_ia_enum [not null]
+  status_sugestao status_sugestao_enum [not null]
+  aceita_em timestamp
+  created_at timestamp [not null]
+
+  indexes {
+    erro_id
+    usuario_id
+    status_consentimento
+    status_sugestao
+  }
+}
+
+Table interacoes_llm {
+  id uuid [pk]
+  sugestao_ia_id uuid [not null, ref: &gt; sugestoes_ia.id]
+  usuario_id uuid [ref: &gt; usuarios.id]
+  mensagem_usuario text
+  resposta_llm text
+  metadata jsonb
+  created_at timestamp [not null]
+
+  indexes {
+    sugestao_ia_id
+    usuario_id
+  }
+}
+
+/* =========================
+   NOTIFICAÇÕES E ALERTAS
+========================= */
+
+Table resumos_notificacao {
+  id uuid [pk]
+  empresa_id uuid [not null, ref: &gt; empresas.id]
+  sistema_id uuid [ref: &gt; sistemas.id]
+  grupo_erro_id uuid [ref: &gt; grupos_erro.id]
+  canal canal_notificacao_enum [not null]
+  quantidade_erros int [not null]
+  intervalo_inicio timestamp
+  intervalo_fim timestamp
+  enviado_em timestamp
+  created_at timestamp [not null]
+
+  indexes {
+    empresa_id
+    sistema_id
+    grupo_erro_id
+    canal
+  }
+}
+
+Table notificacoes {
+  id uuid [pk]
+  erro_id uuid [ref: &gt; erros.id]
+  usuario_id uuid [not null, ref: &gt; usuarios.id]
+  resumo_notificacao_id uuid [ref: &gt; resumos_notificacao.id]
+  canal canal_notificacao_enum [not null]
+  status status_notificacao_enum [not null]
+  titulo varchar
+  mensagem text
+  enviada_em timestamp
+  lida_em timestamp
+  created_at timestamp [not null]
+
+  indexes {
+    usuario_id
+    erro_id
+    resumo_notificacao_id
+    status
+    canal
+    created_at
+  }
+}
+
+/* =========================
+   MOBILE, 2FA E SEGURANÇA
+========================= */
+
+Table dispositivos_mobile {
+  id uuid [pk]
+  usuario_id uuid [not null, ref: &gt; usuarios.id]
+  plataforma plataforma_mobile_enum [not null]
+  device_token varchar
+  biometria_ativa boolean [not null]
+  ativo boolean [not null]
+  ultimo_acesso_em timestamp
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    usuario_id
+    plataforma
+    ativo
+  }
+}
+
+Table solicitacoes_2fa {
+  id uuid [pk]
+  usuario_id uuid [not null, ref: &gt; usuarios.id]
+  dispositivo_mobile_id uuid [ref: &gt; dispositivos_mobile.id]
+  token_temporario_hash varchar [not null]
+  status status_2fa_enum [not null]
+  ip_origem varchar
+  dispositivo_origem varchar
+  tentativas int [not null]
+  biometria_obrigatoria boolean [not null]
+  criada_em timestamp [not null]
+  expira_em timestamp [not null]
+  respondida_em timestamp
+
+  indexes {
+    usuario_id
+    dispositivo_mobile_id
+    status
+    criada_em
+  }
+}
+
+Table eventos_seguranca {
+  id uuid [pk]
+  usuario_id uuid [ref: &gt; usuarios.id]
+  solicitacao_2fa_id uuid [ref: &gt; solicitacoes_2fa.id]
+  tipo_evento varchar [not null]
+  descricao text
+  ip_origem varchar
+  metadata jsonb
+  created_at timestamp [not null]
+
+  indexes {
+    usuario_id
+    solicitacao_2fa_id
+    tipo_evento
+    created_at
+  }
+}
+
+/* =========================
+   PLANOS, ASSINATURAS E PAGAMENTOS
+========================= */
+
+Table planos {
+  id uuid [pk]
+  nome varchar [not null, unique]
+  descricao text
+  preco_base decimal(10,2) [not null]
+  preco_por_sistema decimal(10,2)
+  limite_sistemas int
+  retencao_logs_dias int
+  ativo boolean [not null]
+  created_at timestamp [not null]
+  updated_at timestamp
+}
+
+Table assinaturas {
+  id uuid [pk]
+  empresa_id uuid [not null, ref: &gt; empresas.id]
+  plano_id uuid [not null, ref: &gt; planos.id]
+  status status_assinatura_enum [not null]
+  valor_atual_calculado decimal(10,2)
+  total_sistemas_contratados int
+  iniciada_em timestamp [not null]
+  renovada_em timestamp
+  cancelada_em timestamp
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    empresa_id
+    plano_id
+    status
+  }
+}
+
+Table pagamentos {
+  id uuid [pk]
+  assinatura_id uuid [not null, ref: &gt; assinaturas.id]
+  gateway varchar [not null]
+  transacao_gateway_id varchar
+  status status_pagamento_enum [not null]
+  valor decimal(10,2) [not null]
+  moeda varchar [not null]
+  payload_gateway jsonb
+  pago_em timestamp
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    assinatura_id
+    status
+    transacao_gateway_id
+  }
+}
+
+/* =========================
+   RELATÓRIOS E EXPORTAÇÕES
+========================= */
+
+Table relatorios {
+  id uuid [pk]
+  empresa_id uuid [not null, ref: &gt; empresas.id]
+  usuario_id uuid [not null, ref: &gt; usuarios.id]
+  titulo varchar [not null]
+  total_logs int
+  total_erros int
+  total_sistemas int
+  status status_relatorio_enum [not null]
+  periodo_inicio timestamp
+  periodo_fim timestamp
+  resumo text
+  created_at timestamp [not null]
+  updated_at timestamp
+
+  indexes {
+    empresa_id
+    usuario_id
+    status
+    created_at
+  }
+}
+
+Table filtros_relatorio {
+  id uuid [pk]
+  relatorio_id uuid [not null, unique, ref: &gt; relatorios.id]
+  sistema_id uuid [ref: &gt; sistemas.id]
+  criticidade criticidade_erro_enum
+  status_erro status_erro_enum
+  termo_busca varchar
+  data_inicial timestamp
+  data_final timestamp
+  filtros_json jsonb
+  created_at timestamp [not null]
+
+  indexes {
+    relatorio_id
+    sistema_id
+    criticidade
+    status_erro
+  }
+}
+
+Table documentos_relatorio {
+  id uuid [pk]
+  relatorio_id uuid [not null, ref: &gt; relatorios.id]
+  nome_arquivo varchar [not null]
+  formato formato_relatorio_enum [not null]
+  url_download varchar
+  tamanho_bytes bigint
+  gerado_em timestamp
+  created_at timestamp [not null]
+
+  indexes {
+    relatorio_id
+    formato
+  }
+}
+
+Table exportacoes_relatorio {
+  id uuid [pk]
+  relatorio_id uuid [not null, ref: &gt; relatorios.id]
+  documento_relatorio_id uuid [ref: &gt; documentos_relatorio.id]
+  usuario_id uuid [not null, ref: &gt; usuarios.id]
+  formato formato_relatorio_enum [not null]
+  status status_relatorio_enum [not null]
+  solicitada_em timestamp [not null]
+  concluida_em timestamp
+
+  indexes {
+    relatorio_id
+    documento_relatorio_id
+    usuario_id
+    formato
+    status
+  }
+}</pre>
+</div></div><p local-id="05830d66bca3" /><p local-id="aed14831e2f8" /><p local-id="ae74b5660437">Diagrama Simplificado </p><p local-id="2aab95a5a21a" /><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="diagrama simplificado.png" width="760" loading="lazy" src="../attachments/67108866/66879494.png?width=760" data-image-src="../attachments/67108866/66879494.png" data-height="1020" data-width="1458" data-unresolved-comment-count="0" data-linked-resource-id="66879494" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="diagrama simplificado.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="67108866" data-linked-resource-container-version="1" data-media-id="3e001dc5-28d3-47ec-8217-2920688dcf2c" data-media-type="file"></span><p local-id="1ab0b9085674" /><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">// ============================================================================
+// ENUMS (Tipos fixos que limpam o visual das tabelas)
+// ============================================================================
+enum Role {
+  ADMIN
+  DEV
+}
+
+enum StatusErro {
+  SOLUCIONADO
+  NAO_SOLUCIONADO
+}
+
+enum Status2FA {
+  PENDENTE
+  APROVADO
+  REJEITADO
+  EXPIRADO
+}
+
+enum CriticidadeLog {
+  BAIXO
+  MEDIO
+  CRITICO
+}
+
+// ============================================================================
+// 1. NÚCLEO CENTRAL DO DIAGRAMA
+// ============================================================================
+
+Table Empresas {
+  id_empresa uuid [pk, default: `gen_random_uuid()`]
+  cnpj varchar(14) [not null, unique] 
+  razao_social varchar(255) [not null]
+  id_plano int [not null]
+  data_cadastro timestamptz [not null, default: `now()`]
+}
+
+Table Sistemas_Cliente {
+  id_sistema uuid [pk, default: `gen_random_uuid()`]
+  id_empresa uuid [not null]
+  nome_sistema varchar(100) [not null]
+  caminho_pasta_logs varchar(255) [not null] 
+}
+
+Table Erros_Armazenados {
+  id_erro uuid [pk, default: `gen_random_uuid()`]
+  id_sistema uuid [not null]
+  id_log_mongo varchar(24) [not null, unique] 
+  tipo_erro varchar(155) [not null] 
+  conteudo_log_ofuscado text [not null] 
+  contexto_aplicado_snapshot text [not null] 
+  criticidade CriticidadeLog [not null, default: `CriticidadeLog.BAIXO`] 
+  status StatusErro [not null, default: `StatusErro.NAO_SOLUCIONADO`] 
+  contador_repeticoes int [not null, default: 1] 
+  link_agente_llm varchar(512)
+  sugestao_solucao text 
+  data_ocorrencia timestamptz [not null, default: `now()`] 
+  
+  Note: &#39;Gerido por Serviço de Erro (Peng) e Serviço de tratamento do log (pedroalvaro193)&#39;
+}
+
+// ============================================================================
+// 2. PARTE SUPERIOR (Acessos e Autenticação)
+// ============================================================================
+
+Table Usuarios {
+  id_usuario varchar(255) [pk] 
+  id_empresa uuid [not null]
+  nome varchar(155) [not null]
+  email varchar(255) [not null, unique]
+  perfil_role Role [not null, default: `Role.DEV`] 
+  dois_fatores_ativo boolean [not null, default: false] 
+  
+  Note: &#39;Mapeado na classe User (pedroalvaro193) &amp; Serviço de usuário (Michel)&#39;
+}
+
+Table Solicitacoes_2FA {
+  id_solicitacao uuid [pk, default: `gen_random_uuid()`]
+  id_usuario varchar(255) [not null]
+  status_aprovacao Status2FA [not null, default: `Status2FA.PENDENTE`]
+  data_criacao timestamptz [not null, default: `now()`]
+  data_expiracao timestamptz [not null] 
+  ip_origem varchar(45) [not null] 
+  
+  Note: &#39;Controlado por Autenticação de 2 fatores (Michel Bocchi Junior)&#39;
+}
+
+Table Tokens_SDK {
+  id_token uuid [pk, default: `gen_random_uuid()`]
+  id_sistema uuid [not null, unique]
+  token_hash varchar(255) [not null, unique] 
+  ativo boolean [not null, default: true]
+  data_geracao timestamptz [not null, default: `now()`]
+  
+  Note: &#39;Alimentado pela classe Serviço User Token (Peng)&#39;
+}
+
+Table Contextos_IA {
+  id_contexto uuid [pk, default: `gen_random_uuid()`]
+  id_sistema uuid [not null, unique]
+  ramo_empresa varchar(100) [not null] 
+  stack_tecnologica varchar(155) [not null] 
+  descricao_contexto text [not null] 
+  ultima_atualizacao timestamptz [not null, default: `now()`]
+  
+  Note: &#39;Consumido pela Interface da LLM (Michel Bocchi Junior)&#39;
+}
+
+// ============================================================================
+// 3. PARTE ESQUERDA (Configuração Comercial)
+// ============================================================================
+
+Table Planos_Assinatura {
+  id_plano int [pk, increment]
+  nome_plano varchar(50) [not null, unique] 
+  limite_retencao_dias int [not null, default: 7] 
+  preco_base decimal(10,2) [not null, default: 0.00]
+  
+  Note: &#39;Gerido pela classe Gerenciador de Assinatura (Vinicius Ferrarini)&#39;
+}
+
+// ============================================================================
+// 4. PARTE DIREITA (Notificações e Relatórios)
+// ============================================================================
+
+Table Notificacoes {
+  id_notificacao uuid [pk, default: `gen_random_uuid()`]
+  id_usuario varchar(255) [not null]
+  id_erro uuid [not null]
+  tipo_canal varchar(50) [not null] 
+  confirmada_leitura boolean [not null, default: false] 
+  data_envio timestamptz [not null, default: `now()`]
+  
+  Note: &#39;Disparado pelo Serviço de Notificação (pedroalvaro193)&#39;
+}
+
+Table Relatorios_Gerados {
+  id_relatorio uuid [pk, default: `gen_random_uuid()`]
+  id_empresa uuid [not null]
+  titulo_relatorio varchar(150) [not null]
+  formato_exportacao varchar(10) [not null] 
+  data_criacao timestamptz [not null, default: `now()`]
+  
+  Note: &#39;Gerado e Exportado pelas classes de relatório do Andre Felipe&#39;
+}
+
+// ============================================================================
+// 5. PARTE INFERIOR (Metadados e Organização de Erros)
+// ============================================================================
+
+Table Marcadores_Customizados {
+  id_marcador int [pk, increment]
+  id_empresa uuid [not null]
+  nome_marcador varchar(50) [not null] 
+  cor_hex varchar(7) [not null, default: &#39;#FFFFFF&#39;]
+}
+
+Table Marcadores_Erros {
+  id_erro uuid [not null]
+  id_marcador int [not null]
+  
+  indexes {
+    (id_erro, id_marcador) [pk]
+  }
+}
+
+// ============================================================================
+// RELACIONAMENTOS PADRONIZADOS (Sintaxe Correta sem erros no Compilador)
+// ============================================================================
+
+Ref: Empresas.id_plano &gt; Planos_Assinatura.id_plano
+
+Ref: Usuarios.id_empresa &gt; Empresas.id_empresa [update: cascade, delete: cascade]
+
+Ref: Sistemas_Cliente.id_empresa &gt; Empresas.id_empresa [delete: cascade]
+
+Ref: Solicitacoes_2FA.id_usuario &gt; Usuarios.id_usuario [delete: cascade]
+
+Ref: Erros_Armazenados.id_sistema &gt; Sistemas_Cliente.id_sistema [delete: cascade]
+
+Ref: Tokens_SDK.id_sistema &gt; Sistemas_Cliente.id_sistema [delete: cascade]
+
+Ref: Contextos_IA.id_sistema - Sistemas_Cliente.id_sistema [delete: cascade]
+
+Ref: Notificacoes.id_erro &gt; Erros_Armazenados.id_erro [delete: cascade]
+
+Ref: Notificacoes.id_usuario &gt; Usuarios.id_usuario [delete: cascade]
+
+Ref: Marcadores_Customizados.id_empresa &gt; Empresas.id_empresa [delete: cascade]
+
+Ref: Marcadores_Erros.id_erro &gt; Erros_Armazenados.id_erro [delete: cascade]
+
+Ref: Marcadores_Erros.id_marcador &gt; Marcadores_Customizados.id_marcador [delete: cascade]
+
+Ref: Relatorios_Gerados.id_empresa &gt; Empresas.id_empresa [delete: cascade]</pre>
+</div></div><p local-id="7234b4a41017" /><p local-id="c5dbb999a237" />
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/67108866/67174401.png">image-20260615-015423.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/67108866/66650119.png">diagrama completo.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/67108866/66879494.png">diagrama simplificado.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>

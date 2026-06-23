@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Minha equipe de software : Diagrama de Sequência 13 - Explorar, Filtrar e Interagir com Logs via Agente IA</title>
+        <link rel="stylesheet" href="../styles/site.css" type="text/css" />
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    </head>
+
+    <body class="theme-default aui-theme-default">
+        <div id="page">
+            <div id="main" class="aui-page-panel">
+                <div id="main-header">
+                    <div id="breadcrumb-section">
+                        <ol id="breadcrumbs">
+                            <li class="first">
+                                <span><a href="../index.html">Minha equipe de software</a></span>
+                            </li>
+                                                    <li>
+                                <span><a href="../relatorios/38502401.html">Sprint 5 | Atividade 6 | Fazer o FrontEnd | 27/04/2026</a></span>
+                            </li>
+                                                </ol>
+                    </div>
+                    <h1 id="title-heading" class="pagetitle">
+                                                <span id="title-text">
+                            Minha equipe de software : Diagrama de Sequência 13 - Explorar, Filtrar e Interagir com Logs via Agente IA
+                        </span>
+                    </h1>
+                </div>
+
+                <div id="content" class="view">
+                    <div class="page-metadata">
+                            
+        
+    
+        
+    
+        
+        
+            Created by <span class='author'> Michel Bocchi Junior</span>, last modified on mai. 18, 2026
+                        </div>
+                    <div id="main-content" class="wiki-content group">
+                    <span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-225418.png" width="595" loading="lazy" src="../attachments/49414150/50561027.png?width=595" data-image-src="../attachments/49414150/50561027.png" data-height="637" data-width="595" data-unresolved-comment-count="0" data-linked-resource-id="50561027" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-225418.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49414150" data-linked-resource-container-version="2" data-media-id="dd0279cf-f0c5-40cc-ad2c-188d0fe41713" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-13: Explorar, Filtrar e Interagir com Logs via Agente IA
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+== 1. Busca e Filtragem de Logs ==
+User -&gt; UI: Acessa Dashboard/Histórico
+activate UI
+
+UI -&gt; API: GET /logs?page=1
+activate API
+
+API -&gt; API: Valida sessão\n e extrai Tenant (CNPJ)
+
+API -&gt; DB: Consulta logs recentes\n(Multi-sistemas RN-10)
+activate DB
+
+alt Cenário Principal: Logs encontrados
+    DB --&gt; API: Retorna logs paginados
+
+    API -&gt; API: Formata criticidade,\nstatus e contexto
+
+    API --&gt; UI: JSON inicial de logs
+
+    UI --&gt; User: Renderiza listagem inicial
+
+else Alternativa A1: Nenhum log encontrado
+    DB --&gt; API: Array vazio []
+
+    API --&gt; UI: 200 OK (Sem resultados)
+
+    UI --&gt; User: Exibe &quot;Empty State&quot;
+end
+
+deactivate DB
+@Endum</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-225514.png" width="760" loading="lazy" src="../attachments/49414150/50462722.png?width=760" data-image-src="../attachments/49414150/50462722.png" data-height="665" data-width="1029" data-unresolved-comment-count="0" data-linked-resource-id="50462722" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-225514.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49414150" data-linked-resource-container-version="2" data-media-id="6af0b70e-8b72-469d-baf0-3aaa3908f885" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-13: Explorar, Filtrar e Interagir com Logs via Agente IA
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+
+
+== 2. Pesquisa Global e Filtros ==
+User -&gt; UI: Pesquisa termo ou aplica filtros
+UI -&gt; API: GET /logs?search=&amp;status=&amp;systemId=
+activate API
+
+API -&gt; API: Monta query otimizada\n(Text Index + filtros)
+
+API -&gt; DB: Busca filtrada no MongoDB
+activate DB
+
+DB --&gt; API: Logs filtrados e paginados
+deactivate DB
+
+API --&gt; UI: Resultado refinado
+
+UI --&gt; User: Atualiza Dashboard
+
+deactivate API
+@Enduml</pre>
+</div></div><span class="confluence-embedded-file-wrapper image-center-wrapper confluence-embedded-manual-size"><img class="confluence-embedded-image image-center" alt="image-20260518-224332.png" width="579" loading="lazy" src="../attachments/49414150/50298885.png?width=579" data-image-src="../attachments/49414150/50298885.png" data-height="733" data-width="579" data-unresolved-comment-count="0" data-linked-resource-id="50298885" data-linked-resource-version="1" data-linked-resource-type="attachment" data-linked-resource-default-alias="image-20260518-224332.png" data-base-url="https://groupfromthesouth.atlassian.net/wiki" data-linked-resource-content-type="image/png" data-linked-resource-container-id="49414150" data-linked-resource-container-version="2" data-media-id="43f5fd31-7113-4d26-90b1-c334f309dab0" data-media-type="file"></span><div class="code panel pdl" style="border-width: 1px;"><div class="codeContent panelContent pdl">
+<pre class="syntaxhighlighter-pre" data-syntaxhighlighter-params="brush: java; gutter: false; theme: Confluence" data-theme="Confluence">@startuml
+!theme plain
+autonumber
+skinparam maxMessageSize 180
+skinparam sequence {
+    ParticipantBackgroundColor #EBF8FF
+    ParticipantBorderColor #005A9C
+    ActorBorderColor #005A9C
+    DatabaseBackgroundColor #EBF8FF
+    DatabaseBorderColor #005A9C
+}
+
+title UC-13: Explorar, Filtrar e Interagir com Logs via Agente IA
+
+actor &quot;Usuário&quot; as User
+participant &quot;Frontend\n(Web/Mobile)&quot; as UI
+participant &quot;Backend API&quot; as API
+database &quot;MongoDB&quot; as DB
+participant &quot;Agente IA\n(LLM Adapter)&quot; as LLM
+
+
+== 3. Interação com Agente IA ==
+User -&gt; UI: Seleciona erro específico
+
+UI -&gt; API: GET /logs/{id}
+activate API
+
+API -&gt; DB: Busca detalhes completos
+activate DB
+
+DB --&gt; API: Documento do log
+
+API --&gt; UI: Payload detalhado do erro
+
+UI --&gt; User: Exibe detalhes + sugestão passiva
+
+deactivate DB
+
+alt Fluxo Principal: Usuário aciona IA
+    User -&gt; UI: Solicita possível solução
+
+    UI -&gt; API: POST /logs/{id}/ask-ai
+
+    API -&gt; API: Prepara contexto\n e payload do log
+
+    API -&gt; LLM: Envia contexto da empresa\n + conteúdo do erro
+    activate LLM
+
+    alt Cenário Principal: IA responde com sucesso
+        LLM --&gt; API: Sugestão de solução
+
+        API -&gt; API: Atualiza estado do domínio\n(RN-07)
+
+        API -&gt; DB: Define status = &quot;Solucionado&quot;
+        activate DB
+
+        DB --&gt; API: Confirma persistência
+
+        deactivate DB
+
+        API --&gt; UI: Retorna solução sugerida
+
+        UI --&gt; User: Exibe resposta da IA\n e atualiza status visual
+
+    else Alternativa A3: Falha na IA
+        LLM --&gt; API: Timeout / erro
+
+        API --&gt; UI: IA indisponível
+
+        UI --&gt; User: Exibe mensagem amigável
+    end
+
+    deactivate LLM
+
+else Alternativa A2: Usuário ignora IA
+    UI --&gt; User: Mantém status &quot;Não Solucionado&quot;
+end
+
+deactivate API
+deactivate UI
+@Enduml</pre>
+</div></div>
+                    </div>
+
+                                        <div class="pageSection group">
+                        <div class="pageSectionHeader">
+                            <h2 id="attachments" class="pageSectionTitle">Attachments:</h2>
+                        </div>
+
+                        <div class="greybox" align="left">
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49414150/50298885.png">image-20260518-224332.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49414150/48594959.png">image-20260518-224804.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49414150/50364429.png">image-20260518-224942.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49414150/50561027.png">image-20260518-225418.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49414150/50462722.png">image-20260518-225514.png</a> (image/png)
+                                <br/>
+                                                            <img src="https://groupfromthesouth.atlassian.net/wiki/images/icons/bullet_blue.gif" height="8" width="8" alt=""/>
+                                <a href="../attachments/49414150/52592647.png">ds-13.png</a> (image/png)
+                                <br/>
+                                                    </div>
+                    </div>
+                    
+                                                      
+                </div>             </div> 
+            <div id="footer" role="contentinfo">
+                <section class="footer-body">
+                    <p>Document generated by Confluence on jun. 23, 2026 10:45</p>
+                    <div id="footer-logo"><a href="http://www.atlassian.com/">Atlassian</a></div>
+                </section>
+            </div>
+        </div>     </body>
+</html>
